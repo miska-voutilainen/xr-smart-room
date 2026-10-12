@@ -1,0 +1,7 @@
+python bridge/lab.py curtain  open | close | stop | position 40 | status | watch
+python bridge/lab.py dimmer   on | off | toggle | level 40 | status | watch
+python bridge/lab.py speaker  play song.mp3 --volume 15 | pause | resume | volume up | restore | status
+python bridge/lab.py camera   status | snapshot | watch
+python bridge/lab.py sensor   [watch --alarm 25]
+python bridge/lab.py bacnet   discover | objects
+python bridge/lab.py knx      monitor | read 1/2/3 | scan 0/0/1 0/7/255 | write 1/2/3 on|40%
