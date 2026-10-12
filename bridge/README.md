@@ -65,11 +65,15 @@ python bridge/server.py --simulate   # fake devices, no lab or token needed
 | `--temp-alarm` | 26 | Temperature alarm threshold in °C |
 | `--hold` | 30 | Seconds without a person before the room counts as empty |
 | `--min-score` | 0.5 | Ignore person detections below this score |
+| `--presence` | `camera` | What switches the virtual light: `camera`, `motion` (Aqara motion sensor) or `any` |
+| `--alarm-actions` | off | When the alarm starts, close the curtain and play `--alarm-sound` on the speaker |
+| `--alarm-sound` | `alarm.mp3` | Sound file in `bridge/` for `--alarm-actions` |
 
 ```
               +----------------------- server.py -----------------------+
 XR app <-WS-> | latest state, broadcast, rules                          |
-       <-HTTP-|  Home Assistant, every 1 s -> curtain1, dimmer1, speaker1|
+       <-HTTP-|  Home Assistant, every 1 s -> curtain1, dimmer1,        |
+              |                               speaker1, motion1         |
               |  Frigate, every 1 s        -> camera1                   |
               |  BACnet, every 5 s         -> room_sensor1              |
               |  HTTP: /camera.jpg, /media/<song>                       |
@@ -92,6 +96,7 @@ One JSON object per message. A new client first receives the full current state,
 | `dimmer1` | `on`, `level` (0-100), `power` (W), `status` |
 | `speaker1` | `state`, `volume` (0-100), `title`, `status` |
 | `camera1` | `occupied`, `status` |
+| `motion1` | `motion`, `illuminance` (lx), `status` |
 | `room_sensor1` | `temperature`, `humidity`, `co2`, `air_quality`, `battery_low`, `alarm`, `status` |
 | `virtual_light` | `on` |
 | any | `error`, sent only to the client whose command failed |
@@ -119,8 +124,8 @@ One JSON object per message. A new client first receives the full current state,
 
 ### Rules
 
-- **UC1.** `camera1.occupied` switches `virtual_light.on`. Only the virtual light is switched, not the real dimmer.
-- **UC3.** `room_sensor1.alarm` is true while the temperature is above `--temp-alarm`. It is only a signal for now. Closing the real curtain or sounding a real speaker is not wired up.
+- **UC1.** The room's presence switches `virtual_light.on`. `--presence` picks the source: `camera1.occupied` (default), `motion1.motion`, or `any` of them. Only the virtual light is switched, not the real dimmer.
+- **UC3.** `room_sensor1.alarm` is true while the temperature is above `--temp-alarm`. With `--alarm-actions`, each time the alarm starts the server closes the curtain and plays `--alarm-sound` on the speaker, through the same commands Unity uses. It is off by default, because it moves real devices. If the sound file is missing, the server warns at startup and only closes the curtain. If the temperature is already above the limit when the server starts, the actions run straight away.
 
 ### Simulation Mode
 
@@ -129,6 +134,7 @@ With `--simulate`:
 - **Dimmer:** reports a made-up power value.
 - **Speaker:** changes state without making sound.
 - **Camera:** switches between occupied and empty every 15 seconds.
+- **Motion sensor:** reports motion for 10 seconds every 40 seconds.
 - **Room sensor:** the temperature moves between 22 and 28 °C every two minutes, which triggers the UC3 alarm.
 
 ### Test Results
@@ -140,14 +146,17 @@ With `--simulate`:
 | `dimmer1 set_level 30`, then `off` | Works, the real lamp followed |
 | `/camera.jpg` | Works |
 | Curtain and speaker commands through the server | Not tested yet (the devices were in use). The same calls were tested with `lab.py` |
+| Simulation run-through on 12.10.2026: UC1 with each `--presence`, UC2 commands, UC3 with and without `--alarm-actions`, errors, reconnect | Works |
+| Real mode without the lab network | Works, every device reports `offline` |
+| Motion sensor and `--alarm-actions` on the real devices | Not tested yet |
 
 ## 4. Use Cases
 
 | Use case | Real data | Bridge | XR |
 |---|---|---|---|
-| UC1 Motion -> light | Frigate person detection works | `camera1.occupied` -> `virtual_light.on` works | Concept |
+| UC1 Motion -> light | Frigate person detection works; motion sensor not tested | `camera1` or `motion1` -> `virtual_light.on` works in simulation | Concept |
 | UC2 XR control of light and curtains | Dimmer and curtain work | Commands and two-way state work | Concept |
-| UC3 Temperature alarm | BACnet room sensor works | `room_sensor1.alarm` works; reactions on real devices open | Concept |
+| UC3 Temperature alarm | BACnet room sensor works | `room_sensor1.alarm` works; `--alarm-actions` works in simulation | Concept |
 | Extension: live camera panel | Frigate frames work | `/camera.jpg` works | Concept |
 | DALI panel | Not reachable yet | - | Concept |
 
@@ -181,8 +190,8 @@ As in the concept, Unity never talks to the devices directly, only to `server.py
 ## 6. Open Issues
 
 1. **DALI panel.** The bus can be reached through the KNX IP BAOS 777, but the lamps' group addresses are unknown. See [knx-dali.md](../docs/devices/knx-dali.md) for ways to find them. Then add a `dali1` device to `server.py`.
-2. **UC3 reactions.** Agree with the lab staff whether the alarm may close the real curtain and play an alert on a real speaker. If so, add the actions to `Hub.apply_rules` behind an option.
-3. **UC1 demo.** Someone is almost always in view, so the room rarely counts as empty. Options are a Frigate zone (ask the lab staff), a shorter `--hold`, or the Aqara motion sensor as a second trigger.
+2. **UC3 reactions.** `--alarm-actions` is implemented but off by default. Agree with the lab staff whether the alarm may close the real curtain and play an alert on the real speaker before using it in the lab. It needs an alarm sound in `bridge/`. `*.mp3` is git-ignored, so copy the file there by hand.
+3. **UC1 demo.** Someone is almost always in view of the camera, so the room rarely counts as empty. `--presence motion` uses the Aqara motion sensor instead, which can be pointed away from people. A Frigate zone (ask the lab staff) or a shorter `--hold` are other options.
 4. **Curtain stop.** Holding the current position has not been tested on the real curtain yet.
 5. **Writing to BACnet or KNX.** Not implemented on purpose. Only write to objects the lab staff approve.
 6. **Security.** The server has no authentication, so only run it on the lab network. Revoke the Home Assistant token after the project.

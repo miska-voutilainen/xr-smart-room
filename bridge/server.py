@@ -14,8 +14,9 @@ Devices, properties and commands:
     speaker1      state, volume 0-100, title, status   play <file in bridge/>, pause, resume, stop,
                                                        volume_up, volume_down, set_volume <0-100>, restore
     camera1       occupied, status                     -
+    motion1       motion, illuminance (lx), status     -
     room_sensor1  temperature, humidity, co2, air_quality, battery_low, alarm, status   -
-    virtual_light on (rule: on while camera1 is occupied)
+    virtual_light on (rule: on while the room is occupied, see --presence)
 
 HTTP on port 8000: /camera.jpg (latest camera frame for Unity), /media/<file> (songs for the speaker).
 
@@ -23,6 +24,8 @@ Usage:
     python server.py                    # real devices (Home Assistant, Frigate, BACnet)
     python server.py --simulate         # fake devices, no lab needed
     python server.py --temp-alarm 25    # room_sensor1 alarm threshold in °C
+    python server.py --alarm-actions    # alarm also closes the curtain and plays alarm.mp3
+    python server.py --presence motion  # virtual light follows the motion sensor instead of the camera
 """
 
 import argparse
@@ -42,10 +45,13 @@ import urllib.request
 import websockets
 
 from lab import (AUDIO_EXTENSIONS, BRIDGE_DIR, CURTAIN, DIMMER, DIMMER_POWER, FRIGATE_CAMERA, FRIGATE_URL,
-                 GATEWAY_IP, SPEAKER, BACnetClient, BACnetError, HAError, HomeAssistant, curtain_stop,
-                 local_ip, read_room_sensor)
+                 GATEWAY_IP, MOTION, MOTION_LUX, SPEAKER, BACnetClient, BACnetError, HAError, HomeAssistant,
+                 curtain_stop, local_ip, read_room_sensor)
 
-ENTITIES = {"curtain1": CURTAIN, "dimmer1": DIMMER, "dimmer1_power": DIMMER_POWER, "speaker1": SPEAKER}
+ENTITIES = {"curtain1": CURTAIN, "dimmer1": DIMMER, "dimmer1_power": DIMMER_POWER, "speaker1": SPEAKER,
+            "motion1": MOTION, "motion1_lux": MOTION_LUX}
+PRESENCE = {"camera": [("camera1", "occupied")], "motion": [("motion1", "motion")],
+            "any": [("camera1", "occupied"), ("motion1", "motion")]}
 
 
 def parse_args():
@@ -56,6 +62,11 @@ def parse_args():
     p.add_argument("--temp-alarm", type=float, default=26.0, help="room temperature alarm threshold (°C)")
     p.add_argument("--hold", type=float, default=30.0, help="seconds without a person before the room is empty")
     p.add_argument("--min-score", type=float, default=0.5, help="ignore person detections below this score")
+    p.add_argument("--presence", choices=PRESENCE, default="camera",
+                   help="what switches the virtual light: camera, motion sensor, or any of them")
+    p.add_argument("--alarm-actions", action="store_true",
+                   help="when the alarm starts, close the curtain and play --alarm-sound on the speaker")
+    p.add_argument("--alarm-sound", default="alarm.mp3", help="sound file in bridge/ for --alarm-actions")
     return p.parse_args()
 
 
@@ -74,11 +85,13 @@ def media_path(name):
 class Hub:
     """Holds the latest state, broadcasts changes to Unity, and applies the room rules."""
 
-    def __init__(self, source, temp_alarm):
+    def __init__(self, source, args):
         self.source = source
-        self.temp_alarm = temp_alarm
+        self.args = args
+        self.devices = None  # set in main(); rules send commands through it
         self.clients = set()
         self.state = {}
+        self.rule_tasks = set()  # keeps running rule commands from being garbage collected
 
     def message(self, device, prop, value):
         return json.dumps({
@@ -90,7 +103,7 @@ class Hub:
         if self.state.get((device, prop), object()) == value:
             return
         self.state[(device, prop)] = value
-        if prop not in ("power", "temperature", "humidity", "co2"):  # frequent readings; alarms still log
+        if prop not in ("power", "temperature", "humidity", "co2", "illuminance"):  # frequent; alarms still log
             log(f"{device}.{prop} = {value}")
         websockets.broadcast(self.clients, self.message(device, prop, value))
         self.apply_rules(device, prop, value)
@@ -100,10 +113,27 @@ class Hub:
             self.publish(device, prop, value)
 
     def apply_rules(self, device, prop, value):
-        if (device, prop) == ("camera1", "occupied"):  # UC1: motion -> virtual light
-            self.publish("virtual_light", "on", value)
+        triggers = PRESENCE[self.args.presence]
+        if (device, prop) in triggers:  # UC1: presence -> virtual light
+            self.publish("virtual_light", "on", any(self.state.get(t) is True for t in triggers))
         if (device, prop) == ("room_sensor1", "temperature") and value is not None:  # UC3
-            self.publish("room_sensor1", "alarm", value > self.temp_alarm)
+            self.publish("room_sensor1", "alarm", value > self.args.temp_alarm)
+        if (device, prop) == ("room_sensor1", "alarm") and value and self.args.alarm_actions:
+            log("alarm started: closing the curtain and playing the alarm sound")
+            self.run_command("curtain1", "close")
+            self.run_command("speaker1", "play", self.args.alarm_sound)
+
+    def run_command(self, device, command, value=None):
+        """Send a command from a rule, in the background like a command from Unity."""
+        async def run():
+            try:
+                await asyncio.to_thread(self.devices.command, device, command, value)
+            except (ValueError, HAError) as e:
+                log(f"rule command {device}.{command} failed: {e}")
+
+        task = asyncio.get_running_loop().create_task(run())
+        self.rule_tasks.add(task)
+        task.add_done_callback(self.rule_tasks.discard)
 
     async def send_error(self, ws, device, text):
         log(f"command error for {device}: {text}")
@@ -135,13 +165,14 @@ class RealDevices:
                 self.publish_curtain(by_id.get(ENTITIES["curtain1"]))
                 self.publish_dimmer(by_id.get(ENTITIES["dimmer1"]), by_id.get(ENTITIES["dimmer1_power"]))
                 await self.publish_speaker(by_id.get(ENTITIES["speaker1"]))
+                self.publish_motion(by_id.get(ENTITIES["motion1"]), by_id.get(ENTITIES["motion1_lux"]))
                 if online is not True:
                     online = True
             except HAError as e:
                 if online is not False:
                     log(f"Home Assistant unreachable: {e}")
                     online = False
-                for device in ("curtain1", "dimmer1", "speaker1"):
+                for device in ("curtain1", "dimmer1", "speaker1", "motion1"):
                     self.hub.publish(device, "status", "offline")
             await asyncio.sleep(1)
 
@@ -165,6 +196,13 @@ class RealDevices:
             })
         if power and power["state"] not in ("unavailable", "unknown"):
             self.hub.publish("dimmer1", "power", float(power["state"]))
+
+    def publish_motion(self, s, lux):
+        self.hub.publish("motion1", "status", self.status(s))
+        if self.status(s) == "online" and s["state"] in ("on", "off"):
+            self.hub.publish("motion1", "motion", s["state"] == "on")
+        if lux and lux["state"] not in ("unavailable", "unknown"):
+            self.hub.publish("motion1", "illuminance", float(lux["state"]))
 
     async def publish_speaker(self, s):
         self.hub.publish("speaker1", "status", self.status(s))
@@ -293,6 +331,7 @@ class SimulatedDevices:
             "dimmer1": {"status": "simulated", "on": False, "level": 0, "power": 0.0},
             "speaker1": {"status": "simulated", "state": "idle", "volume": 30, "title": ""},
             "camera1": {"status": "simulated", "occupied": False},
+            "motion1": {"status": "simulated", "motion": False, "illuminance": 120.0},
             "room_sensor1": {"status": "simulated", "temperature": 22.0, "humidity": 45.0, "co2": 800.0,
                              "air_quality": "good", "battery_low": False},
         }
@@ -317,6 +356,7 @@ class SimulatedDevices:
             sensor["temperature"] = round(25 + 3 * math.sin(t * 2 * math.pi / 120), 1)
             sensor["co2"] = round(800 + 150 * math.sin(t / 30) + random.uniform(-5, 5))
             self.s["camera1"]["occupied"] = int(t // 15) % 2 == 0  # toggles every 15 s
+            self.s["motion1"]["motion"] = int(t // 10) % 4 == 1   # 10 s of motion every 40 s
             for device, values in self.s.items():
                 self.hub.publish_all(device, values)
             await asyncio.sleep(0.5)
@@ -412,8 +452,14 @@ def start_http(devices, port):
 
 async def main():
     args = parse_args()
-    hub = Hub("simulated" if args.simulate else "real", args.temp_alarm)
+    hub = Hub("simulated" if args.simulate else "real", args)
     devices = SimulatedDevices(hub, args) if args.simulate else RealDevices(hub, args)
+    hub.devices = devices
+    if args.alarm_actions:
+        try:
+            media_path(args.alarm_sound)
+        except ValueError as e:
+            log(f"warning: {e}; the alarm will close the curtain but play nothing")
 
     async def handle_client(ws):
         hub.clients.add(ws)
