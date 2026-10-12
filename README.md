@@ -46,11 +46,13 @@ Unity never talks to the lab protocols directly. The data layer translates betwe
 ```
 concept.md     Project concept: objectives, architecture, plan, risks
 use-cases.md   Use cases for each device
+docs/          Lab device documentation: one page per connected device
 unity/         Unity project (planned, not created yet)
 bridge/        Data-exchange layer: device scripts and bridge server (working, see bridge/README.md)
 ```
 
 ## Status
 
-- **Bridge (data layer): working against the real lab.** Curtain, dimmer, speaker, camera and room sensor can be read and controlled through `bridge/server.py`. See [bridge/README.md](bridge/README.md) for the device map, scripts, message protocol and the planned Unity integration.
-- **Unity: concept.** See [concept.md](concept.md) and [use-cases.md](use-cases.md).
+- **Data layer:** works with the real lab. Curtain, dimmer, speaker, camera and room sensor can be read through `bridge/server.py`, and the curtain, dimmer and speaker can also be controlled. The DALI panel is not reachable yet. See [bridge/README.md](bridge/README.md).
+- **Devices:** one page per connected device in [docs/](docs/README.md).
+- **Unity:** concept. See [concept.md](concept.md) and [use-cases.md](use-cases.md).
