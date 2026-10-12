@@ -46,10 +46,11 @@ Unity never talks to the lab protocols directly. The data layer translates betwe
 ```
 concept.md     Project concept: objectives, architecture, plan, risks
 use-cases.md   Use cases for each device
-unity/         Unity project (planned)
-bridge/        Data-exchange layer (planned)
+unity/         Unity project (planned, not created yet)
+bridge/        Data-exchange layer: device scripts and bridge server (working, see bridge/README.md)
 ```
 
 ## Status
 
-Concept phase. See [concept.md](concept.md) and [use-cases.md](use-cases.md).
+- **Bridge (data layer): working against the real lab.** Curtain, dimmer, speaker, camera and room sensor can be read and controlled through `bridge/server.py`. See [bridge/README.md](bridge/README.md) for the device map, scripts, message protocol and the planned Unity integration.
+- **Unity: concept.** See [concept.md](concept.md) and [use-cases.md](use-cases.md).
