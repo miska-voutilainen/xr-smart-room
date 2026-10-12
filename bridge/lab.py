@@ -44,6 +44,8 @@ CURTAIN = "cover.curtain_2"  # the physical curtain; cover.aqara_curtain_driver_
 DIMMER = "light.aqara_dimmer_switch_h2"
 DIMMER_POWER = "sensor.aqara_dimmer_switch_h2_power"
 SPEAKER = "media_player.roam_2_2"  # Sonos "Office"; Nest: media_player.googlehome6580 / famnest2
+MOTION = "binary_sensor.aqara_motion_sensor"
+MOTION_LUX = "sensor.aqara_motion_sensor_illuminance"
 
 FRIGATE_URL = "http://192.168.15.249:5000"
 FRIGATE_CAMERA = "cam_192_168_15_144"
@@ -808,7 +810,8 @@ def cmd_check(args):
         by_id = {s["entity_id"]: s for s in ha.request("GET", "states")}
         for name, entity, describe in (("curtain", CURTAIN, describe_curtain),
                                        ("dimmer", DIMMER, lambda s: describe_dimmer(ha, s)),
-                                       ("speaker", SPEAKER, describe_speaker)):
+                                       ("speaker", SPEAKER, describe_speaker),
+                                       ("motion", MOTION, lambda s: f"{s['entity_id']}: {s['state']}")):
             s = by_id.get(entity)
             row(name, s is not None and s["state"] != "unavailable",
                 describe(s) if s else f"{entity} not found")

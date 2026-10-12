@@ -12,6 +12,8 @@ The bridge uses the REST API with a long-lived access token:
 | `GET /api/states/<entity_id>` | One entity |
 | `POST /api/services/<domain>/<service>` | Actions, e.g. `cover/open_cover`, `light/turn_on` |
 
+The bridge also reads the Aqara motion sensor through it (see Other Entities).
+
 The client is the `HomeAssistant` class in `bridge/lab.py`. `server.py` uses the same class.
 
 ## Token
@@ -35,7 +37,7 @@ Home Assistant has about 440 entities. Some that could be useful later:
 
 | Entity | Device |
 |---|---|
-| `binary_sensor.aqara_motion_sensor` | Aqara motion sensor, with `sensor.aqara_motion_sensor_illuminance` in lux. Possible second trigger for UC1 |
+| `binary_sensor.aqara_motion_sensor` | Aqara motion sensor, with `sensor.aqara_motion_sensor_illuminance` in lux. Used by the bridge as `motion1` (`--presence motion` or `any`), not tested in the lab yet |
 | `binary_sensor.aqara_door_and_window_sensor_t1_door` | Door/window contact |
 | `binary_sensor.aqara_water_leak_sensor_t1_water_leak` | Water leak sensor |
 | `climate.aqara_radiator_thermostat_e1` | Radiator thermostat with room temperature |
