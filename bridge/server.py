@@ -23,6 +23,7 @@ Usage:
     python server.py                    # real devices (Home Assistant, Frigate, BACnet)
     python server.py --simulate         # fake devices, no lab needed
     python server.py --temp-alarm 25    # room_sensor1 alarm threshold in °C
+    python server.py --alarm-actions    # alarm also closes the curtain and plays alarm.mp3
 """
 
 import argparse
@@ -56,6 +57,9 @@ def parse_args():
     p.add_argument("--temp-alarm", type=float, default=26.0, help="room temperature alarm threshold (°C)")
     p.add_argument("--hold", type=float, default=30.0, help="seconds without a person before the room is empty")
     p.add_argument("--min-score", type=float, default=0.5, help="ignore person detections below this score")
+    p.add_argument("--alarm-actions", action="store_true",
+                   help="when the alarm starts, close the curtain and play --alarm-sound on the speaker")
+    p.add_argument("--alarm-sound", default="alarm.mp3", help="sound file in bridge/ for --alarm-actions")
     return p.parse_args()
 
 
@@ -74,11 +78,13 @@ def media_path(name):
 class Hub:
     """Holds the latest state, broadcasts changes to Unity, and applies the room rules."""
 
-    def __init__(self, source, temp_alarm):
+    def __init__(self, source, args):
         self.source = source
-        self.temp_alarm = temp_alarm
+        self.args = args
+        self.devices = None  # set in main(); rules send commands through it
         self.clients = set()
         self.state = {}
+        self.rule_tasks = set()  # keeps running rule commands from being garbage collected
 
     def message(self, device, prop, value):
         return json.dumps({
@@ -103,7 +109,23 @@ class Hub:
         if (device, prop) == ("camera1", "occupied"):  # UC1: motion -> virtual light
             self.publish("virtual_light", "on", value)
         if (device, prop) == ("room_sensor1", "temperature") and value is not None:  # UC3
-            self.publish("room_sensor1", "alarm", value > self.temp_alarm)
+            self.publish("room_sensor1", "alarm", value > self.args.temp_alarm)
+        if (device, prop) == ("room_sensor1", "alarm") and value and self.args.alarm_actions:
+            log("alarm started: closing the curtain and playing the alarm sound")
+            self.run_command("curtain1", "close")
+            self.run_command("speaker1", "play", self.args.alarm_sound)
+
+    def run_command(self, device, command, value=None):
+        """Send a command from a rule, in the background like a command from Unity."""
+        async def run():
+            try:
+                await asyncio.to_thread(self.devices.command, device, command, value)
+            except (ValueError, HAError) as e:
+                log(f"rule command {device}.{command} failed: {e}")
+
+        task = asyncio.get_running_loop().create_task(run())
+        self.rule_tasks.add(task)
+        task.add_done_callback(self.rule_tasks.discard)
 
     async def send_error(self, ws, device, text):
         log(f"command error for {device}: {text}")
@@ -412,8 +434,14 @@ def start_http(devices, port):
 
 async def main():
     args = parse_args()
-    hub = Hub("simulated" if args.simulate else "real", args.temp_alarm)
+    hub = Hub("simulated" if args.simulate else "real", args)
     devices = SimulatedDevices(hub, args) if args.simulate else RealDevices(hub, args)
+    hub.devices = devices
+    if args.alarm_actions:
+        try:
+            media_path(args.alarm_sound)
+        except ValueError as e:
+            log(f"warning: {e}; the alarm will close the curtain but play nothing")
 
     async def handle_client(ws):
         hub.clients.add(ws)
