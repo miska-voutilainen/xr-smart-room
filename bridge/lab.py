@@ -158,6 +158,21 @@ def describe_curtain(s):
     return f"{s['entity_id']}: {s['state']}, position {s['attributes'].get('current_position', '?')}"
 
 
+COVER_SUPPORT_STOP = 8
+
+
+def curtain_stop(ha, entity):
+    """Stop a moving curtain. cover.curtain_2 has no stop service (Home Assistant rejects it),
+    so for such covers we send it to the position it has reached, which halts the motor there."""
+    s = ha.state(entity)
+    if s["attributes"].get("supported_features", 0) & COVER_SUPPORT_STOP:
+        return ha.call("cover", "stop_cover", {"entity_id": entity})
+    position = s["attributes"].get("current_position")
+    if position is None:
+        raise HAError(f"{entity} reports no position, cannot stop it")
+    return ha.call("cover", "set_cover_position", {"entity_id": entity, "position": position})
+
+
 def cmd_curtain(args):
     ha = HomeAssistant.from_env()
     target = {"entity_id": args.entity}
@@ -170,6 +185,8 @@ def cmd_curtain(args):
         return
     if args.action == "position":
         ha.call("cover", "set_cover_position", {**target, "position": percent_arg(args.value)})
+    elif args.action == "stop":
+        curtain_stop(ha, args.entity)
     else:
         ha.call("cover", f"{args.action}_cover", target)
     print(f"Sent {args.action} {args.value or ''}".rstrip())
