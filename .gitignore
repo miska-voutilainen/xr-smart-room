@@ -1,0 +1,11 @@
+# Secrets
+.env
+
+# Audio files (copyrighted, large)
+*.mp3
+
+# Camera snapshots (people in the lab)
+*.jpg
+
+# Python
+__pycache__/
