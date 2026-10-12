@@ -42,8 +42,8 @@ import urllib.request
 import websockets
 
 from lab import (AUDIO_EXTENSIONS, BRIDGE_DIR, CURTAIN, DIMMER, DIMMER_POWER, FRIGATE_CAMERA, FRIGATE_URL,
-                 GATEWAY_IP, SPEAKER, BACnetClient, BACnetError, HAError, HomeAssistant, local_ip,
-                 read_room_sensor)
+                 GATEWAY_IP, SPEAKER, BACnetClient, BACnetError, HAError, HomeAssistant, curtain_stop,
+                 local_ip, read_room_sensor)
 
 ENTITIES = {"curtain1": CURTAIN, "dimmer1": DIMMER, "dimmer1_power": DIMMER_POWER, "speaker1": SPEAKER}
 
@@ -233,7 +233,9 @@ class RealDevices:
             target = {"entity_id": ENTITIES["curtain1"]}
             if command == "set_position":
                 return call("cover", "set_cover_position", {**target, "position": clamp_percent(value)})
-            if command in ("open", "close", "stop"):
+            if command == "stop":
+                return curtain_stop(self.ha, ENTITIES["curtain1"])
+            if command in ("open", "close"):
                 return call("cover", f"{command}_cover", target)
         elif device == "dimmer1":
             target = {"entity_id": ENTITIES["dimmer1"]}
