@@ -45,11 +45,13 @@ Each command prints the power two seconds later. A changing power value shows th
 | Level 30%, then off, through `server.py` | Works, power back to 0 W |
 | Level 1% | Works, about 1.4 W |
 | `light.switch` follows changes | Works |
+| Visible dimming from Home Assistant | Does not work. Level 10% and 100% look the same, although the power drops. The knob on the switch does dim the lamp |
 
 ## Notes
 
 - **Shared device.** The dimmer was on at 1% before our tests. Put it back the way you found it.
-- **Power delay.** The power value updates a second or two after the level changes.
+- **Power delay.** The power value can take up to 10 seconds to update after the level changes, and at low levels it is not reliable.
+- **The lamp doesn't visibly dim from Home Assistant.** The lamp is dimmable and dims with the knob on the switch, but level commands from Home Assistant don't visibly change it, although the dimmer reports the new level and the power reading drops (about 5.3 W at 100%, 0.4-1.9 W at 10%). On and off work. Turning the knob shows up in Home Assistant as level changes, and the two entities sometimes briefly show each other's old value. The cause is not known yet. Until it is, the real lamp only shows on and off from XR; dimming still works in XR.
 
 ## In XR
 
