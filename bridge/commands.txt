@@ -4,4 +4,5 @@ python bridge/lab.py speaker  play song.mp3 --volume 15 | pause | resume | volum
 python bridge/lab.py camera   status | snapshot | watch
 python bridge/lab.py sensor   [watch --alarm 25]
 python bridge/lab.py bacnet   discover | objects
+python bridge/lab.py dali     status | watch | info | on 3 | off g1 | level 3 40 --fade 2 | kelvin 0 3000 | up all | down 3 2 | scene g2 0
 python bridge/lab.py knx      monitor | read 1/2/3 | scan 0/0/1 0/7/255 | write 1/2/3 on|40%

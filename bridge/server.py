@@ -16,12 +16,14 @@ Devices, properties and commands:
     camera1       occupied, status                     -
     motion1       motion, illuminance (lx), status     -
     room_sensor1  temperature, humidity, co2, air_quality, battery_low, alarm, status   -
+    dali1         lamp<N>_on, lamp<N>_failure (N = DALI short address 0-9),
+                  group<N>_on, group<N>_level 0-100, group<N>_kelvin (N = DALI group 0-2), status   -
     virtual_light on (rule: on while the room is occupied, see --presence)
 
 HTTP on port 8000: /camera.jpg (latest camera frame for Unity), /media/<file> (songs for the speaker).
 
 Usage:
-    python server.py                    # real devices (Home Assistant, Frigate, BACnet)
+    python server.py                    # real devices (Home Assistant, Frigate, BACnet, DALI panel)
     python server.py --simulate         # fake devices, no lab needed
     python server.py --temp-alarm 25    # room_sensor1 alarm threshold in °C
     python server.py --alarm-actions    # alarm also closes the curtain and plays alarm.mp3
@@ -45,11 +47,12 @@ import urllib.request
 import websockets
 
 from lab import (AUDIO_EXTENSIONS, BRIDGE_DIR, CURTAIN, DIMMER, DIMMER_POWER, FRIGATE_CAMERA, FRIGATE_URL,
-                 GATEWAY_IP, MOTION, MOTION_LUX, SPEAKER, BACnetClient, BACnetError, HAError, HomeAssistant,
-                 curtain_stop, local_ip, read_room_sensor)
+                 GATEWAY_IP, MOTION, MOTION_LUX, SPEAKER, BACnetClient, BACnetError, DALIError, HAError,
+                 HomeAssistant, curtain_stop, local_ip, read_dali, read_room_sensor)
 
 ENTITIES = {"curtain1": CURTAIN, "dimmer1": DIMMER, "dimmer1_power": DIMMER_POWER, "speaker1": SPEAKER,
             "motion1": MOTION, "motion1_lux": MOTION_LUX}
+DALI_GROUPS = {0: [0, 9], 1: [1, 2, 3, 4], 2: [5, 6, 7, 8]}  # from the panel's device list; used in simulation
 PRESENCE = {"camera": [("camera1", "occupied")], "motion": [("motion1", "motion")],
             "any": [("camera1", "occupied"), ("motion1", "motion")]}
 
@@ -153,7 +156,7 @@ class RealDevices:
         self.song_started = False
 
     def tasks(self):
-        return [self.poll_home_assistant(), self.poll_camera(), self.poll_room_sensor()]
+        return [self.poll_home_assistant(), self.poll_camera(), self.poll_room_sensor(), self.poll_dali()]
 
     # ---- Home Assistant: curtain, dimmer, speaker
     async def poll_home_assistant(self):
@@ -264,6 +267,22 @@ class RealDevices:
                 self.hub.publish("room_sensor1", "status", "offline")
             await asyncio.sleep(5)
 
+    # ---- DALI panel: lamps and groups (read-only)
+    async def poll_dali(self):
+        while True:
+            try:
+                lamps, groups = await asyncio.to_thread(read_dali)
+                self.hub.publish("dali1", "status", "online")
+                for address, lamp in lamps.items():
+                    self.hub.publish_all("dali1", {f"lamp{address}_on": lamp["on"] and lamp["available"],
+                                                   f"lamp{address}_failure": lamp["failure"]})
+                for group, g in groups.items():
+                    self.hub.publish_all("dali1", {f"group{group}_on": g["on"], f"group{group}_level": g["level"],
+                                                   f"group{group}_kelvin": g["kelvin"]})
+            except DALIError:
+                self.hub.publish("dali1", "status", "offline")
+            await asyncio.sleep(2)
+
     # ---- commands from Unity
     def command(self, device, command, value):
         call = self.ha.call
@@ -334,7 +353,13 @@ class SimulatedDevices:
             "motion1": {"status": "simulated", "motion": False, "illuminance": 120.0},
             "room_sensor1": {"status": "simulated", "temperature": 22.0, "humidity": 45.0, "co2": 800.0,
                              "air_quality": "good", "battery_low": False},
+            "dali1": {"status": "simulated"},
         }
+        for group, lamps in DALI_GROUPS.items():
+            self.s["dali1"].update({f"group{group}_on": True, f"group{group}_level": 100,
+                                    f"group{group}_kelvin": 4348 if group == 0 else 2700})
+            for address in lamps:
+                self.s["dali1"].update({f"lamp{address}_on": True, f"lamp{address}_failure": False})
 
     def tasks(self):
         return [self.tick()]
@@ -357,6 +382,7 @@ class SimulatedDevices:
             sensor["co2"] = round(800 + 150 * math.sin(t / 30) + random.uniform(-5, 5))
             self.s["camera1"]["occupied"] = int(t // 15) % 2 == 0  # toggles every 15 s
             self.s["motion1"]["motion"] = int(t // 10) % 4 == 1   # 10 s of motion every 40 s
+            self.s["dali1"]["lamp5_failure"] = int(t // 10) % 6 == 3  # lamp 5 fails for 10 s every minute
             for device, values in self.s.items():
                 self.hub.publish_all(device, values)
             await asyncio.sleep(0.5)

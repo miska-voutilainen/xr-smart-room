@@ -54,7 +54,7 @@ The Aqara Hub M3 shows up as `update.aqara_hub_m3_firmware` (firmware 4.5.80) an
 |---|---|---|
 | Frigate | 5000 | Camera software, open API without login. See [camera.md](camera.md) |
 | Mosquitto (MQTT) | 1883 | Needs a login. The login works, but nothing is published, so the bridge doesn't use it |
-| KNX integration | - | Home Assistant has its own KNX tunnel (address `1.5.248`) but exposes no KNX entities. See [knx-dali.md](knx-dali.md) |
+| KNX integration | - | Home Assistant has its own KNX tunnel (address `1.5.248`) but exposes no KNX entities. See [knx.md](knx.md) |
 
 ## Notes
 
