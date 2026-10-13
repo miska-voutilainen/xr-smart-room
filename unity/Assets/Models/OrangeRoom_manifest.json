@@ -1569,6 +1569,1811 @@
   },
   "Window_GlassRain": {
    "glass": true
+  },
+  "Chair_Chrome_Room2": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.142,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_Chair_01",
+    "Room2_Chair_02",
+    "Room2_Chair_03",
+    "Room2_Chair_04",
+    "Room2_Chair_06",
+    "Room2_Chair_07",
+    "Room2_Chair_08",
+    "Room2_Chair_09",
+    "Room2_Chair_10",
+    "Room2_Chair_11",
+    "Room2_Chair_12",
+    "Room2_Chair_13",
+    "Room2_Chair_14",
+    "Room2_Chair_15"
+   ]
+  },
+  "Chair_Fabric_Room2": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 6.403,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_Chair_01",
+    "Room2_Chair_02",
+    "Room2_Chair_03",
+    "Room2_Chair_04",
+    "Room2_Chair_06",
+    "Room2_Chair_07",
+    "Room2_Chair_08",
+    "Room2_Chair_09",
+    "Room2_Chair_10",
+    "Room2_Chair_11",
+    "Room2_Chair_12",
+    "Room2_Chair_13",
+    "Room2_Chair_14",
+    "Room2_Chair_15"
+   ]
+  },
+  "Chair_Shell_Room2": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 6.049,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_Chair_01",
+    "Room2_Chair_02",
+    "Room2_Chair_03",
+    "Room2_Chair_04",
+    "Room2_Chair_06",
+    "Room2_Chair_07",
+    "Room2_Chair_08",
+    "Room2_Chair_09",
+    "Room2_Chair_10",
+    "Room2_Chair_11",
+    "Room2_Chair_12",
+    "Room2_Chair_13",
+    "Room2_Chair_14",
+    "Room2_Chair_15"
+   ]
+  },
+  "Door_Paint_Room3": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 9.721,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Door_405",
+    "Room3_Doors_North"
+   ]
+  },
+  "Ext_Bark": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 162.877,
+   "resolution_full": 2048,
+   "objects": [
+    "Ext_Tree_01",
+    "Ext_Tree_02",
+    "Ext_Tree_03",
+    "Ext_Tree_04",
+    "Ext_Tree_05",
+    "Ext_Tree_06",
+    "Ext_Tree_07"
+   ]
+  },
+  "Ext_Canopy_Far": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 7207.781,
+   "resolution_full": 2048,
+   "objects": [
+    "Ext_TreeFar"
+   ]
+  },
+  "Ext_Grass": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 640000.0,
+   "resolution_full": 2048,
+   "objects": [
+    "Ext_Ground"
+   ]
+  },
+  "Kitchen_PET_Room2": {
+   "resolution": 64,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.037,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Kitchen_PaperCupBrown_Room2": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.032,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Light_LED_Diffuser_Room2": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 10.601,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 6.948,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_LED_Panel_01",
+    "Room2_LED_Panel_02",
+    "Room2_LED_Panel_03",
+    "Room2_LED_Panel_04",
+    "Room2_LED_Panel_05",
+    "Room2_LED_Panel_06",
+    "Room2_LED_Panel_07",
+    "Room2_LED_Panel_08",
+    "Room2_LED_Panel_09",
+    "Room2_LED_Panel_10",
+    "Room2_LED_Panel_11"
+   ]
+  },
+  "Radiator_Paint_Room2": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 9.772,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Radiator_N1",
+    "Room2_Radiator_N2",
+    "Room2_Radiator_E1",
+    "Room2_Radiator_E2"
+   ]
+  },
+  "Radiator_PipePaint_Room2": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.332,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_Radiator_Pipes"
+   ]
+  },
+  "Room2_ABS_Black": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 10.166,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Task_Chair",
+    "Room2_Furniture",
+    "Room2_IT",
+    "Room2_Demo_Boards",
+    "Room2_IT_Glass",
+    "Room2_Demo_Boards_Glass"
+   ]
+  },
+  "Room2_ABS_Silver": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.083,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_ABS_White": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 10.632,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_IT",
+    "Room2_Demo_Boards",
+    "Room2_IT_Glass",
+    "Room2_Demo_Boards_Glass"
+   ]
+  },
+  "Room2_Aluminium": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 17.166,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_LED_Panel_01",
+    "Room2_LED_Panel_02",
+    "Room2_LED_Panel_03",
+    "Room2_LED_Panel_04",
+    "Room2_LED_Panel_05",
+    "Room2_LED_Panel_06",
+    "Room2_LED_Panel_07",
+    "Room2_LED_Panel_08",
+    "Room2_LED_Panel_09",
+    "Room2_LED_Panel_10",
+    "Room2_LED_Panel_11",
+    "Room2_Furniture"
+   ]
+  },
+  "Room2_Blind_Fabric": {
+   "resolution": 512,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 12.72,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Blind_N1",
+    "Room2_Blind_N2",
+    "Room2_Blind_E1",
+    "Room2_Blind_E2"
+   ]
+  },
+  "Room2_Board_1": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.928,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_Demo_Boards",
+    "Room2_Demo_Boards_Glass"
+   ]
+  },
+  "Room2_Board_2": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.485,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_Demo_Boards",
+    "Room2_Demo_Boards_Glass"
+   ]
+  },
+  "Room2_Board_3": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.274,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_Demo_Boards",
+    "Room2_Demo_Boards_Glass"
+   ]
+  },
+  "Room2_Board_5": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.397,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_Demo_Boards",
+    "Room2_Demo_Boards_Glass"
+   ]
+  },
+  "Room2_Cardboard": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.594,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_Furniture"
+   ]
+  },
+  "Room2_Chrome": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.015,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_Task_Chair"
+   ]
+  },
+  "Room2_Drawer_Red": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 9.784,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Furniture"
+   ]
+  },
+  "Room2_Glass": {
+   "resolution": 256,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 7.733,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_Demo_Boards",
+    "Room2_Demo_Boards_Glass"
+   ]
+  },
+  "Room2_Inst_DMM1": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.028,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Inst_DMM2": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.028,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Inst_Scope": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.051,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Keycaps": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.727,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Laminate_Grey": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 25.506,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Furniture"
+   ]
+  },
+  "Room2_Laminate_Red": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 10.72,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Furniture"
+   ]
+  },
+  "Room2_Mesh_Fabric": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.062,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_Task_Chair"
+   ]
+  },
+  "Room2_PVC_White": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.154,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_Blind_N1",
+    "Room2_Blind_N2",
+    "Room2_Blind_E1",
+    "Room2_Blind_E2"
+   ]
+  },
+  "Room2_Plastic_Black": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.963,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_AC_Cassettes"
+   ]
+  },
+  "Room2_Plastic_Blue": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.019,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Plastic_Grey": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.622,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_AC_Cassettes"
+   ]
+  },
+  "Room2_Plastic_Red": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.004,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Plastic_White": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.994,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_AC_Cassettes",
+    "Room2_Furniture"
+   ]
+  },
+  "Room2_Screen_Clock": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 1.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 0.189,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Screen_Code": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 1.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 0.116,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Screen_Code2": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 1.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 0.116,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Screen_Sheet": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 1.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 0.397,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Screen_Term": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 1.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 0.24,
+   "resolution_full": 256,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Room2_Steel_Grey": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 18.517,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Furniture"
+   ]
+  },
+  "Room3_Aluminium_Rim": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.7,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_Play"
+   ]
+  },
+  "Room3_Birch_Veneer": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 57.038,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Room405",
+    "Room3_Play",
+    "Room3_Room405_Glass"
+   ]
+  },
+  "Room3_Blind_Slats": {
+   "resolution": 512,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 72.976,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Glass_Offices",
+    "Room3_Glass_Offices_Glass"
+   ]
+  },
+  "Room3_Box_Unique": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.009,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Tables"
+   ]
+  },
+  "Room3_Ceiling_Paint": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 431.631,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Ceiling"
+   ]
+  },
+  "Room3_Chrome": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.645,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_Door_405",
+    "Room3_Doors_North",
+    "Room3_Services",
+    "Room3_Booth",
+    "Room3_Tables",
+    "Room3_Play",
+    "Room3_Bike"
+   ]
+  },
+  "Room3_Cornice_Plaster": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 22.604,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Cornice"
+   ]
+  },
+  "Room3_Cutout_Board": {
+   "resolution": 64,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.382,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Posters",
+    "Room3_Posters_Glass"
+   ]
+  },
+  "Room3_Door_Laminate_Brown": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 4.377,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Doors_North"
+   ]
+  },
+  "Room3_Door_Paint_PalePink": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.602,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Doors_North"
+   ]
+  },
+  "Room3_Duct_Spiral": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 2.527,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Services"
+   ]
+  },
+  "Room3_Exit_Sign": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 1.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 0.073,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Services"
+   ]
+  },
+  "Room3_Ext_Lawn": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 2061.312,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Ext_Backdrop"
+   ]
+  },
+  "Room3_Ext_Treeline": {
+   "resolution": 512,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 802.56,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Ext_Backdrop"
+   ]
+  },
+  "Room3_Fabric_Charcoal": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.466,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Booth"
+   ]
+  },
+  "Room3_Fabric_Green": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 21.085,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Booth"
+   ]
+  },
+  "Room3_Fabric_Yellow": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.181,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_Play"
+   ]
+  },
+  "Room3_Foosball_Pitch": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.606,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_Play"
+   ]
+  },
+  "Room3_Frame_Silver": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 2.218,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Posters",
+    "Room3_Posters_Glass"
+   ]
+  },
+  "Room3_Glass": {
+   "resolution": 512,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 148.894,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Room405",
+    "Room3_Windows",
+    "Room3_Glass_Offices",
+    "Room3_Posters",
+    "Room3_Room405_Glass",
+    "Room3_Windows_Glass",
+    "Room3_Glass_Offices_Glass",
+    "Room3_Posters_Glass"
+   ]
+  },
+  "Room3_Grille_Grey": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.502,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_Services"
+   ]
+  },
+  "Room3_LED_Diffuser": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 10.6011,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 1.623,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_LED_00",
+    "Room3_LED_01",
+    "Room3_LED_02",
+    "Room3_LED_03",
+    "Room3_LED_04",
+    "Room3_LED_05",
+    "Room3_LED_06",
+    "Room3_LED_07",
+    "Room3_LED_08"
+   ]
+  },
+  "Room3_Laminate_Mahogany": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.694,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_Tables"
+   ]
+  },
+  "Room3_PVC_White": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 25.459,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Windows",
+    "Room3_Windows_Glass"
+   ]
+  },
+  "Room3_Paint_Bike_Blue": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.61,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_Bike"
+   ]
+  },
+  "Room3_Paint_Teal": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 15.093,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Paint_Accents"
+   ]
+  },
+  "Room3_Paper_Plate": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.191,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Tables"
+   ]
+  },
+  "Room3_Plastic_Black": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 8.914,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Door_405",
+    "Room3_Doors_North",
+    "Room3_Services",
+    "Room3_Tables",
+    "Room3_Play",
+    "Room3_Bike"
+   ]
+  },
+  "Room3_Plastic_Red": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.216,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Play"
+   ]
+  },
+  "Room3_Plastic_White": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 18.253,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Services",
+    "Room3_Tables",
+    "Room3_Play",
+    "Room3_Bike"
+   ]
+  },
+  "Room3_Plastic_YellowPlayer": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.182,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Play"
+   ]
+  },
+  "Room3_Poster_A3": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.175,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Posters",
+    "Room3_Posters_Glass"
+   ]
+  },
+  "Room3_Poster_GoodPractice": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.406,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Posters",
+    "Room3_Posters_Glass"
+   ]
+  },
+  "Room3_Powder_Graphite": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 5.135,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Play"
+   ]
+  },
+  "Room3_Powder_White": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 181.755,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Glass_Offices",
+    "Room3_Fitting_Bodies",
+    "Room3_Tables",
+    "Room3_Glass_Offices_Glass"
+   ]
+  },
+  "Room3_Print_Pink": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.312,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Posters",
+    "Room3_Posters_Glass"
+   ]
+  },
+  "Room3_Radiator_Paint": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 14.656,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Windows",
+    "Room3_Windows_Glass"
+   ]
+  },
+  "Room3_Reader_LED": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 4.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 0.001,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Door_405"
+   ]
+  },
+  "Room3_Reveal_Pink": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.22,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Paint_Accents"
+   ]
+  },
+  "Room3_Sign_405": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.036,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Door_405"
+   ]
+  },
+  "Room3_Sign_Red": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.054,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Posters",
+    "Room3_Posters_Glass"
+   ]
+  },
+  "Room3_Skirting": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 6.382,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Skirting"
+   ]
+  },
+  "Room3_Steel_Brushed": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.621,
+   "resolution_full": 512,
+   "objects": [
+    "Room3_Tables"
+   ]
+  },
+  "Room3_Sticker_Yellow": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.241,
+   "resolution_full": 256,
+   "objects": [
+    "Room3_Glass_Offices",
+    "Room3_Glass_Offices_Glass"
+   ]
+  },
+  "Room3_Tablecloth": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 2.242,
+   "resolution_full": 1024,
+   "objects": [
+    "Room3_Tables"
+   ]
+  },
+  "Room3_Vinyl_Blue": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 85.82,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Floor"
+   ]
+  },
+  "Room3_Vinyl_Grey": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 347.923,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Floor"
+   ]
+  },
+  "Room_Ceiling_Room2": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 89.468,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Ceiling"
+   ]
+  },
+  "Room_Floor_Room2": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 89.468,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Floor"
+   ]
+  },
+  "Room_Wall_Room2": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 137.748,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Wall_Left",
+    "Room2_Wall_North",
+    "Room2_Wall_East",
+    "Room2_WinReveal_N1",
+    "Room2_WinReveal_N2",
+    "Room2_WinReveal_E1",
+    "Room2_WinReveal_E2"
+   ]
+  },
+  "Room_Wall_Room3": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 772.098,
+   "resolution_full": 2048,
+   "objects": [
+    "Room3_Walls",
+    "Room3_Room405",
+    "Room3_Glass_Offices",
+    "Room3_Room405_Glass",
+    "Room3_Glass_Offices_Glass"
+   ]
+  },
+  "TV_Screen_Room2": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.45,
+   "resolution_full": 512,
+   "objects": [
+    "Room2_IT",
+    "Room2_IT_Glass"
+   ]
+  },
+  "Window_Flashing_Room2": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 4.321,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_WinReveal_N1",
+    "Room2_WinReveal_N2",
+    "Room2_WinReveal_E1",
+    "Room2_WinReveal_E2"
+   ]
+  },
+  "Window_Gasket_Room2": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.345,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_Window_N1",
+    "Room2_Window_N2",
+    "Room2_Window_E1",
+    "Room2_Window_E2"
+   ]
+  },
+  "Window_PVC_Room2": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 26.08,
+   "resolution_full": 2048,
+   "objects": [
+    "Room2_Window_N1",
+    "Room2_Window_N2",
+    "Room2_Window_E1",
+    "Room2_Window_E2"
+   ]
+  },
+  "Window_SillBoard_Room2": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 4.319,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_WinSill_N1",
+    "Room2_WinSill_N2",
+    "Room2_WinSill_E1",
+    "Room2_WinSill_E2"
+   ]
+  },
+  "Window_Spacer_Room2": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.351,
+   "resolution_full": 1024,
+   "objects": [
+    "Room2_Window_N1",
+    "Room2_Window_N2",
+    "Room2_Window_E1",
+    "Room2_Window_E2"
+   ]
+  },
+  "Window_Glass_Room2": {
+   "glass": true
+  },
+  "Window_GlassRain_Room2": {
+   "glass": true
   }
  },
  "objects": [
@@ -3331,20 +5136,2894 @@
      0.87
     ]
    ]
+  },
+  {
+   "name": "Ext_Ground",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Grass"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -393.4,
+     -400.0,
+     -10.0
+    ],
+    [
+     406.6,
+     400.0,
+     -10.0
+    ]
+   ]
+  },
+  {
+   "name": "Ext_TreeFar",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Canopy_Far"
+   ],
+   "tris": 1548,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -39.1692,
+     -66.8794,
+     -8.4354
+    ],
+    [
+     155.4183,
+     145.1156,
+     5.5435
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Ext_TreeFar_LOD0",
+     "tris": 1548
+    },
+    {
+     "name": "Ext_TreeFar_LOD1",
+     "tris": 774
+    },
+    {
+     "name": "Ext_TreeFar_LOD2",
+     "tris": 308
+    }
+   ]
+  },
+  {
+   "name": "Ext_Tree_01",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Bark"
+   ],
+   "tris": 1412,
+   "glass": false,
+   "bbox_blender": [
+    [
+     7.4575,
+     -2.7947,
+     -10.0161
+    ],
+    [
+     11.9449,
+     0.7855,
+     3.182
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Ext_Tree_01_LOD0",
+     "tris": 1412
+    },
+    {
+     "name": "Ext_Tree_01_LOD1",
+     "tris": 706
+    },
+    {
+     "name": "Ext_Tree_01_LOD2",
+     "tris": 670
+    }
+   ]
+  },
+  {
+   "name": "Ext_Tree_02",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Bark"
+   ],
+   "tris": 1406,
+   "glass": false,
+   "bbox_blender": [
+    [
+     7.3911,
+     -0.7147,
+     -10.024
+    ],
+    [
+     14.9132,
+     4.0218,
+     3.8363
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Ext_Tree_02_LOD0",
+     "tris": 1406
+    },
+    {
+     "name": "Ext_Tree_02_LOD1",
+     "tris": 702
+    },
+    {
+     "name": "Ext_Tree_02_LOD2",
+     "tris": 680
+    }
+   ]
+  },
+  {
+   "name": "Ext_Tree_03",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Bark"
+   ],
+   "tris": 1812,
+   "glass": false,
+   "bbox_blender": [
+    [
+     7.2494,
+     0.2561,
+     -10.0212
+    ],
+    [
+     12.9141,
+     8.1662,
+     3.1011
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Ext_Tree_03_LOD0",
+     "tris": 1812
+    },
+    {
+     "name": "Ext_Tree_03_LOD1",
+     "tris": 916
+    },
+    {
+     "name": "Ext_Tree_03_LOD2",
+     "tris": 916
+    }
+   ]
+  },
+  {
+   "name": "Ext_Tree_04",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Bark"
+   ],
+   "tris": 1172,
+   "glass": false,
+   "bbox_blender": [
+    [
+     11.105,
+     -7.4011,
+     -10.0264
+    ],
+    [
+     15.9763,
+     -1.4278,
+     4.6277
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Ext_Tree_04_LOD0",
+     "tris": 1172
+    },
+    {
+     "name": "Ext_Tree_04_LOD1",
+     "tris": 586
+    },
+    {
+     "name": "Ext_Tree_04_LOD2",
+     "tris": 552
+    }
+   ]
+  },
+  {
+   "name": "Ext_Tree_05",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Bark"
+   ],
+   "tris": 1624,
+   "glass": false,
+   "bbox_blender": [
+    [
+     10.3233,
+     4.4764,
+     -10.0218
+    ],
+    [
+     15.0312,
+     9.8771,
+     4.3213
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Ext_Tree_05_LOD0",
+     "tris": 1624
+    },
+    {
+     "name": "Ext_Tree_05_LOD1",
+     "tris": 812
+    },
+    {
+     "name": "Ext_Tree_05_LOD2",
+     "tris": 790
+    }
+   ]
+  },
+  {
+   "name": "Ext_Tree_06",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Bark"
+   ],
+   "tris": 1844,
+   "glass": false,
+   "bbox_blender": [
+    [
+     7.5303,
+     8.6426,
+     -10.0148
+    ],
+    [
+     12.4182,
+     12.6483,
+     3.2974
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Ext_Tree_06_LOD0",
+     "tris": 1844
+    },
+    {
+     "name": "Ext_Tree_06_LOD1",
+     "tris": 922
+    },
+    {
+     "name": "Ext_Tree_06_LOD2",
+     "tris": 880
+    }
+   ]
+  },
+  {
+   "name": "Ext_Tree_07",
+   "area": "Exterior",
+   "parent": null,
+   "materials": [
+    "Ext_Bark"
+   ],
+   "tris": 1446,
+   "glass": false,
+   "bbox_blender": [
+    [
+     10.9135,
+     11.1787,
+     -10.0286
+    ],
+    [
+     16.8208,
+     16.0605,
+     4.309
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Ext_Tree_07_LOD0",
+     "tris": 1446
+    },
+    {
+     "name": "Ext_Tree_07_LOD1",
+     "tris": 722
+    },
+    {
+     "name": "Ext_Tree_07_LOD2",
+     "tris": 656
+    }
+   ]
+  },
+  {
+   "name": "Room2_AC_Cassettes",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Plastic_White",
+    "Room2_Plastic_Grey",
+    "Room2_Plastic_Black"
+   ],
+   "tris": 240,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.04,
+     2.74,
+     2.852
+    ],
+    [
+     4.46,
+     7.56,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Blind_E1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Blind_Fabric",
+    "Room2_PVC_White"
+   ],
+   "tris": 36,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.4,
+     6.99,
+     1.48
+    ],
+    [
+     6.5,
+     8.71,
+     2.85
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Blind_E2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Blind_Fabric",
+    "Room2_PVC_White"
+   ],
+   "tris": 36,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.4,
+     4.89,
+     2.1
+    ],
+    [
+     6.5,
+     6.61,
+     2.85
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Blind_N1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Blind_Fabric",
+    "Room2_PVC_White"
+   ],
+   "tris": 36,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.64,
+     8.9,
+     1.48
+    ],
+    [
+     2.36,
+     9.0,
+     2.85
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Blind_N2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Blind_Fabric",
+    "Room2_PVC_White"
+   ],
+   "tris": 36,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.74,
+     8.9,
+     2.1
+    ],
+    [
+     4.46,
+     9.0,
+     2.85
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Ceiling",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Ceiling_Room2"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     2.62,
+     2.9
+    ],
+    [
+     6.6,
+     9.1,
+     3.0
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Chair_01",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.7535,
+     6.2068,
+     -0.0
+    ],
+    [
+     1.3311,
+     6.7726,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_01_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_01_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_01_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_02",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.7122,
+     6.8923,
+     -0.0
+    ],
+    [
+     1.2877,
+     7.4559,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_02_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_02_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_02_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_03",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.25,
+     7.439,
+     -0.0
+    ],
+    [
+     1.8551,
+     8.0549,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_03_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_03_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_03_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_04",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.2959,
+     7.344,
+     -0.0
+    ],
+    [
+     3.8945,
+     7.9536,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_04_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_04_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_04_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_06",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     4.9031,
+     5.3141,
+     -0.0
+    ],
+    [
+     5.5172,
+     5.9173,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_06_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_06_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_06_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_07",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     4.876,
+     4.4911,
+     -0.0
+    ],
+    [
+     5.4935,
+     5.0978,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_07_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_07_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_07_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_08",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.6429,
+     4.7909,
+     -0.0
+    ],
+    [
+     2.2281,
+     5.3644,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_08_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_08_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_08_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_09",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.5626,
+     4.0362,
+     -0.0
+    ],
+    [
+     2.1454,
+     4.6073,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_09_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_09_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_09_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_10",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.5766,
+     6.2526,
+     -0.0
+    ],
+    [
+     2.1453,
+     6.8092,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_10_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_10_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_10_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_11",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.5999,
+     5.5655,
+     -0.0
+    ],
+    [
+     2.1641,
+     6.1176,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_11_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_11_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_11_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_12",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.8546,
+     4.0311,
+     -0.0
+    ],
+    [
+     4.4502,
+     4.6153,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_12_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_12_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_12_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_13",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.8209,
+     4.7553,
+     -0.0
+    ],
+    [
+     4.4029,
+     5.3256,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_13_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_13_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_13_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_14",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.8171,
+     5.6186,
+     -0.0
+    ],
+    [
+     4.401,
+     6.1908,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_14_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_14_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_14_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Chair_15",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome_Room2",
+    "Chair_Fabric_Room2",
+    "Chair_Shell_Room2"
+   ],
+   "tris": 1094,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.7866,
+     6.3575,
+     -0.0
+    ],
+    [
+     4.3775,
+     6.9368,
+     0.8229
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Chair_15_LOD0",
+     "tris": 1094
+    },
+    {
+     "name": "Room2_Chair_15_LOD1",
+     "tris": 546
+    },
+    {
+     "name": "Room2_Chair_15_LOD2",
+     "tris": 218
+    }
+   ]
+  },
+  {
+   "name": "Room2_Demo_Boards",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Board_5",
+    "Room2_ABS_White",
+    "Room2_Glass",
+    "Room2_ABS_Black",
+    "Room2_Board_3",
+    "Room2_Board_2",
+    "Room2_Board_1"
+   ],
+   "tris": 648,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.588,
+     4.45,
+     0.89
+    ],
+    [
+     6.03,
+     8.95,
+     1.91
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Demo_Boards_Glass",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Board_5",
+    "Room2_ABS_White",
+    "Room2_Glass",
+    "Room2_ABS_Black",
+    "Room2_Board_3",
+    "Room2_Board_2",
+    "Room2_Board_1"
+   ],
+   "tris": 120,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.17,
+     4.45,
+     0.89
+    ],
+    [
+     6.08,
+     8.95,
+     1.91
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Floor",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Floor_Room2"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     2.62,
+     -0.1
+    ],
+    [
+     6.6,
+     9.1,
+     0.0
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Furniture",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Laminate_Grey",
+    "Room2_Steel_Grey",
+    "Room2_ABS_Black",
+    "Room2_Drawer_Red",
+    "Room2_Aluminium",
+    "Room2_Plastic_White",
+    "Room2_Cardboard",
+    "Room2_Laminate_Red"
+   ],
+   "tris": 6472,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     2.62,
+     -0.001
+    ],
+    [
+     6.25,
+     9.0,
+     1.97
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Furniture_LOD0",
+     "tris": 6472
+    },
+    {
+     "name": "Room2_Furniture_LOD1",
+     "tris": 3236
+    },
+    {
+     "name": "Room2_Furniture_LOD2",
+     "tris": 1294
+    }
+   ]
+  },
+  {
+   "name": "Room2_IT",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Inst_Scope",
+    "Room2_ABS_White",
+    "Room2_Inst_DMM2",
+    "Room2_Inst_DMM1",
+    "Room2_ABS_Silver",
+    "Room2_ABS_Black",
+    "Room2_Screen_Term",
+    "TV_Screen_Room2",
+    "Room2_Keycaps",
+    "Room2_Screen_Sheet",
+    "Room2_Plastic_Red",
+    "Room2_Screen_Code2",
+    "Room2_Screen_Clock",
+    "Kitchen_PaperCupBrown_Room2",
+    "Room2_Plastic_Blue",
+    "Room2_Screen_Code",
+    "Kitchen_PET_Room2"
+   ],
+   "tris": 2016,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.06,
+     2.9,
+     0.0
+    ],
+    [
+     6.342,
+     8.58,
+     1.45
+    ]
+   ]
+  },
+  {
+   "name": "Room2_IT_Glass",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_Inst_Scope",
+    "Room2_ABS_White",
+    "Room2_Inst_DMM2",
+    "Room2_Inst_DMM1",
+    "Room2_ABS_Silver",
+    "Room2_ABS_Black",
+    "Room2_Screen_Term",
+    "TV_Screen_Room2",
+    "Room2_Keycaps",
+    "Room2_Screen_Sheet",
+    "Room2_Plastic_Red",
+    "Room2_Screen_Code2",
+    "Room2_Screen_Clock",
+    "Kitchen_PaperCupBrown_Room2",
+    "Room2_Plastic_Blue",
+    "Room2_Screen_Code",
+    "Kitchen_PET_Room2"
+   ],
+   "tris": 36,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.06,
+     2.9,
+     0.75
+    ],
+    [
+     3.533,
+     5.6814,
+     1.45
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_01",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.453,
+     3.353,
+     2.886
+    ],
+    [
+     2.047,
+     3.947,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_02",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.453,
+     5.153,
+     2.886
+    ],
+    [
+     2.047,
+     5.747,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_03",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.453,
+     6.953,
+     2.886
+    ],
+    [
+     2.047,
+     7.547,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_04",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.253,
+     3.353,
+     2.886
+    ],
+    [
+     3.847,
+     3.947,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_05",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.253,
+     5.153,
+     2.886
+    ],
+    [
+     3.847,
+     5.747,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_06",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.253,
+     6.953,
+     2.886
+    ],
+    [
+     3.847,
+     7.547,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_07",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.053,
+     3.353,
+     2.886
+    ],
+    [
+     5.647,
+     3.947,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_08",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.053,
+     5.153,
+     2.886
+    ],
+    [
+     5.647,
+     5.747,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_09",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.053,
+     6.953,
+     2.886
+    ],
+    [
+     5.647,
+     7.547,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_10",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.453,
+     8.153,
+     2.886
+    ],
+    [
+     2.047,
+     8.747,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_LED_Panel_11",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser_Room2",
+    "Room2_Aluminium"
+   ],
+   "tris": 24,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.053,
+     8.153,
+     2.886
+    ],
+    [
+     5.647,
+     8.747,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Radiator_E1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Radiator_Paint_Room2"
+   ],
+   "tris": 1618,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.3299,
+     7.4506,
+     0.089
+    ],
+    [
+     6.54,
+     8.1278,
+     0.6788
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Radiator_E1_LOD0",
+     "tris": 1618
+    },
+    {
+     "name": "Room2_Radiator_E1_LOD1",
+     "tris": 808
+    },
+    {
+     "name": "Room2_Radiator_E1_LOD2",
+     "tris": 322
+    }
+   ]
+  },
+  {
+   "name": "Room2_Radiator_E2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Radiator_Paint_Room2"
+   ],
+   "tris": 1618,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.3299,
+     5.3506,
+     0.089
+    ],
+    [
+     6.54,
+     6.0278,
+     0.6788
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Radiator_E2_LOD0",
+     "tris": 1618
+    },
+    {
+     "name": "Room2_Radiator_E2_LOD1",
+     "tris": 808
+    },
+    {
+     "name": "Room2_Radiator_E2_LOD2",
+     "tris": 322
+    }
+   ]
+  },
+  {
+   "name": "Room2_Radiator_N1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Radiator_Paint_Room2"
+   ],
+   "tris": 1618,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.2222,
+     8.8299,
+     0.089
+    ],
+    [
+     1.8994,
+     9.04,
+     0.6788
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Radiator_N1_LOD0",
+     "tris": 1618
+    },
+    {
+     "name": "Room2_Radiator_N1_LOD1",
+     "tris": 808
+    },
+    {
+     "name": "Room2_Radiator_N1_LOD2",
+     "tris": 322
+    }
+   ]
+  },
+  {
+   "name": "Room2_Radiator_N2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Radiator_Paint_Room2"
+   ],
+   "tris": 1618,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.3222,
+     8.8299,
+     0.089
+    ],
+    [
+     3.9994,
+     9.04,
+     0.6788
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Radiator_N2_LOD0",
+     "tris": 1618
+    },
+    {
+     "name": "Room2_Radiator_N2_LOD1",
+     "tris": 808
+    },
+    {
+     "name": "Room2_Radiator_N2_LOD2",
+     "tris": 322
+    }
+   ]
+  },
+  {
+   "name": "Room2_Radiator_Pipes",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Radiator_PipePaint_Room2"
+   ],
+   "tris": 336,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.89,
+     5.1532,
+     0.0
+    ],
+    [
+     6.4518,
+     8.9518,
+     2.9
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Radiator_Pipes_LOD0",
+     "tris": 336
+    },
+    {
+     "name": "Room2_Radiator_Pipes_LOD1",
+     "tris": 168
+    },
+    {
+     "name": "Room2_Radiator_Pipes_LOD2",
+     "tris": 66
+    }
+   ]
+  },
+  {
+   "name": "Room2_Task_Chair",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room2_ABS_Black",
+    "Room2_Chrome",
+    "Room2_Mesh_Fabric"
+   ],
+   "tris": 448,
+   "glass": false,
+   "bbox_blender": [
+    [
+     4.8395,
+     6.9561,
+     0.0
+    ],
+    [
+     5.6202,
+     7.5767,
+     1.4021
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room2_Task_Chair_LOD0",
+     "tris": 448
+    },
+    {
+     "name": "Room2_Task_Chair_LOD1",
+     "tris": 224
+    },
+    {
+     "name": "Room2_Task_Chair_LOD2",
+     "tris": 88
+    }
+   ]
+  },
+  {
+   "name": "Room2_Wall_East",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room2"
+   ],
+   "tris": 100,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.5,
+     2.62,
+     0.0
+    ],
+    [
+     6.6,
+     9.1,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Wall_Left",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room2"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     2.62,
+     0.0
+    ],
+    [
+     0.0,
+     9.1,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Wall_North",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room2"
+   ],
+   "tris": 100,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     9.0,
+     0.0
+    ],
+    [
+     6.5,
+     9.1,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinGlass_E1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_Glass_Room2",
+    "Window_GlassRain_Room2"
+   ],
+   "tris": 24,
+   "glass": true,
+   "bbox_blender": [
+    [
+     6.79,
+     7.097,
+     0.917
+    ],
+    [
+     6.82,
+     8.603,
+     2.823
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinGlass_E2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_Glass_Room2",
+    "Window_GlassRain_Room2"
+   ],
+   "tris": 24,
+   "glass": true,
+   "bbox_blender": [
+    [
+     6.79,
+     4.997,
+     0.917
+    ],
+    [
+     6.82,
+     6.503,
+     2.823
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinGlass_N1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_Glass_Room2",
+    "Window_GlassRain_Room2"
+   ],
+   "tris": 24,
+   "glass": true,
+   "bbox_blender": [
+    [
+     0.747,
+     9.294,
+     0.917
+    ],
+    [
+     2.253,
+     9.324,
+     2.823
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinGlass_N2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_Glass_Room2",
+    "Window_GlassRain_Room2"
+   ],
+   "tris": 24,
+   "glass": true,
+   "bbox_blender": [
+    [
+     2.847,
+     9.29,
+     0.917
+    ],
+    [
+     4.353,
+     9.324,
+     2.823
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinReveal_E1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room2",
+    "Window_Flashing_Room2"
+   ],
+   "tris": 88,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.6,
+     6.9,
+     0.7
+    ],
+    [
+     7.1365,
+     8.8,
+     3.02
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinReveal_E2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room2",
+    "Window_Flashing_Room2"
+   ],
+   "tris": 88,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.6,
+     4.8,
+     0.7
+    ],
+    [
+     7.1365,
+     6.7,
+     3.02
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinReveal_N1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room2",
+    "Window_Flashing_Room2"
+   ],
+   "tris": 88,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.55,
+     9.1,
+     0.7
+    ],
+    [
+     2.45,
+     9.6365,
+     3.02
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinReveal_N2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room2",
+    "Window_Flashing_Room2"
+   ],
+   "tris": 88,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.65,
+     9.1,
+     0.7
+    ],
+    [
+     4.55,
+     9.6365,
+     3.02
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinSill_E1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_SillBoard_Room2"
+   ],
+   "tris": 28,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.46,
+     7.05,
+     0.85
+    ],
+    [
+     6.772,
+     8.69,
+     0.87
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinSill_E2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_SillBoard_Room2"
+   ],
+   "tris": 28,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.46,
+     4.95,
+     0.85
+    ],
+    [
+     6.772,
+     6.59,
+     0.87
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinSill_N1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_SillBoard_Room2"
+   ],
+   "tris": 28,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.66,
+     8.96,
+     0.85
+    ],
+    [
+     2.3,
+     9.272,
+     0.87
+    ]
+   ]
+  },
+  {
+   "name": "Room2_WinSill_N2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_SillBoard_Room2"
+   ],
+   "tris": 28,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.76,
+     8.96,
+     0.85
+    ],
+    [
+     4.4,
+     9.272,
+     0.87
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Window_E1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_PVC_Room2",
+    "Window_Gasket_Room2",
+    "Window_Spacer_Room2"
+   ],
+   "tris": 1856,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.708,
+     7.05,
+     0.85
+    ],
+    [
+     6.836,
+     8.65,
+     2.87
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Window_E2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_PVC_Room2",
+    "Window_Gasket_Room2",
+    "Window_Spacer_Room2"
+   ],
+   "tris": 1856,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.708,
+     4.95,
+     0.85
+    ],
+    [
+     6.836,
+     6.55,
+     2.87
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Window_N1",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_PVC_Room2",
+    "Window_Gasket_Room2",
+    "Window_Spacer_Room2"
+   ],
+   "tris": 1856,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.7,
+     9.208,
+     0.85
+    ],
+    [
+     2.3,
+     9.336,
+     2.87
+    ]
+   ]
+  },
+  {
+   "name": "Room2_Window_N2",
+   "area": "Room2",
+   "parent": null,
+   "materials": [
+    "Window_PVC_Room2",
+    "Window_Gasket_Room2",
+    "Window_Spacer_Room2"
+   ],
+   "tris": 1856,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.8,
+     9.208,
+     0.85
+    ],
+    [
+     4.4,
+     9.336,
+     2.87
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Bike",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Paint_Bike_Blue",
+    "Room3_Plastic_Black",
+    "Room3_Plastic_White",
+    "Room3_Chrome"
+   ],
+   "tris": 772,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -1.77,
+     -1.5977,
+     0.0
+    ],
+    [
+     -1.17,
+     0.1477,
+     1.42
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Booth",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Fabric_Green",
+    "Room3_Fabric_Charcoal",
+    "Room3_Chrome"
+   ],
+   "tris": 5244,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -23.6,
+     2.0,
+     0.0
+    ],
+    [
+     -5.5,
+     2.94,
+     1.4
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Room3_Booth_LOD0",
+     "tris": 5244
+    },
+    {
+     "name": "Room3_Booth_LOD1",
+     "tris": 2622
+    },
+    {
+     "name": "Room3_Booth_LOD2",
+     "tris": 1048
+    }
+   ]
+  },
+  {
+   "name": "Room3_Ceiling",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Ceiling_Paint"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -24.49,
+     -5.36,
+     3.2
+    ],
+    [
+     0.0,
+     3.29,
+     3.32
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Cornice",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Cornice_Plaster"
+   ],
+   "tris": 168,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -24.24,
+     -4.76,
+     2.945
+    ],
+    [
+     -0.1,
+     2.96,
+     3.2
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Door_405",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Door_Paint_Room3",
+    "Room3_Chrome",
+    "Room3_Plastic_Black",
+    "Room3_Sign_405",
+    "Room3_Reader_LED"
+   ],
+   "tris": 166,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -4.07,
+     3.04,
+     0.0
+    ],
+    [
+     -2.65,
+     3.6194,
+     2.13
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Doors_North",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Door_Paint_Room3",
+    "Room3_Door_Laminate_Brown",
+    "Room3_Door_Paint_PalePink",
+    "Room3_Chrome",
+    "Room3_Plastic_Black"
+   ],
+   "tris": 280,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -24.24,
+     1.89,
+     0.0
+    ],
+    [
+     -9.6,
+     3.19,
+     2.21
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Ext_Backdrop",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Ext_Treeline",
+    "Room3_Ext_Lawn"
+   ],
+   "tris": 4,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -36.24,
+     -54.36,
+     -10.0
+    ],
+    [
+     6.0,
+     -5.56,
+     9.0
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Fitting_Bodies",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Powder_White"
+   ],
+   "tris": 108,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -23.46,
+     -2.91,
+     2.735
+    ],
+    [
+     -1.28,
+     6.3925,
+     3.2
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Floor",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Vinyl_Grey",
+    "Room3_Vinyl_Blue"
+   ],
+   "tris": 76,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -24.49,
+     -5.36,
+     -0.1
+    ],
+    [
+     -0.1,
+     3.29,
+     0.0
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Glass_Offices",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Powder_White",
+    "Room3_Glass",
+    "Room3_Blind_Slats",
+    "Room3_Sticker_Yellow",
+    "Room_Wall_Room3"
+   ],
+   "tris": 1416,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -24.265,
+     -4.785,
+     0.0
+    ],
+    [
+     -9.275,
+     0.285,
+     2.83
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Glass_Offices_Glass",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Powder_White",
+    "Room3_Glass",
+    "Room3_Blind_Slats",
+    "Room3_Sticker_Yellow",
+    "Room_Wall_Room3"
+   ],
+   "tris": 384,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -24.215,
+     -4.735,
+     0.06
+    ],
+    [
+     -9.296,
+     0.264,
+     2.75
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_00",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -3.9525,
+     5.8175,
+     3.133
+    ],
+    [
+     -3.3975,
+     6.3725,
+     3.133
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_01",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -11.02,
+     -2.15,
+     2.733
+    ],
+    [
+     -9.82,
+     -1.97,
+     2.733
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_02",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -15.5,
+     -2.15,
+     2.733
+    ],
+    [
+     -14.3,
+     -1.97,
+     2.733
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_03",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -2.5,
+     1.31,
+     3.133
+    ],
+    [
+     -1.3,
+     1.49,
+     3.133
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_04",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -8.44,
+     1.31,
+     3.133
+    ],
+    [
+     -7.24,
+     1.49,
+     3.133
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_05",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -8.02,
+     -2.89,
+     3.133
+    ],
+    [
+     -6.82,
+     -2.71,
+     3.133
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_06",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -13.94,
+     1.29,
+     3.133
+    ],
+    [
+     -13.66,
+     1.57,
+     3.133
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_07",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -19.94,
+     1.35,
+     3.133
+    ],
+    [
+     -19.66,
+     1.63,
+     3.133
+    ]
+   ]
+  },
+  {
+   "name": "Room3_LED_08",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -23.44,
+     1.36,
+     3.133
+    ],
+    [
+     -23.16,
+     1.64,
+     3.133
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Paint_Accents",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Reveal_Pink",
+    "Room3_Paint_Teal"
+   ],
+   "tris": 48,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -4.07,
+     -2.2,
+     0.0
+    ],
+    [
+     -1.17,
+     3.24,
+     2.945
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Play",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Powder_Graphite",
+    "Room3_Chrome",
+    "Room3_Plastic_Black",
+    "Room3_Foosball_Pitch",
+    "Room3_Plastic_Red",
+    "Room3_Plastic_YellowPlayer",
+    "Room3_Plastic_Black",
+    "Room3_Plastic_White",
+    "Room3_Aluminium_Rim",
+    "Room3_Birch_Veneer",
+    "Room3_Fabric_Yellow"
+   ],
+   "tris": 1416,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -9.21,
+     -4.335,
+     0.0
+    ],
+    [
+     -5.565,
+     0.4956,
+     0.9
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Posters",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Poster_GoodPractice",
+    "Room3_Poster_A3",
+    "Room3_Sign_Red",
+    "Room3_Frame_Silver",
+    "Room3_Print_Pink",
+    "Room3_Glass",
+    "Room3_Cutout_Board"
+   ],
+   "tris": 480,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -16.06,
+     -0.73,
+     1.0
+    ],
+    [
+     -1.182,
+     2.96,
+     1.91
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Posters_Glass",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Poster_GoodPractice",
+    "Room3_Poster_A3",
+    "Room3_Sign_Red",
+    "Room3_Frame_Silver",
+    "Room3_Print_Pink",
+    "Room3_Glass",
+    "Room3_Cutout_Board"
+   ],
+   "tris": 84,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -16.04,
+     2.928,
+     1.02
+    ],
+    [
+     -11.09,
+     2.93,
+     1.85
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Room405",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room3",
+    "Room3_Birch_Veneer",
+    "Room3_Glass"
+   ],
+   "tris": 284,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -6.2,
+     3.29,
+     -0.1
+    ],
+    [
+     -1.15,
+     9.15,
+     3.3
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Room405_Glass",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room3",
+    "Room3_Birch_Veneer",
+    "Room3_Glass"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -3.8,
+     9.0,
+     0.85
+    ],
+    [
+     -2.2,
+     9.01,
+     2.75
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Services",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Duct_Spiral",
+    "Room3_Chrome",
+    "Room3_Plastic_White",
+    "Room3_Grille_Grey",
+    "Room3_Plastic_Black",
+    "Room3_Exit_Sign"
+   ],
+   "tris": 418,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -24.24,
+     -2.44,
+     2.719
+    ],
+    [
+     -0.1,
+     2.94,
+     3.2
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Skirting",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Skirting"
+   ],
+   "tris": 120,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -24.24,
+     -4.76,
+     0.0
+    ],
+    [
+     -0.1,
+     2.96,
+     0.06
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Tables",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_Tablecloth",
+    "Room3_Powder_White",
+    "Room3_Chrome",
+    "Room3_Steel_Brushed",
+    "Room3_Plastic_Black",
+    "Room3_Paper_Plate",
+    "Room3_Plastic_White",
+    "Room3_Box_Unique",
+    "Room3_Laminate_Mahogany"
+   ],
+   "tris": 3262,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -5.45,
+     2.21,
+     0.0
+    ],
+    [
+     -1.1754,
+     2.95,
+     1.235
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Walls",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room_Wall_Room3"
+   ],
+   "tris": 548,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -25.59,
+     -5.36,
+     0.0
+    ],
+    [
+     0.0,
+     3.29,
+     3.2
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Windows",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_PVC_White",
+    "Room3_Glass",
+    "Room3_Radiator_Paint"
+   ],
+   "tris": 2304,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -22.115,
+     -5.06,
+     0.16
+    ],
+    [
+     -3.885,
+     -4.61,
+     2.8
+    ]
+   ]
+  },
+  {
+   "name": "Room3_Windows_Glass",
+   "area": "Room3",
+   "parent": null,
+   "materials": [
+    "Room3_PVC_White",
+    "Room3_Glass",
+    "Room3_Radiator_Paint"
+   ],
+   "tris": 72,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -22.025,
+     -5.03,
+     0.93
+    ],
+    [
+     -3.975,
+     -5.026,
+     2.75
+    ]
+   ]
   }
  ],
  "files": [
-  "Models/Room1.fbx"
+  "Models/Room1.fbx",
+  "Models/Exterior.fbx",
+  "Models/Room2.fbx",
+  "Models/Room3.fbx"
  ],
  "stats": {
-  "objects": 73,
-  "tris_lod0": 59952,
+  "objects": 176,
+  "tris_lod0": 130646,
   "tris_by_area": {
-   "Room1": 59952
+   "Room1": 59952,
+   "Exterior": 12266,
+   "Room2": 40732,
+   "Room3": 17696
   },
-  "draw_calls_lod0_before_batching": 154,
-  "materials": 96,
-  "texture_mb_uncompressed": 33.1,
-  "seconds": 891.2
- }
+  "draw_calls_lod0_before_batching": 438,
+  "materials": 199,
+  "texture_mb_uncompressed": 198.1,
+  "seconds": 2474.0
+ },
+ "note": "trial: merged from two export runs (--areas Room1, then the rest)"
 }

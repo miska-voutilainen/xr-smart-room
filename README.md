@@ -84,3 +84,11 @@ bridge/        Data-exchange layer: device scripts and bridge server (working, s
 
 4. **XR interaction.** The library ships mouse input only. Route the `XRSimpleInteractable` select events (poke/press: dimmer, DALI panel, thermostat; grab for the blind chain and camera head) to the same controller setters the mouse input uses.
 5. **Bridge adapter.** A small MonoBehaviour with a WebSocket client (`ws://<bridge host>:8765`) that maps `{device, property, value}` messages onto the controllers' setters on the main thread and sends commands from their `StateChanged` events (see bridge/README.md, section 3).
+6. **Room export.** The FBX/textures in `unity/Assets/Models|Textures` are a low-quality trial export that predates the final hall, floor and pastry changes; tree leaves are missing in `Exterior.fbx`. The final export is one run of `blender/unity_export/export_unity.py --quality high` (about 40-60 min of baking). Delete `unity/Assets/Textures/*` before dropping in the final export.
+7. **C# status.** The Unity Editor on the build machine (2022.3.76f1) would not start with a Personal licence, so nothing has been compiled or run inside Unity yet. The IoT library scripts, `OrangeRoomImport.cs` and `OrangeRoomDevicePlacer.cs` compile together with the Unity 2022.3 C# compiler against the UnityEngine/UnityEditor assemblies; `OrangeRoomSceneBuilder.cs` (needs URP + XRI packages) is unchecked.
+8. **Known issues in the 3D model** (Blender v2, see `blender/previews/`):
+   - Lab desk layout does not fully match photo 150435.
+   - Terrazzo floor is glossier than in the photos.
+   - Hall: cyan colour cast, dark ceiling under the duct, glass offices read grey, foosball table too light, far corridor too dim, hall wall about +0.7 stop too bright.
+   - Pink door is about 10 % narrower than the real one.
+   - IoT device placement in Unity is pending: positions are set in `OrangeRoomDevicePlacer.cs` but not yet checked in a running Editor.
