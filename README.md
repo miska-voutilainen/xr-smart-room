@@ -53,6 +53,6 @@ bridge/        Data-exchange layer: device scripts and bridge server (working, s
 
 ## Status
 
-- **Data layer:** works with the real lab. Curtain, dimmer, speaker, camera and room sensor can be read through `bridge/server.py`, and the curtain, dimmer and speaker can also be controlled. The DALI panel is not reachable yet. See [bridge/README.md](bridge/README.md).
+- **Data layer:** works with the real lab. Curtain, dimmer, speaker, camera, room sensor and the DALI lamps can be read through `bridge/server.py`, and the curtain, dimmer and speaker can also be controlled. `lab.py` can switch and dim the DALI lamps, but only all together until the lamps are addressed again. See [bridge/README.md](bridge/README.md).
 - **Devices:** one page per connected device in [docs/](docs/README.md).
 - **Unity:** concept. See [concept.md](concept.md) and [use-cases.md](use-cases.md).

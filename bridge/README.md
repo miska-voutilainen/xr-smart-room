@@ -5,7 +5,7 @@ This folder is the data-exchange layer from [concept.md](../concept.md). It talk
 - `lab.py`: test any lab device from the command line. Also holds the lab configuration and the clients that `server.py` uses.
 - `server.py`: the bridge server the XR app connects to.
 
-Status on 12.10.2026: all devices except the DALI panel can be read and controlled, and the server has been tested against the real lab. Unity is still a concept; section 5 describes how it will connect.
+Status on 13.10.2026: all devices can be read, the curtain, dimmer and speaker can also be controlled, and the server has been tested against the real lab. `lab.py` can also switch and dim the DALI lamps, but on 13.10.2026 only commands to all lamps reached them (see open issue 1). Unity is still a concept; section 5 describes how it will connect.
 
 Device details (addresses, entities, test results) are in [docs/](../docs/README.md).
 
@@ -35,7 +35,8 @@ python bridge/lab.py check
 | `camera` | `status`, `snapshot [file.jpg]`, `watch` | [camera.md](../docs/devices/camera.md) |
 | `sensor` | no argument, or `watch [--alarm 25]` | [room-sensor.md](../docs/devices/room-sensor.md) |
 | `bacnet` | `discover`, `objects [--json file]` | [room-sensor.md](../docs/devices/room-sensor.md) |
-| `knx` | `monitor`, `read <ga>`, `scan <first> <last>`, `write <ga> <value> [--type switch/percent/byte]` | [knx-dali.md](../docs/devices/knx-dali.md) |
+| `dali` | no argument (`status`), `watch`, `info`, `on`/`off`/`up`/`down <target> [steps]`, `level <target> 0-100`, `kelvin <target> K`, `scene <target> 0-15`, `[--fade S]`; target is a short address 0-63, `g0`-`g15` or `all` | [dali.md](../docs/devices/dali.md) |
+| `knx` | `monitor`, `read <ga>`, `scan <first> <last>`, `write <ga> <value> [--type switch/percent/byte]` | [knx.md](../docs/devices/knx.md) |
 | `list` | `curtain`, `dimmer`, `speaker` | [home-assistant.md](../docs/devices/home-assistant.md) |
 
 Examples:
@@ -46,8 +47,8 @@ python bridge/lab.py speaker play song.mp3 --volume 15
 python bridge/lab.py knx monitor
 ```
 
-- **Other devices.** `curtain`, `dimmer` and `speaker` take `--entity` to use another Home Assistant entity. `sensor`, `bacnet` and `knx` take `--ip`.
-- **What changes things.** Only the curtain, dimmer and speaker actions (everything except `status` and `watch`) and `knx write`. All other commands only read.
+- **Other devices.** `curtain`, `dimmer` and `speaker` take `--entity` to use another Home Assistant entity. `sensor`, `bacnet`, `dali` and `knx` take `--ip`.
+- **What changes things.** Only the curtain, dimmer and speaker actions (everything except `status` and `watch`), the `dali` actions other than `status`, `watch` and `info`, and `knx write`. All other commands only read.
 
 ## 3. Bridge Server - server.py
 
@@ -76,6 +77,7 @@ XR app <-WS-> | latest state, broadcast, rules                          |
               |                               speaker1, motion1         |
               |  Frigate, every 1 s        -> camera1                   |
               |  BACnet, every 5 s         -> room_sensor1              |
+              |  DALI panel, every 2 s     -> dali1                     |
               |  HTTP: /camera.jpg, /media/<song>                       |
               +---------------------------------------------------------+
 ```
@@ -98,6 +100,7 @@ One JSON object per message. A new client first receives the full current state,
 | `camera1` | `occupied`, `status` |
 | `motion1` | `motion`, `illuminance` (lx), `status` |
 | `room_sensor1` | `temperature`, `humidity`, `co2`, `air_quality`, `battery_low`, `alarm`, `status` |
+| `dali1` | `lamp<N>_on`, `lamp<N>_failure` for DALI short address N = 0-9; `group<N>_on`, `group<N>_level` (0-100), `group<N>_kelvin` for DALI group N = 0-2; `status` |
 | `virtual_light` | `on` |
 | any | `error`, sent only to the client whose command failed |
 
@@ -136,6 +139,7 @@ With `--simulate`:
 - **Camera:** switches between occupied and empty every 15 seconds.
 - **Motion sensor:** reports motion for 10 seconds every 40 seconds.
 - **Room sensor:** the temperature moves between 22 and 28 °C every two minutes, which triggers the UC3 alarm.
+- **DALI:** all lamps and groups are on. Lamp 5 reports a lamp failure for 10 seconds every minute.
 
 ### Test Results
 
@@ -149,6 +153,8 @@ With `--simulate`:
 | Simulation run-through on 12.10.2026: UC1 with each `--presence`, UC2 commands, UC3 with and without `--alarm-actions`, errors, reconnect | Works |
 | Real mode without the lab network | Works, every device reports `offline` |
 | Motion sensor and `--alarm-actions` on the real devices | Not tested yet |
+| `dali1` on 13.10.2026, real panel and simulation | Works: 10 lamps and 3 groups. Commands are rejected with an `error` |
+| `lab.py dali` control on 13.10.2026 | The panel accepts every command. Only `all` changes the lamps; single lamps and groups do nothing, also from the panel's own screen |
 
 ## 4. Use Cases
 
@@ -158,7 +164,7 @@ With `--simulate`:
 | UC2 XR control of light and curtains | Dimmer and curtain work | Commands and two-way state work | Concept |
 | UC3 Temperature alarm | BACnet room sensor works | `room_sensor1.alarm` works; `--alarm-actions` works in simulation | Concept |
 | Extension: live camera panel | Frigate frames work | `/camera.jpg` works | Concept |
-| DALI panel | Not reachable yet | - | Concept |
+| Extension: DALI lamps and lamp failure | Lunatone panel REST API works (read) | `dali1` works, read-only | Concept |
 
 ## 5. Planned Unity Integration
 
@@ -179,6 +185,7 @@ As in the concept, Unity never talks to the devices directly, only to `server.py
 | Dimmer | Lamp brightness from `on` and `level`, power on the information panel | Slider -> `set_level`; button -> `toggle` |
 | Speaker | State, title and volume | Play/pause -> `play`, `pause`, `resume`; knob -> `set_volume` |
 | Camera | Panel loading `http://<bridge PC>:8000/camera.jpg` 2-5 times a second, occupied badge | Point at the camera to show or hide the panel |
+| DALI lamps | One fixture per short address, on/off from `lamp<N>_on`, flashing red on `lamp<N>_failure` | - (control later) |
 | Room sensor (UC3) | Temperature label or thermometer, CO2, humidity, room tint, warning panel on `alarm` | - |
 | Information panel | Name, value, last update (`timestamp`), connection (`status`, `source`) | Point and select a device |
 
@@ -189,7 +196,7 @@ As in the concept, Unity never talks to the devices directly, only to `server.py
 
 ## 6. Open Issues
 
-1. **DALI panel.** The bus can be reached through the KNX IP BAOS 777, but the lamps' group addresses are unknown. See [knx-dali.md](../docs/devices/knx-dali.md) for ways to find them. Then add a `dali1` device to `server.py`.
+1. **DALI addressing.** The Lunatone DALI-2 Display at .120 reaches the lamps only with commands to all lamps. None of the stored short addresses 0-9 answer the panel's status queries, so the lamps probably need to be addressed again by the lab staff. Until then `lamp<N>_on` is `false` for every lamp, and `dali1` stays read-only. Also find out which lamps "Task light 1" and "Task light 2" are. See [dali.md](../docs/devices/dali.md).
 2. **UC3 reactions.** `--alarm-actions` is implemented but off by default. Agree with the lab staff whether the alarm may close the real curtain and play an alert on the real speaker before using it in the lab. It needs an alarm sound in `bridge/`. `*.mp3` is git-ignored, so copy the file there by hand.
 3. **UC1 demo.** Someone is almost always in view of the camera, so the room rarely counts as empty. `--presence motion` uses the Aqara motion sensor instead, which can be pointed away from people. A Frigate zone (ask the lab staff) or a shorter `--hold` are other options.
 4. **Curtain stop.** Holding the current position has not been tested on the real curtain yet.

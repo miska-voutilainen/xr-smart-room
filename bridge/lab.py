@@ -8,13 +8,15 @@
     python lab.py camera  status|snapshot [file.jpg]|watch
     python lab.py sensor  [watch [--alarm 25]]          # room sensor over BACnet
     python lab.py bacnet  discover|objects [--json file]
+    python lab.py dali    [status|watch|info]               # DALI panel (Lunatone DALI-2 Display)
+    python lab.py dali    on|off|level|kelvin|up|down|scene <lamp 0-63|g0-g15|all> [value] [--fade S]
     python lab.py knx     monitor|read <ga>|scan <first> <last>|write <ga> <value> [--type ...]
     python lab.py list    curtain|dimmer|speaker        # Home Assistant entities of that kind
 
 Home Assistant token: HA_TOKEN in the environment or a line HA_TOKEN=<token> in bridge/.env.
 Every device command accepts --entity / --ip style options to target another device.
 Only commands that change something: curtain open/close/stop/position, dimmer on/off/toggle/level,
-speaker play/pause/resume/stop/volume/restore, knx write.
+speaker play/pause/resume/stop/volume/restore, dali on/off/level/kelvin/up/down/scene, knx write.
 """
 
 import argparse
@@ -25,6 +27,7 @@ import ipaddress
 import itertools
 import json
 import os
+import re
 import socket
 import struct
 import sys
@@ -53,6 +56,8 @@ FRIGATE_CAMERA = "cam_192_168_15_144"
 GATEWAY_IP = "192.168.15.132"  # Siemens OCT200.KNBA KNX/BACnet gateway
 GATEWAY_INSTANCE = 1223
 KNX_GATEWAY_IP = "192.168.15.191"  # KNX IP BAOS 777
+DALI_IP = "192.168.15.120"  # Lunatone DALI-2 Display: the DALI panel, REST API without login
+DALI_CONTROL = ("on", "off", "level", "kelvin", "up", "down", "scene")
 
 MEDIA_PORT = 8000
 AUDIO_EXTENSIONS = (".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg")
@@ -681,7 +686,149 @@ def cmd_bacnet(args):
         print(f"\nSaved {len(objects)} objects to {args.json}")
 
 
-# ---------------------------------------------------------------- KNX (DALI lamps sit behind KNX)
+# ---------------------------------------------------------------- DALI panel (Lunatone DALI-2 Display)
+
+class DALIError(Exception):
+    pass
+
+
+def dali_request(path, ip=DALI_IP, body=None):
+    """GET `path`, or POST `body` as JSON when given."""
+    data = None if body is None else json.dumps(body).encode()
+    req = urllib.request.Request(f"http://{ip}/{path}", data=data, headers={"Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            raw = resp.read()
+            return json.loads(raw) if raw else None
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+        raise DALIError(f"DALI panel at {ip}: {getattr(e, 'reason', e)}")
+
+
+def dali_target(text, ip=DALI_IP):
+    """'all', 'g1' or a DALI short address -> (API path, description).
+    The API addresses single lamps by its own device id, so the short address is looked up in /devices."""
+    text = str(text).lower()
+    if text == "all":
+        return "broadcast", "all lamps"
+    if re.fullmatch(r"g\d+", text) and 0 <= int(text[1:]) <= 15:
+        return f"group/{int(text[1:])}", f"group G{int(text[1:])}"
+    if text.isdigit() and 0 <= int(text) <= 63:
+        for d in dali_request("devices", ip)["devices"]:
+            if d["address"] == int(text):
+                if not d.get("available"):
+                    print(f"warning: DALI {text} does not answer on the DALI line, "
+                          "the command will probably do nothing")
+                return f"device/{d['id']}", f"DALI {text} ({d['name']})"
+        raise DALIError(f"no lamp with DALI short address {text} on the panel")
+    sys.exit(f"Expected a DALI short address 0-63, g0-g15 or 'all', got {text!r}")
+
+
+def dali_body(action, value, fade):
+    """Request body for /control. `fade` is seconds, or None for the lamp's own fade time."""
+    def number(lo, hi, default=None):
+        if value is None and default is not None:
+            return default
+        try:
+            n = int(value)
+        except (TypeError, ValueError):
+            sys.exit(f"dali {action}: expected a number {lo}-{hi}, got {value!r}")
+        if not lo <= n <= hi:
+            sys.exit(f"dali {action}: expected a number {lo}-{hi}")
+        return n
+    if action in ("on", "off"):
+        return {"switchable": action == "on"}
+    if action == "level":
+        level = percent_arg(value)
+        return {"dimmable": level} if fade is None else {"dimmableWithFade": {"dimValue": level, "fadeTime": fade}}
+    if action == "kelvin":
+        kelvin = number(1000, 20000)
+        return {"colorKelvin": kelvin} if fade is None else {"colorKelvinWithFade": {"color": kelvin, "fadeTime": fade}}
+    if action in ("up", "down"):
+        return {"dimUp" if action == "up" else "dimDown": number(1, 5, default=1)}
+    scene = number(0, 15)
+    return {"scene": scene} if fade is None else {"sceneWithFade": {"scene": scene, "fadeTime": fade}}
+
+
+def read_dali(ip=DALI_IP):
+    """Lamps by DALI short address, groups by DALI group number.
+    Lamp on/failure/available come from the panel's periodic DALI status queries, which must be
+    switched on in the panel (/automations/statusQueries); without them the values never change.
+    Group on/level/kelvin are the values last sent to the group: DALI cannot read a group back."""
+    lamps = {}
+    for d in dali_request("devices", ip)["devices"]:
+        status = d.get("status") or {}
+        lamps[d["address"]] = {
+            "name": d["name"], "types": d.get("daliTypes", []), "available": d.get("available", False),
+            "on": status.get("lampOn"),
+            "failure": bool(status.get("lampFailure") or status.get("controlGearFailure")),
+        }
+    groups = {}
+    for z in sorted(dali_request("zones", ip)["zones"], key=lambda z: z["id"]):
+        targets = z.get("targets", [])
+        if len(targets) == 1 and targets[0]["type"] == "group" and targets[0]["id"] not in groups:
+            f = z["features"]
+            groups[targets[0]["id"]] = {"on": f["switchable"]["status"], "level": round(f["dimmable"]["status"]),
+                                        "kelvin": f.get("colorKelvin", {}).get("status")}
+    return lamps, groups
+
+
+def describe_dali(lamps, groups):
+    lines = []
+    for address, lamp in sorted(lamps.items()):
+        state = ("on" if lamp["on"] else "off") if lamp["available"] else "unavailable"
+        types = "+".join(f"DT{t}" for t in lamp["types"])
+        lines.append(f"DALI {address:<2} {state:<11} {'LAMP FAILURE' if lamp['failure'] else 'ok':<12} "
+                     f"{types:<8} {lamp['name']}")
+    for group, g in sorted(groups.items()):
+        kelvin = f", {g['kelvin']} K" if g["kelvin"] else ""
+        lines.append(f"G{group}      {'on' if g['on'] else 'off'}, level {g['level']}%{kelvin} (last sent to the group)")
+    return lines
+
+
+def cmd_dali(args):
+    try:
+        if args.action in DALI_CONTROL:
+            if args.target is None:
+                sys.exit(f"Give a target: lab.py dali {args.action} <lamp 0-63|g0-g15|all>"
+                         + (" <value>" if args.action in ("level", "kelvin", "scene") else ""))
+            if args.value is None and args.action in ("level", "kelvin", "scene"):
+                sys.exit(f"Give a value: lab.py dali {args.action} {args.target} <value>")
+            body = dali_body(args.action, args.value, args.fade)
+            path, name = dali_target(args.target, args.ip)
+            dali_request(f"{path}/control", args.ip, body)
+            print(f"{name}: sent {json.dumps(body)}")
+            return
+        if args.action == "info":
+            info = dali_request("info", args.ip)
+            dev = info.get("device", {})
+            print(f"{info.get('name')} {info.get('version')} at {args.ip}: article {dev.get('articleNumber')}, "
+                  f"serial {dev.get('serial')}, GTIN {dev.get('gtin')}, "
+                  f"made {dev.get('productionYear')} week {dev.get('productionWeek')}")
+            for line, status in info.get("lines", {}).items():
+                print(f"  DALI line {line}: {status.get('lineStatus')}")
+            return
+        if args.action == "status":
+            print("\n".join(describe_dali(*read_dali(args.ip))))
+            return
+        print(f"Watching the DALI panel at {args.ip} every {args.interval:g} s (Ctrl+C to quit)")
+        last = []
+        while True:
+            try:
+                lines = describe_dali(*read_dali(args.ip))
+            except DALIError as e:
+                lines = [f"not answering: {e}"]
+            for line in lines:
+                if line not in last:
+                    print(stamp(), line, flush=True)
+            last = lines
+            time.sleep(args.interval)
+    except DALIError as e:
+        sys.exit(str(e))
+    except KeyboardInterrupt:
+        pass
+
+
+# ---------------------------------------------------------------- KNX
 
 def knx_search(ip, timeout=3):
     """KNXnet/IP search request sent directly to `ip`; returns (name, knx address) or None."""
@@ -761,7 +908,7 @@ async def knx_main(args):
     print(f"Connected to {args.ip}, our address {xknx.current_address}", flush=True)
     try:
         if args.action == "monitor":
-            print("Listening - operate switches or the DALI panel now (Ctrl+C to quit)", flush=True)
+            print("Listening - operate KNX switches now (Ctrl+C to quit)", flush=True)
             await asyncio.Event().wait()
         elif args.action == "read":
             group_value_read(xknx, args.address)
@@ -834,10 +981,19 @@ def cmd_check(args):
     finally:
         client.close()
 
+    try:
+        lamps, _ = read_dali()
+        answering = [lamp for lamp in lamps.values() if lamp["available"]]
+        on = sum(1 for lamp in answering if lamp["on"])
+        failed = [address for address, lamp in sorted(lamps.items()) if lamp["failure"]]
+        row("dali", bool(answering), f"{len(lamps)} lamps, {len(answering)} answering, {on} on, "
+                                     f"lamp failures: {failed or 'none'}")
+    except DALIError as e:
+        row("dali", False, str(e))
+
     knx = knx_search(KNX_GATEWAY_IP)
-    row("knx / dali", knx is not None,
-        f"{knx[0]} at {KNX_GATEWAY_IP}, KNX address {knx[1]} (DALI group addresses still unknown)"
-        if knx else f"no KNX/IP interface at {KNX_GATEWAY_IP}")
+    row("knx", knx is not None,
+        f"{knx[0]} at {KNX_GATEWAY_IP}, KNX address {knx[1]}" if knx else f"no KNX/IP interface at {KNX_GATEWAY_IP}")
 
 
 def cmd_list(args):
@@ -903,7 +1059,15 @@ def parse_args():
     b.add_argument("--instance", type=int, default=GATEWAY_INSTANCE, help="objects: device instance")
     b.add_argument("--json", help="objects: save the list to this file")
 
-    k = sub.add_parser("knx", help="KNX bus (DALI lamps) via the KNX IP BAOS 777")
+    da = sub.add_parser("dali", help="DALI panel (Lunatone DALI-2 Display)")
+    da.add_argument("action", nargs="?", choices=("status", "watch", "info") + DALI_CONTROL, default="status")
+    da.add_argument("target", nargs="?", help="DALI short address 0-63, g0-g15 or all")
+    da.add_argument("value", nargs="?", help="level 0-100, kelvin, up/down steps 1-5, scene 0-15")
+    da.add_argument("--fade", type=float, help="level/kelvin/scene: fade time in seconds")
+    da.add_argument("--interval", type=float, default=2.0, help="watch: seconds between reads")
+    da.add_argument("--ip", default=DALI_IP)
+
+    k = sub.add_parser("knx", help="KNX bus via the KNX IP BAOS 777")
     k.add_argument("action", choices=("monitor", "read", "scan", "write"))
     k.add_argument("address", nargs="?", help="group address, e.g. 1/2/3 (scan: first address)")
     k.add_argument("value", nargs="?", help="write: on/off/40%%/128; scan: last address")
@@ -922,7 +1086,8 @@ def main():
         sys.exit(f"Give a value: lab.py {args.device} {args.action} <value>")
     {
         "check": cmd_check, "list": cmd_list, "curtain": cmd_curtain, "dimmer": cmd_dimmer,
-        "speaker": cmd_speaker, "camera": cmd_camera, "sensor": cmd_sensor, "bacnet": cmd_bacnet, "knx": cmd_knx,
+        "speaker": cmd_speaker, "camera": cmd_camera, "sensor": cmd_sensor, "bacnet": cmd_bacnet, "dali": cmd_dali,
+        "knx": cmd_knx,
     }[args.device](args)
 
 
