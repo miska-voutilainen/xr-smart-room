@@ -1,0 +1,332 @@
+[
+  {
+    "name": "Axle_Left",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "MESH",
+    "source_position": [
+      -0.6029999852180481,
+      -0.034999996423721313,
+      -0.029999999329447746
+    ],
+    "unity_position": [
+      0.6029999852180481,
+      -0.029999999329447746,
+      0.034999996423721313
+    ]
+  },
+  {
+    "name": "Axle_Right",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "MESH",
+    "source_position": [
+      0.6029995083808899,
+      -0.034999996423721313,
+      -0.029999999329447746
+    ],
+    "unity_position": [
+      -0.6029995083808899,
+      -0.029999999329447746,
+      0.034999996423721313
+    ]
+  },
+  {
+    "name": "Blind_Chain_Beads",
+    "parent": "Chain_Loop_Assembly",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Blind_Chain_Cord",
+    "parent": "Chain_Loop_Assembly",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Bottom_Endplug_-0.584",
+    "parent": "Bottom_Rail_Pivot",
+    "type": "MESH",
+    "source_position": [
+      -0.5839999914169312,
+      -0.061000000685453415,
+      -0.48399999737739563
+    ],
+    "unity_position": [
+      0.5839999914169312,
+      -0.48399999737739563,
+      0.061000000685453415
+    ]
+  },
+  {
+    "name": "Bottom_Endplug_0.584",
+    "parent": "Bottom_Rail_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.5839999914169312,
+      -0.061000000685453415,
+      -0.48399999737739563
+    ],
+    "unity_position": [
+      -0.5839999914169312,
+      -0.48399999737739563,
+      0.061000000685453415
+    ]
+  },
+  {
+    "name": "Bottom_Rail",
+    "parent": "Bottom_Rail_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.061000000685453415,
+      -0.48399999737739563
+    ],
+    "unity_position": [
+      -0.0,
+      -0.48399999737739563,
+      0.061000000685453415
+    ]
+  },
+  {
+    "name": "Bottom_Rail_Pivot",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      -0.061000000685453415,
+      -0.48399999737739563
+    ],
+    "unity_position": [
+      -0.0,
+      -0.48399999737739563,
+      0.061000000685453415
+    ]
+  },
+  {
+    "name": "Chain_Clutch_Pivot",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "EMPTY",
+    "source_position": [
+      0.6200000047683716,
+      -0.03500000014901161,
+      -0.029999999329447746
+    ],
+    "unity_position": [
+      -0.6200000047683716,
+      -0.029999999329447746,
+      0.03500000014901161
+    ]
+  },
+  {
+    "name": "Chain_Loop_Assembly",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Chain_Sprocket",
+    "parent": "Chain_Clutch_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Cloth_With_Raise_BlendShape",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Clutch_Teeth",
+    "parent": "Chain_Clutch_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.6209999918937683,
+      -0.009999999776482582,
+      -0.029999999329447746
+    ],
+    "unity_position": [
+      -0.6209999918937683,
+      -0.029999999329447746,
+      0.009999999776482582
+    ]
+  },
+  {
+    "name": "Half_Round_Head_Cassette",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "MESH",
+    "source_position": [
+      -8.381903171539307e-09,
+      -0.034999996423721313,
+      -0.010541749186813831
+    ],
+    "unity_position": [
+      8.381903171539307e-09,
+      -0.010541749186813831,
+      0.034999996423721313
+    ]
+  },
+  {
+    "name": "Roll_Endcap_Left",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "MESH",
+    "source_position": [
+      -0.5929994583129883,
+      -0.03499997779726982,
+      -0.030000019818544388
+    ],
+    "unity_position": [
+      0.5929994583129883,
+      -0.030000019818544388,
+      0.03499997779726982
+    ]
+  },
+  {
+    "name": "Roll_Endcap_Right",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "MESH",
+    "source_position": [
+      0.5929995775222778,
+      -0.03499997779726982,
+      -0.030000019818544388
+    ],
+    "unity_position": [
+      -0.5929995775222778,
+      -0.030000019818544388,
+      0.03499997779726982
+    ]
+  },
+  {
+    "name": "Rolled_Fabric",
+    "parent": "Roller_Rotation_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Roller_Blind_Mechanism",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Roller_Rotation_Pivot",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      -0.03500000014901161,
+      -0.029999999329447746
+    ],
+    "unity_position": [
+      -0.0,
+      -0.029999999329447746,
+      0.03500000014901161
+    ]
+  },
+  {
+    "name": "Roller_Tube",
+    "parent": "Roller_Rotation_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Wall_Bracket_Left",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "MESH",
+    "source_position": [
+      -0.6029999852180481,
+      -0.012000000104308128,
+      -0.029999999329447746
+    ],
+    "unity_position": [
+      0.6029999852180481,
+      -0.029999999329447746,
+      0.012000000104308128
+    ]
+  },
+  {
+    "name": "Wall_Bracket_Right",
+    "parent": "Roller_Blind_Mechanism",
+    "type": "MESH",
+    "source_position": [
+      0.6029999852180481,
+      -0.012000000104308128,
+      -0.029999999329447746
+    ],
+    "unity_position": [
+      -0.6029999852180481,
+      -0.029999999329447746,
+      0.012000000104308128
+    ]
+  }
+]

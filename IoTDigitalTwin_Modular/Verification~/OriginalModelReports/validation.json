@@ -1,0 +1,1580 @@
+{
+  "tool": "Blender 4.0.2",
+  "unity_editor_tested": false,
+  "devices": [
+    {
+      "device": "01_Zigbee_Rotary_Dimmer",
+      "source": {
+        "mesh_count": 6,
+        "bounds_min": [
+          -0.0430000014603138,
+          -0.02590000070631504,
+          -0.0430000014603138
+        ],
+        "bounds_max": [
+          0.0430000014603138,
+          0.0,
+          0.0430000014603138
+        ],
+        "names": [
+          "01_Rear_Mounting_Cover",
+          "02_Beveled_Outer_Frame",
+          "03_Inset_Square_Plate",
+          "04_Recessed_Knob_Collar",
+          "05_Rotary_Knob",
+          "06_Removable_Installation_Label"
+        ],
+        "material_slots": 6,
+        "shape_keys": {},
+        "pivots": {
+          "Zigbee_Rotary_Dimmer": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "04_Recessed_Knob_Collar": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "05_Rotary_Knob": [
+            0.0,
+            -0.009999999776482582,
+            0.0
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "01_Rear_Mounting_Cover",
+          "source_faces": 242,
+          "source_quads": 240,
+          "render_triangles": 636,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "02_Beveled_Outer_Frame",
+          "source_faces": 880,
+          "source_quads": 880,
+          "render_triangles": 1760,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "03_Inset_Square_Plate",
+          "source_faces": 560,
+          "source_quads": 560,
+          "render_triangles": 1120,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "04_Recessed_Knob_Collar",
+          "source_faces": 400,
+          "source_quads": 400,
+          "render_triangles": 800,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "05_Rotary_Knob",
+          "source_faces": 642,
+          "source_quads": 640,
+          "render_triangles": 1436,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "06_Removable_Installation_Label",
+          "source_faces": 6,
+          "source_quads": 6,
+          "render_triangles": 12,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 5764,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 6,
+          "shape_keys": {},
+          "material_slots": 6
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 6,
+          "shape_keys": {},
+          "material_slots": 6,
+          "embedded_images": 1,
+          "morph_targets": 0
+        }
+      }
+    },
+    {
+      "device": "02_Zigbee_Temperature_LCD",
+      "source": {
+        "mesh_count": 10,
+        "bounds_min": [
+          -0.04280000180006027,
+          -0.02304000034928322,
+          -0.041999999433755875
+        ],
+        "bounds_max": [
+          0.04280000180006027,
+          0.0,
+          0.042649999260902405
+        ],
+        "names": [
+          "Bezel_Seam_Trim",
+          "Button_1_Plus",
+          "Button_2_Mode",
+          "Button_3_Minus",
+          "Decal_02_Minus",
+          "Decal_02_Plus",
+          "Front_Rounded_Bezel",
+          "LCD_Display",
+          "Rear_Cover",
+          "Top_Pairing_Button"
+        ],
+        "material_slots": 10,
+        "shape_keys": {},
+        "pivots": {
+          "Zigbee_Temperature_LCD": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Button_1_Plus": [
+            0.031700000166893005,
+            -0.022050000727176666,
+            0.02500000037252903
+          ],
+          "Button_2_Mode": [
+            0.031700000166893005,
+            -0.022050000727176666,
+            0.0
+          ],
+          "Button_3_Minus": [
+            0.031700000166893005,
+            -0.022050000727176666,
+            -0.02500000037252903
+          ],
+          "Top_Pairing_Button": [
+            0.0,
+            -0.009999999776482582,
+            0.0421999990940094
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "Rear_Cover",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Front_Rounded_Bezel",
+          "source_faces": 224,
+          "source_quads": 224,
+          "render_triangles": 448,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Bezel_Seam_Trim",
+          "source_faces": 224,
+          "source_quads": 224,
+          "render_triangles": 448,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "LCD_Display",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Button_1_Plus",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Decal_02_Plus",
+          "source_faces": 1,
+          "source_quads": 1,
+          "render_triangles": 2,
+          "nonmanifold_source_edges": 4,
+          "intentional_decal_surface": true,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Button_2_Mode",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Button_3_Minus",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Decal_02_Minus",
+          "source_faces": 1,
+          "source_quads": 1,
+          "render_triangles": 2,
+          "nonmanifold_source_edges": 4,
+          "intentional_decal_surface": true,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Top_Pairing_Button",
+          "source_faces": 6,
+          "source_quads": 6,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 2348,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 10,
+          "shape_keys": {},
+          "material_slots": 10
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 10,
+          "shape_keys": {},
+          "material_slots": 10,
+          "embedded_images": 3,
+          "morph_targets": 0
+        }
+      }
+    },
+    {
+      "device": "03_ZWave_Temperature_Controller",
+      "source": {
+        "mesh_count": 4,
+        "bounds_min": [
+          -0.0430000014603138,
+          -0.014360000379383564,
+          -0.0430000014603138
+        ],
+        "bounds_max": [
+          0.0430000014603138,
+          0.0,
+          0.0430000014603138
+        ],
+        "names": [
+          "Decal_03_Touch_Keys",
+          "Gloss_Front_Frame",
+          "Rear_Mounting_Case",
+          "Temperature_Display"
+        ],
+        "material_slots": 4,
+        "shape_keys": {},
+        "pivots": {
+          "ZWave_Temperature_Controller": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Touch_Schedule": [
+            -0.032999999821186066,
+            -0.014349999837577343,
+            -0.03099999949336052
+          ],
+          "Touch_Mode": [
+            -0.017000000923871994,
+            -0.014349999837577343,
+            -0.03099999949336052
+          ],
+          "Touch_Down": [
+            0.0,
+            -0.014349999837577343,
+            -0.03099999949336052
+          ],
+          "Touch_Up": [
+            0.017000000923871994,
+            -0.014349999837577343,
+            -0.03099999949336052
+          ],
+          "Touch_Power": [
+            0.032999999821186066,
+            -0.014349999837577343,
+            -0.03099999949336052
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "Rear_Mounting_Case",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Gloss_Front_Frame",
+          "source_faces": 224,
+          "source_quads": 224,
+          "render_triangles": 448,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Temperature_Display",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Decal_03_Touch_Keys",
+          "source_faces": 1,
+          "source_quads": 1,
+          "render_triangles": 2,
+          "nonmanifold_source_edges": 4,
+          "intentional_decal_surface": true,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 954,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 4,
+          "shape_keys": {},
+          "material_slots": 4
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 4,
+          "shape_keys": {},
+          "material_slots": 4,
+          "embedded_images": 2,
+          "morph_targets": 0
+        }
+      }
+    },
+    {
+      "device": "04_Security_Camera",
+      "source": {
+        "mesh_count": 19,
+        "bounds_min": [
+          -0.054999999701976776,
+          -0.1257999986410141,
+          -0.11900564283132553
+        ],
+        "bounds_max": [
+          0.054999999701976776,
+          0.0,
+          0.0729999989271164
+        ],
+        "names": [
+          "Black_Front_Fascia",
+          "Camera_Housing",
+          "Connector_Grip_Ribs",
+          "Floodlight_Diffuser",
+          "Floodlight_Rim",
+          "Lens_Barrel_Rim",
+          "Lens_Inner_Aperture",
+          "Lens_Metal_Retainer",
+          "Microphone_Port",
+          "Mount_Arm",
+          "Mount_Screw_-0.041",
+          "Mount_Screw_0.001",
+          "Optical_Lens",
+          "PIR_Sensor_Window",
+          "Status_LED",
+          "Tilt_Joint",
+          "Wall_Base",
+          "Weatherproof_Connector",
+          "Weatherproof_Power_Cable"
+        ],
+        "material_slots": 19,
+        "shape_keys": {},
+        "pivots": {
+          "Security_Camera": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Camera_Tilt_Pivot": [
+            0.0,
+            -0.05000000074505806,
+            0.014999999664723873
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "Wall_Base",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Mount_Screw_-0.041",
+          "source_faces": 74,
+          "source_quads": 72,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Mount_Screw_0.001",
+          "source_faces": 74,
+          "source_quads": 72,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Mount_Arm",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Tilt_Joint",
+          "source_faces": 146,
+          "source_quads": 144,
+          "render_triangles": 380,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Camera_Housing",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Black_Front_Fascia",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Lens_Barrel_Rim",
+          "source_faces": 192,
+          "source_quads": 192,
+          "render_triangles": 384,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Lens_Metal_Retainer",
+          "source_faces": 192,
+          "source_quads": 192,
+          "render_triangles": 384,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Optical_Lens",
+          "source_faces": 146,
+          "source_quads": 144,
+          "render_triangles": 380,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Lens_Inner_Aperture",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Floodlight_Rim",
+          "source_faces": 192,
+          "source_quads": 192,
+          "render_triangles": 384,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Floodlight_Diffuser",
+          "source_faces": 146,
+          "source_quads": 144,
+          "render_triangles": 380,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "PIR_Sensor_Window",
+          "source_faces": 146,
+          "source_quads": 144,
+          "render_triangles": 380,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Status_LED",
+          "source_faces": 62,
+          "source_quads": 60,
+          "render_triangles": 156,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Microphone_Port",
+          "source_faces": 50,
+          "source_quads": 48,
+          "render_triangles": 124,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Weatherproof_Power_Cable",
+          "source_faces": 352,
+          "source_quads": 350,
+          "render_triangles": 716,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Weatherproof_Connector",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Connector_Grip_Ribs",
+          "source_faces": 518,
+          "source_quads": 504,
+          "render_triangles": 1316,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 6872,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 19,
+          "shape_keys": {},
+          "material_slots": 19
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 19,
+          "shape_keys": {},
+          "material_slots": 19,
+          "embedded_images": 1,
+          "morph_targets": 0
+        }
+      }
+    },
+    {
+      "device": "05_Aqara_Bead_Chain_Controller",
+      "source": {
+        "mesh_count": 16,
+        "bounds_min": [
+          -0.0215000007301569,
+          -0.0376100018620491,
+          -0.08250000327825546
+        ],
+        "bounds_max": [
+          0.0215000007301569,
+          0.0,
+          0.27510151267051697
+        ],
+        "names": [
+          "BeadChain_Beads",
+          "BeadChain_Cord",
+          "Button_Fascia",
+          "Button_Lower",
+          "Button_Raise",
+          "Button_Recess",
+          "Chain_Drive_Wheel",
+          "Cover_Grip_Ribs",
+          "Decal_05_Aqara",
+          "Decal_05_Lower",
+          "Decal_05_OPEN",
+          "Decal_05_Raise",
+          "Motor_Housing",
+          "Sliding_Drive_Cover",
+          "Status_LED",
+          "Wall_Mount_Plate"
+        ],
+        "material_slots": 16,
+        "shape_keys": {},
+        "pivots": {
+          "Aqara_Bead_Chain_Controller": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Button_Recess": [
+            -2.9103830456733704e-11,
+            -0.03120001032948494,
+            -0.05099999159574509
+          ],
+          "Button_Fascia": [
+            7.275957614183426e-12,
+            -0.03167503699660301,
+            -0.051000017672777176
+          ],
+          "Button_Raise": [
+            0.0,
+            -0.032099999487400055,
+            -0.039000000804662704
+          ],
+          "Button_Lower": [
+            0.0,
+            -0.032099999487400055,
+            -0.06199999898672104
+          ],
+          "Drive_Sprocket_Pivot": [
+            0.0,
+            -0.013000000268220901,
+            0.07100000232458115
+          ],
+          "Chain_Assembly": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "Wall_Mount_Plate",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Motor_Housing",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Sliding_Drive_Cover",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Cover_Grip_Ribs",
+          "source_faces": 686,
+          "source_quads": 672,
+          "render_triangles": 1764,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Decal_05_OPEN",
+          "source_faces": 1,
+          "source_quads": 1,
+          "render_triangles": 2,
+          "nonmanifold_source_edges": 4,
+          "intentional_decal_surface": true,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Decal_05_Aqara",
+          "source_faces": 1,
+          "source_quads": 1,
+          "render_triangles": 2,
+          "nonmanifold_source_edges": 4,
+          "intentional_decal_surface": true,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Button_Recess",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Button_Fascia",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Button_Raise",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Decal_05_Raise",
+          "source_faces": 1,
+          "source_quads": 1,
+          "render_triangles": 2,
+          "nonmanifold_source_edges": 4,
+          "intentional_decal_surface": true,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Button_Lower",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Decal_05_Lower",
+          "source_faces": 1,
+          "source_quads": 1,
+          "render_triangles": 2,
+          "nonmanifold_source_edges": 4,
+          "intentional_decal_surface": true,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Status_LED",
+          "source_faces": 50,
+          "source_quads": 48,
+          "render_triangles": 124,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Chain_Drive_Wheel",
+          "source_faces": 146,
+          "source_quads": 144,
+          "render_triangles": 380,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "BeadChain_Beads",
+          "source_faces": 3318,
+          "source_quads": 3160,
+          "render_triangles": 7268,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "BeadChain_Cord",
+          "source_faces": 474,
+          "source_quads": 474,
+          "render_triangles": 948,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 12256,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 16,
+          "shape_keys": {},
+          "material_slots": 16
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 16,
+          "shape_keys": {},
+          "material_slots": 16,
+          "embedded_images": 4,
+          "morph_targets": 0
+        }
+      }
+    },
+    {
+      "device": "06_Roller_Blind_Mechanism",
+      "source": {
+        "mesh_count": 17,
+        "bounds_min": [
+          -0.6129999756813049,
+          -0.07098457217216492,
+          -0.8170059323310852
+        ],
+        "bounds_max": [
+          0.6271201968193054,
+          0.0009845718741416931,
+          0.005945215933024883
+        ],
+        "names": [
+          "Axle_Left",
+          "Axle_Right",
+          "Blind_Chain_Beads",
+          "Blind_Chain_Cord",
+          "Bottom_Endplug_-0.584",
+          "Bottom_Endplug_0.584",
+          "Bottom_Rail",
+          "Chain_Sprocket",
+          "Cloth_With_Raise_BlendShape",
+          "Clutch_Teeth",
+          "Half_Round_Head_Cassette",
+          "Roll_Endcap_Left",
+          "Roll_Endcap_Right",
+          "Rolled_Fabric",
+          "Roller_Tube",
+          "Wall_Bracket_Left",
+          "Wall_Bracket_Right"
+        ],
+        "material_slots": 17,
+        "shape_keys": {
+          "Cloth_With_Raise_BlendShape": [
+            "Basis",
+            "Raise_Blind"
+          ]
+        },
+        "pivots": {
+          "Roller_Blind_Mechanism": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Roller_Rotation_Pivot": [
+            0.0,
+            -0.03500000014901161,
+            -0.029999999329447746
+          ],
+          "Bottom_Rail_Pivot": [
+            0.0,
+            -0.061000000685453415,
+            -0.48399999737739563
+          ],
+          "Chain_Clutch_Pivot": [
+            0.6200000047683716,
+            -0.03500000014901161,
+            -0.029999999329447746
+          ],
+          "Chain_Loop_Assembly": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "Wall_Bracket_Left",
+          "source_faces": 6,
+          "source_quads": 6,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Axle_Left",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Wall_Bracket_Right",
+          "source_faces": 6,
+          "source_quads": 6,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Axle_Right",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Roller_Tube",
+          "source_faces": 194,
+          "source_quads": 192,
+          "render_triangles": 508,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Rolled_Fabric",
+          "source_faces": 194,
+          "source_quads": 192,
+          "render_triangles": 508,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Roll_Endcap_Left",
+          "source_faces": 146,
+          "source_quads": 144,
+          "render_triangles": 380,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Roll_Endcap_Right",
+          "source_faces": 146,
+          "source_quads": 144,
+          "render_triangles": 380,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Half_Round_Head_Cassette",
+          "source_faces": 126,
+          "source_quads": 126,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Cloth_With_Raise_BlendShape",
+          "source_faces": 712,
+          "source_quads": 712,
+          "render_triangles": 1424,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Bottom_Rail",
+          "source_faces": 6,
+          "source_quads": 6,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Bottom_Endplug_-0.584",
+          "source_faces": 6,
+          "source_quads": 6,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Bottom_Endplug_0.584",
+          "source_faces": 6,
+          "source_quads": 6,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Chain_Sprocket",
+          "source_faces": 146,
+          "source_quads": 144,
+          "render_triangles": 380,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Clutch_Teeth",
+          "source_faces": 96,
+          "source_quads": 96,
+          "render_triangles": 3008,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Blind_Chain_Beads",
+          "source_faces": 10080,
+          "source_quads": 9600,
+          "render_triangles": 22080,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Blind_Chain_Cord",
+          "source_faces": 1440,
+          "source_quads": 1440,
+          "render_triangles": 2880,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 33244,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 17,
+          "shape_keys": {
+            "Cloth_With_Raise_BlendShape": [
+              "Basis",
+              "Raise_Blind"
+            ]
+          },
+          "material_slots": 17
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 17,
+          "shape_keys": {
+            "Cloth_With_Raise_BlendShape": [
+              "Basis",
+              "Raise_Blind"
+            ]
+          },
+          "material_slots": 17,
+          "embedded_images": 0,
+          "morph_targets": 1
+        }
+      }
+    },
+    {
+      "device": "07_Siemens_BACnet_Device",
+      "source": {
+        "mesh_count": 8,
+        "bounds_min": [
+          -0.04399999976158142,
+          -0.02500000037252903,
+          -0.04399999976158142
+        ],
+        "bounds_max": [
+          0.04399999976158142,
+          0.0,
+          0.04399999976158142
+        ],
+        "names": [
+          "Ambient_Sensor",
+          "Decal_07_SIEMENS",
+          "Front_Shadow_Gasket",
+          "Grey_Front_Panel",
+          "LED_Dot_Display",
+          "Rear_Wall_Plate",
+          "Status_LED_Green",
+          "White_Rounded_Frame"
+        ],
+        "material_slots": 8,
+        "shape_keys": {},
+        "pivots": {
+          "Siemens_BACnet_Device": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Dot_Display_Assembly": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "Rear_Wall_Plate",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "White_Rounded_Frame",
+          "source_faces": 224,
+          "source_quads": 224,
+          "render_triangles": 448,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Front_Shadow_Gasket",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Grey_Front_Panel",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Decal_07_SIEMENS",
+          "source_faces": 1,
+          "source_quads": 1,
+          "render_triangles": 2,
+          "nonmanifold_source_edges": 4,
+          "intentional_decal_surface": true,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Ambient_Sensor",
+          "source_faces": 50,
+          "source_quads": 48,
+          "render_triangles": 124,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Status_LED_Green",
+          "source_faces": 50,
+          "source_quads": 48,
+          "render_triangles": 124,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "LED_Dot_Display",
+          "source_faces": 1026,
+          "source_quads": 972,
+          "render_triangles": 2484,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 3938,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 8,
+          "shape_keys": {},
+          "material_slots": 8
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 8,
+          "shape_keys": {},
+          "material_slots": 8,
+          "embedded_images": 1,
+          "morph_targets": 0
+        }
+      }
+    },
+    {
+      "device": "08_Nest_Smart_Speaker",
+      "source": {
+        "mesh_count": 13,
+        "bounds_min": [
+          -0.1090647280216217,
+          -0.04255000129342079,
+          -0.0583130419254303
+        ],
+        "bounds_max": [
+          0.05022519454360008,
+          0.0,
+          0.04899999871850014
+        ],
+        "names": [
+          "Cradle_Finger_207",
+          "Cradle_Finger_270",
+          "Cradle_Finger_333",
+          "Cradle_Lower_Arc",
+          "Cradle_Wall_Plate",
+          "Fabric_Dome",
+          "Microphone_Mute_Switch",
+          "Power_Cable",
+          "Speaker_Rear_Shell",
+          "Status_Light_0",
+          "Status_Light_1",
+          "Status_Light_2",
+          "Status_Light_3"
+        ],
+        "material_slots": 13,
+        "shape_keys": {},
+        "pivots": {
+          "Nest_Smart_Speaker": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Speaker_Body_Pivot": [
+            0.0,
+            -0.02500000037252903,
+            0.0
+          ],
+          "Microphone_Mute_Switch": [
+            0.04500000178813934,
+            -0.014000000432133675,
+            -0.00800000037997961
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "Cradle_Wall_Plate",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Speaker_Rear_Shell",
+          "source_faces": 194,
+          "source_quads": 192,
+          "render_triangles": 508,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Fabric_Dome",
+          "source_faces": 706,
+          "source_quads": 704,
+          "render_triangles": 1532,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Cradle_Lower_Arc",
+          "source_faces": 158,
+          "source_quads": 158,
+          "render_triangles": 316,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Cradle_Finger_207",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Cradle_Finger_270",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Cradle_Finger_333",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Microphone_Mute_Switch",
+          "source_faces": 6,
+          "source_quads": 6,
+          "render_triangles": 188,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Status_Light_0",
+          "source_faces": 62,
+          "source_quads": 60,
+          "render_triangles": 156,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Status_Light_1",
+          "source_faces": 62,
+          "source_quads": 60,
+          "render_triangles": 156,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Status_Light_2",
+          "source_faces": 62,
+          "source_quads": 60,
+          "render_triangles": 156,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Status_Light_3",
+          "source_faces": 62,
+          "source_quads": 60,
+          "render_triangles": 156,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Power_Cable",
+          "source_faces": 312,
+          "source_quads": 310,
+          "render_triangles": 636,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 4812,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 13,
+          "shape_keys": {},
+          "material_slots": 13
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 13,
+          "shape_keys": {},
+          "material_slots": 13,
+          "embedded_images": 2,
+          "morph_targets": 0
+        }
+      }
+    },
+    {
+      "device": "09_DALI_Touchscreen_Panel",
+      "source": {
+        "mesh_count": 5,
+        "bounds_min": [
+          -0.09000000357627869,
+          -0.02199999988079071,
+          -0.05999999865889549
+        ],
+        "bounds_max": [
+          0.09000000357627869,
+          0.0,
+          0.05999999865889549
+        ],
+        "names": [
+          "Front_White_Bezel",
+          "Rear_Housing",
+          "Screen_Gasket",
+          "Touchscreen_Display",
+          "Wall_Mount"
+        ],
+        "material_slots": 5,
+        "shape_keys": {},
+        "pivots": {
+          "DALI_Touchscreen_Panel": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "Touch_On": [
+            -0.05900000035762787,
+            -0.021950000897049904,
+            0.017000000923871994
+          ],
+          "Touch_Off": [
+            -0.05900000035762787,
+            -0.021950000897049904,
+            -0.006000000052154064
+          ],
+          "Touch_Brightness": [
+            -0.035999998450279236,
+            -0.021950000897049904,
+            0.0
+          ],
+          "Touch_Colour_Temperature": [
+            -0.014000000432133675,
+            -0.021950000897049904,
+            0.0
+          ],
+          "Touch_Colour_Field": [
+            0.032999999821186066,
+            -0.021950000897049904,
+            0.0
+          ],
+          "Touch_Scene_Task": [
+            -0.052000001072883606,
+            -0.021950000897049904,
+            -0.03400000184774399
+          ],
+          "Touch_Scene_Presentation_1": [
+            0.0,
+            -0.021950000897049904,
+            -0.03400000184774399
+          ],
+          "Touch_Scene_Presentation_2": [
+            0.052000001072883606,
+            -0.021950000897049904,
+            -0.03400000184774399
+          ]
+        }
+      },
+      "mesh_statistics": [
+        {
+          "name": "Wall_Mount",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Rear_Housing",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Front_White_Bezel",
+          "source_faces": 224,
+          "source_quads": 224,
+          "render_triangles": 448,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Screen_Gasket",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        },
+        {
+          "name": "Touchscreen_Display",
+          "source_faces": 98,
+          "source_quads": 96,
+          "render_triangles": 252,
+          "nonmanifold_source_edges": 0,
+          "intentional_decal_surface": false,
+          "degenerate_source_faces": 0
+        }
+      ],
+      "total_render_triangles": 1456,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 5,
+          "shape_keys": {},
+          "material_slots": 5
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 5,
+          "shape_keys": {},
+          "material_slots": 5,
+          "embedded_images": 1,
+          "morph_targets": 0
+        }
+      }
+    }
+  ]
+}

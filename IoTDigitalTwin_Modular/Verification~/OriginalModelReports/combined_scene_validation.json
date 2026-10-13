@@ -1,0 +1,63 @@
+{
+  "reopened": true,
+  "device_collections": {
+    "01_Zigbee_Rotary_Dimmer": 6,
+    "02_Zigbee_Temperature_LCD": 10,
+    "03_ZWave_Temperature_Controller": 4,
+    "04_Security_Camera": 19,
+    "05_Aqara_Bead_Chain_Controller": 16,
+    "06_Roller_Blind_Mechanism": 17,
+    "07_Siemens_BACnet_Device": 8,
+    "08_Nest_Smart_Speaker": 13,
+    "09_DALI_Touchscreen_Panel": 5
+  },
+  "collection_count": 9,
+  "unit_scale_metres": 1.0,
+  "gallery_root_offsets_blender_xyz": {
+    "1": [
+      -0.45,
+      0,
+      0.7
+    ],
+    "2": [
+      -0.15,
+      0,
+      0.7
+    ],
+    "3": [
+      0.15,
+      0,
+      0.7
+    ],
+    "4": [
+      0.45,
+      0,
+      0.7
+    ],
+    "5": [
+      -0.45,
+      0,
+      0.25
+    ],
+    "6": [
+      0,
+      0,
+      -0.15
+    ],
+    "7": [
+      -0.15,
+      0,
+      0.25
+    ],
+    "8": [
+      0.15,
+      0,
+      0.25
+    ],
+    "9": [
+      0.45,
+      0,
+      0.25
+    ]
+  }
+}

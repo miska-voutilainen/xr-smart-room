@@ -1,0 +1,200 @@
+{
+  "id": 2,
+  "stem": "02_Zigbee_Temperature_LCD",
+  "rootName": "Zigbee_Temperature_LCD",
+  "anchors": [
+    {
+      "name": "LCD_Display",
+      "position": {
+        "x": 0.009499997831881046,
+        "y": -4.3655745685100555e-11,
+        "z": 0.01992502249777317
+      }
+    },
+    {
+      "name": "Button_1_Plus",
+      "position": {
+        "x": -0.031700000166893005,
+        "y": 0.02500000037252903,
+        "z": 0.022050000727176666
+      }
+    },
+    {
+      "name": "Button_3_Minus",
+      "position": {
+        "x": -0.031700000166893005,
+        "y": -0.02500000037252903,
+        "z": 0.022050000727176666
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "02_Warm_ABS",
+      "color": {
+        "r": 0.800000011920929,
+        "g": 0.8100000023841858,
+        "b": 0.7549999952316284,
+        "a": 1.0
+      },
+      "roughness": 0.3199999928474426,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "02_Pearl_Rim",
+      "color": {
+        "r": 0.6600000262260437,
+        "g": 0.699999988079071,
+        "b": 0.6600000262260437,
+        "a": 1.0
+      },
+      "roughness": 0.23999999463558197,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "LCD_Display_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.25,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "02_LCD_BaseColor.png",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "02_Plus_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "Icon_Plus.png",
+      "normalTexture": "",
+      "alphaClip": true
+    },
+    {
+      "name": "02_Minus_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "Icon_Minus.png",
+      "normalTexture": "",
+      "alphaClip": true
+    }
+  ],
+  "renderers": [
+    {
+      "name": "Rear_Cover",
+      "materials": [
+        "02_Warm_ABS"
+      ]
+    },
+    {
+      "name": "Front_Rounded_Bezel",
+      "materials": [
+        "02_Warm_ABS"
+      ]
+    },
+    {
+      "name": "Bezel_Seam_Trim",
+      "materials": [
+        "02_Pearl_Rim"
+      ]
+    },
+    {
+      "name": "LCD_Display",
+      "materials": [
+        "LCD_Display_Material"
+      ]
+    },
+    {
+      "name": "Button_1_Plus",
+      "materials": [
+        "02_Warm_ABS"
+      ]
+    },
+    {
+      "name": "Decal_02_Plus",
+      "materials": [
+        "02_Plus_Material"
+      ]
+    },
+    {
+      "name": "Button_2_Mode",
+      "materials": [
+        "02_Warm_ABS"
+      ]
+    },
+    {
+      "name": "Button_3_Minus",
+      "materials": [
+        "02_Warm_ABS"
+      ]
+    },
+    {
+      "name": "Decal_02_Minus",
+      "materials": [
+        "02_Minus_Material"
+      ]
+    },
+    {
+      "name": "Top_Pairing_Button",
+      "materials": [
+        "02_Warm_ABS"
+      ]
+    }
+  ]
+}

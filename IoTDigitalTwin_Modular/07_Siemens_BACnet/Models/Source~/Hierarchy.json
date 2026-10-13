@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Ambient_Sensor",
+    "parent": "Siemens_BACnet_Device",
+    "type": "MESH",
+    "source_position": [
+      0.02200000360608101,
+      -0.024885009974241257,
+      0.026999998837709427
+    ],
+    "unity_position": [
+      -0.02200000360608101,
+      0.026999998837709427,
+      0.024885009974241257
+    ]
+  },
+  {
+    "name": "Decal_07_SIEMENS",
+    "parent": "Siemens_BACnet_Device",
+    "type": "MESH",
+    "source_position": [
+      -0.01600000075995922,
+      -0.02484999969601631,
+      0.029999997466802597
+    ],
+    "unity_position": [
+      0.01600000075995922,
+      0.029999997466802597,
+      0.02484999969601631
+    ]
+  },
+  {
+    "name": "Dot_Display_Assembly",
+    "parent": "Siemens_BACnet_Device",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Front_Shadow_Gasket",
+    "parent": "Siemens_BACnet_Device",
+    "type": "MESH",
+    "source_position": [
+      -5.820766091346741e-11,
+      -0.019950034096837044,
+      4.0745362639427185e-10
+    ],
+    "unity_position": [
+      5.820766091346741e-11,
+      4.0745362639427185e-10,
+      0.019950034096837044
+    ]
+  },
+  {
+    "name": "Grey_Front_Panel",
+    "parent": "Siemens_BACnet_Device",
+    "type": "MESH",
+    "source_position": [
+      -5.820766091346741e-11,
+      -0.023900030180811882,
+      -2.9103830456733704e-10
+    ],
+    "unity_position": [
+      5.820766091346741e-11,
+      -2.9103830456733704e-10,
+      0.023900030180811882
+    ]
+  },
+  {
+    "name": "LED_Dot_Display",
+    "parent": "Dot_Display_Assembly",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Rear_Wall_Plate",
+    "parent": "Siemens_BACnet_Device",
+    "type": "MESH",
+    "source_position": [
+      3.7834979593753815e-10,
+      -0.0034999994095414877,
+      2.6193447411060333e-10
+    ],
+    "unity_position": [
+      -3.7834979593753815e-10,
+      2.6193447411060333e-10,
+      0.0034999994095414877
+    ]
+  },
+  {
+    "name": "Siemens_BACnet_Device",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Status_LED_Green",
+    "parent": "Siemens_BACnet_Device",
+    "type": "MESH",
+    "source_position": [
+      0.0279999952763319,
+      -0.024904998019337654,
+      0.026999998837709427
+    ],
+    "unity_position": [
+      -0.0279999952763319,
+      0.026999998837709427,
+      0.024904998019337654
+    ]
+  },
+  {
+    "name": "White_Rounded_Frame",
+    "parent": "Siemens_BACnet_Device",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.016685714945197105,
+      -8.149073082996949e-10
+    ],
+    "unity_position": [
+      -0.0,
+      -8.149073082996949e-10,
+      0.016685714945197105
+    ]
+  }
+]

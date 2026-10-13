@@ -1,0 +1,287 @@
+[
+  {
+    "name": "Aqara_Bead_Chain_Controller",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "BeadChain_Beads",
+    "parent": "Chain_Assembly",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "BeadChain_Cord",
+    "parent": "Chain_Assembly",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Button_Fascia",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      7.275957614183426e-12,
+      -0.03167503699660301,
+      -0.051000017672777176
+    ],
+    "unity_position": [
+      -7.275957614183426e-12,
+      -0.051000017672777176,
+      0.03167503699660301
+    ]
+  },
+  {
+    "name": "Button_Lower",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.032099999487400055,
+      -0.06199999898672104
+    ],
+    "unity_position": [
+      -0.0,
+      -0.06199999898672104,
+      0.032099999487400055
+    ]
+  },
+  {
+    "name": "Button_Raise",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.032099999487400055,
+      -0.039000000804662704
+    ],
+    "unity_position": [
+      -0.0,
+      -0.039000000804662704,
+      0.032099999487400055
+    ]
+  },
+  {
+    "name": "Button_Recess",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      -2.9103830456733704e-11,
+      -0.03120001032948494,
+      -0.05099999159574509
+    ],
+    "unity_position": [
+      2.9103830456733704e-11,
+      -0.05099999159574509,
+      0.03120001032948494
+    ]
+  },
+  {
+    "name": "Chain_Assembly",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Chain_Drive_Wheel",
+    "parent": "Drive_Sprocket_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Cover_Grip_Ribs",
+    "parent": "Sliding_Drive_Cover",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Decal_05_Aqara",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.031099999323487282,
+      -0.014999999664723873
+    ],
+    "unity_position": [
+      -0.0,
+      -0.014999999664723873,
+      0.031099999323487282
+    ]
+  },
+  {
+    "name": "Decal_05_Lower",
+    "parent": "Button_Lower",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Decal_05_OPEN",
+    "parent": "Sliding_Drive_Cover",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Decal_05_Raise",
+    "parent": "Button_Raise",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Drive_Sprocket_Pivot",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      -0.013000000268220901,
+      0.07100000232458115
+    ],
+    "unity_position": [
+      -0.0,
+      0.07100000232458115,
+      0.013000000268220901
+    ]
+  },
+  {
+    "name": "Motor_Housing",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      -7.275957614183426e-11,
+      -0.01764998957514763,
+      -0.0032537763472646475
+    ],
+    "unity_position": [
+      7.275957614183426e-11,
+      -0.0032537763472646475,
+      0.01764998957514763
+    ]
+  },
+  {
+    "name": "Sliding_Drive_Cover",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.031199999153614044,
+      0.04399999976158142
+    ],
+    "unity_position": [
+      -0.0,
+      0.04399999976158142,
+      0.031199999153614044
+    ]
+  },
+  {
+    "name": "Status_LED",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      -4.547473508864641e-13,
+      -0.03224999085068703,
+      -0.050999995321035385
+    ],
+    "unity_position": [
+      4.547473508864641e-13,
+      -0.050999995321035385,
+      0.03224999085068703
+    ]
+  },
+  {
+    "name": "Wall_Mount_Plate",
+    "parent": "Aqara_Bead_Chain_Controller",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.0019999982323497534,
+      -1.6880221664905548e-09
+    ],
+    "unity_position": [
+      -0.0,
+      -1.6880221664905548e-09,
+      0.0019999982323497534
+    ]
+  }
+]

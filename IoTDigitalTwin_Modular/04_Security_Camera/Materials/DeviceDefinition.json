@@ -1,0 +1,317 @@
+{
+  "id": 4,
+  "stem": "04_Security_Camera",
+  "rootName": "Security_Camera",
+  "anchors": [
+    {
+      "name": "Camera_Tilt_Pivot",
+      "position": {
+        "x": -0.0,
+        "y": 0.014999999664723873,
+        "z": 0.05000000074505806
+      }
+    },
+    {
+      "name": "Weatherproof_Power_Cable",
+      "position": {
+        "x": -0.018285712227225304,
+        "y": -0.0933428555727005,
+        "z": 0.05444284528493881
+      }
+    },
+    {
+      "name": "Connector_Grip_Ribs",
+      "position": {
+        "x": 0.0024999959859997034,
+        "y": -0.09000000357627869,
+        "z": 0.04999999701976776
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "04_Camera_White",
+      "color": {
+        "r": 0.7900000214576721,
+        "g": 0.800000011920929,
+        "b": 0.7649999856948853,
+        "a": 1.0
+      },
+      "roughness": 0.3100000023841858,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "04_Metal",
+      "color": {
+        "r": 0.2800000011920929,
+        "g": 0.30000001192092896,
+        "b": 0.3100000023841858,
+        "a": 1.0
+      },
+      "roughness": 0.27000001072883606,
+      "metallic": 0.699999988079071,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "04_Gloss_Black",
+      "color": {
+        "r": 0.007000000216066837,
+        "g": 0.009999999776482582,
+        "b": 0.014000000432133675,
+        "a": 1.0
+      },
+      "roughness": 0.12999999523162842,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "04_Rubber",
+      "color": {
+        "r": 0.017999999225139618,
+        "g": 0.020999999716877937,
+        "b": 0.024000000208616257,
+        "a": 1.0
+      },
+      "roughness": 0.550000011920929,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "04_Lens_Glass",
+      "color": {
+        "r": 0.0020000000949949026,
+        "g": 0.00800000037997961,
+        "b": 0.012000000104308128,
+        "a": 1.0
+      },
+      "roughness": 0.09000000357627869,
+      "metallic": 0.11999999731779099,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "04_Lens_Coating",
+      "color": {
+        "r": 0.0010000000474974513,
+        "g": 0.0020000000949949026,
+        "b": 0.0020000000949949026,
+        "a": 1.0
+      },
+      "roughness": 0.1599999964237213,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "04_Faceted_Diffuser",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.3199999928474426,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "04_Diffuser_BaseColor.png",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "04_LED_Red",
+      "color": {
+        "r": 0.699999988079071,
+        "g": 0.0020000000949949026,
+        "b": 0.008999999612569809,
+        "a": 1.0
+      },
+      "roughness": 0.30000001192092896,
+      "metallic": 0.0,
+      "emission": 2.0,
+      "emissionColor": {
+        "r": 0.699999988079071,
+        "g": 0.0020000000949949026,
+        "b": 0.008999999612569809,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    }
+  ],
+  "renderers": [
+    {
+      "name": "Wall_Base",
+      "materials": [
+        "04_Camera_White"
+      ]
+    },
+    {
+      "name": "Mount_Screw_-0.041",
+      "materials": [
+        "04_Metal"
+      ]
+    },
+    {
+      "name": "Mount_Screw_0.001",
+      "materials": [
+        "04_Metal"
+      ]
+    },
+    {
+      "name": "Mount_Arm",
+      "materials": [
+        "04_Camera_White"
+      ]
+    },
+    {
+      "name": "Tilt_Joint",
+      "materials": [
+        "04_Camera_White"
+      ]
+    },
+    {
+      "name": "Camera_Housing",
+      "materials": [
+        "04_Camera_White"
+      ]
+    },
+    {
+      "name": "Black_Front_Fascia",
+      "materials": [
+        "04_Gloss_Black"
+      ]
+    },
+    {
+      "name": "Lens_Barrel_Rim",
+      "materials": [
+        "04_Rubber"
+      ]
+    },
+    {
+      "name": "Lens_Metal_Retainer",
+      "materials": [
+        "04_Metal"
+      ]
+    },
+    {
+      "name": "Optical_Lens",
+      "materials": [
+        "04_Lens_Glass"
+      ]
+    },
+    {
+      "name": "Lens_Inner_Aperture",
+      "materials": [
+        "04_Lens_Coating"
+      ]
+    },
+    {
+      "name": "Floodlight_Rim",
+      "materials": [
+        "04_Rubber"
+      ]
+    },
+    {
+      "name": "Floodlight_Diffuser",
+      "materials": [
+        "04_Faceted_Diffuser"
+      ]
+    },
+    {
+      "name": "PIR_Sensor_Window",
+      "materials": [
+        "04_Rubber"
+      ]
+    },
+    {
+      "name": "Status_LED",
+      "materials": [
+        "04_LED_Red"
+      ]
+    },
+    {
+      "name": "Microphone_Port",
+      "materials": [
+        "04_Rubber"
+      ]
+    },
+    {
+      "name": "Weatherproof_Power_Cable",
+      "materials": [
+        "04_Camera_White"
+      ]
+    },
+    {
+      "name": "Weatherproof_Connector",
+      "materials": [
+        "04_Camera_White"
+      ]
+    },
+    {
+      "name": "Connector_Grip_Ribs",
+      "materials": [
+        "04_Camera_White"
+      ]
+    }
+  ]
+}

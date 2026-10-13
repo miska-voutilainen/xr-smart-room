@@ -1,0 +1,209 @@
+{
+  "id": 7,
+  "stem": "07_Siemens_BACnet_Device",
+  "rootName": "Siemens_BACnet_Device",
+  "anchors": [
+    {
+      "name": "Grey_Front_Panel",
+      "position": {
+        "x": 5.820766091346741e-11,
+        "y": -2.9103830456733704e-10,
+        "z": 0.023900030180811882
+      }
+    },
+    {
+      "name": "Ambient_Sensor",
+      "position": {
+        "x": -0.02200000360608101,
+        "y": 0.026999998837709427,
+        "z": 0.024885009974241257
+      }
+    },
+    {
+      "name": "Status_LED_Green",
+      "position": {
+        "x": -0.0279999952763319,
+        "y": 0.026999998837709427,
+        "z": 0.024904998019337654
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "07_White_ABS",
+      "color": {
+        "r": 0.7799999713897705,
+        "g": 0.7900000214576721,
+        "b": 0.7200000286102295,
+        "a": 1.0
+      },
+      "roughness": 0.3400000035762787,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "07_Seam",
+      "color": {
+        "r": 0.05999999865889549,
+        "g": 0.07000000029802322,
+        "b": 0.05999999865889549,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "07_Satin_Grey",
+      "color": {
+        "r": 0.1899999976158142,
+        "g": 0.20000000298023224,
+        "b": 0.17000000178813934,
+        "a": 1.0
+      },
+      "roughness": 0.4399999976158142,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "07_SIEMENS_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "07_Siemens_Logo.png",
+      "normalTexture": "",
+      "alphaClip": true
+    },
+    {
+      "name": "07_LED_Green",
+      "color": {
+        "r": 0.009999999776482582,
+        "g": 0.800000011920929,
+        "b": 0.05999999865889549,
+        "a": 1.0
+      },
+      "roughness": 0.4000000059604645,
+      "metallic": 0.0,
+      "emission": 1.2999999523162842,
+      "emissionColor": {
+        "r": 0.009999999776482582,
+        "g": 0.800000011920929,
+        "b": 0.05999999865889549,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "07_Display_Dots",
+      "color": {
+        "r": 0.699999988079071,
+        "g": 0.6600000262260437,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.4000000059604645,
+      "metallic": 0.0,
+      "emission": 1.399999976158142,
+      "emissionColor": {
+        "r": 0.699999988079071,
+        "g": 0.6600000262260437,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    }
+  ],
+  "renderers": [
+    {
+      "name": "Rear_Wall_Plate",
+      "materials": [
+        "07_White_ABS"
+      ]
+    },
+    {
+      "name": "White_Rounded_Frame",
+      "materials": [
+        "07_White_ABS"
+      ]
+    },
+    {
+      "name": "Front_Shadow_Gasket",
+      "materials": [
+        "07_Seam"
+      ]
+    },
+    {
+      "name": "Grey_Front_Panel",
+      "materials": [
+        "07_Satin_Grey"
+      ]
+    },
+    {
+      "name": "Decal_07_SIEMENS",
+      "materials": [
+        "07_SIEMENS_Material"
+      ]
+    },
+    {
+      "name": "Ambient_Sensor",
+      "materials": [
+        "07_Seam"
+      ]
+    },
+    {
+      "name": "Status_LED_Green",
+      "materials": [
+        "07_LED_Green"
+      ]
+    },
+    {
+      "name": "LED_Dot_Display",
+      "materials": [
+        "07_Display_Dots"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "name": "01_Rear_Mounting_Cover",
+    "parent": "Zigbee_Rotary_Dimmer",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "02_Beveled_Outer_Frame",
+    "parent": "Zigbee_Rotary_Dimmer",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "03_Inset_Square_Plate",
+    "parent": "Zigbee_Rotary_Dimmer",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "04_Recessed_Knob_Collar",
+    "parent": "Zigbee_Rotary_Dimmer",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "05_Rotary_Knob",
+    "parent": "Zigbee_Rotary_Dimmer",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.009999999776482582,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      0.009999999776482582
+    ]
+  },
+  {
+    "name": "06_Removable_Installation_Label",
+    "parent": "Zigbee_Rotary_Dimmer",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Zigbee_Rotary_Dimmer",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Decal_03_Touch_Keys",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.014360000379383564,
+      -0.03400000184774399
+    ],
+    "unity_position": [
+      -0.0,
+      -0.03400000184774399,
+      0.014360000379383564
+    ]
+  },
+  {
+    "name": "Gloss_Front_Frame",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "MESH",
+    "source_position": [
+      1.1641532182693481e-10,
+      -0.012449991889297962,
+      0.002142858225852251
+    ],
+    "unity_position": [
+      -1.1641532182693481e-10,
+      0.002142858225852251,
+      0.012449991889297962
+    ]
+  },
+  {
+    "name": "Rear_Mounting_Case",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.004999998956918716,
+      -1.7462298274040222e-09
+    ],
+    "unity_position": [
+      -0.0,
+      -1.7462298274040222e-09,
+      0.004999998956918716
+    ]
+  },
+  {
+    "name": "Temperature_Display",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "MESH",
+    "source_position": [
+      -1.7462298274040222e-10,
+      -0.012575012631714344,
+      0.004999999422580004
+    ],
+    "unity_position": [
+      1.7462298274040222e-10,
+      0.004999999422580004,
+      0.012575012631714344
+    ]
+  },
+  {
+    "name": "Touch_Down",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      -0.014349999837577343,
+      -0.03099999949336052
+    ],
+    "unity_position": [
+      -0.0,
+      -0.03099999949336052,
+      0.014349999837577343
+    ]
+  },
+  {
+    "name": "Touch_Mode",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "EMPTY",
+    "source_position": [
+      -0.017000000923871994,
+      -0.014349999837577343,
+      -0.03099999949336052
+    ],
+    "unity_position": [
+      0.017000000923871994,
+      -0.03099999949336052,
+      0.014349999837577343
+    ]
+  },
+  {
+    "name": "Touch_Power",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "EMPTY",
+    "source_position": [
+      0.032999999821186066,
+      -0.014349999837577343,
+      -0.03099999949336052
+    ],
+    "unity_position": [
+      -0.032999999821186066,
+      -0.03099999949336052,
+      0.014349999837577343
+    ]
+  },
+  {
+    "name": "Touch_Schedule",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "EMPTY",
+    "source_position": [
+      -0.032999999821186066,
+      -0.014349999837577343,
+      -0.03099999949336052
+    ],
+    "unity_position": [
+      0.032999999821186066,
+      -0.03099999949336052,
+      0.014349999837577343
+    ]
+  },
+  {
+    "name": "Touch_Up",
+    "parent": "ZWave_Temperature_Controller",
+    "type": "EMPTY",
+    "source_position": [
+      0.017000000923871994,
+      -0.014349999837577343,
+      -0.03099999949336052
+    ],
+    "unity_position": [
+      -0.017000000923871994,
+      -0.03099999949336052,
+      0.014349999837577343
+    ]
+  },
+  {
+    "name": "ZWave_Temperature_Controller",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  }
+]

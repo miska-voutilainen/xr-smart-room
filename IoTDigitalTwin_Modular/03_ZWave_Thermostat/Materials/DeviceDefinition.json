@@ -1,0 +1,143 @@
+{
+  "id": 3,
+  "stem": "03_ZWave_Temperature_Controller",
+  "rootName": "ZWave_Temperature_Controller",
+  "anchors": [
+    {
+      "name": "Temperature_Display",
+      "position": {
+        "x": 1.7462298274040222e-10,
+        "y": 0.004999999422580004,
+        "z": 0.012575012631714344
+      }
+    },
+    {
+      "name": "Touch_Schedule",
+      "position": {
+        "x": 0.032999999821186066,
+        "y": -0.03099999949336052,
+        "z": 0.014349999837577343
+      }
+    },
+    {
+      "name": "Touch_Power",
+      "position": {
+        "x": -0.032999999821186066,
+        "y": -0.03099999949336052,
+        "z": 0.014349999837577343
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "03_Rear_ABS",
+      "color": {
+        "r": 0.6800000071525574,
+        "g": 0.699999988079071,
+        "b": 0.6499999761581421,
+        "a": 1.0
+      },
+      "roughness": 0.4000000059604645,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "03_Pearl_Plastic",
+      "color": {
+        "r": 0.75,
+        "g": 0.7900000214576721,
+        "b": 0.7450000047683716,
+        "a": 1.0
+      },
+      "roughness": 0.25,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "Temperature_Display_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.25,
+      "metallic": 0.0,
+      "emission": 0.11999999731779099,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "03_Thermostat_Display.png",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "03_Touch_Keys_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "03_Touch_Key_Legends.png",
+      "normalTexture": "",
+      "alphaClip": true
+    }
+  ],
+  "renderers": [
+    {
+      "name": "Rear_Mounting_Case",
+      "materials": [
+        "03_Rear_ABS"
+      ]
+    },
+    {
+      "name": "Gloss_Front_Frame",
+      "materials": [
+        "03_Pearl_Plastic"
+      ]
+    },
+    {
+      "name": "Temperature_Display",
+      "materials": [
+        "Temperature_Display_Material"
+      ]
+    },
+    {
+      "name": "Decal_03_Touch_Keys",
+      "materials": [
+        "03_Touch_Keys_Material"
+      ]
+    }
+  ]
+}

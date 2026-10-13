@@ -1,0 +1,221 @@
+{
+  "id": 6,
+  "stem": "06_Roller_Blind_Mechanism",
+  "rootName": "Roller_Blind_Mechanism",
+  "anchors": [
+    {
+      "name": "Half_Round_Head_Cassette",
+      "position": {
+        "x": 8.381903171539307e-09,
+        "y": -0.010541749186813831,
+        "z": 0.034999996423721313
+      }
+    },
+    {
+      "name": "Bottom_Endplug_-0.584",
+      "position": {
+        "x": 0.5839999914169312,
+        "y": -0.48399999737739563,
+        "z": 0.061000000685453415
+      }
+    },
+    {
+      "name": "Bottom_Endplug_0.584",
+      "position": {
+        "x": -0.5839999914169312,
+        "y": -0.48399999737739563,
+        "z": 0.061000000685453415
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "06_Casing_White",
+      "color": {
+        "r": 0.75,
+        "g": 0.7599999904632568,
+        "b": 0.699999988079071,
+        "a": 1.0
+      },
+      "roughness": 0.4000000059604645,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "06_Roller_Aluminium",
+      "color": {
+        "r": 0.550000011920929,
+        "g": 0.5699999928474426,
+        "b": 0.5799999833106995,
+        "a": 1.0
+      },
+      "roughness": 0.3199999928474426,
+      "metallic": 0.75,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "06_Blind_Fabric",
+      "color": {
+        "r": 0.4300000071525574,
+        "g": 0.41999998688697815,
+        "b": 0.3700000047683716,
+        "a": 1.0
+      },
+      "roughness": 0.8999999761581421,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "06_Chain",
+      "color": {
+        "r": 0.5699999928474426,
+        "g": 0.5699999928474426,
+        "b": 0.5299999713897705,
+        "a": 1.0
+      },
+      "roughness": 0.4000000059604645,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    }
+  ],
+  "renderers": [
+    {
+      "name": "Wall_Bracket_Left",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Axle_Left",
+      "materials": [
+        "06_Roller_Aluminium"
+      ]
+    },
+    {
+      "name": "Wall_Bracket_Right",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Axle_Right",
+      "materials": [
+        "06_Roller_Aluminium"
+      ]
+    },
+    {
+      "name": "Roller_Tube",
+      "materials": [
+        "06_Roller_Aluminium"
+      ]
+    },
+    {
+      "name": "Rolled_Fabric",
+      "materials": [
+        "06_Blind_Fabric"
+      ]
+    },
+    {
+      "name": "Roll_Endcap_Left",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Roll_Endcap_Right",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Half_Round_Head_Cassette",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Cloth_With_Raise_BlendShape",
+      "materials": [
+        "06_Blind_Fabric"
+      ]
+    },
+    {
+      "name": "Bottom_Rail",
+      "materials": [
+        "06_Roller_Aluminium"
+      ]
+    },
+    {
+      "name": "Bottom_Endplug_-0.584",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Bottom_Endplug_0.584",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Chain_Sprocket",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Clutch_Teeth",
+      "materials": [
+        "06_Casing_White"
+      ]
+    },
+    {
+      "name": "Blind_Chain_Beads",
+      "materials": [
+        "06_Chain"
+      ]
+    },
+    {
+      "name": "Blind_Chain_Cord",
+      "materials": [
+        "06_Chain"
+      ]
+    }
+  ]
+}

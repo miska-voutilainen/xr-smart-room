@@ -1,0 +1,348 @@
+{
+  "front_axis": "+Z",
+  "up_axis": "+Y",
+  "individual_export_roots_at_origin": true,
+  "devices": [
+    {
+      "id": "01",
+      "name": "Zigbee_Rotary_Dimmer",
+      "fbx": "FBX/01_Zigbee_Rotary_Dimmer.fbx",
+      "glb": "GLB/01_Zigbee_Rotary_Dimmer.glb",
+      "blender": "Blender/01_Zigbee_Rotary_Dimmer.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 6,
+      "render_triangles": 5764,
+      "pivots_exported_model_xyz": {
+        "Zigbee_Rotary_Dimmer": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "04_Recessed_Knob_Collar": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "05_Rotary_Knob": [
+          0.0,
+          0.0,
+          0.009999999776482582
+        ]
+      },
+      "blend_shapes": {}
+    },
+    {
+      "id": "02",
+      "name": "Zigbee_Temperature_LCD",
+      "fbx": "FBX/02_Zigbee_Temperature_LCD.fbx",
+      "glb": "GLB/02_Zigbee_Temperature_LCD.glb",
+      "blender": "Blender/02_Zigbee_Temperature_LCD.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 10,
+      "render_triangles": 2348,
+      "pivots_exported_model_xyz": {
+        "Zigbee_Temperature_LCD": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "Button_1_Plus": [
+          0.031700000166893005,
+          0.02500000037252903,
+          0.022050000727176666
+        ],
+        "Button_2_Mode": [
+          0.031700000166893005,
+          0.0,
+          0.022050000727176666
+        ],
+        "Button_3_Minus": [
+          0.031700000166893005,
+          -0.02500000037252903,
+          0.022050000727176666
+        ],
+        "Top_Pairing_Button": [
+          0.0,
+          0.0421999990940094,
+          0.009999999776482582
+        ]
+      },
+      "blend_shapes": {}
+    },
+    {
+      "id": "03",
+      "name": "ZWave_Temperature_Controller",
+      "fbx": "FBX/03_ZWave_Temperature_Controller.fbx",
+      "glb": "GLB/03_ZWave_Temperature_Controller.glb",
+      "blender": "Blender/03_ZWave_Temperature_Controller.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 4,
+      "render_triangles": 954,
+      "pivots_exported_model_xyz": {
+        "ZWave_Temperature_Controller": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "Touch_Schedule": [
+          -0.032999999821186066,
+          -0.03099999949336052,
+          0.014349999837577343
+        ],
+        "Touch_Mode": [
+          -0.017000000923871994,
+          -0.03099999949336052,
+          0.014349999837577343
+        ],
+        "Touch_Down": [
+          0.0,
+          -0.03099999949336052,
+          0.014349999837577343
+        ],
+        "Touch_Up": [
+          0.017000000923871994,
+          -0.03099999949336052,
+          0.014349999837577343
+        ],
+        "Touch_Power": [
+          0.032999999821186066,
+          -0.03099999949336052,
+          0.014349999837577343
+        ]
+      },
+      "blend_shapes": {}
+    },
+    {
+      "id": "04",
+      "name": "Security_Camera",
+      "fbx": "FBX/04_Security_Camera.fbx",
+      "glb": "GLB/04_Security_Camera.glb",
+      "blender": "Blender/04_Security_Camera.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 19,
+      "render_triangles": 6872,
+      "pivots_exported_model_xyz": {
+        "Security_Camera": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "Camera_Tilt_Pivot": [
+          0.0,
+          0.014999999664723873,
+          0.05000000074505806
+        ]
+      },
+      "blend_shapes": {}
+    },
+    {
+      "id": "05",
+      "name": "Aqara_Bead_Chain_Controller",
+      "fbx": "FBX/05_Aqara_Bead_Chain_Controller.fbx",
+      "glb": "GLB/05_Aqara_Bead_Chain_Controller.glb",
+      "blender": "Blender/05_Aqara_Bead_Chain_Controller.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 16,
+      "render_triangles": 12256,
+      "pivots_exported_model_xyz": {
+        "Aqara_Bead_Chain_Controller": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "Button_Recess": [
+          -2.9103830456733704e-11,
+          -0.05099999159574509,
+          0.03120001032948494
+        ],
+        "Button_Fascia": [
+          7.275957614183426e-12,
+          -0.051000017672777176,
+          0.03167503699660301
+        ],
+        "Button_Raise": [
+          0.0,
+          -0.039000000804662704,
+          0.032099999487400055
+        ],
+        "Button_Lower": [
+          0.0,
+          -0.06199999898672104,
+          0.032099999487400055
+        ],
+        "Drive_Sprocket_Pivot": [
+          0.0,
+          0.07100000232458115,
+          0.013000000268220901
+        ],
+        "Chain_Assembly": [
+          0.0,
+          0.0,
+          -0.0
+        ]
+      },
+      "blend_shapes": {}
+    },
+    {
+      "id": "06",
+      "name": "Roller_Blind_Mechanism",
+      "fbx": "FBX/06_Roller_Blind_Mechanism.fbx",
+      "glb": "GLB/06_Roller_Blind_Mechanism.glb",
+      "blender": "Blender/06_Roller_Blind_Mechanism.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 17,
+      "render_triangles": 33244,
+      "pivots_exported_model_xyz": {
+        "Roller_Blind_Mechanism": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "Roller_Rotation_Pivot": [
+          0.0,
+          -0.029999999329447746,
+          0.03500000014901161
+        ],
+        "Bottom_Rail_Pivot": [
+          0.0,
+          -0.48399999737739563,
+          0.061000000685453415
+        ],
+        "Chain_Clutch_Pivot": [
+          0.6200000047683716,
+          -0.029999999329447746,
+          0.03500000014901161
+        ],
+        "Chain_Loop_Assembly": [
+          0.0,
+          0.0,
+          -0.0
+        ]
+      },
+      "blend_shapes": {
+        "Cloth_With_Raise_BlendShape": [
+          "Basis",
+          "Raise_Blind"
+        ]
+      }
+    },
+    {
+      "id": "07",
+      "name": "Siemens_BACnet_Device",
+      "fbx": "FBX/07_Siemens_BACnet_Device.fbx",
+      "glb": "GLB/07_Siemens_BACnet_Device.glb",
+      "blender": "Blender/07_Siemens_BACnet_Device.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 8,
+      "render_triangles": 3938,
+      "pivots_exported_model_xyz": {
+        "Siemens_BACnet_Device": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "Dot_Display_Assembly": [
+          0.0,
+          0.0,
+          -0.0
+        ]
+      },
+      "blend_shapes": {}
+    },
+    {
+      "id": "08",
+      "name": "Nest_Smart_Speaker",
+      "fbx": "FBX/08_Nest_Smart_Speaker.fbx",
+      "glb": "GLB/08_Nest_Smart_Speaker.glb",
+      "blender": "Blender/08_Nest_Smart_Speaker.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 13,
+      "render_triangles": 4812,
+      "pivots_exported_model_xyz": {
+        "Nest_Smart_Speaker": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "Speaker_Body_Pivot": [
+          0.0,
+          0.0,
+          0.02500000037252903
+        ],
+        "Microphone_Mute_Switch": [
+          0.04500000178813934,
+          -0.00800000037997961,
+          0.014000000432133675
+        ]
+      },
+      "blend_shapes": {}
+    },
+    {
+      "id": "09",
+      "name": "DALI_Touchscreen_Panel",
+      "fbx": "FBX/09_DALI_Touchscreen_Panel.fbx",
+      "glb": "GLB/09_DALI_Touchscreen_Panel.glb",
+      "blender": "Blender/09_DALI_Touchscreen_Panel.blend",
+      "units": "metres",
+      "dimensions_estimated": true,
+      "mesh_objects": 5,
+      "render_triangles": 1456,
+      "pivots_exported_model_xyz": {
+        "DALI_Touchscreen_Panel": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "Touch_On": [
+          -0.05900000035762787,
+          0.017000000923871994,
+          0.021950000897049904
+        ],
+        "Touch_Off": [
+          -0.05900000035762787,
+          -0.006000000052154064,
+          0.021950000897049904
+        ],
+        "Touch_Brightness": [
+          -0.035999998450279236,
+          0.0,
+          0.021950000897049904
+        ],
+        "Touch_Colour_Temperature": [
+          -0.014000000432133675,
+          0.0,
+          0.021950000897049904
+        ],
+        "Touch_Colour_Field": [
+          0.032999999821186066,
+          0.0,
+          0.021950000897049904
+        ],
+        "Touch_Scene_Task": [
+          -0.052000001072883606,
+          -0.03400000184774399,
+          0.021950000897049904
+        ],
+        "Touch_Scene_Presentation_1": [
+          0.0,
+          -0.03400000184774399,
+          0.021950000897049904
+        ],
+        "Touch_Scene_Presentation_2": [
+          0.052000001072883606,
+          -0.03400000184774399,
+          0.021950000897049904
+        ]
+      },
+      "blend_shapes": {}
+    }
+  ]
+}

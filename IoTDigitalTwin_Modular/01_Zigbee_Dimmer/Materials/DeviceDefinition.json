@@ -1,0 +1,130 @@
+{
+  "id": 1,
+  "stem": "01_Zigbee_Rotary_Dimmer",
+  "rootName": "Zigbee_Rotary_Dimmer",
+  "anchors": [],
+  "materials": [
+    {
+      "name": "ABS_Rear_Cover",
+      "color": {
+        "r": 0.5600000023841858,
+        "g": 0.574999988079071,
+        "b": 0.5400000214576721,
+        "a": 1.0
+      },
+      "roughness": 0.46000000834465027,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "ABS_Warm_White",
+      "color": {
+        "r": 0.7799999713897705,
+        "g": 0.7850000262260437,
+        "b": 0.7279999852180481,
+        "a": 1.0
+      },
+      "roughness": 0.3100000023841858,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "Collar_Charcoal",
+      "color": {
+        "r": 0.06199999898672104,
+        "g": 0.07100000232458115,
+        "b": 0.06700000166893005,
+        "a": 1.0
+      },
+      "roughness": 0.47999998927116394,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "Installation_Label",
+      "color": {
+        "r": 0.800000011920929,
+        "g": 0.800000011920929,
+        "b": 0.7400000095367432,
+        "a": 1.0
+      },
+      "roughness": 0.6200000047683716,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "Dimmer_InstallationLabel_BaseColor.png",
+      "normalTexture": "",
+      "alphaClip": false
+    }
+  ],
+  "renderers": [
+    {
+      "name": "01_Rear_Mounting_Cover",
+      "materials": [
+        "ABS_Rear_Cover"
+      ]
+    },
+    {
+      "name": "02_Beveled_Outer_Frame",
+      "materials": [
+        "ABS_Warm_White"
+      ]
+    },
+    {
+      "name": "03_Inset_Square_Plate",
+      "materials": [
+        "ABS_Warm_White"
+      ]
+    },
+    {
+      "name": "04_Recessed_Knob_Collar",
+      "materials": [
+        "Collar_Charcoal"
+      ]
+    },
+    {
+      "name": "05_Rotary_Knob",
+      "materials": [
+        "ABS_Warm_White"
+      ]
+    },
+    {
+      "name": "06_Removable_Installation_Label",
+      "materials": [
+        "Installation_Label"
+      ]
+    }
+  ]
+}

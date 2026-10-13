@@ -1,0 +1,149 @@
+{
+  "id": 9,
+  "stem": "09_DALI_Touchscreen_Panel",
+  "rootName": "DALI_Touchscreen_Panel",
+  "anchors": [
+    {
+      "name": "Touch_On",
+      "position": {
+        "x": 0.05900000035762787,
+        "y": 0.017000000923871994,
+        "z": 0.021950000897049904
+      }
+    },
+    {
+      "name": "Touch_Scene_Task",
+      "position": {
+        "x": 0.052000001072883606,
+        "y": -0.03400000184774399,
+        "z": 0.021950000897049904
+      }
+    },
+    {
+      "name": "Touch_Scene_Presentation_2",
+      "position": {
+        "x": -0.052000001072883606,
+        "y": -0.03400000184774399,
+        "z": 0.021950000897049904
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "09_Dark_Rear",
+      "color": {
+        "r": 0.03999999910593033,
+        "g": 0.03799999877810478,
+        "b": 0.03200000151991844,
+        "a": 1.0
+      },
+      "roughness": 0.46000000834465027,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "09_Pearl_Bezel",
+      "color": {
+        "r": 0.6899999976158142,
+        "g": 0.7200000286102295,
+        "b": 0.6899999976158142,
+        "a": 1.0
+      },
+      "roughness": 0.2800000011920929,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "09_Screen_Gasket",
+      "color": {
+        "r": 0.07000000029802322,
+        "g": 0.09000000357627869,
+        "b": 0.09000000357627869,
+        "a": 1.0
+      },
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "Touchscreen_Display_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.25,
+      "metallic": 0.0,
+      "emission": 0.3799999952316284,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "09_DALI_Touchscreen_BaseColor.png",
+      "normalTexture": "",
+      "alphaClip": false
+    }
+  ],
+  "renderers": [
+    {
+      "name": "Wall_Mount",
+      "materials": [
+        "09_Dark_Rear"
+      ]
+    },
+    {
+      "name": "Rear_Housing",
+      "materials": [
+        "09_Dark_Rear"
+      ]
+    },
+    {
+      "name": "Front_White_Bezel",
+      "materials": [
+        "09_Pearl_Bezel"
+      ]
+    },
+    {
+      "name": "Screen_Gasket",
+      "materials": [
+        "09_Screen_Gasket"
+      ]
+    },
+    {
+      "name": "Touchscreen_Display",
+      "materials": [
+        "Touchscreen_Display_Material"
+      ]
+    }
+  ]
+}

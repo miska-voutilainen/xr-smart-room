@@ -1,0 +1,317 @@
+[
+  {
+    "name": "Black_Front_Fascia",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Camera_Housing",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Camera_Tilt_Pivot",
+    "parent": "Security_Camera",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      -0.05000000074505806,
+      0.014999999664723873
+    ],
+    "unity_position": [
+      -0.0,
+      0.014999999664723873,
+      0.05000000074505806
+    ]
+  },
+  {
+    "name": "Connector_Grip_Ribs",
+    "parent": "Security_Camera",
+    "type": "MESH",
+    "source_position": [
+      -0.0024999959859997034,
+      -0.04999999701976776,
+      -0.09000000357627869
+    ],
+    "unity_position": [
+      0.0024999959859997034,
+      -0.09000000357627869,
+      0.04999999701976776
+    ]
+  },
+  {
+    "name": "Floodlight_Diffuser",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Floodlight_Rim",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Lens_Barrel_Rim",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Lens_Inner_Aperture",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Lens_Metal_Retainer",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Microphone_Port",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Mount_Arm",
+    "parent": "Security_Camera",
+    "type": "MESH",
+    "source_position": [
+      -2.9103830456733704e-11,
+      -0.025999998673796654,
+      -0.008000004105269909
+    ],
+    "unity_position": [
+      2.9103830456733704e-11,
+      -0.008000004105269909,
+      0.025999998673796654
+    ]
+  },
+  {
+    "name": "Mount_Screw_-0.041",
+    "parent": "Security_Camera",
+    "type": "MESH",
+    "source_position": [
+      9.701277108031814e-12,
+      -0.00850000325590372,
+      -0.04100000113248825
+    ],
+    "unity_position": [
+      -9.701277108031814e-12,
+      -0.04100000113248825,
+      0.00850000325590372
+    ]
+  },
+  {
+    "name": "Mount_Screw_0.001",
+    "parent": "Security_Camera",
+    "type": "MESH",
+    "source_position": [
+      9.701277108031814e-12,
+      -0.00850000325590372,
+      0.0010000001639127731
+    ],
+    "unity_position": [
+      -9.701277108031814e-12,
+      0.0010000001639127731,
+      0.00850000325590372
+    ]
+  },
+  {
+    "name": "Optical_Lens",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "PIR_Sensor_Window",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Security_Camera",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Status_LED",
+    "parent": "Camera_Tilt_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Tilt_Joint",
+    "parent": "Security_Camera",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.04399999976158142,
+      0.009999999776482582
+    ],
+    "unity_position": [
+      -0.0,
+      0.009999999776482582,
+      0.04399999976158142
+    ]
+  },
+  {
+    "name": "Wall_Base",
+    "parent": "Security_Camera",
+    "type": "MESH",
+    "source_position": [
+      -1.6007106751203537e-10,
+      -0.003999996464699507,
+      -0.020000003278255463
+    ],
+    "unity_position": [
+      1.6007106751203537e-10,
+      -0.020000003278255463,
+      0.003999996464699507
+    ]
+  },
+  {
+    "name": "Weatherproof_Connector",
+    "parent": "Security_Camera",
+    "type": "MESH",
+    "source_position": [
+      9.313225746154785e-10,
+      -0.04999999329447746,
+      -0.0899999737739563
+    ],
+    "unity_position": [
+      -9.313225746154785e-10,
+      -0.0899999737739563,
+      0.04999999329447746
+    ]
+  },
+  {
+    "name": "Weatherproof_Power_Cable",
+    "parent": "Security_Camera",
+    "type": "MESH",
+    "source_position": [
+      0.018285712227225304,
+      -0.05444284528493881,
+      -0.0933428555727005
+    ],
+    "unity_position": [
+      -0.018285712227225304,
+      -0.0933428555727005,
+      0.05444284528493881
+    ]
+  }
+]

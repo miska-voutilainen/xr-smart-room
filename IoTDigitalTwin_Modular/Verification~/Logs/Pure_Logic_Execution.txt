@@ -1,0 +1,1 @@
+PASS: 8329 pure C# assertions (capsule motion, loop continuity, blind synchronization, clamping, digits, island connectivity).

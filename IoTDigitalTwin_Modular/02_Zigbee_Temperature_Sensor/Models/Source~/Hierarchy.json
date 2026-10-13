@@ -1,0 +1,167 @@
+[
+  {
+    "name": "Bezel_Seam_Trim",
+    "parent": "Zigbee_Temperature_LCD",
+    "type": "MESH",
+    "source_position": [
+      6.652304401777442e-11,
+      -0.015871427953243256,
+      2.744075522365108e-10
+    ],
+    "unity_position": [
+      -6.652304401777442e-11,
+      2.744075522365108e-10,
+      0.015871427953243256
+    ]
+  },
+  {
+    "name": "Button_1_Plus",
+    "parent": "Zigbee_Temperature_LCD",
+    "type": "MESH",
+    "source_position": [
+      0.031700000166893005,
+      -0.022050000727176666,
+      0.02500000037252903
+    ],
+    "unity_position": [
+      -0.031700000166893005,
+      0.02500000037252903,
+      0.022050000727176666
+    ]
+  },
+  {
+    "name": "Button_2_Mode",
+    "parent": "Zigbee_Temperature_LCD",
+    "type": "MESH",
+    "source_position": [
+      0.031700000166893005,
+      -0.022050000727176666,
+      0.0
+    ],
+    "unity_position": [
+      -0.031700000166893005,
+      0.0,
+      0.022050000727176666
+    ]
+  },
+  {
+    "name": "Button_3_Minus",
+    "parent": "Zigbee_Temperature_LCD",
+    "type": "MESH",
+    "source_position": [
+      0.031700000166893005,
+      -0.022050000727176666,
+      -0.02500000037252903
+    ],
+    "unity_position": [
+      -0.031700000166893005,
+      -0.02500000037252903,
+      0.022050000727176666
+    ]
+  },
+  {
+    "name": "Decal_02_Minus",
+    "parent": "Button_3_Minus",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Decal_02_Plus",
+    "parent": "Button_1_Plus",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Front_Rounded_Bezel",
+    "parent": "Zigbee_Temperature_LCD",
+    "type": "MESH",
+    "source_position": [
+      -0.004071428440511227,
+      -0.019400009885430336,
+      -6.153381693074778e-10
+    ],
+    "unity_position": [
+      0.004071428440511227,
+      -6.153381693074778e-10,
+      0.019400009885430336
+    ]
+  },
+  {
+    "name": "LCD_Display",
+    "parent": "Zigbee_Temperature_LCD",
+    "type": "MESH",
+    "source_position": [
+      -0.009499997831881046,
+      -0.01992502249777317,
+      -4.3655745685100555e-11
+    ],
+    "unity_position": [
+      0.009499997831881046,
+      -4.3655745685100555e-11,
+      0.01992502249777317
+    ]
+  },
+  {
+    "name": "Rear_Cover",
+    "parent": "Zigbee_Temperature_LCD",
+    "type": "MESH",
+    "source_position": [
+      -5.820766091346741e-11,
+      -0.007999993860721588,
+      7.275957614183426e-11
+    ],
+    "unity_position": [
+      5.820766091346741e-11,
+      7.275957614183426e-11,
+      0.007999993860721588
+    ]
+  },
+  {
+    "name": "Top_Pairing_Button",
+    "parent": "Zigbee_Temperature_LCD",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      -0.009999999776482582,
+      0.0421999990940094
+    ],
+    "unity_position": [
+      -0.0,
+      0.0421999990940094,
+      0.009999999776482582
+    ]
+  },
+  {
+    "name": "Zigbee_Temperature_LCD",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  }
+]

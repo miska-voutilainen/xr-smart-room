@@ -1,0 +1,197 @@
+{
+  "id": 8,
+  "stem": "08_Nest_Smart_Speaker",
+  "rootName": "Nest_Smart_Speaker",
+  "anchors": [
+    {
+      "name": "Cradle_Finger_207",
+      "position": {
+        "x": 0.04187731072306633,
+        "y": -0.021337557584047318,
+        "z": 0.027499999850988388
+      }
+    },
+    {
+      "name": "Cradle_Finger_333",
+      "position": {
+        "x": -0.04187731072306633,
+        "y": -0.021337557584047318,
+        "z": 0.027499999850988388
+      }
+    },
+    {
+      "name": "Power_Cable",
+      "position": {
+        "x": 0.07285485416650772,
+        "y": -0.05117744207382202,
+        "z": 0.011403225362300873
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "08_Cradle_Black",
+      "color": {
+        "r": 0.013000000268220901,
+        "g": 0.01600000075995922,
+        "b": 0.017000000923871994,
+        "a": 1.0
+      },
+      "roughness": 0.5199999809265137,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "08_Chalk_Plastic",
+      "color": {
+        "r": 0.699999988079071,
+        "g": 0.7200000286102295,
+        "b": 0.6800000071525574,
+        "a": 1.0
+      },
+      "roughness": 0.4000000059604645,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "08_Woven_Fabric",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.9200000166893005,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "08_Fabric_BaseColor.png",
+      "normalTexture": "08_Fabric_Normal.png",
+      "alphaClip": false
+    },
+    {
+      "name": "08_LED_Diffuser",
+      "color": {
+        "r": 0.5799999833106995,
+        "g": 0.6000000238418579,
+        "b": 0.5699999928474426,
+        "a": 1.0
+      },
+      "roughness": 0.699999988079071,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    }
+  ],
+  "renderers": [
+    {
+      "name": "Cradle_Wall_Plate",
+      "materials": [
+        "08_Cradle_Black"
+      ]
+    },
+    {
+      "name": "Speaker_Rear_Shell",
+      "materials": [
+        "08_Chalk_Plastic"
+      ]
+    },
+    {
+      "name": "Fabric_Dome",
+      "materials": [
+        "08_Woven_Fabric"
+      ]
+    },
+    {
+      "name": "Cradle_Lower_Arc",
+      "materials": [
+        "08_Cradle_Black"
+      ]
+    },
+    {
+      "name": "Cradle_Finger_207",
+      "materials": [
+        "08_Cradle_Black"
+      ]
+    },
+    {
+      "name": "Cradle_Finger_270",
+      "materials": [
+        "08_Cradle_Black"
+      ]
+    },
+    {
+      "name": "Cradle_Finger_333",
+      "materials": [
+        "08_Cradle_Black"
+      ]
+    },
+    {
+      "name": "Microphone_Mute_Switch",
+      "materials": [
+        "08_Chalk_Plastic"
+      ]
+    },
+    {
+      "name": "Status_Light_0",
+      "materials": [
+        "08_LED_Diffuser"
+      ]
+    },
+    {
+      "name": "Status_Light_1",
+      "materials": [
+        "08_LED_Diffuser"
+      ]
+    },
+    {
+      "name": "Status_Light_2",
+      "materials": [
+        "08_LED_Diffuser"
+      ]
+    },
+    {
+      "name": "Status_Light_3",
+      "materials": [
+        "08_LED_Diffuser"
+      ]
+    },
+    {
+      "name": "Power_Cable",
+      "materials": [
+        "08_Chalk_Plastic"
+      ]
+    }
+  ]
+}

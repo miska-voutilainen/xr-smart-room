@@ -1,0 +1,274 @@
+{
+  "id": 5,
+  "stem": "05_Aqara_Bead_Chain_Controller",
+  "rootName": "Aqara_Bead_Chain_Controller",
+  "anchors": [],
+  "materials": [
+    {
+      "name": "05_Ivory_ABS",
+      "color": {
+        "r": 0.7799999713897705,
+        "g": 0.7850000262260437,
+        "b": 0.699999988079071,
+        "a": 1.0
+      },
+      "roughness": 0.36000001430511475,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "05_OPEN_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "05_Open_Legend.png",
+      "normalTexture": "",
+      "alphaClip": true
+    },
+    {
+      "name": "05_Aqara_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "05_Aqara_Logo.png",
+      "normalTexture": "",
+      "alphaClip": true
+    },
+    {
+      "name": "05_Seam",
+      "color": {
+        "r": 0.15000000596046448,
+        "g": 0.1599999964237213,
+        "b": 0.14000000059604645,
+        "a": 1.0
+      },
+      "roughness": 0.6200000047683716,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "05_Raise_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "Icon_Up.png",
+      "normalTexture": "",
+      "alphaClip": true
+    },
+    {
+      "name": "05_Lower_Material",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "roughness": 0.6000000238418579,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "Icon_Down.png",
+      "normalTexture": "",
+      "alphaClip": true
+    },
+    {
+      "name": "05_LED",
+      "color": {
+        "r": 0.05999999865889549,
+        "g": 0.07999999821186066,
+        "b": 0.05999999865889549,
+        "a": 1.0
+      },
+      "roughness": 0.4000000059604645,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    },
+    {
+      "name": "05_Chain_Polymer",
+      "color": {
+        "r": 0.3799999952316284,
+        "g": 0.4000000059604645,
+        "b": 0.3700000047683716,
+        "a": 1.0
+      },
+      "roughness": 0.3799999952316284,
+      "metallic": 0.0,
+      "emission": 0.0,
+      "emissionColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1
+      },
+      "texture": "",
+      "normalTexture": "",
+      "alphaClip": false
+    }
+  ],
+  "renderers": [
+    {
+      "name": "Wall_Mount_Plate",
+      "materials": [
+        "05_Ivory_ABS"
+      ]
+    },
+    {
+      "name": "Motor_Housing",
+      "materials": [
+        "05_Ivory_ABS"
+      ]
+    },
+    {
+      "name": "Sliding_Drive_Cover",
+      "materials": [
+        "05_Ivory_ABS"
+      ]
+    },
+    {
+      "name": "Cover_Grip_Ribs",
+      "materials": [
+        "05_Ivory_ABS"
+      ]
+    },
+    {
+      "name": "Decal_05_OPEN",
+      "materials": [
+        "05_OPEN_Material"
+      ]
+    },
+    {
+      "name": "Decal_05_Aqara",
+      "materials": [
+        "05_Aqara_Material"
+      ]
+    },
+    {
+      "name": "Button_Recess",
+      "materials": [
+        "05_Seam"
+      ]
+    },
+    {
+      "name": "Button_Fascia",
+      "materials": [
+        "05_Ivory_ABS"
+      ]
+    },
+    {
+      "name": "Button_Raise",
+      "materials": [
+        "05_Ivory_ABS"
+      ]
+    },
+    {
+      "name": "Decal_05_Raise",
+      "materials": [
+        "05_Raise_Material"
+      ]
+    },
+    {
+      "name": "Button_Lower",
+      "materials": [
+        "05_Ivory_ABS"
+      ]
+    },
+    {
+      "name": "Decal_05_Lower",
+      "materials": [
+        "05_Lower_Material"
+      ]
+    },
+    {
+      "name": "Status_LED",
+      "materials": [
+        "05_LED"
+      ]
+    },
+    {
+      "name": "Chain_Drive_Wheel",
+      "materials": [
+        "05_Ivory_ABS"
+      ]
+    },
+    {
+      "name": "BeadChain_Beads",
+      "materials": [
+        "05_Chain_Polymer"
+      ]
+    },
+    {
+      "name": "BeadChain_Cord",
+      "materials": [
+        "05_Chain_Polymer"
+      ]
+    }
+  ]
+}

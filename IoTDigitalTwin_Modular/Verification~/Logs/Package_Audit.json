@@ -1,0 +1,655 @@
+{
+  "checks": [
+    {
+      "check": "01_Zigbee_Dimmer preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer texture Dimmer_InstallationLabel_BaseColor.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor texture 02_LCD_BaseColor.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor texture Icon_Plus.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor texture Icon_Minus.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat texture 03_Thermostat_Display.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat texture 03_Touch_Key_Legends.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera texture 04_Diffuser_BaseColor.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "04_Security_Camera hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller texture 05_Open_Legend.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller texture 05_Aqara_Logo.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller texture Icon_Up.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller texture Icon_Down.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "05_Aqara_Controller hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "06_Roller_Blind hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet texture 07_Siemens_Logo.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "07_Siemens_BACnet hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker texture 08_Fabric_BaseColor.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker texture 08_Fabric_Normal.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "08_Nest_Speaker hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen preserved blend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen preserved fbx",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen preserved glb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen texture 09_DALI_Touchscreen_BaseColor.png",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen Models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen Materials",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen Textures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen Scripts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen Prefabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen Animations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen Previews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen complete documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen hierarchy documented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "combined Blender project unchanged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Blender validation passed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "all offline checks passed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no old Unity import paths",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no Unity YAML placeholders",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "test doubles excluded from Unity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "unique source GUIDs",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "unityEditorTested": false
+}

@@ -1,0 +1,80 @@
+{
+  "actualUnityEditorRun": false,
+  "tests": [
+    {
+      "check": "FullLibrary_CSharp_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "01_Zigbee_Dimmer_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "02_Zigbee_Temperature_Sensor_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "03_ZWave_Thermostat_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "04_Security_Camera_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "05_Aqara_Controller_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "06_Roller_Blind_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "07_Siemens_BACnet_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "08_Nest_Speaker_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "09_DALI_Touchscreen_Independent_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "InputSystem_Branch_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "Pure_Logic_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "Pure_Logic_Execution",
+      "passed": true,
+      "output": "PASS: 8329 pure C# assertions (capsule motion, loop continuity, blind synchronization, clamping, digits, island connectivity)."
+    },
+    {
+      "check": "Controller_Logic_Compilation",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "check": "Controller_Logic_Execution",
+      "passed": true,
+      "output": "PASS: 59 controller logic assertions with test doubles. NOT actual Unity Play Mode, rendering, physics or FBX import tests."
+    }
+  ]
+}

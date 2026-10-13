@@ -1,0 +1,212 @@
+[
+  {
+    "name": "DALI_Touchscreen_Panel",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Front_White_Bezel",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "MESH",
+    "source_position": [
+      8.315380606305212e-10,
+      -0.020271440967917442,
+      -1.4967685424416288e-10
+    ],
+    "unity_position": [
+      -8.315380606305212e-10,
+      -1.4967685424416288e-10,
+      0.020271440967917442
+    ]
+  },
+  {
+    "name": "Rear_Housing",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "MESH",
+    "source_position": [
+      7.566995918750763e-10,
+      -0.011600002646446228,
+      -2.764863893389702e-09
+    ],
+    "unity_position": [
+      -7.566995918750763e-10,
+      -2.764863893389702e-09,
+      0.011600002646446228
+    ]
+  },
+  {
+    "name": "Screen_Gasket",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "MESH",
+    "source_position": [
+      5.820766091346741e-11,
+      -0.020274993032217026,
+      -4.94765117764473e-10
+    ],
+    "unity_position": [
+      -5.820766091346741e-11,
+      -4.94765117764473e-10,
+      0.020274993032217026
+    ]
+  },
+  {
+    "name": "Touch_Brightness",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "EMPTY",
+    "source_position": [
+      -0.035999998450279236,
+      -0.021950000897049904,
+      0.0
+    ],
+    "unity_position": [
+      0.035999998450279236,
+      0.0,
+      0.021950000897049904
+    ]
+  },
+  {
+    "name": "Touch_Colour_Field",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "EMPTY",
+    "source_position": [
+      0.032999999821186066,
+      -0.021950000897049904,
+      0.0
+    ],
+    "unity_position": [
+      -0.032999999821186066,
+      0.0,
+      0.021950000897049904
+    ]
+  },
+  {
+    "name": "Touch_Colour_Temperature",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "EMPTY",
+    "source_position": [
+      -0.014000000432133675,
+      -0.021950000897049904,
+      0.0
+    ],
+    "unity_position": [
+      0.014000000432133675,
+      0.0,
+      0.021950000897049904
+    ]
+  },
+  {
+    "name": "Touch_Off",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "EMPTY",
+    "source_position": [
+      -0.05900000035762787,
+      -0.021950000897049904,
+      -0.006000000052154064
+    ],
+    "unity_position": [
+      0.05900000035762787,
+      -0.006000000052154064,
+      0.021950000897049904
+    ]
+  },
+  {
+    "name": "Touch_On",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "EMPTY",
+    "source_position": [
+      -0.05900000035762787,
+      -0.021950000897049904,
+      0.017000000923871994
+    ],
+    "unity_position": [
+      0.05900000035762787,
+      0.017000000923871994,
+      0.021950000897049904
+    ]
+  },
+  {
+    "name": "Touch_Scene_Presentation_1",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      -0.021950000897049904,
+      -0.03400000184774399
+    ],
+    "unity_position": [
+      -0.0,
+      -0.03400000184774399,
+      0.021950000897049904
+    ]
+  },
+  {
+    "name": "Touch_Scene_Presentation_2",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "EMPTY",
+    "source_position": [
+      0.052000001072883606,
+      -0.021950000897049904,
+      -0.03400000184774399
+    ],
+    "unity_position": [
+      -0.052000001072883606,
+      -0.03400000184774399,
+      0.021950000897049904
+    ]
+  },
+  {
+    "name": "Touch_Scene_Task",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "EMPTY",
+    "source_position": [
+      -0.052000001072883606,
+      -0.021950000897049904,
+      -0.03400000184774399
+    ],
+    "unity_position": [
+      0.052000001072883606,
+      -0.03400000184774399,
+      0.021950000897049904
+    ]
+  },
+  {
+    "name": "Touchscreen_Display",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "MESH",
+    "source_position": [
+      8.149072527885437e-10,
+      -0.02175000123679638,
+      -4.3655745685100555e-10
+    ],
+    "unity_position": [
+      -8.149072527885437e-10,
+      -4.3655745685100555e-10,
+      0.02175000123679638
+    ]
+  },
+  {
+    "name": "Wall_Mount",
+    "parent": "DALI_Touchscreen_Panel",
+    "type": "MESH",
+    "source_position": [
+      2.9103830456733704e-11,
+      -0.0024999985471367836,
+      0.0
+    ],
+    "unity_position": [
+      -2.9103830456733704e-11,
+      0.0,
+      0.0024999985471367836
+    ]
+  }
+]

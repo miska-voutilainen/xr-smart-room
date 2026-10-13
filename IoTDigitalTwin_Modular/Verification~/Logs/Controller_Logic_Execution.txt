@@ -1,0 +1,1 @@
+PASS: 59 controller logic assertions with test doubles. NOT actual Unity Play Mode, rendering, physics or FBX import tests.

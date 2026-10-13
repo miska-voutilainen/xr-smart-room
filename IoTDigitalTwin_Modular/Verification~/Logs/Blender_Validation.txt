@@ -1,0 +1,86 @@
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.06s
+PASS 01_Zigbee_Dimmer
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.06s
+PASS 02_Zigbee_Temperature_Sensor
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.01s
+PASS 03_ZWave_Thermostat
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.07s
+PASS 04_Security_Camera
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.10s
+PASS 05_Aqara_Controller
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.25s
+PASS 06_Roller_Blind
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.05s
+PASS 07_Siemens_BACnet
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.08s
+PASS 08_Nest_Speaker
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+socket(): Operation not permitted
+FBX version: 7400
+Data are loaded, start creating Blender stuff
+glTF import finished in 0.03s
+PASS 09_DALI_Touchscreen
+Blender 4.0.2
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/01_Zigbee_Dimmer/Models/Source~/01_Zigbee_Rotary_Dimmer.blend"
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/02_Zigbee_Temperature_Sensor/Models/Source~/02_Zigbee_Temperature_LCD.blend"
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/03_ZWave_Thermostat/Models/Source~/03_ZWave_Temperature_Controller.blend"
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/04_Security_Camera/Models/Source~/04_Security_Camera.blend"
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/05_Aqara_Controller/Models/Source~/05_Aqara_Bead_Chain_Controller.blend"
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/06_Roller_Blind/Models/Source~/06_Roller_Blind_Mechanism.blend"
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/07_Siemens_BACnet/Models/Source~/07_Siemens_BACnet_Device.blend"
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/08_Nest_Speaker/Models/Source~/08_Nest_Smart_Speaker.blend"
+Read blend: "/workspace/scratch/d8fd0d029ea2/IoTDigitalTwin_Modular/09_DALI_Touchscreen/Models/Source~/09_DALI_Touchscreen_Panel.blend"
+
+Blender quit

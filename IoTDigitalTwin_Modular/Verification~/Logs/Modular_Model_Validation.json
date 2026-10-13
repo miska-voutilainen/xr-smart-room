@@ -1,0 +1,177 @@
+{
+  "unityEditorTested": false,
+  "blenderVersion": "4.0.2",
+  "devices": [
+    {
+      "device": "01_Zigbee_Dimmer",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 6,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 6,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    },
+    {
+      "device": "02_Zigbee_Temperature_Sensor",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 10,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 10,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    },
+    {
+      "device": "03_ZWave_Thermostat",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 4,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 4,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    },
+    {
+      "device": "04_Security_Camera",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 19,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 19,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    },
+    {
+      "device": "05_Aqara_Controller",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 16,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 16,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    },
+    {
+      "device": "06_Roller_Blind",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 17,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 17,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    },
+    {
+      "device": "07_Siemens_BACnet",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 8,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 8,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    },
+    {
+      "device": "08_Nest_Speaker",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 13,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 13,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    },
+    {
+      "device": "09_DALI_Touchscreen",
+      "blender_opened": true,
+      "clean_topology_checked": true,
+      "imports": {
+        "fbx": {
+          "passed": true,
+          "meshes": 5,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        },
+        "glb": {
+          "passed": true,
+          "meshes": 5,
+          "pivots_preserved": true,
+          "method": "Blender reimport, not Unity"
+        }
+      }
+    }
+  ]
+}

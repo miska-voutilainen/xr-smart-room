@@ -1,0 +1,227 @@
+[
+  {
+    "name": "Cradle_Finger_207",
+    "parent": "Nest_Smart_Speaker",
+    "type": "MESH",
+    "source_position": [
+      -0.04187731072306633,
+      -0.027499999850988388,
+      -0.021337557584047318
+    ],
+    "unity_position": [
+      0.04187731072306633,
+      -0.021337557584047318,
+      0.027499999850988388
+    ]
+  },
+  {
+    "name": "Cradle_Finger_270",
+    "parent": "Nest_Smart_Speaker",
+    "type": "MESH",
+    "source_position": [
+      1.0913936421275139e-11,
+      -0.027499999850988388,
+      -0.047000013291835785
+    ],
+    "unity_position": [
+      -1.0913936421275139e-11,
+      -0.047000013291835785,
+      0.027499999850988388
+    ]
+  },
+  {
+    "name": "Cradle_Finger_333",
+    "parent": "Nest_Smart_Speaker",
+    "type": "MESH",
+    "source_position": [
+      0.04187731072306633,
+      -0.027499999850988388,
+      -0.021337557584047318
+    ],
+    "unity_position": [
+      -0.04187731072306633,
+      -0.021337557584047318,
+      0.027499999850988388
+    ]
+  },
+  {
+    "name": "Cradle_Lower_Arc",
+    "parent": "Nest_Smart_Speaker",
+    "type": "MESH",
+    "source_position": [
+      -5.122274271407434e-10,
+      -0.024499952793121338,
+      -0.03451737388968468
+    ],
+    "unity_position": [
+      5.122274271407434e-10,
+      -0.03451737388968468,
+      0.024499952793121338
+    ]
+  },
+  {
+    "name": "Cradle_Wall_Plate",
+    "parent": "Nest_Smart_Speaker",
+    "type": "MESH",
+    "source_position": [
+      4.3655745685100555e-11,
+      -0.0024999985471367836,
+      -0.014000000432133675
+    ],
+    "unity_position": [
+      -4.3655745685100555e-11,
+      -0.014000000432133675,
+      0.0024999985471367836
+    ]
+  },
+  {
+    "name": "Fabric_Dome",
+    "parent": "Speaker_Body_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Microphone_Mute_Switch",
+    "parent": "Speaker_Body_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.04500000178813934,
+      -0.014000000432133675,
+      -0.00800000037997961
+    ],
+    "unity_position": [
+      -0.04500000178813934,
+      -0.00800000037997961,
+      0.014000000432133675
+    ]
+  },
+  {
+    "name": "Nest_Smart_Speaker",
+    "parent": null,
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Power_Cable",
+    "parent": "Nest_Smart_Speaker",
+    "type": "MESH",
+    "source_position": [
+      -0.07285485416650772,
+      -0.011403225362300873,
+      -0.05117744207382202
+    ],
+    "unity_position": [
+      0.07285485416650772,
+      -0.05117744207382202,
+      0.011403225362300873
+    ]
+  },
+  {
+    "name": "Speaker_Body_Pivot",
+    "parent": "Nest_Smart_Speaker",
+    "type": "EMPTY",
+    "source_position": [
+      0.0,
+      -0.02500000037252903,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      0.02500000037252903
+    ]
+  },
+  {
+    "name": "Speaker_Rear_Shell",
+    "parent": "Speaker_Body_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Status_Light_0",
+    "parent": "Speaker_Body_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Status_Light_1",
+    "parent": "Speaker_Body_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Status_Light_2",
+    "parent": "Speaker_Body_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  },
+  {
+    "name": "Status_Light_3",
+    "parent": "Speaker_Body_Pivot",
+    "type": "MESH",
+    "source_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "unity_position": [
+      -0.0,
+      0.0,
+      -0.0
+    ]
+  }
+]
