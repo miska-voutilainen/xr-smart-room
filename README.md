@@ -64,3 +64,23 @@ bridge/        Data-exchange layer: device scripts and bridge server (working, s
 - **Devices:** one page per connected device in [docs/](docs/README.md).
 - **Unity:** project created in `unity/` (URP, OpenXR, XRI 3.5). The IoT device library now lives in `unity/Assets/IoTDigitalTwin_Modular/` (moved from the repo root, as its README allows). Run **Tools > IoT Digital Twin > Generate Prefabs and Demo** once, then **OrangeRoom > Build Scene**. See [unity/README.md](unity/README.md), [concept.md](concept.md) and [use-cases.md](use-cases.md).
 - **3D room:** Blender model of the lab in `blender/` (renders in `blender/previews/`).
+
+## Next Steps (Unity)
+
+1. **Editor version.** `unity/ProjectSettings/ProjectVersion.txt` pins 2022.3.76f1, an Extended LTS build that only opens with a Unity Industry/Enterprise licence (a Personal licence stops at start-up with "requires either a valid Unity Industry or Unity Enterprise license"). With Personal, open the project with the newest 2022.3 that Unity Hub offers you and let it rewrite the pin.
+2. **First open.** Accept the Input System prompt (Active Input Handling: Input System Package or Both; XRI 3.5 needs it, the IoT library's `IoTMouseInput` already switches on `ENABLE_INPUT_SYSTEM`). Create the URP asset, enable OpenXR, import the XRI Starter Assets (steps in `unity/README.md`), then commit the generated `ProjectSettings/*.asset` and `Packages/packages-lock.json`.
+3. **Devices.** Run **Tools > IoT Digital Twin > Generate Prefabs and Demo** once, then **OrangeRoom > Build Scene**, then **OrangeRoom > Place IoT Devices** (`unity/Assets/Editor/OrangeRoomDevicePlacer.cs`). It puts the prefabs on the demo boards: board positions come from the Blender model, device spots from the board photos, and each device gets an `XRSimpleInteractable`. It compiles against the Unity 2022.3 assemblies but has not run in an Editor yet; it logs a Blender-to-Unity axis check against `Kitchen_Board`. Mapping (from `docs/devices/` and the board photos):
+
+| IoT library prefab | Real device | Bridge name | Where in the room |
+|---|---|---|---|
+| 01_Zigbee_Dimmer | Aqara Dimmer Switch H2 | `dimmer1` | Aqara/Zigbee demo board (board 5) |
+| 09_DALI_Touchscreen | Lunatone DALI-2 Display ("DALI puutepaneel") | `dali1` | DALI demo board (board 1), middle row |
+| 06_Roller_Blind + 05_Aqara_Controller | Aqara Curtain Driver E1 on the curtain rail | `curtain1` | rail on top of board 5; board 1 also has a motor blind ("Mootor") |
+| 04_Security_Camera | Aqara camera G5 (Frigate person detection) | `camera1` | board 3, top left |
+| 07_Siemens_BACnet | KNX room sensor via Siemens OCT200.KNBA gateway | `room_sensor1` | board 3, top right (room unit) |
+| 08_Nest_Speaker | Google Nest "Dali stand WhiteNest" (bridge default is the Sonos Roam "Office") | `speaker1` | bottom right of the DALI board |
+| 02_Zigbee_Temperature_Sensor | Aqara temperature/humidity display | (none yet; `motion1` is the Aqara motion sensor) | board 5, bottom row |
+| 03_ZWave_Thermostat | no lab counterpart in the bridge | - | prop only, or leave out |
+
+4. **XR interaction.** The library ships mouse input only. Route the `XRSimpleInteractable` select events (poke/press: dimmer, DALI panel, thermostat; grab for the blind chain and camera head) to the same controller setters the mouse input uses.
+5. **Bridge adapter.** A small MonoBehaviour with a WebSocket client (`ws://<bridge host>:8765`) that maps `{device, property, value}` messages onto the controllers' setters on the main thread and sends commands from their `StateChanged` events (see bridge/README.md, section 3).

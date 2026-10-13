@@ -1,0 +1,3350 @@
+{
+ "version": 2,
+ "generated": "2026-10-13T15:23:57",
+ "blender": "5.2.0 LTS",
+ "quality": "low",
+ "units": "metre",
+ "contract": "unity/OrangeRoom/README.md",
+ "fbx": {
+  "axis_forward": "-Z",
+  "axis_up": "Y",
+  "apply_transform": false,
+  "apply_scalings": "FBX_SCALE_UNITS",
+  "uv0": "per-material atlas",
+  "uv1": "lightmap, per object"
+ },
+ "materials": {
+  "Cabinet_Aluminium": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.492,
+   "resolution_full": 256,
+   "objects": [
+    "Cabinet"
+   ]
+  },
+  "Cabinet_Edge": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.324,
+   "resolution_full": 256,
+   "objects": [
+    "Cabinet"
+   ]
+  },
+  "Cabinet_Front": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 12.765,
+   "resolution_full": 2048,
+   "objects": [
+    "Cabinet"
+   ]
+  },
+  "Cabinet_Steel": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.392,
+   "resolution_full": 1024,
+   "objects": [
+    "Cabinet"
+   ]
+  },
+  "Cabinet_Vent": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.052,
+   "resolution_full": 256,
+   "objects": [
+    "Cabinet"
+   ]
+  },
+  "Cabinet_Worktop": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.317,
+   "resolution_full": 1024,
+   "objects": [
+    "Cabinet"
+   ]
+  },
+  "Chair_Chrome": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.44,
+   "resolution_full": 256,
+   "objects": [
+    "Chair_1",
+    "Chair_2"
+   ]
+  },
+  "Chair_Fabric": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.924,
+   "resolution_full": 512,
+   "objects": [
+    "Chair_1",
+    "Chair_2"
+   ]
+  },
+  "Chair_Shell": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.866,
+   "resolution_full": 512,
+   "objects": [
+    "Chair_1",
+    "Chair_2"
+   ]
+  },
+  "Desk_Glide": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.021,
+   "resolution_full": 256,
+   "objects": [
+    "Desk"
+   ]
+  },
+  "Desk_Laminate": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 3.04,
+   "resolution_full": 1024,
+   "objects": [
+    "Desk"
+   ]
+  },
+  "Desk_PowderCoat": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.365,
+   "resolution_full": 512,
+   "objects": [
+    "Desk"
+   ]
+  },
+  "Deskprops_CableBlack": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.02,
+   "resolution_full": 256,
+   "objects": [
+    "Deskprops_PowerStrip",
+    "Deskprops_CableTV",
+    "Deskprops_CableUSB"
+   ]
+  },
+  "Deskprops_CableWhite": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.021,
+   "resolution_full": 256,
+   "objects": [
+    "Deskprops_CableStrip",
+    "Deskprops_CableUSB"
+   ]
+  },
+  "Deskprops_CamBase": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.009,
+   "resolution_full": 256,
+   "objects": [
+    "Deskprops_Camera"
+   ]
+  },
+  "Deskprops_CamFace": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.007,
+   "resolution_full": 256,
+   "objects": [
+    "Deskprops_Camera"
+   ]
+  },
+  "Deskprops_CamLens": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.001,
+   "resolution_full": 256,
+   "objects": [
+    "Deskprops_Camera"
+   ]
+  },
+  "Deskprops_Remote": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.022,
+   "resolution_full": 256,
+   "objects": [
+    "Deskprops_Remote"
+   ]
+  },
+  "Deskprops_StripWhite": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.044,
+   "resolution_full": 256,
+   "objects": [
+    "Deskprops_PowerStrip"
+   ]
+  },
+  "Deskprops_WhitePlastic": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.034,
+   "resolution_full": 256,
+   "objects": [
+    "Deskprops_Camera"
+   ]
+  },
+  "Door_Oak": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.225,
+   "resolution_full": 256,
+   "objects": [
+    "Door_Threshold"
+   ]
+  },
+  "Door_Paint": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 2.749,
+   "resolution_full": 1024,
+   "objects": [
+    "Door_Frame",
+    "Door_Fixed_Panel"
+   ]
+  },
+  "Door_Paint_Leaf": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.991,
+   "resolution_full": 512,
+   "objects": [
+    "Door_Leaf"
+   ]
+  },
+  "Door_Seal": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.135,
+   "resolution_full": 256,
+   "objects": [
+    "Door_Seal"
+   ]
+  },
+  "Door_Steel": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.127,
+   "resolution_full": 256,
+   "objects": [
+    "Door_Hardware",
+    "Door_Hinges_Frame",
+    "Door_CableLoop"
+   ]
+  },
+  "Doorend_Cardboard": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.032,
+   "resolution_full": 512,
+   "objects": [
+    "Doorend_Carton"
+   ]
+  },
+  "Doorend_Duct_PVC": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.201,
+   "resolution_full": 512,
+   "objects": [
+    "Doorend_Duct_1",
+    "Doorend_Duct_2",
+    "Doorend_Duct_Corner",
+    "Doorend_PIR"
+   ]
+  },
+  "Doorend_Enclosure_White": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.141,
+   "resolution_full": 512,
+   "objects": [
+    "Doorend_Board_1",
+    "Doorend_Board_2"
+   ]
+  },
+  "Doorend_PIR_Lens": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.004,
+   "resolution_full": 256,
+   "objects": [
+    "Doorend_PIR"
+   ]
+  },
+  "Doorend_Paper": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.104,
+   "resolution_full": 256,
+   "objects": [
+    "Doorend_Carton"
+   ]
+  },
+  "Doorend_Poster": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.251,
+   "resolution_full": 256,
+   "objects": [
+    "Doorend_Poster"
+   ]
+  },
+  "Doorend_Print_Black": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.004,
+   "resolution_full": 256,
+   "objects": [
+    "Doorend_Board_Labels"
+   ]
+  },
+  "Doorend_Sticker_Yellow": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.002,
+   "resolution_full": 256,
+   "objects": [
+    "Doorend_Board_Labels"
+   ]
+  },
+  "Kitchen_BottleCap": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.004,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Bottle",
+    "Kitchen_Bottle_Glass"
+   ]
+  },
+  "Kitchen_BottleLabel": {
+   "resolution": 64,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.029,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Bottle",
+    "Kitchen_Bottle_Glass"
+   ]
+  },
+  "Kitchen_BottleLiquid": {
+   "resolution": 64,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.045,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Bottle",
+    "Kitchen_Bottle_Glass"
+   ]
+  },
+  "Kitchen_CableBlack": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.027,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_PoESwitch",
+    "Kitchen_CableBundle",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_CableBlue": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.008,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_CableWhite": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.158,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_PoESwitch",
+    "Kitchen_CableBundle"
+   ]
+  },
+  "Kitchen_CardboardBlack": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.175,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_BlackBox"
+   ]
+  },
+  "Kitchen_DeviceFront": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.03,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_LEDStrip": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.052,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_LampBody": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.113,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_LampGlass": {
+   "resolution": 64,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.117,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_MetalCage": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.029,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_OSB": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.813,
+   "resolution_full": 512,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_PCB": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.037,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_PET": {
+   "resolution": 64,
+   "alpha": true,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.006,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Bottle",
+    "Kitchen_Bottle_Glass"
+   ]
+  },
+  "Kitchen_PaperCupBrown": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.038,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_CupPaper",
+    "Kitchen_CupPaper2"
+   ]
+  },
+  "Kitchen_PaperCupOrange": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.032,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_CupLid"
+   ]
+  },
+  "Kitchen_PastryTray_PS": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.496,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Pastry_A",
+    "Kitchen_Pastry_B"
+   ]
+  },
+  "Kitchen_Pastry_Baked": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.24,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Pastry_A",
+    "Kitchen_Pastry_B"
+   ]
+  },
+  "Kitchen_PlasticBlack": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.232,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_CupPaper",
+    "Kitchen_PoESwitch",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_PlasticGrey": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.014,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_PlasticWhite": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.212,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_QRSticker": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.037,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_Screen": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.027,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_SugarBox": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.152,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_SugarBox"
+   ]
+  },
+  "Kitchen_TeaBox": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.036,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_TeaBox"
+   ]
+  },
+  "Kitchen_WireRed": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.002,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_PoESwitch",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Kitchen_WoodDark": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.595,
+   "resolution_full": 512,
+   "objects": [
+    "Kitchen_Board",
+    "Kitchen_Board_Glass"
+   ]
+  },
+  "Light_LED_Diffuser": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 10.601,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO",
+    "Emission"
+   ],
+   "area_m2": 0.927,
+   "resolution_full": 512,
+   "objects": [
+    "Light_LED_Diffuser_1",
+    "Light_LED_Diffuser_2",
+    "Light_LED_Diffuser_3"
+   ]
+  },
+  "Monitor_Back": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.284,
+   "resolution_full": 256,
+   "objects": [
+    "Monitor",
+    "Monitor_Stand"
+   ]
+  },
+  "Monitor_Bezel": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.054,
+   "resolution_full": 256,
+   "objects": [
+    "Monitor"
+   ]
+  },
+  "Monitor_Rim": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.07,
+   "resolution_full": 256,
+   "objects": [
+    "Monitor"
+   ]
+  },
+  "Monitor_Screen": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.168,
+   "resolution_full": 256,
+   "objects": [
+    "Monitor"
+   ]
+  },
+  "Radiator_Paint": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 2.81,
+   "resolution_full": 1024,
+   "objects": [
+    "Radiator"
+   ]
+  },
+  "Radiator_PipePaint": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.163,
+   "resolution_full": 256,
+   "objects": [
+    "Radiator_Pipes"
+   ]
+  },
+  "Room_Ceiling": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 38.332,
+   "resolution_full": 2048,
+   "objects": [
+    "Room_Ceiling"
+   ]
+  },
+  "Room_Floor": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 38.332,
+   "resolution_full": 2048,
+   "objects": [
+    "Floor"
+   ]
+  },
+  "Room_Wall": {
+   "resolution": 512,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 111.479,
+   "resolution_full": 2048,
+   "objects": [
+    "Wall_Bottom",
+    "Wall_Top",
+    "Wall_Left",
+    "Wall_Right",
+    "Pillar",
+    "Window_Reveal",
+    "Trim_Pilaster"
+   ]
+  },
+  "TV_Back": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.784,
+   "resolution_full": 512,
+   "objects": [
+    "TV"
+   ]
+  },
+  "TV_Bezel": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.134,
+   "resolution_full": 256,
+   "objects": [
+    "TV"
+   ]
+  },
+  "TV_Screen": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.586,
+   "resolution_full": 512,
+   "objects": [
+    "TV"
+   ]
+  },
+  "TV_Trim": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.028,
+   "resolution_full": 256,
+   "objects": [
+    "TV"
+   ]
+  },
+  "Tableware_CeramicBisque": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.002,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Bowl"
+   ]
+  },
+  "Tableware_CeramicGlaze": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.058,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_Bowl"
+   ]
+  },
+  "Tableware_LidPS": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.015,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_CupLid"
+   ]
+  },
+  "Tableware_Napkin": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.061,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_PlateStack"
+   ]
+  },
+  "Tableware_PaperPlate": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.067,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_PlateStack"
+   ]
+  },
+  "Tableware_PaperWhite": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.107,
+   "resolution_full": 256,
+   "objects": [
+    "Kitchen_CupLid",
+    "Kitchen_CupPaper",
+    "Kitchen_CupPaper2",
+    "Kitchen_Bowl"
+   ]
+  },
+  "Trim_Ceiling_Grid": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 4.513,
+   "resolution_full": 1024,
+   "objects": [
+    "Trim_Ceiling_Grid"
+   ]
+  },
+  "Trim_Dark": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.003,
+   "resolution_full": 256,
+   "objects": [
+    "Trim_Sockets"
+   ]
+  },
+  "Trim_Device_White": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.318,
+   "resolution_full": 256,
+   "objects": [
+    "Trim_Smoke_Detector",
+    "Trim_Sensor",
+    "Trim_Vent"
+   ]
+  },
+  "Trim_LED_Frame": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.233,
+   "resolution_full": 256,
+   "objects": [
+    "Trim_LED_Frames"
+   ]
+  },
+  "Trim_PVC_White": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 2.629,
+   "resolution_full": 1024,
+   "objects": [
+    "Trim_Trunking",
+    "Trim_Sockets",
+    "Trim_Switch"
+   ]
+  },
+  "Trim_Skirting": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 2.524,
+   "resolution_full": 1024,
+   "objects": [
+    "Trim_Skirting"
+   ]
+  },
+  "Trim_Vent_Perf": {
+   "resolution": 64,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.472,
+   "resolution_full": 256,
+   "objects": [
+    "Trim_Vent"
+   ]
+  },
+  "Window_Flashing": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.08,
+   "resolution_full": 512,
+   "objects": [
+    "Window_Reveal"
+   ]
+  },
+  "Window_Gasket": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.836,
+   "resolution_full": 512,
+   "objects": [
+    "Window_Frame"
+   ]
+  },
+  "Window_PVC": {
+   "resolution": 256,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 6.377,
+   "resolution_full": 1024,
+   "objects": [
+    "Window_Frame"
+   ]
+  },
+  "Window_SillBoard": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 1.057,
+   "resolution_full": 512,
+   "objects": [
+    "Window_Sill"
+   ]
+  },
+  "Window_Spacer": {
+   "resolution": 128,
+   "alpha": false,
+   "emission_intensity": 0.0,
+   "maps": [
+    "BaseColor",
+    "Normal",
+    "MetallicSmoothness",
+    "AO"
+   ],
+   "area_m2": 0.838,
+   "resolution_full": 512,
+   "objects": [
+    "Window_Frame"
+   ]
+  },
+  "Door_Glass": {
+   "glass": true
+  },
+  "Window_Glass": {
+   "glass": true
+  },
+  "Window_GlassRain": {
+   "glass": true
+  }
+ },
+ "objects": [
+  {
+   "name": "Cabinet",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Cabinet_Front",
+    "Cabinet_Worktop",
+    "Cabinet_Aluminium",
+    "Cabinet_Steel",
+    "Cabinet_Vent",
+    "Cabinet_Edge"
+   ],
+   "tris": 1332,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.6,
+     0.0,
+     0.0
+    ],
+    [
+     3.08,
+     0.62,
+     0.9
+    ]
+   ]
+  },
+  {
+   "name": "Chair_1",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome",
+    "Chair_Fabric",
+    "Chair_Shell"
+   ],
+   "tris": 3652,
+   "glass": false,
+   "bbox_blender": [
+    [
+     4.8134,
+     1.3279,
+     -0.0
+    ],
+    [
+     5.3706,
+     1.8721,
+     0.8227
+    ]
+   ],
+   "pivot": "floor under seat",
+   "lods": [
+    {
+     "name": "Chair_1_LOD0",
+     "tris": 3652
+    },
+    {
+     "name": "Chair_1_LOD1",
+     "tris": 1826
+    },
+    {
+     "name": "Chair_1_LOD2",
+     "tris": 730
+    }
+   ]
+  },
+  {
+   "name": "Chair_2",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Chair_Chrome",
+    "Chair_Fabric",
+    "Chair_Shell"
+   ],
+   "tris": 3652,
+   "glass": false,
+   "bbox_blender": [
+    [
+     4.8134,
+     1.8779,
+     -0.0
+    ],
+    [
+     5.3706,
+     2.4221,
+     0.8227
+    ]
+   ],
+   "pivot": "floor under seat",
+   "lods": [
+    {
+     "name": "Chair_2_LOD0",
+     "tris": 3652
+    },
+    {
+     "name": "Chair_2_LOD1",
+     "tris": 1826
+    },
+    {
+     "name": "Chair_2_LOD2",
+     "tris": 730
+    }
+   ]
+  },
+  {
+   "name": "Desk",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Desk_Laminate",
+    "Desk_PowderCoat",
+    "Desk_Glide"
+   ],
+   "tris": 2424,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.28,
+     1.277,
+     0.0
+    ],
+    [
+     6.48,
+     2.48,
+     0.75
+    ]
+   ]
+  },
+  {
+   "name": "Deskprops_CableStrip",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Deskprops_CableWhite"
+   ],
+   "tris": 368,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.1,
+     2.5211,
+     1.197
+    ],
+    [
+     5.4129,
+     2.5572,
+     1.3115
+    ]
+   ]
+  },
+  {
+   "name": "Deskprops_CableTV",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Deskprops_CableBlack"
+   ],
+   "tris": 728,
+   "glass": false,
+   "bbox_blender": [
+    [
+     4.8276,
+     2.5092,
+     0.9753
+    ],
+    [
+     5.4075,
+     2.5579,
+     1.1491
+    ]
+   ]
+  },
+  {
+   "name": "Deskprops_CableUSB",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Deskprops_CableWhite",
+    "Deskprops_CableBlack"
+   ],
+   "tris": 1736,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.3286,
+     2.3259,
+     0.7499
+    ],
+    [
+     5.6371,
+     2.5194,
+     1.0149
+    ]
+   ]
+  },
+  {
+   "name": "Deskprops_Camera",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Deskprops_WhitePlastic",
+    "Deskprops_CamBase",
+    "Deskprops_CamFace",
+    "Deskprops_CamLens"
+   ],
+   "tris": 1012,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.4168,
+     2.2493,
+     0.75
+    ],
+    [
+     5.5216,
+     2.3464,
+     0.8838
+    ]
+   ]
+  },
+  {
+   "name": "Deskprops_PowerStrip",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Deskprops_StripWhite",
+    "Deskprops_CableBlack"
+   ],
+   "tris": 944,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.3332,
+     2.4898,
+     0.9725
+    ],
+    [
+     5.4632,
+     2.5585,
+     1.2024
+    ]
+   ]
+  },
+  {
+   "name": "Deskprops_Remote",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Deskprops_Remote"
+   ],
+   "tris": 252,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.0704,
+     2.5008,
+     0.9802
+    ],
+    [
+     5.2496,
+     2.5502,
+     1.0019
+    ]
+   ],
+   "pivot": "centre"
+  },
+  {
+   "name": "Door_CableLoop",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Door_Steel"
+   ],
+   "tris": 420,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.11,
+     1.2,
+     0.5852
+    ],
+    [
+     -0.0597,
+     1.236,
+     1.0348
+    ]
+   ]
+  },
+  {
+   "name": "Door_Fixed_Panel",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Door_Paint"
+   ],
+   "tris": 244,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     1.936,
+     0.015
+    ],
+    [
+     -0.045,
+     2.247,
+     2.047
+    ]
+   ]
+  },
+  {
+   "name": "Door_Frame",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Door_Paint"
+   ],
+   "tris": 636,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     1.15,
+     0.0
+    ],
+    [
+     -0.04,
+     2.3,
+     2.1
+    ]
+   ]
+  },
+  {
+   "name": "Door_Glass",
+   "area": "Room1",
+   "parent": "Door_Leaf",
+   "materials": [
+    "Door_Glass"
+   ],
+   "tris": 2,
+   "glass": true,
+   "bbox_blender": [
+    [
+     -0.721,
+     1.2315,
+     0.249
+    ],
+    [
+     -0.241,
+     1.2315,
+     1.923
+    ]
+   ]
+  },
+  {
+   "name": "Door_Hardware",
+   "area": "Room1",
+   "parent": "Door_Leaf",
+   "materials": [
+    "Door_Steel"
+   ],
+   "tris": 1424,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.816,
+     1.1395,
+     0.422
+    ],
+    [
+     -0.1005,
+     1.3155,
+     1.978
+    ]
+   ]
+  },
+  {
+   "name": "Door_Hinges_Frame",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Door_Steel"
+   ],
+   "tris": 336,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1135,
+     1.1935,
+     0.422
+    ],
+    [
+     -0.075,
+     1.2065,
+     1.978
+    ]
+   ]
+  },
+  {
+   "name": "Door_Leaf",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Door_Paint_Leaf"
+   ],
+   "tris": 1632,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.855,
+     1.198,
+     0.015
+    ],
+    [
+     -0.11,
+     1.257,
+     2.047
+    ]
+   ],
+   "pivot": "hinge (authored origin)",
+   "hinge": {
+    "origin_blender": [
+     -0.107,
+     1.2,
+     0.0
+    ],
+    "authored_angle_deg": 90.0
+   }
+  },
+  {
+   "name": "Door_Seal",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Door_Seal"
+   ],
+   "tris": 260,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.081,
+     1.2,
+     0.015
+    ],
+    [
+     -0.056,
+     2.25,
+     2.05
+    ]
+   ]
+  },
+  {
+   "name": "Door_Threshold",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Door_Oak"
+   ],
+   "tris": 108,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.098,
+     1.2,
+     0.0
+    ],
+    [
+     -0.002,
+     2.25,
+     0.012
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_Board_1",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Enclosure_White"
+   ],
+   "tris": 528,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     0.068,
+     1.07
+    ],
+    [
+     0.1032,
+     0.373,
+     1.71
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_Board_2",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Enclosure_White"
+   ],
+   "tris": 528,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     0.443,
+     1.07
+    ],
+    [
+     0.1032,
+     0.748,
+     1.71
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_Board_Labels",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Print_Black",
+    "Doorend_Sticker_Yellow"
+   ],
+   "tris": 60,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0965,
+     0.088,
+     1.6507
+    ],
+    [
+     0.0971,
+     0.479,
+     1.7026
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_Carton",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Cardboard",
+    "Doorend_Paper"
+   ],
+   "tris": 904,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.259,
+     2.0167,
+     0.0
+    ],
+    [
+     0.7055,
+     2.4722,
+     0.3995
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_Duct_1",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Duct_PVC"
+   ],
+   "tris": 404,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     0.1755,
+     1.71
+    ],
+    [
+     0.06,
+     0.2655,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_Duct_2",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Duct_PVC"
+   ],
+   "tris": 404,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     0.5505,
+     1.71
+    ],
+    [
+     0.06,
+     0.6405,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_Duct_Corner",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Duct_PVC"
+   ],
+   "tris": 404,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.01,
+     0.0,
+     1.11
+    ],
+    [
+     0.09,
+     0.04,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_PIR",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Duct_PVC",
+    "Doorend_PIR_Lens"
+   ],
+   "tris": 300,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.109,
+     0.0,
+     2.6975
+    ],
+    [
+     0.171,
+     0.0469,
+     2.7925
+    ]
+   ]
+  },
+  {
+   "name": "Doorend_Poster",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Doorend_Poster"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.41,
+     2.4992,
+     1.25
+    ],
+    [
+     0.83,
+     2.5,
+     1.547
+    ]
+   ]
+  },
+  {
+   "name": "Floor",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Floor"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     -0.1,
+     -0.1
+    ],
+    [
+     6.6,
+     2.62,
+     0.0
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_BlackBox",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_CardboardBlack"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.035,
+     0.038,
+     0.922
+    ],
+    [
+     1.215,
+     0.098,
+     1.242
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_Board",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_OSB",
+    "Kitchen_WoodDark",
+    "Kitchen_PlasticWhite",
+    "Kitchen_PlasticBlack",
+    "Kitchen_PlasticGrey",
+    "Kitchen_LampGlass",
+    "Kitchen_MetalCage",
+    "Kitchen_LEDStrip",
+    "Kitchen_QRSticker",
+    "Kitchen_Screen",
+    "Kitchen_PCB",
+    "Kitchen_CableBlack",
+    "Kitchen_CableBlue",
+    "Kitchen_WireRed",
+    "Kitchen_DeviceFront",
+    "Kitchen_LampBody"
+   ],
+   "tris": 4580,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.615,
+     0.039,
+     0.9
+    ],
+    [
+     1.27,
+     0.29,
+     1.66
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_Board_Glass",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_OSB",
+    "Kitchen_WoodDark",
+    "Kitchen_PlasticWhite",
+    "Kitchen_PlasticBlack",
+    "Kitchen_PlasticGrey",
+    "Kitchen_LampGlass",
+    "Kitchen_MetalCage",
+    "Kitchen_LEDStrip",
+    "Kitchen_QRSticker",
+    "Kitchen_Screen",
+    "Kitchen_PCB",
+    "Kitchen_CableBlack",
+    "Kitchen_CableBlue",
+    "Kitchen_WireRed",
+    "Kitchen_DeviceFront",
+    "Kitchen_LampBody"
+   ],
+   "tris": 1008,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.7552,
+     0.18,
+     1.1626
+    ],
+    [
+     1.1812,
+     0.245,
+     1.639
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_Bottle",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_PET",
+    "Kitchen_BottleLabel",
+    "Kitchen_BottleCap",
+    "Kitchen_BottleLiquid"
+   ],
+   "tris": 720,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.3637,
+     0.3237,
+     0.9348
+    ],
+    [
+     2.4363,
+     0.3963,
+     1.1231
+    ]
+   ],
+   "pivot": "centre"
+  },
+  {
+   "name": "Kitchen_Bottle_Glass",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_PET",
+    "Kitchen_BottleLabel",
+    "Kitchen_BottleCap",
+    "Kitchen_BottleLiquid"
+   ],
+   "tris": 3200,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.3638,
+     0.3238,
+     0.9
+    ],
+    [
+     2.4362,
+     0.3962,
+     1.1086
+    ]
+   ],
+   "pivot": "centre"
+  },
+  {
+   "name": "Kitchen_Bowl",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Tableware_CeramicGlaze",
+    "Tableware_CeramicBisque",
+    "Tableware_PaperWhite"
+   ],
+   "tris": 1644,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.6099,
+     0.2249,
+     0.9
+    ],
+    [
+     1.7601,
+     0.3751,
+     0.9621
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_CableBundle",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_CableWhite",
+    "Kitchen_CableBlack"
+   ],
+   "tris": 940,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0268,
+     0.0107,
+     0.0001
+    ],
+    [
+     0.5939,
+     0.67,
+     0.4762
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_CupLid",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_PaperCupOrange",
+    "Tableware_PaperWhite",
+    "Tableware_LidPS"
+   ],
+   "tris": 1824,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.4314,
+     0.4114,
+     0.9
+    ],
+    [
+     1.5286,
+     0.5086,
+     1.0575
+    ]
+   ],
+   "pivot": "centre"
+  },
+  {
+   "name": "Kitchen_CupPaper",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_PaperCupBrown",
+    "Tableware_PaperWhite",
+    "Kitchen_PlasticBlack"
+   ],
+   "tris": 992,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.7779,
+     0.2179,
+     0.9
+    ],
+    [
+     1.8621,
+     0.3021,
+     1.0554
+    ]
+   ],
+   "pivot": "centre"
+  },
+  {
+   "name": "Kitchen_CupPaper2",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_PaperCupBrown",
+    "Tableware_PaperWhite"
+   ],
+   "tris": 896,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.7156,
+     0.0706,
+     0.9
+    ],
+    [
+     1.8344,
+     0.1894,
+     0.993
+    ]
+   ],
+   "pivot": "centre"
+  },
+  {
+   "name": "Kitchen_Pastry_A",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_PastryTray_PS",
+    "Kitchen_Pastry_Baked"
+   ],
+   "tris": 1360,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.5442,
+     0.0309,
+     0.9
+    ],
+    [
+     3.0158,
+     0.3491,
+     0.9383
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_Pastry_B",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_PastryTray_PS",
+    "Kitchen_Pastry_Baked"
+   ],
+   "tris": 756,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.1098,
+     0.0192,
+     0.9
+    ],
+    [
+     2.4915,
+     0.3107,
+     0.9468
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_PlateStack",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Tableware_PaperPlate",
+    "Tableware_Napkin"
+   ],
+   "tris": 1344,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.8742,
+     0.1562,
+     0.9
+    ],
+    [
+     2.0858,
+     0.3678,
+     0.9433
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_PoESwitch",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_PlasticBlack",
+    "Kitchen_CableBlack",
+    "Kitchen_CableWhite",
+    "Kitchen_WireRed"
+   ],
+   "tris": 348,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0763,
+     0.2287,
+     0.0
+    ],
+    [
+     0.3836,
+     0.5806,
+     0.044
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_SugarBox",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_SugarBox"
+   ],
+   "tris": 448,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.9579,
+     0.3782,
+     0.9
+    ],
+    [
+     2.1421,
+     0.5618,
+     1.065
+    ]
+   ]
+  },
+  {
+   "name": "Kitchen_TeaBox",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Kitchen_TeaBox"
+   ],
+   "tris": 44,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.9319,
+     0.0452,
+     0.9
+    ],
+    [
+     1.9881,
+     0.1148,
+     1.03
+    ]
+   ]
+  },
+  {
+   "name": "Light_LED_Diffuser_1",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.072,
+     0.972,
+     2.895
+    ],
+    [
+     2.628,
+     1.528,
+     2.895
+    ]
+   ]
+  },
+  {
+   "name": "Light_LED_Diffuser_2",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.872,
+     0.972,
+     2.895
+    ],
+    [
+     4.428,
+     1.528,
+     2.895
+    ]
+   ]
+  },
+  {
+   "name": "Light_LED_Diffuser_3",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Light_LED_Diffuser"
+   ],
+   "tris": 2,
+   "glass": false,
+   "bbox_blender": [
+    [
+     5.672,
+     0.972,
+     2.895
+    ],
+    [
+     6.228,
+     1.528,
+     2.895
+    ]
+   ]
+  },
+  {
+   "name": "Monitor",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Monitor_Back",
+    "Monitor_Rim",
+    "Monitor_Bezel",
+    "Monitor_Screen"
+   ],
+   "tris": 52,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.2012,
+     1.86,
+     0.7503
+    ],
+    [
+     6.3127,
+     2.46,
+     1.1238
+    ]
+   ]
+  },
+  {
+   "name": "Monitor_Stand",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Monitor_Back"
+   ],
+   "tris": 44,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.2608,
+     2.06,
+     0.7508
+    ],
+    [
+     6.3395,
+     2.26,
+     0.8799
+    ]
+   ]
+  },
+  {
+   "name": "Pillar",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Wall"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     2.3,
+     0.0
+    ],
+    [
+     0.25,
+     2.5,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Radiator",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Radiator_Paint"
+   ],
+   "tris": 5444,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.33,
+     0.6,
+     0.09
+    ],
+    [
+     6.54,
+     1.278,
+     0.678
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Radiator_LOD0",
+     "tris": 5444
+    },
+    {
+     "name": "Radiator_LOD1",
+     "tris": 2722
+    },
+    {
+     "name": "Radiator_LOD2",
+     "tris": 1088
+    }
+   ]
+  },
+  {
+   "name": "Radiator_Pipes",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Radiator_PipePaint"
+   ],
+   "tris": 792,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.372,
+     -0.02,
+     0.0892
+    ],
+    [
+     6.428,
+     0.602,
+     0.668
+    ]
+   ],
+   "lods": [
+    {
+     "name": "Radiator_Pipes_LOD0",
+     "tris": 792
+    },
+    {
+     "name": "Radiator_Pipes_LOD1",
+     "tris": 396
+    },
+    {
+     "name": "Radiator_Pipes_LOD2",
+     "tris": 158
+    }
+   ]
+  },
+  {
+   "name": "Room_Ceiling",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Ceiling"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     -0.1,
+     2.9
+    ],
+    [
+     6.6,
+     2.62,
+     3.0
+    ]
+   ]
+  },
+  {
+   "name": "TV",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "TV_Bezel",
+    "TV_Screen",
+    "TV_Back",
+    "TV_Trim"
+   ],
+   "tris": 324,
+   "glass": false,
+   "bbox_blender": [
+    [
+     4.247,
+     2.475,
+     1.138
+    ],
+    [
+     5.297,
+     2.5595,
+     1.738
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Ceiling_Grid",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_Ceiling_Grid"
+   ],
+   "tris": 804,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     0.0,
+     2.876
+    ],
+    [
+     6.5,
+     2.5,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Trim_LED_Frames",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_LED_Frame"
+   ],
+   "tris": 144,
+   "glass": false,
+   "bbox_blender": [
+    [
+     2.062,
+     0.962,
+     2.893
+    ],
+    [
+     6.238,
+     1.538,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Pilaster",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Wall"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.37,
+     0.0,
+     0.0
+    ],
+    [
+     6.5,
+     0.2,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Sensor",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_Device_White"
+   ],
+   "tris": 124,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.91,
+     2.17,
+     2.872
+    ],
+    [
+     3.97,
+     2.23,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Skirting",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_Skirting"
+   ],
+   "tris": 252,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     6.5,
+     2.62,
+     0.0705
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Smoke_Detector",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_Device_White"
+   ],
+   "tris": 344,
+   "glass": false,
+   "bbox_blender": [
+    [
+     1.695,
+     1.795,
+     2.8555
+    ],
+    [
+     1.805,
+     1.905,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Sockets",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_PVC_White",
+    "Trim_Dark"
+   ],
+   "tris": 2184,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.015,
+     0.04,
+     0.44
+    ],
+    [
+     6.062,
+     0.0655,
+     1.1025
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Switch",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_PVC_White"
+   ],
+   "tris": 36,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.25,
+     2.36,
+     0.88
+    ],
+    [
+     0.263,
+     2.44,
+     0.96
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Trunking",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_PVC_White"
+   ],
+   "tris": 48,
+   "glass": false,
+   "bbox_blender": [
+    [
+     0.0,
+     0.0,
+     0.3
+    ],
+    [
+     6.37,
+     0.05,
+     1.11
+    ]
+   ]
+  },
+  {
+   "name": "Trim_Vent",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Trim_Device_White",
+    "Trim_Vent_Perf"
+   ],
+   "tris": 44,
+   "glass": false,
+   "bbox_blender": [
+    [
+     3.262,
+     0.962,
+     2.878
+    ],
+    [
+     3.838,
+     1.538,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Wall_Bottom",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Wall"
+   ],
+   "tris": 12,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     -0.1,
+     0.0
+    ],
+    [
+     6.6,
+     0.0,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Wall_Left",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Wall"
+   ],
+   "tris": 44,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     2.5,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Wall_Right",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Wall"
+   ],
+   "tris": 64,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.5,
+     0.0,
+     0.0
+    ],
+    [
+     6.6,
+     2.5,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Wall_Top",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Wall"
+   ],
+   "tris": 172,
+   "glass": false,
+   "bbox_blender": [
+    [
+     -0.1,
+     2.5,
+     0.0
+    ],
+    [
+     6.6,
+     2.62,
+     2.9
+    ]
+   ]
+  },
+  {
+   "name": "Window_Frame",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Window_PVC",
+    "Window_Gasket",
+    "Window_Spacer"
+   ],
+   "tris": 3848,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.708,
+     0.2,
+     0.85
+    ],
+    [
+     6.836,
+     1.8,
+     2.87
+    ]
+   ]
+  },
+  {
+   "name": "Window_Glass",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Window_Glass",
+    "Window_GlassRain"
+   ],
+   "tris": 24,
+   "glass": true,
+   "bbox_blender": [
+    [
+     6.79,
+     0.247,
+     0.917
+    ],
+    [
+     6.82,
+     1.753,
+     2.823
+    ]
+   ]
+  },
+  {
+   "name": "Window_Reveal",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Room_Wall",
+    "Window_Flashing"
+   ],
+   "tris": 88,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.6,
+     0.05,
+     0.7
+    ],
+    [
+     7.1365,
+     1.95,
+     3.02
+    ]
+   ]
+  },
+  {
+   "name": "Window_Sill",
+   "area": "Room1",
+   "parent": null,
+   "materials": [
+    "Window_SillBoard"
+   ],
+   "tris": 188,
+   "glass": false,
+   "bbox_blender": [
+    [
+     6.46,
+     0.2,
+     0.85
+    ],
+    [
+     6.772,
+     1.84,
+     0.87
+    ]
+   ]
+  }
+ ],
+ "files": [
+  "Models/Room1.fbx"
+ ],
+ "stats": {
+  "objects": 73,
+  "tris_lod0": 59952,
+  "tris_by_area": {
+   "Room1": 59952
+  },
+  "draw_calls_lod0_before_batching": 154,
+  "materials": 96,
+  "texture_mb_uncompressed": 33.1,
+  "seconds": 891.2
+ }
+}
