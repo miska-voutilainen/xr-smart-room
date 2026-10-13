@@ -1,0 +1,7 @@
+# s2_reflect textures (greyscale masks, used as Non-Color roughness/haze maps; Object/box mapped in metres)
+floor_wipe_SurfaceImperfections008.jpg  <- ambientCG SurfaceImperfections008, 2K JPG, Opacity map
+    https://ambientcg.com/view?id=SurfaceImperfections008   licence: CC0 1.0
+    use: mop/wax haze on the lappato floor (shaders/arch.py ceppo_floor), 1 tile = 1.7 m and 2.9 m, rotated
+screen_smear_Smear004.jpg  <- ambientCG Smear004, 2K JPG, Roughness map
+    https://ambientcg.com/view?id=Smear004   licence: CC0 1.0
+    use: wipe smears on screen front films (shaders/zz_screens.py), 1 tile = 0.6 m

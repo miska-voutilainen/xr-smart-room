@@ -1,0 +1,13 @@
+# textures/s1_lab sources (agent s1_lab). ambientCG maps are CC0 1.0 (https://docs.ambientcg.com/license/), 1K-JPG.
+Plastic013A_NormalGL.jpg, Plastic013A_Roughness.jpg   https://ambientcg.com/view?id=Plastic013A   CC0 1.0
+Plastic012A_NormalGL.jpg, Plastic012A_Roughness.jpg   https://ambientcg.com/view?id=Plastic012A   CC0 1.0
+Metal027_NormalGL.jpg, Metal027_Roughness.jpg         https://ambientcg.com/view?id=Metal027      CC0 1.0
+Fabric082A_Color.jpg, _NormalGL.jpg, _Roughness.jpg   https://ambientcg.com/view?id=Fabric082A    CC0 1.0
+# Derived from the project's own photos (Photos/3, user-provided, cropping allowed) by materials/_room2_textures.py:
+board_1.jpg  Photos/3/20261012_151022.jpg  perspective-rectified demo board "1"
+board_2.jpg  Photos/3/20261012_151025.jpg  board "2" (lower left cloned over a person's head)
+board_3.jpg  Photos/3/20261012_151124.jpg  board "3" (lower right patched from board_1 over a person's head); also used for board 4
+board_5.jpg  Photos/3/20261012_151018.jpg  board "5"
+inst_scope.jpg, inst_dmm1.jpg, inst_dmm2.jpg  Photos/3/20261012_151018.jpg  oscilloscope / DMM front panels
+# Generated (PIL, no external source) by materials/_room2_textures.py:
+screen_clock.png, screen_sheet.png, screen_code.png, screen_code2.png, screen_term.png, keys.png

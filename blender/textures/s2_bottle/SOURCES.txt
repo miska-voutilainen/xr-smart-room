@@ -1,0 +1,11 @@
+akvile_peach_06l_rimi_src.png
+  Akvile "Peach Bubbles" lightly sparkling water 0.6 l, retailer pack shot (1500x1500 RGBA).
+  URL: https://rimibaltic-res.cloudinary.com/image/upload/MAT_1375752_PCE_LT
+  Product page: https://www.rimi.lt/e-parduotuve/lt/produktai/x/p/1375752 ("Leng. gaz. st. van. AKVILE su pers. ar. 0,6 l")
+  Licence: NOT CC0. Manufacturer/retailer product photo, copyright of the brand owner/Rimi. Used only as a
+  label reference for a faithful replica of the real object in the photos. No CC0 scan of this label exists.
+  Replace before any public redistribution of the Unity build.
+
+akvile_peach_label.png
+  Derived: cylindrical unwrap (2048x1144, RGBA, alpha = printed areas of the clear sleeve) of the above,
+  made by make_label.py. Front 150 deg only (feathered), back half transparent.

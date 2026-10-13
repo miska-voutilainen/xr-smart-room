@@ -9,3 +9,8 @@
 
 # Python
 __pycache__/
+
+# Blender side: textures and curated previews are ours (no camera snapshots, metadata stripped)
+!blender/textures/**/*.jpg
+!blender/previews/*.jpg
+*.blend1

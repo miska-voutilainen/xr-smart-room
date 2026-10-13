@@ -1,0 +1,12 @@
+s2_tableware textures (worktop cups / plates / bowl). Loaded by shaders/zz_tableware.py via paths relative to that script.
+
+Real scans, ambientCG, licence CC0 1.0 (https://docs.ambientcg.com/license/), 1K-JPG packs:
+  Paper001_1K-JPG_{Color,Roughness,NormalGL}.jpg      https://ambientcg.com/view?id=Paper001      white paper: cup insides, plates, wrap fibre
+  Paper003_1K-JPG_{Color,Roughness,NormalGL}.jpg      https://ambientcg.com/view?id=Paper003      crumpled tissue: napkins
+  Paper006_1K-JPG_{Color,Roughness,NormalGL}.jpg      https://ambientcg.com/view?id=Paper006      kraft paper: knit-cup fibre
+  Porcelain001_1K-JPG_Roughness.jpg                   https://ambientcg.com/view?id=Porcelain001  glaze roughness (bowl)
+
+Authored for this project (own work, no third-party artwork), made by make_wraps.py over the scans above,
+redrawn from photos Photos/1/20261012_122216.jpg + 122250.jpg:
+  cup_orange_wrap.png   16 oz yellow-orange cup print (2048 x 1024)
+  cup_brown_wrap.png    8 oz knit-pattern cup print (2048 x 768)

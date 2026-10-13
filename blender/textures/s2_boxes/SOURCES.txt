@@ -1,0 +1,26 @@
+s2_boxes texture sources (none of this is CC0)
+
+Generated maps (by _make_atlas.py, run: python3 -I textures/s2_boxes/_make_atlas.py)
+  sugar_albedo.png, sugar_rough.png  "UNIQUE white sugar" 80-stick display box. No flat artwork or product photo of
+      this (local HoReCa) brand could be found online. Built from the project's own reference photos:
+      eyes strip rectified from Photos/1/20261012_122216.jpg, end-panel info strip rectified from
+      Photos/1/20261012_122250.jpg; lettering re-set (Candara Bold / Georgia Bold, system msttcore fonts),
+      sugar-cube field + wear/roughness procedural. Layout traced from 122216 / 122209 / 122250.
+  tea_albedo.png, tea_rough.png  Greenfield Earl Grey Fantasy, 25 tea bags, built from the files below.
+
+Downloaded (dl/)
+  gf_86f6d7.png  official flat front of Earl Grey Fantasy 25 bags (used 1:1 as the front panel)
+      https://greenfieldtea.co.uk/upload/iblock/86f/86f6d7ec382ad02ef52f818587452da4.png
+  gf_ec728c.png, gf_fbfc12.png, gf_333e61.png  official 3D pack renders (reference for side-panel layout only)
+      https://greenfieldtea.co.uk/upload/iblock/ec7/ec728c3f79168d9697ebd0e60561f387.png
+      https://greenfieldtea.co.uk/upload/iblock/fbf/fbfc1285bdabe90fe76b83087b0ea40a.png
+      https://greenfieldtea.co.uk/upload/iblock/333/333e61b006225ebeb83eecc3de4d2c87.png
+      page: https://greenfieldtea.co.uk/en/catalog/classic-collection/black-tea/earl-grey-fantasy/sku-25-bags/
+      Licence: copyrighted packaging artwork (Greenfield Tea Ltd / Orimi), used as product reference for a
+      likeness of the real object in the room. Not redistributable as a stand-alone asset.
+  gf_0e504a.png, gf_50b6ea.png, gf_dfcd3a.png  other Greenfield SKUs on the same page (unused, comparison only)
+  off_1.jpg .. off_4.jpg  Open Food Facts product 4605246004278 (Greenfield Earl Grey Fantasy 25 bags),
+      contributor photos; off_3 (back text) and off_4 (recycling symbols) used on the text side panel.
+      https://world.openfoodfacts.org/product/4605246004278
+      https://images.openfoodfacts.org/images/products/460/524/600/4278/{1,2,3,4}.jpg
+      Licence: CC BY-SA 3.0 (Open Food Facts contributors).

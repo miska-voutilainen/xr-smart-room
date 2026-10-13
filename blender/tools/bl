@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Run Blender through shared slots so many agents don't OOM the laptop.
+# Usage: tools/bl [--gpu] <blender args...>
+#   CPU slots: 3 concurrent Blender processes max. --gpu also takes the single GPU lock.
+# Always pass -t 2 for CPU renders.
+LOCKS=${BL_LOCKS:-${TMPDIR:-/tmp}/orangeroom-bl-locks}
+mkdir -p "$LOCKS"
+if [ "$1" = "--gpu" ]; then
+  # GPU jobs queue on the single GPU lock only (they barely use CPU), so they don't block CPU slots.
+  exec {g}>"$LOCKS/gpu"; flock "$g"; shift; blender "$@"; exit $?
+fi
+while true; do
+  for i in 1 2 3; do
+    exec {fd}>"$LOCKS/slot$i"
+    if flock -n "$fd"; then
+      blender "$@"; rc=$?
+      exit $rc
+    fi
+    exec {fd}>&-
+  done
+  sleep 5
+done

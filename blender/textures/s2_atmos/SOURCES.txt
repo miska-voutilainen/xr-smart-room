@@ -1,0 +1,5 @@
+kloofendal_misty_morning_puresky_2k.hdr
+  https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloofendal_misty_morning_puresky_2k.hdr
+  https://polyhaven.com/a/kloofendal_misty_morning_puresky  (Greg Zaal / Poly Haven), licence CC0 1.0
+  2048x1024 equirectangular Radiance HDR; used as the overcast/misty sky dome in render/light_world.py,
+  rescaled so its horizontal illuminance equals E_H (lx).

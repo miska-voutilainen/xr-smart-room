@@ -1,0 +1,6 @@
+All files: ambientCG (https://ambientcg.com), licence CC0 1.0 Universal. 2K-JPG downloads, only the listed maps kept.
+Metal009_2K-JPG_Roughness.jpg, Metal009_2K-JPG_NormalGL.jpg          https://ambientcg.com/view?id=Metal009         (brushed metal: anisotropic streaks)
+Scratches005_2K-JPG_Opacity.jpg                                       https://ambientcg.com/view?id=Scratches005     (micro-scratch mask)
+Fingerprints002_2K-JPG_Roughness.jpg, Fingerprints002_2K-JPG_Opacity.jpg https://ambientcg.com/view?id=Fingerprints002 (fingerprint/grease mask)
+Plastic010_2K-JPG_Roughness.jpg, Plastic010_2K-JPG_NormalGL.jpg      https://ambientcg.com/view?id=Plastic010       (fine matte plastic texture for melamine/HPL)
+Smear004_2K-JPG_Roughness.jpg                                         https://ambientcg.com/view?id=Smear004         (wipe smears on the worktop)

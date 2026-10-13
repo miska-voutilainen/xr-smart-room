@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# Render a .blend on RTU HPC (L40S) from the workstation, through the Pi's single SSH master to the login node.
+# Never ssh to the cluster directly: the login node rate-limits SSH connections (see README.md).
+#   hpc/submit <file.blend> <tag> [VAR=val ...]      blocks until the frames are back, prints their paths
+#   VARs go to render.sh: CAM=Cam_122209 SAMPLES=64 PCT=50 START=1 END=1 DEVICE=CUDA
+# Frames land in renders/hpc/<tag>/frame_####.png, the job log in renders/hpc/<tag>/log.txt.
+# The blend is copied and packed (pack_all) first, so external images reach the cluster.
+# At most 4 jobs in flight from this machine (flock slots); more callers wait.
+# If a worker (hpc/worker.sh) is alive the task goes to its queue (seconds), else a normal qsub (~10 min queue).
+#   hpc/submit --workers N [queue]   start N workers (8 h walltime, exit after 45 min idle, ~0.37 units/h each);
+#                                    queue fast (default) allows only 2 jobs per user, use batch for more
+set -euo pipefail
+PI_HOST=${PI_HOST:?export PI_HOST=<ssh alias of the jump host that holds the cluster master connection>}
+ROOT=$(cd "$(dirname "$0")/.." && pwd)
+pi() { local o rc=0; o=$(ssh -o BatchMode=yes ${PI_HOST} "$@" 2>&1) || rc=$?; grep -v '^Ncat' <<<"$o" || true; return $rc; }
+hpc() { pi "ssh -S ~/.ssh/cm/hpc hpc $(printf '%q' "$*")"; }
+master() { pi 'mkdir -p ~/.ssh/cm; ssh -O check -S ~/.ssh/cm/hpc hpc 2>/dev/null || ssh -o BatchMode=yes -fN -M -S ~/.ssh/cm/hpc -o ControlPersist=8h hpc' >/dev/null; }
+if [ "${1:-}" = --workers ]; then
+  master
+  scp -q "$ROOT/hpc/render.sh" "$ROOT/hpc/worker.sh" ${PI_HOST}:/tmp/ 2>&1 | grep -v '^Ncat' || true
+  pi "scp -q -o ControlPath=~/.ssh/cm/hpc /tmp/render.sh /tmp/worker.sh hpc:blender-test/"
+  for _ in $(seq "${2:-1}"); do hpc "cd ~/blender-test && mkdir -p queue && qsub -q ${3:-fast} worker.sh"; done
+  exit 0
+fi
+[ $# -ge 2 ] || { sed -n '2,8p' "$0"; exit 2; }
+BLEND=$1 TAG=$2; shift 2
+TAG=$(echo "$TAG" | tr -c 'A-Za-z0-9_.\n-' _)
+OUTL="$ROOT/renders/hpc/$TAG"; mkdir -p "$OUTL"
+LOCKS=${TMPDIR:-/tmp}/hpc-locks; mkdir -p "$LOCKS"
+RJ=/tmp/hpcjobs/$TAG                       # staging dir on the Pi
+CJ=blender-test/jobs/$TAG                   # job dir on the cluster (relative to ~)
+# slot (max 4 concurrent)
+while :; do
+  for i in 1 2 3 4; do exec {fd}>"$LOCKS/slot$i"; flock -n "$fd" && break 2; exec {fd}>&-; done
+  sleep 10
+done
+
+master     # the Pi's master connection to the login node: reuse, or open exactly one
+
+# pack a copy
+TMP=$(mktemp -d); cp "$BLEND" "$TMP/scene.blend"
+# pack per image: one missing file must not leave every texture unpacked (renders magenta on the cluster)
+blender -b "$TMP/scene.blend" --python-expr '
+import bpy
+for im in bpy.data.images:
+    if im.packed_file or im.source not in {"FILE", "SEQUENCE", "TILED"} or not im.filepath:
+        continue
+    try:
+        im.pack()
+    except Exception:
+        print("HPC_SUBMIT missing image:", im.name, bpy.path.abspath(im.filepath))
+bpy.ops.wm.save_mainfile()' 2>&1 | grep '^HPC_SUBMIT' >&2 || true
+pi "rm -rf $RJ; mkdir -p $RJ"
+scp -q "$TMP/scene.blend" "$ROOT/hpc/render.sh" "${PI_HOST}:$RJ/" 2>&1 | grep -v '^Ncat' || true
+rm -rf "$TMP"
+pi "ssh -S ~/.ssh/cm/hpc hpc 'rm -rf ~/$CJ; mkdir -p ~/$CJ' && scp -q -o ControlPath=~/.ssh/cm/hpc $RJ/scene.blend $RJ/render.sh hpc:$CJ/"
+
+VARS="BLEND=jobs/$TAG/scene.blend,OUT=jobs/$TAG"
+for kv in "$@"; do VARS="$VARS,$kv"; done
+if [ -n "$(hpc "find ~/blender-test/queue -maxdepth 1 -name '.alive_*' -mmin -15 2>/dev/null")" ]; then
+  hpc "printf '%s\\n' ${VARS//,/ } > ~/$CJ/env && touch ~/blender-test/queue/$TAG.ready"
+  echo "queued to worker tag=$TAG $*" >&2
+  until [ -n "$(hpc "ls ~/$CJ/done 2>/dev/null")" ]; do sleep 10; done
+else
+JOB=$(hpc "cd ~/blender-test && qsub -o ~/$CJ/log.txt -v $VARS jobs/$TAG/render.sh" | tail -1)
+echo "submitted $JOB tag=$TAG $*" >&2
+case $JOB in *rudens*) ;; *) echo "qsub failed: $JOB" >&2; exit 1;; esac
+
+# wait: job leaves the queue or shows C
+while st=$(hpc "qstat $JOB 2>/dev/null | tail -1 | awk '{print \$5}'"); [ -n "$st" ] && [ "$st" != C ]; do sleep 20; done
+fi
+sleep 5
+pi "rm -rf $RJ/out; mkdir -p $RJ/out && scp -q -o ControlPath=~/.ssh/cm/hpc 'hpc:$CJ/frame_*.png' 'hpc:$CJ/log.txt' $RJ/out/" || true
+scp -q "${PI_HOST}:$RJ/out/*" "$OUTL/" 2>&1 | grep -v '^Ncat' || true
+pi "rm -rf $RJ"
+hpc "rm -f ~/$CJ/scene.blend" >/dev/null || true
+ls "$OUTL"/frame_*.png 2>/dev/null || { echo "no frames; log:" >&2; tail -20 "$OUTL/log.txt" >&2 2>/dev/null; exit 1; }

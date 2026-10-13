@@ -1,0 +1,8 @@
+Textures for materials/room3_entrance.py (s1_entrance). All CC0 unless noted.
+rubber004_color.jpg / _rough.jpg / _normal.jpg  ambientCG Rubber004 2K-JPG (NormalGL)  https://ambientcg.com/view?id=Rubber004  CC0
+plaster001_normal.jpg                           ambientCG Plaster001 1K-JPG (NormalGL) https://ambientcg.com/view?id=Plaster001 CC0
+fabric030_color/_rough/_normal.jpg              ambientCG Fabric030 1K-JPG             https://ambientcg.com/view?id=Fabric030  CC0
+fabric036_color/_rough/_normal.jpg              ambientCG Fabric036 1K-JPG             https://ambientcg.com/view?id=Fabric036  CC0
+wood090a_color/_rough/_normal.jpg               ambientCG Wood090A 1K-JPG              https://ambientcg.com/view?id=Wood090A   CC0
+poster_pink_120945.jpg, poster_white_120945.jpg crops of the user's photo Photos/1/20261012_120945.jpg (white-balanced), project-internal
+blind_slats.png                                 generated (PIL), 4 x 25 mm slats per 0.1 m tile, project-internal

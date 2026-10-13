@@ -1,0 +1,9 @@
+textures/s3_hall (agent s3_hall) - all files are perspective-rectified crops of the user's own reference photos
+Photos/5/hall_0N.jpg (made by scratch script crops.py, kept in this report); no third-party material.
+poster_pg.jpg    hall_02  "Good practice for learning and teaching" poster on the corridor north wall
+sign_405.jpg     hall_02  room sign "VK1 Auditoorium 405" on the 405 leaf
+poster_a3.jpg    hall_02  small white A3 poster west of the pink one
+unique_box.jpg   hall_01  sugar-stick box "UNIQUE" on the catering table
+print_pink.jpg   hall_05  one print of the framed series (reused for all 7 frames)
+cutout.png       hall_01  person cut-out board on the teal wall (alpha = not-teal mask)
+Other maps reused from textures/s1_entrance (ambientCG CC0, see its SOURCES.txt).
