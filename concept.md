@@ -22,8 +22,8 @@ An XR "smart room" in which the user sees and controls the devices of the KNX la
 | Device | Role | Data |
 |---|---|---|
 | Ceiling lights | Actuator | RGB lamps: on/off, brightness, color |
-| Light dimmer | Actuator | Brightness of the ceiling lights, 0-100% |
-| DALI panel | Actuator / status | Color (RGB) of the ceiling lights, lamp on/off, group, lamp failure |
+| Light dimmer | Sensor / status | Real wall switch (Aqara Dimmer Switch H2): on/off and knob level 0-100%, drives the brightness of the virtual ceiling lights |
+| DALI panel | Actuator / status | Real panel that drives the virtual ceiling lights: color (RGB), lamp on/off, group, lamp failure |
 | Curtains | Actuator | Position 0-100%, moving/stopped |
 | Temperature sensor | Sensor | Temperature in degrees Celsius |
 | Camera | Sensor | Video stream, motion/presence |
@@ -32,23 +32,32 @@ An XR "smart room" in which the user sees and controls the devices of the KNX la
 
 ### Ceiling lights
 
-The white lights on the ceiling are RGB lamps. Two controls next to each other on the wall share the work:
+The white lights on the ceiling are RGB lamps. Two controls sit next to each other on the wall (the DALI panel is where it sits in the room render, the dimmer is next to it):
 
-- **Dimmer** - mounted next to the DALI panel (where the panel sits in the room render), sets how bright the ceiling lights are (0-100%).
-- **DALI panel** - sets the RGB color of the ceiling lights.
+- **DALI panel (real -> virtual)** - the real DALI panel in the lab controls the virtual ceiling lights. When someone switches the lamps or changes the RGB color on the real panel, the bridge reads the new state and the virtual lights follow: on/off and the color tint.
+- **Dimmer (real -> virtual)** - the real dimmer switch on the wall sets the brightness of the virtual ceiling lights. Turning its knob changes the level (0-100%), and the bridge passes it on so the virtual lights brighten or dim. The dimmer model in XR (`01_Zigbee_Dimmer`) mirrors the real switch: its knob turns and its on/off state follows the real one.
 
-In XR the virtual ceiling lights follow both: the dimmer level drives their intensity and the DALI color drives their tint. Changing either control in XR or on the real wall updates the lamps and the scene. Until the lamps are given individual DALI addresses, the color is sent to all ceiling lights at once (broadcast).
+So both real wall devices drive the virtual lights: the color and on/off state come from the DALI panel, the brightness from the dimmer. Nothing in XR controls the real lights. Until the lamps are given individual DALI addresses, the panel only reaches all ceiling lights at once (broadcast), so all virtual lights show the same state.
+
+### Curtain controller
+
+The two-button controller model (Aqara bead-chain controller, `05_Aqara_Controller`) operates the curtains in the virtual room:
+
+- **Lower** button - closes the virtual curtains.
+- **Raise** button - opens them again.
+
+Pressing a button with the XR controller or hand moves the virtual curtain; releasing it stops the curtain where it is. The button press is a virtual control first: the curtain closes in XR even when the real stand is not connected (simulation mode). When the bridge is connected, the same press can also send `close`/`open` to the real curtain, like the grab interaction in UC2.
 
 ## 4. Use Cases
 
 ### Core use cases (demo)
 
 **UC1 - Motion -> light**
-The camera detects motion. The room is marked "occupied" in XR, the virtual lamp turns on, and optionally the real lamp (DALI/dimmer) turns on too.
-*Proves: real sensor -> XR, and XR/logic -> real device.*
+The camera detects motion. The room is marked "occupied" in XR and the virtual ceiling lights turn on. The real lights stay under the control of the DALI panel and the dimmer.
+*Proves: real sensor -> XR, and logic reacting in the XR scene.*
 
 **UC2 - XR control of light and curtains**
-The user drags a virtual slider to dim the lamp and grabs the virtual curtain to open or close it. The real devices follow. Changes made on the real wall switches update the XR scene (two-way sync).
+The lights are controlled with the DALI panel and the dimmer: the real DALI panel sets the color and on/off state of the virtual ceiling lights, and the real dimmer switch sets their brightness. The user grabs the virtual curtain to open or close it, and the real curtain follows. Changes made on the real devices update the XR scene.
 *Proves: XR interaction (press, grab, slide) and real device control.*
 
 **UC3 - Temperature monitoring and alarm**
@@ -67,9 +76,9 @@ The real temperature is shown above the sensor as a label or thermometer, and th
 
 | Interaction | Used for |
 |---|---|
-| Press (button) | Lamp on/off, scenes, doorbell/speaker |
+| Press (button) | Scenes, doorbell/speaker, curtain controller raise/lower |
 | Grab and move | Curtain position, placing devices in the room |
-| Slide / rotate | Dimmer level, speaker volume |
+| Slide / rotate | Speaker volume |
 | Point and select | Open a device's information panel, select an individual DALI lamp |
 
 Each device has an information panel showing its name, current state, last update time and connection status (real / simulated / offline).
