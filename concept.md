@@ -21,13 +21,23 @@ An XR "smart room" in which the user sees and controls the devices of the KNX la
 
 | Device | Role | Data |
 |---|---|---|
-| Light dimmer | Actuator | Level 0-100% |
-| DALI panel | Actuator / status | Lamp on/off, level, group, lamp failure |
+| Ceiling lights | Actuator | RGB lamps: on/off, brightness, color |
+| Light dimmer | Actuator | Brightness of the ceiling lights, 0-100% |
+| DALI panel | Actuator / status | Color (RGB) of the ceiling lights, lamp on/off, group, lamp failure |
 | Curtains | Actuator | Position 0-100%, moving/stopped |
 | Temperature sensor | Sensor | Temperature in degrees Celsius |
 | Camera | Sensor | Video stream, motion/presence |
 | Speaker | Actuator | Play sound, volume |
 | BACnet/IP gateway | Communication | Exposes KNX values as BACnet objects |
+
+### Ceiling lights
+
+The white lights on the ceiling are RGB lamps. Two controls next to each other on the wall share the work:
+
+- **Dimmer** - mounted next to the DALI panel (where the panel sits in the room render), sets how bright the ceiling lights are (0-100%).
+- **DALI panel** - sets the RGB color of the ceiling lights.
+
+In XR the virtual ceiling lights follow both: the dimmer level drives their intensity and the DALI color drives their tint. Changing either control in XR or on the real wall updates the lamps and the scene. Until the lamps are given individual DALI addresses, the color is sent to all ceiling lights at once (broadcast).
 
 ## 4. Use Cases
 
