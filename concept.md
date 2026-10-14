@@ -107,7 +107,7 @@ Each device has an information panel showing its name, current state, last updat
 
 | Area | Choice |
 |---|---|
-| Engine | Unity 2022.3.76f1 |
+| Engine | Unity 2022.3.62f3 |
 | XR framework | VRTK v4 |
 | Data layer | Python (BAC0, xknx, paho-mqtt) or Node.js |
 | Messaging | MQTT (e.g. Mosquitto broker) or WebSocket |
