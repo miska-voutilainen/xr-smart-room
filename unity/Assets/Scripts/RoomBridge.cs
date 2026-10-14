@@ -25,7 +25,7 @@ public sealed class RoomBridge : MonoBehaviour
     public event Action<string, string, string> Applied;     // device, property, value (for the test panel log)
 
     RotaryDimmer dimmer; DALILightingPanel dali; RollerBlindDevice blind; AqaraChainController curtainButtons;
-    TemperatureLCD thermo; SiemensBACnetDevice roomUnit; SecurityCameraDevice cam; NestSpeakerDevice speaker;
+    TemperatureLCD thermo; SiemensBACnetDevice roomUnit; SecurityCameraDevice cam; NestSpeakerDevice speaker; TemperatureController zwave;
 
     readonly ConcurrentQueue<string> inbox = new ConcurrentQueue<string>();
     ClientWebSocket ws;
@@ -44,6 +44,7 @@ public sealed class RoomBridge : MonoBehaviour
         blind = FindObjectOfType<RollerBlindDevice>(); curtainButtons = FindObjectOfType<AqaraChainController>();
         thermo = FindObjectOfType<TemperatureLCD>(); roomUnit = FindObjectOfType<SiemensBACnetDevice>();
         cam = FindObjectOfType<SecurityCameraDevice>(); speaker = FindObjectOfType<NestSpeakerDevice>();
+        zwave = FindObjectOfType<TemperatureController>();
         if (curtainButtons && blind) curtainButtons.ConnectBlind(blind);   // Raise/Lower move the virtual curtain
     }
 
@@ -177,6 +178,7 @@ public sealed class RoomBridge : MonoBehaviour
             case "room_sensor1.temperature":
                 if (thermo) { thermo.SetTemperature(F(value)); thermo.temperatureText.SetColor(Tint(F(value))); }
                 if (roomUnit) roomUnit.SetDisplayValue(Mathf.Round(F(value)));
+                if (zwave) zwave.SetTemperature(F(value));   // current reading only; the target stays the user's
                 break;
             case "room_sensor1.humidity": if (thermo) thermo.SetHumidity(F(value)); break;
             case "room_sensor1.status": if (roomUnit) roomUnit.SetStatus(value != "offline"); break;

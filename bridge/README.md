@@ -192,7 +192,7 @@ As in the concept, Unity never talks to the devices directly, only to `server.py
 | `dali1.all_on`, `all_level`, `all_kelvin` (broadcast zone, preferred once the bridge sends them); fallback `group0_on`, `group0_level`, `group0_kelvin` | `DALILightingPanel` power, brightness, colour temperature -> ceiling on/off and colour |
 | `virtual_light.on` (UC1) | `DALILightingPanel` power. Last writer wins with the DALI on/off |
 | `curtain1.position` | `RollerBlindDevice` (0 = closed on both sides) |
-| `room_sensor1.temperature`, `humidity` | `TemperatureLCD` value, text tinted by [temperature-tint-scale.md](../docs/temperature-tint-scale.md); `SiemensBACnetDevice` display |
+| `room_sensor1.temperature`, `humidity` | `TemperatureLCD` value, text tinted by [temperature-tint-scale.md](../docs/temperature-tint-scale.md); `SiemensBACnetDevice` display; Z-Wave thermostat current temperature (target stays local) |
 | `room_sensor1.status` | `SiemensBACnetDevice` status light (off when `offline`) |
 | `room_sensor1.alarm` (UC3) | `SecurityCameraDevice` floodlight (camera power = occupied or alarm). No warning panel or room tint yet; the temperature tint colours the `TemperatureLCD` text only |
 | `camera1.occupied` | `SecurityCameraDevice` red recording LED |

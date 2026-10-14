@@ -149,6 +149,50 @@ public static class OrangeRoomBridgeCheck
         float kept = blind.TargetOpenPercent;
         bridge.Apply("curtain1", "position", "null");   // server.py sends None for a failed read
         Check(blind.TargetOpenPercent == kept, $"null curtain1.position ignored (target stays {kept})");
+
+        // 7. every device: XR-clickable, and driven by its bridge messages (still offline: the test-panel path)
+        var cam = Object.FindObjectOfType<SecurityCameraDevice>(); var unit = Object.FindObjectOfType<SiemensBACnetDevice>();
+        var speaker = Object.FindObjectOfType<NestSpeakerDevice>(); var zwave = Object.FindObjectOfType<TemperatureController>();
+        IoTDevice[] all = { dimmer, thermo, zwave, cam, chain, blind, unit, speaker, dali };
+        if (!Check(all.All(d => d), "scene has all 9 IoT devices")) yield break;
+        foreach (var d in all)
+        {
+            var zones = d.GetComponentsInChildren<DevicePointerTarget>(true).Where(t => t.device == d && t.GetComponent<Collider>() is Collider c && c.isTrigger).ToArray();
+            Check(d.GetComponent<XRDeviceInput>() && zones.Length > 0, $"{d.name}: XRDeviceInput + {zones.Length} trigger hit zones");
+            // what XRDeviceInput calls on a click, per zone: at least one must change the device
+            int changes = 0;
+            Action<IoTDevice> count = _ => changes++;
+            d.StateChanged += count;
+            foreach (var z in zones) { d.ControlDown(z.action, new Vector2(.5f, .5f)); d.ControlUp(z.action, true, new Vector2(.5f, .5f)); }
+            d.StateChanged -= count;
+            Check(changes > 0, $"{d.name}: clicking its zones ({string.Join(", ", zones.Select(z => z.action).Distinct())}) changes state ({changes} changes)");
+        }
+        yield return Wait(0.5);
+        bridge.Apply("dali1", "all_on", "false");
+        Check(!dali.Power, "dali1.all_on false -> DALI panel off");
+        bridge.Apply("virtual_light", "on", "true");
+        Check(dali.Power, "virtual_light.on true (UC1) -> DALI panel on");
+        bridge.Apply("dali1", "all_kelvin", "3000");
+        Equal("dali1.all_kelvin -> DALI colour temperature", dali.ColorTemperature, "3000");
+        bridge.Apply("camera1", "occupied", "true");
+        Check(cam.Power && !cam.Floodlight, "camera1.occupied true -> camera on, floodlight off");
+        bridge.Apply("room_sensor1", "alarm", "true");
+        Check(cam.Floodlight, "room_sensor1.alarm true (UC3) -> camera floodlight on");
+        bridge.Apply("room_sensor1", "alarm", "false");
+        bridge.Apply("camera1", "occupied", "false");
+        Check(!cam.Power && !cam.Floodlight, "occupied + alarm false -> camera off");
+        bridge.Apply("room_sensor1", "temperature", "27");
+        Equal("room_sensor1.temperature -> TemperatureLCD", thermo.Temperature, "27");
+        Equal("room_sensor1.temperature -> Siemens display", unit.DisplayValue, "27");
+        Equal("room_sensor1.temperature -> Z-Wave thermostat", zwave.Temperature, "27");
+        bridge.Apply("room_sensor1", "status", "offline");
+        Check(!unit.Status, "room_sensor1.status offline -> Siemens status off");
+        bridge.Apply("speaker1", "volume", "40");
+        Equal("speaker1.volume -> speaker volume", speaker.Volume, "0.4");
+        bridge.Apply("speaker1", "state", "playing");
+        Check(speaker.Active && !speaker.Muted, "speaker1.state playing -> speaker active, not muted");
+        bridge.Apply("curtain1", "position", "30");
+        Equal("curtain1.position -> roller blind target", blind.TargetOpenPercent, "30");
     }
 
     // ---------- helpers ----------

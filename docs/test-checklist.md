@@ -29,7 +29,7 @@ What the XR app does with each bridge message (from `RoomBridge.Apply`):
 | `virtual_light.on` (UC1 rule) | Ceiling on/off. Last writer wins with the DALI on/off |
 | `camera1.occupied` | Camera model: red recording LED = person seen |
 | `curtain1.position` | Roller blind (0 = closed) |
-| `room_sensor1.temperature`, `humidity` | Temperature display (value + tint from [temperature-tint-scale.md](temperature-tint-scale.md)), Siemens room unit display |
+| `room_sensor1.temperature`, `humidity` | Temperature display (value + tint from [temperature-tint-scale.md](temperature-tint-scale.md)), Siemens room unit display, Z-Wave thermostat current temperature |
 | `room_sensor1.alarm` (UC3) | Floodlight on the camera model (the warning in this build; no warning panel or room tint yet) |
 | `speaker1.state`, `speaker1.volume` | Speaker model active while `playing`, volume |
 
