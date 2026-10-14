@@ -4,11 +4,14 @@
 // Positions: board face centre/normal/size measured in main.blend (Room2_Demo_Boards faces, Blender world metres),
 // device spot = fraction of the board photo (textures/s1_lab/board_<n>.jpg, x from the left, y from the top), the
 // same photos the board textures are made from. XR: each device root gets an XRSimpleInteractable (hover/select on
-// the generator's trigger colliders); wiring select -> controller setters is the next step (README, Next Steps).
+// the generator's trigger colliders) and an XRDeviceInput (select -> the device's controls). Also adds the "Bridge"
+// object: RoomBridge (WebSocket to bridge/server.py, URL from env ORANGE_BRIDGE_URL at build time) + the in-VR test panel.
 using System;
+using IoTDigitalTwin;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 static class OrangeRoomDevicePlacer
 {
@@ -60,7 +63,6 @@ static class OrangeRoomDevicePlacer
         if (r != null)
             Debug.Log($"[OrangeRoom] B2U check: Kitchen_Board off by {Vector3.Distance(r.bounds.center, B2U(0.9425f, 0.1645f, 1.28f)):F3} m");
 
-        var simple = Type.GetType("UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable, Unity.XR.Interaction.Toolkit");
         int placed = 0;
         foreach (var d in Devices)
         {
@@ -75,11 +77,35 @@ static class OrangeRoomDevicePlacer
             var b = d.b;
             go.transform.position = b.c + b.right * ((d.fx - 0.5f) * b.w) + Vector3.up * ((0.5f - d.fy) * b.h) + b.n * FrontOffset;
             go.transform.rotation = Quaternion.LookRotation(b.n, Vector3.up);   // library prefabs: Z = front
-            if (simple != null && go.GetComponent(simple) == null) go.AddComponent(simple);
+            // the hit zones are triggers, which XRBaseInteractable.Awake drops from an empty list: serialize them by hand
+            var xi = go.GetComponent<XRSimpleInteractable>();
+            if (!xi) xi = go.AddComponent<XRSimpleInteractable>();
+            foreach (var t in go.GetComponentsInChildren<DevicePointerTarget>(true))
+                if (t.TryGetComponent<Collider>(out var col) && !xi.colliders.Contains(col)) xi.colliders.Add(col);
+            go.AddComponent<XRDeviceInput>();
+            // the blind on board 1 hangs in front of the DALI panel: start it raised (the bridge's curtain1.position takes over)
+            var blind = go.GetComponentInChildren<IoTDigitalTwin.RollerBlindDevice>();
+            if (blind)
+            {
+                blind.currentOpenPercent = blind.targetOpenPercent = 100;   // runtime: Awake applies the pose
+                blind.cloth.SetBlendShapeWeight(blind.blendShapeIndex, blind.fullyRaisedWeight);   // edit mode (bake, snapshots)
+            }
+            // the lab ceiling's realtime lights only reach rendering layer 2 (OrangeRoomSceneBuilder.LabCeiling)
+            foreach (var rr in go.GetComponentsInChildren<Renderer>(true)) rr.renderingLayerMask |= 2;
             placed++;
             Debug.Log($"[OrangeRoom] {d.stem} -> {go.transform.position}  ({d.note})");
         }
-        if (simple == null) Debug.LogWarning("[OrangeRoom] XR Interaction Toolkit 3.x not found: devices placed without interactables.");
+        var bridge = new GameObject("Bridge", typeof(RectTransform));
+        bridge.transform.SetParent(root.transform);
+        var rb = bridge.AddComponent<RoomBridge>();
+        var url = Environment.GetEnvironmentVariable("ORANGE_BRIDGE_URL");
+        if (!string.IsNullOrEmpty(url)) rb.url = url;
+        bridge.AddComponent<BridgeTestPanel>();
+        // test panel: beside board 5 (dimmer, temperature display), same facing, panel centre 1.4 m high
+        bridge.transform.position = Board5.c + Board5.right * (Board5.w / 2 + 0.4f) + Board5.n * 0.15f;
+        bridge.transform.rotation = Quaternion.LookRotation(-Board5.n, Vector3.up);   // uGUI faces -Z
+        Debug.Log($"[OrangeRoom] Bridge {rb.url}, test panel at {bridge.transform.position}");
+
         EditorSceneManager.MarkSceneDirty(root.scene);
         Debug.Log($"[OrangeRoom] Placed {placed}/{Devices.Length} IoT devices. Save the scene.");
     }

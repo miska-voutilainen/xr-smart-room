@@ -129,8 +129,9 @@ public static class OrangeRoomQuest
         var iot = GameObject.Find("IoT_Devices");
         if (UnityEngine.Object.FindObjectOfType<Unity.XR.CoreUtils.XROrigin>() == null || UnityEngine.Object.FindObjectOfType<XRInteractionManager>() == null)
             throw new Exception("[Quest] scene has no XR Origin / XRInteractionManager (XRI Starter Assets sample missing?)");
-        if (failed > 0 || iot == null || iot.transform.childCount != 9)
-            throw new Exception($"[Quest] IoT devices: {failed} failed to generate, {(iot ? iot.transform.childCount : 0)}/9 placed");
+        int placed = iot ? iot.GetComponentsInChildren<IoTDigitalTwin.IoTDevice>().Length : 0;
+        if (failed > 0 || placed != 9 || UnityEngine.Object.FindObjectOfType<RoomBridge>() == null)
+            throw new Exception($"[Quest] IoT devices: {failed} failed to generate, {placed}/9 placed, bridge {(UnityEngine.Object.FindObjectOfType<RoomBridge>() ? "ok" : "missing")}");
         Debug.Log("[Quest] Scene done.");
     }
 
@@ -184,9 +185,10 @@ public static class OrangeRoomQuest
         var cam = new GameObject("SnapCam").AddComponent<Camera>();
         cam.fieldOfView = 90f;
         cam.nearClipPlane = 0.05f;
-        cam.GetUniversalAdditionalCameraData().renderPostProcessing = true;
+        cam.GetUniversalAdditionalCameraData().renderPostProcessing = false;   // same as the XR camera (OrangeRoomSceneBuilder.XRRig)
         var rt = new RenderTexture(1280, 720, 24, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB) { antiAliasing = 4 };
         cam.targetTexture = rt;
+        cam.Render();   // warm-up: the first render after OpenScene missed the uncompressed lightmaps (black Room1_yaw000)
 
         foreach (var root in EditorSceneManager.GetActiveScene().GetRootGameObjects().Where(g => g.name.StartsWith("Room")))
         {
@@ -200,10 +202,15 @@ public static class OrangeRoomQuest
             for (int yaw = 0; yaw < 360; yaw += 90)
                 Shot(cam, rt, $"{root.name}_yaw{yaw:000}", eye, Quaternion.Euler(0, yaw, 0));
         }
+        // same poses as two renders/v2/best references (Blender (x,y,z) -> Unity (x,z,y)); vfov of the 4:3 render
+        cam.fieldOfView = 55f;
+        Shot(cam, rt, "Ref_10_Cam_hall_02", new Vector3(-0.997f, 1.333f, 0.6f), Quaternion.LookRotation(new Vector3(-0.974f, -0.084f, 0.21f)));
+        Shot(cam, rt, "Ref_07_Cam_150435", new Vector3(0.407f, 1.57f, 1.312f), Quaternion.LookRotation(new Vector3(0.603f, -0.072f, 0.795f)));
+        cam.fieldOfView = 90f;
         var iot = GameObject.Find("IoT_Devices");
         if (iot)
             foreach (Transform d in iot.transform)
-                Shot(cam, rt, "IoT_" + d.name, d.position + d.forward * 0.8f, Quaternion.LookRotation(-d.forward));
+                if (d.name != "Bridge") Shot(cam, rt, "IoT_" + d.name, d.position + d.forward * 0.8f, Quaternion.LookRotation(-d.forward));
         UnityEngine.Object.DestroyImmediate(cam.gameObject);
         Debug.Log($"[Quest] Snapshots in {Path.GetFullPath(SnapDir)}");
     }
@@ -227,14 +234,38 @@ public static class OrangeRoomQuest
         if (Lightmapping.lightingDataAsset == null || LightmapSettings.lightmaps.Length == 0)
             throw new Exception("[Quest] scene has no baked lighting (all lights are baked-only): run Bake first");
         EditorUserBuildSettings.buildAppBundle = false;
-        Directory.CreateDirectory(Path.GetDirectoryName(ApkPath));
-        var r = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+        // Store builds: release keystore from env (kept outside the repo); without it Unity signs with the debug key.
+        var ks = Environment.GetEnvironmentVariable("ORANGE_KEYSTORE");
+        PlayerSettings.Android.useCustomKeystore = !string.IsNullOrEmpty(ks);
+        if (PlayerSettings.Android.useCustomKeystore)
         {
-            scenes = new[] { ScenePath },
-            locationPathName = ApkPath,
-            target = BuildTarget.Android,
-            targetGroup = Android,
-        }).summary;
+            PlayerSettings.Android.keystoreName = ks;
+            PlayerSettings.Android.keystorePass = PlayerSettings.Android.keyaliasPass = Environment.GetEnvironmentVariable("ORANGE_KEYSTORE_PASS");
+            PlayerSettings.Android.keyaliasName = Environment.GetEnvironmentVariable("ORANGE_KEY_ALIAS");
+        }
+        if (int.TryParse(Environment.GetEnvironmentVariable("ORANGE_VERSION_CODE"), out var vc)) PlayerSettings.Android.bundleVersionCode = vc;
+        PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevel34;
+        PlayerSettings.Android.forceInternetPermission = true;   // RoomBridge: WebSocket to bridge/server.py on the lab Wi-Fi
+        PlayerSettings.Android.preferredInstallLocation = AndroidPreferredInstallLocation.Auto;   // store: installLocation="auto"   // Meta Horizon Store: new apps must target API 34
+        Directory.CreateDirectory(Path.GetDirectoryName(ApkPath));
+        UnityEditor.Build.Reporting.BuildSummary r;
+        try
+        {
+            r = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            {
+                scenes = new[] { ScenePath },
+                locationPathName = ApkPath,
+                target = BuildTarget.Android,
+                targetGroup = Android,
+            }).summary;
+        }
+        finally
+        {
+            // keystore path must not end up in ProjectSettings.asset (public repo)
+            PlayerSettings.Android.useCustomKeystore = false;
+            PlayerSettings.Android.keystoreName = PlayerSettings.Android.keyaliasName = "";
+            AssetDatabase.SaveAssets();
+        }
         Debug.Log($"[Quest] Build {r.result}: {r.outputPath} {r.totalSize / 1048576} MB, {r.totalErrors} errors, {r.totalTime}");
         if (r.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) throw new Exception("[Quest] APK build failed");
     }

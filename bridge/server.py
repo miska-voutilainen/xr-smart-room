@@ -105,6 +105,7 @@ class Hub:
     def publish(self, device, prop, value):
         if self.state.get((device, prop), object()) == value:
             return
+        self.state.pop((device, prop), None)  # re-insert: replay on connect is then in last-change order
         self.state[(device, prop)] = value
         if prop not in ("power", "temperature", "humidity", "co2", "illuminance"):  # frequent; alarms still log
             log(f"{device}.{prop} = {value}")

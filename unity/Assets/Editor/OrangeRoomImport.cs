@@ -58,12 +58,21 @@ public class OrangeRoomImport : AssetPostprocessor
         if (!IsOurs(Textures)) return;
         var t = (TextureImporter)assetImporter;
         var name = System.IO.Path.GetFileNameWithoutExtension(assetPath);
-        t.maxTextureSize = 2048;
+        t.maxTextureSize = 1024;        // export res_max; Emission is lin2srgb-encoded, so sRGB default is right
         t.mipmapEnabled = true;
         if (name.EndsWith("_Normal"))
             t.textureType = TextureImporterType.NormalMap;
         else if (name.EndsWith("_MetallicSmoothness") || name.EndsWith("_AO"))
             t.sRGBTexture = false;      // data, not colour
+        if (name.StartsWith("Room_Floor") || name.StartsWith("Room3_Vinyl"))
+            t.anisoLevel = 4;           // grazing-angle floors; Android quality level = per-texture aniso. ponytail: 4 not 8, fill rate on 3S
+
+        // Quest: explicit ASTC, normals one block size finer (they break up first in glossy highlights)
+        var a = t.GetPlatformTextureSettings("Android");
+        a.overridden = true;
+        a.maxTextureSize = 1024;
+        a.format = name.EndsWith("_Normal") ? TextureImporterFormat.ASTC_5x5 : TextureImporterFormat.ASTC_6x6;
+        t.SetPlatformTextureSettings(a);
     }
 
     // FBX material -> URP/Lit, textures by name: <mat>_BaseColor/_Normal/_MetallicSmoothness/_AO/_Emission.png
@@ -95,13 +104,19 @@ public class OrangeRoomImport : AssetPostprocessor
             mat.EnableKeyword("_METALLICSPECGLOSSMAP");
         }
 
-        var ao = Tex(n, "_AO");                      // URP reads G
-        if (ao) { mat.SetTexture("_OcclusionMap", ao); mat.SetFloat("_OcclusionStrength", 1f); mat.EnableKeyword("_OCCLUSIONMAP"); }
+        // ponytail: no material AO. URP multiplies it into baked light, which the lightmapper already occludes (ao = true),
+        // and some exported maps are all black (posters, cornice). Probe-lit small props lose contact AO; re-add at ~0.5 if missed.
+
+        // Look fixes vs photos (README "Known issues"). ponytail: eyeballed from blender/previews, retune on device
+        if (n == "Room_Floor") mat.SetFloat("_Smoothness", 0.75f);              // terrazzo too glossy: map mean 0.64 -> 0.48
+        if (n == "Room3_Powder_Graphite")                                       // foosball body/legs too light (Room3_Play only)
+        { mat.SetColor("_BaseColor", new Color(0.5f, 0.5f, 0.5f, 1f).gamma); mat.SetFloat("_Smoothness", 0.75f); }  // x0.5 linear albedo
 
         var em = Tex(n, "_Emission");
         if (em)
         {
-            mat.SetTexture("_EmissionMap", em);
+            // LED map is peach (255,211,165): Cycles blows it to white, HDR-off Quest does not. null: URP's FBX preprocessor set it already
+            mat.SetTexture("_EmissionMap", n.Contains("LED_Diffuser") ? null : em);
             mat.SetColor("_EmissionColor", Color.white);
             mat.EnableKeyword("_EMISSION");
             mat.globalIlluminationFlags = MaterialGlobalIlluminationFlags.BakedEmissive;  // LED panels light the bake

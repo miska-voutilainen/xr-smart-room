@@ -1,166 +1,219 @@
-# XR Smart-Room Twin — Test Checklist
+# XR Smart-Room Twin - Test Checklist
 
-**Project:** Erasmus+ BIP — XR Smart-Room Twin  
+**Project:** Erasmus+ BIP - XR Smart-Room Twin  
 **Test date:** 15 October 2026  
 **Location:** TalTech Virumaa College, KNX Laboratory
 
 ## 1. Testing Objective
 
-The purpose of testing is to verify the correct operation of the three main use cases (UC1–UC3) of the XR Smart-Room Twin application.
+The purpose of testing is to verify the three main use cases (UC1-UC3) of the XR Smart-Room Twin from [concept.md](../concept.md), end to end: real lab device -> `bridge/server.py` -> WebSocket -> Unity (`RoomBridge`) -> virtual device, and XR input -> `RoomBridge` -> bridge -> real curtain / speaker.
 
 Testing will be performed in three different conditions:
 
-- **Simulation mode (SimulatedLink):** Testing virtual devices without connecting to real KNX hardware.
-- **Real laboratory mode (MqttLink):** Testing communication between the XR application and real KNX devices through MQTT.
-- **Connection failure:** Testing application behaviour when the MQTT broker or KNX connection becomes unavailable.
+- **Simulation mode:** `python3 bridge/server.py --simulate` on the laptop. Fake devices, no lab network or Home Assistant token needed.
+- **Real laboratory mode:** `python3 bridge/server.py` on the laptop, connected to the lab Wi-Fi and the real devices.
+- **Connection failure:** the bridge server is stopped or unreachable while the XR app runs.
 
 Each test will be marked with one of the following results:
 
-- **PASS** — The test completed successfully.
-- **FAIL** — The test did not meet the expected result.
-- **N/T** — The test has not been performed.
+- **PASS** - The test completed successfully.
+- **FAIL** - The test did not meet the expected result.
+- **N/T** - The test has not been performed.
 
-## 2. UC1 — Wall Switch → Lamp
+What the XR app does with each bridge message (from `RoomBridge.Apply`):
 
-**Objective:** Verify that pressing the virtual wall switch correctly controls the lamp and updates its state.
+| Bridge message | Virtual device |
+|---|---|
+| `dimmer1.on`, `dimmer1.level` | Dimmer model (`01_Zigbee_Dimmer`); ceiling brightness. Dimmer off = ceiling lights off |
+| `dali1.all_on`, `dali1.all_kelvin` (fallback `dali1.group0_on`, `dali1.group0_kelvin`; `server.py` sends only `group<N>_*` so far) | DALI panel model (`09_DALI_Touchscreen`); ceiling on/off and colour temperature |
+| `virtual_light.on` (UC1 rule) | Ceiling on/off. Last writer wins with the DALI on/off |
+| `camera1.occupied` | Camera model: red recording LED = person seen |
+| `curtain1.position` | Roller blind (0 = closed) |
+| `room_sensor1.temperature`, `humidity` | Temperature display (value + tint from [temperature-tint-scale.md](temperature-tint-scale.md)), Siemens room unit display |
+| `room_sensor1.alarm` (UC3) | Floodlight on the camera model (the warning in this build; no warning panel or room tint yet) |
+| `speaker1.state`, `speaker1.volume` | Speaker model active while `playing`, volume |
 
-### Test UC1.1 — Simulation Mode
+Nothing in XR controls the real lights. XR sends commands only for the curtain and the speaker, and only from user input.
 
-- [ ] Start the application in SimulatedLink mode.
-- [ ] Press the virtual wall switch 10 times.
-- [ ] Verify that the lamp alternates between ON and OFF after every press.
-- [ ] Verify that the switch rotates 180° when its state changes.
-- [ ] Verify that the lamp turns yellow and emits light when ON.
-- [ ] Verify that the lamp turns OFF when the switch is pressed again.
+While the bridge is `online`, the mirrored devices (dimmer, DALI panel, camera, temperature display, Siemens room unit) are read-only in XR. To change them, use the real device or the test panel.
 
-**Expected result:** All 10 presses are registered correctly, with no double toggles.
+## 2. Preparation
 
-**Result:** N/T
+- [ ] Laptop on the lab Wi-Fi. Find its IP with `ip -4 addr` (Linux) or `ipconfig` (Windows). Default in the app: `ws://192.168.160.57:8765`.
+- [ ] Open the bridge ports on the laptop: Fedora `sudo firewall-cmd --add-port=8765/tcp --add-port=8000/tcp`, Windows: allow Python on private networks.
+- [ ] Start the bridge: `python3 bridge/server.py --simulate` (simulation) or `python3 bridge/server.py` (real lab).
+- [ ] Start the XR app (Quest build from the store ALPHA channel, or Editor play mode with the XR Device Simulator).
+- [ ] If the laptop IP differs from the default: set it on the in-VR test panel (-/+ per octet) and press **Apply & reconnect**. The address is saved on the headset.
+- [ ] Verify the status line on the test panel shows `ws://<laptop IP>:8765: online`. If it stays on `connecting`, suspect Wi-Fi client isolation and put the laptop and the headset on a phone hotspot.
 
-### Test UC1.2 — Real Laboratory
-
-- [ ] Connect the application to the MQTT broker using MqttLink.
-- [ ] Press the virtual wall switch.
-- [ ] Verify that the real KNX lamp changes state within 1 second.
-- [ ] Verify that the XR lamp matches the real lamp state.
-- [ ] Compare the displayed state with `lab/light/main/state`.
-
-**Expected result:** The real and virtual lamps remain synchronized.
-
-**Result:** N/T
-
-### Test UC1.3 — Connection Failure
-
-- [ ] Disconnect the MQTT broker.
-- [ ] Verify that the application indicates the connection is offline.
-- [ ] Switch to SimulatedLink mode.
-- [ ] Press the virtual wall switch.
-- [ ] Verify that the virtual lamp continues working.
-
-**Expected result:** The application remains functional in simulation mode without a KNX connection.
+**Expected result:** The app connects to the bridge within a few seconds and the virtual devices take the bridge's current state.
 
 **Result:** N/T
 
-## 3. UC2 — Motion Sensor → Automatic Light
+## 3. Automated Bridge Check
 
-**Objective:** Verify that the motion sensor detects movement, automatically controls the lamp, and correctly handles the timeout and manual override.
+**Objective:** Verify the Unity side of the bridge path without a headset.
 
-### Test UC2.1 — Simulation Mode
+### Test BC.1 - Editor Play Mode vs Simulation Server
 
-- [ ] Start the application in SimulatedLink mode.
-- [ ] Enter the virtual PIR sensor's detection cone.
-- [ ] Verify that the sensor indicator LED turns green.
-- [ ] Verify that the detection cone briefly highlights.
-- [ ] Verify that the lamp turns ON within 0.5 seconds.
-- [ ] Leave the detection area.
-- [ ] Verify that the lamp turns OFF after 10 seconds without motion.
-- [ ] Turn the lamp ON manually using the virtual wall switch.
-- [ ] Verify that the manual ON state overrides the automatic timeout.
+- [ ] Start `python3 bridge/server.py --simulate` on the laptop.
+- [ ] Run `~/Unity/Hub/Editor/2022.3.62f3/Editor/Unity -batchmode -projectPath unity -executeMethod OrangeRoomBridgeCheck.Run -logFile -` from the repo root (Unity closed; no `-quit`).
+- [ ] Verify every line `[BridgeCheck] PASS: ...`, no `FAIL`, and `[BridgeCheck] DONE: all passed`; exit code 0.
 
-**Expected result:** The sensor detects movement, activates the lamp within 0.5 seconds, and switches it off after 10 seconds of inactivity unless manual control overrides it.
+**Expected result:** Message parsing works, `RoomBridge` connects and receives the initial state, the DALI panel, temperature display and curtain follow the messages, Lower closes the simulated curtain and release stops it, and dimmer/DALI drive the ceiling lights. Finishes within 120 s.
 
-**Result:** N/T
+**Result:** PASS (all assertions, Editor play mode against `--simulate`)
 
-### Test UC2.2 — Real Laboratory
+## 4. In-VR Bridge Test Panel
 
-- [ ] Connect the application to the MQTT broker using MqttLink.
-- [ ] Verify that the KNX–MQTT bridge is connected.
-- [ ] Walk past the real KNX presence detector.
-- [ ] Verify that the topic `lab/motion/pir1/state` receives a detection message.
-- [ ] Verify that the virtual PIR indicator turns green.
-- [ ] Verify that the virtual lamp turns ON.
-- [ ] Verify that the displayed state matches the received MQTT messages.
+**Objective:** Verify every message mapping in the headset without the lab. The panel next to board 5 fakes real-world signals by calling `RoomBridge.Apply` with the same device/property/value the bridge would send.
 
-**Expected result:** Motion detected by the real KNX sensor is correctly transmitted to the XR application and activates the virtual lamp.
+### Test TP.1 - Fake Signals
 
-**Result:** N/T
+- [ ] Toggle **Dimmer on** and move **Dimmer level %**. Verify the dimmer knob follows and the lab ceiling lights brighten and dim.
+- [ ] Toggle **Dimmer on** off. Verify the ceiling lights go dark (dimmer off = ceiling off).
+- [ ] Turn **Dimmer on** back on, then toggle **DALI lamps on**. Verify the ceiling lights switch off and on.
+- [ ] Move **DALI colour K** from 2000 to 6500. Verify the ceiling light colour moves from warm to cool.
+- [ ] Toggle **Person seen, UC1**. Verify the camera's red LED and the ceiling lights follow.
+- [ ] Move **Curtain open %**. Verify the virtual curtain moves (0 = closed).
+- [ ] Move **Temperature C** from 15 to 30. Verify the display value and its tint follow the tint scale (blue -> green -> red, darkest red from 26 °C).
+- [ ] Toggle **Temperature alarm, UC3**. Verify the camera floodlight switches on and off.
+- [ ] Move **Speaker volume %**. Verify the speaker model follows.
 
-### Test UC2.3 — Connection Failure
-
-- [ ] Disconnect the MQTT broker or KNX bridge.
-- [ ] Verify that the application indicates the connection is offline.
-- [ ] Switch to SimulatedLink mode.
-- [ ] Enter the virtual sensor's detection area.
-- [ ] Verify that the virtual lamp still turns ON.
-- [ ] Leave the detection area and verify that the automatic timeout still works.
-
-**Expected result:** The virtual motion sensor and automatic lighting continue functioning in simulation mode without a real KNX connection.
+**Expected result:** Each control changes the matching virtual device immediately, with or without a bridge connection.
 
 **Result:** N/T
 
-## 4. UC3 — Temperature Warning → Ventilation
+### Test TP.2 - Editable Bridge Address
 
-**Objective:** Verify that the temperature is displayed correctly, the overheating alarm activates at the configured threshold, and the ventilation fan responds appropriately.
+- [ ] Change one octet to a wrong address with -/+ and press **Apply & reconnect**. Verify the status line shows the new address, `connecting`, then `offline`.
+- [ ] Set the laptop IP and press **Apply & reconnect**. Verify the status line shows `online`.
+- [ ] Restart the app. Verify the saved address is still used.
 
-**Note:** The project concept specifies a default threshold of 27 °C and a hysteresis of 1 °C. The task description mentions 26 °C. The final threshold must be confirmed before testing.
-
-### Test UC3.1 — Simulation Mode
-
-- [ ] Start the application in SimulatedLink mode.
-- [ ] Set the temperature slider to 22 °C.
-- [ ] Verify that the thermostat displays the correct temperature.
-- [ ] Gradually increase the temperature to 30 °C.
-- [ ] Verify that the warning panel appears when the configured alarm threshold is exceeded.
-- [ ] Verify that the thermostat display turns red.
-- [ ] Verify that the ventilation fan starts spinning.
-- [ ] Lower the temperature below the alarm threshold minus 1 °C.
-- [ ] Verify that the warning disappears and the fan stops.
-
-**Expected result:** The alarm and ventilation fan respond correctly to temperature changes, including the 1 °C hysteresis.
+**Expected result:** The bridge address can be changed in VR without rebuilding the app.
 
 **Result:** N/T
 
-### Test UC3.2 — Real Laboratory
+## 5. UC1 - Camera / Motion -> Virtual Ceiling Lights
 
-- [ ] Connect the application to the MQTT broker using MqttLink.
-- [ ] Verify that the KNX–MQTT bridge is connected.
-- [ ] Check the temperature received from the real KNX sensor.
-- [ ] Verify that `lab/climate/temp1/state` publishes the temperature value.
-- [ ] Compare the MQTT value with the XR thermostat display.
-- [ ] Verify that the alarm and fan respond correctly if the temperature crosses the configured threshold.
+**Objective:** Verify that a person seen by the camera (or the motion sensor, with `--presence motion`) marks the room occupied and turns on the virtual ceiling lights. The real lights are not switched. The ceiling brightness comes from the dimmer, so the dimmer must be on (dimmer off = ceiling off).
+
+### Test UC1.1 - Simulation Mode
+
+- [ ] Start `python3 bridge/server.py --simulate` and the XR app (status `online`).
+- [ ] On the test panel, set **Dimmer on** and a level above 0 (the simulated dimmer stays off; the dimmer model itself is read-only while `online`).
+- [ ] Verify the camera's red LED switches every 15 seconds (`camera1.occupied`).
+- [ ] Verify the ceiling lights turn on while occupied and off when empty (`virtual_light.on`).
+- [ ] Restart the server with `--presence motion`. Verify the lights follow the motion sensor (10 seconds of motion every 40 seconds).
+
+**Expected result:** The virtual ceiling lights follow `virtual_light.on` within 1 second.
+
+**Result:** N/T
+
+### Test UC1.2 - Real Laboratory
+
+- [ ] Start `python3 bridge/server.py` (real devices) and the XR app.
+- [ ] Make sure the real dimmer is on (ceiling brightness comes from it).
+- [ ] Walk into the camera's view. Verify the server logs `camera1.occupied = True` and `virtual_light.on = True`.
+- [ ] Verify the camera's red LED and the virtual ceiling lights turn on.
+- [ ] Leave the view. Verify both turn off after `--hold` (30 s by default).
+- [ ] Verify the real ceiling lights do not change.
+- [ ] Optional: repeat with `--presence motion` and the Aqara motion sensor.
+
+**Expected result:** Presence in the real room switches the virtual ceiling lights only.
+
+**Result:** N/T
+
+## 6. UC2 - DALI Panel + Dimmer -> Virtual Lights, XR -> Real Curtain
+
+**Objective:** Verify that the real DALI panel (on/off, colour) and the real dimmer (on/off, brightness) drive the virtual ceiling lights, and that the virtual curtain (grab or Raise/Lower buttons) drives the real curtain.
+
+### Test UC2.1 - Simulation Mode
+
+- [ ] Start `python3 bridge/server.py --simulate` and the XR app.
+- [ ] Verify the DALI panel model shows on and about 4350 K (`dali1.group0_kelvin`), and the dimmer model shows off, so the ceiling lights are dark.
+- [ ] Try to change the dimmer and DALI panel models in XR. Verify they ignore the input while `online` (mirrored, read-only); use the test panel instead.
+- [ ] Press **Lower** on the curtain controller. Verify the virtual curtain closes and the server logs a `curtain1 close` command.
+- [ ] Release the button. Verify a `stop` command is sent.
+- [ ] Press **Raise**. Verify the curtain opens (`open`).
+- [ ] Grab the roller blind, move it, release it. Verify one `set_position` command is sent on release and the simulated curtain moves to that position.
+
+**Expected result:** Commands reach the bridge only from user input, one per press/release, with no echo loop.
+
+**Result:** N/T
+
+### Test UC2.2 - Real Laboratory
+
+- [ ] Start `python3 bridge/server.py` (real devices) and the XR app.
+- [ ] Turn the real dimmer on and turn its knob. Verify the virtual dimmer knob and the ceiling brightness follow.
+- [ ] Turn the real dimmer off. Verify the virtual ceiling lights go dark.
+- [ ] Switch group 0 on the real DALI panel. Verify the virtual ceiling lights follow on/off (the bridge does not report the "all lamps" broadcast zone yet, see the note below).
+- [ ] Change the colour temperature on the real DALI panel. Verify the virtual lights shift warm/cool (`dali1.group0_kelvin`; RGB is not sent by the bridge).
+- [ ] Press **Lower** / **Raise** in XR. Verify the real curtain closes / opens within a few seconds, and release stops it.
+- [ ] Grab and release the virtual curtain. Verify the real curtain moves to the released position.
+- [ ] Move the real curtain from the Aqara app or its own switch. Verify the virtual curtain follows (`curtain1.position`).
+
+**Expected result:** The real wall devices drive the virtual lights, nothing in XR changes the real lights, and the real and virtual curtains stay in sync in both directions.
+
+**Note:** Curtain commands through the server have not yet been tested on the real curtain (bridge/README.md section 3). Only "all lamps" commands reach the DALI lamps until they are addressed again (bridge/README.md open issue 1), but the bridge does not report the broadcast zone yet: `server.py` sends only `group<N>_*`, so the virtual lights follow group 0 until the bridge sends `dali1.all_*` (bridge/README.md open issue 7). The dimmer and DALI panel models are read-only in XR while `online`; change them on the real devices.
+
+**Result:** N/T
+
+## 7. UC3 - Temperature, Tint Scale and Alarm
+
+**Objective:** Verify the live temperature display, its tint, and the alarm above the threshold (26 °C, `--temp-alarm`), with and without `--alarm-actions` (close the curtain, play the alarm sound).
+
+### Test UC3.1 - Simulation Mode
+
+- [ ] Start `python3 bridge/server.py --simulate` and the XR app.
+- [ ] Verify the temperature display and the room unit follow the simulated temperature (22-28 °C over two minutes).
+- [ ] Verify the tint follows [temperature-tint-scale.md](temperature-tint-scale.md): green below 24 °C, light/medium red at 24-26 °C, deep red from 26 °C.
+- [ ] Verify the camera floodlight switches on when the temperature rises above 26 °C and off when it falls back.
+- [ ] Restart with `--alarm-actions --alarm-sound "Alarm Sound Effect.mp3"` (the default `alarm.mp3` does not exist; without a sound the server only closes the curtain). Verify that when the alarm starts the curtain closes and the speaker model shows playing.
+
+**Expected result:** Display, tint and alarm follow the temperature; with `--alarm-actions` several devices react to one event.
+
+**Result:** N/T
+
+### Test UC3.2 - Real Laboratory
+
+- [ ] Start `python3 bridge/server.py` and the XR app.
+- [ ] Compare the virtual temperature with the real room sensor (`python3 bridge/lab.py sensor`).
+- [ ] To trigger the alarm without heating the room, restart with `--temp-alarm` just below the current temperature. Verify the floodlight switches on.
+- [ ] Only if the lab staff agree: restart with `--alarm-actions --alarm-sound "Alarm Sound Effect.mp3"`. Verify the real curtain closes and the real speaker plays the sound.
 - [ ] Record any tests that cannot be performed safely with the available laboratory equipment.
 
-**Expected result:** The real KNX temperature value is correctly displayed in XR, and the alarm logic responds according to the configured threshold.
+**Expected result:** The real temperature is shown correctly in XR and the alarm responds to the configured threshold.
 
 **Result:** N/T
 
-### Test UC3.3 — Connection Failure
+## 8. Connection Failure
 
-- [ ] Disconnect the MQTT broker or KNX bridge.
-- [ ] Verify that the application indicates the connection is offline.
-- [ ] Switch to SimulatedLink mode.
-- [ ] Change the temperature using the virtual slider.
-- [ ] Verify that the temperature display continues updating.
-- [ ] Increase the temperature above the configured threshold.
-- [ ] Verify that the warning appears and the virtual fan starts.
-- [ ] Lower the temperature below the reset threshold.
-- [ ] Verify that the warning clears and the fan stops.
+**Objective:** Verify that the XR app shows the bridge as offline and the virtual devices keep working without it.
 
-**Expected result:** Temperature monitoring, overheating warnings, and virtual ventilation continue functioning in simulation mode without a real KNX connection.
+### Test CF.1 - Bridge Offline
+
+- [ ] With the XR app connected, stop the bridge server (Ctrl+C).
+- [ ] Verify the test panel status line shows `offline` (the app retries every 2 seconds).
+- [ ] Press **Raise** / **Lower** and grab the curtain. Verify the virtual curtain still moves (commands are dropped while offline).
+- [ ] Use the test panel controls. Verify the virtual devices still respond.
+- [ ] Start the server again. Verify the status returns to `online` within a few seconds and the virtual devices take the bridge's state.
+
+**Expected result:** The app never blocks or crashes without the bridge, and reconnects on its own.
 
 **Result:** N/T
 
-## 5. Preliminary Software and Connectivity Tests
+### Test CF.2 - Lab Devices Offline
+
+- [ ] Run `python3 bridge/server.py` (real mode) on a network without the lab devices.
+- [ ] Verify the server reports every device `offline` and the app stays `online` to the bridge.
+- [ ] Verify the green status indicator on the Siemens room unit model goes off (`room_sensor1.status`).
+
+**Expected result:** Offline lab devices do not break the XR app.
+
+**Result:** N/T
+
+## 9. Preliminary Software and Connectivity Tests
 
 **Test date:** 13 October 2026  
 **Environment:** Windows laptop, Visual Studio Code, Python, college Wi-Fi  

@@ -5,7 +5,7 @@ This folder is the data-exchange layer from [concept.md](../concept.md). It talk
 - `lab.py`: test any lab device from the command line. Also holds the lab configuration and the clients that `server.py` uses.
 - `server.py`: the bridge server the XR app connects to.
 
-Status on 13.10.2026: all devices can be read, the curtain, dimmer and speaker can also be controlled, and the server has been tested against the real lab. `lab.py` can also switch and dim the DALI lamps, but on 13.10.2026 only commands to all lamps reached them (see open issue 1). Unity is still a concept; section 5 describes how it will connect.
+Status on 13.10.2026: all devices can be read, the curtain, dimmer and speaker can also be controlled, and the server has been tested against the real lab. `lab.py` can also switch and dim the DALI lamps, but on 13.10.2026 only commands to all lamps reached them (see open issue 1). The Unity integration (section 5) is implemented and checked in Editor play mode against `server.py --simulate` (`OrangeRoomBridgeCheck`, all PASS); it has not been tested on the headset or with the real lab yet.
 
 Device details (addresses, entities, test results) are in [docs/](../docs/README.md).
 
@@ -68,12 +68,12 @@ python bridge/server.py --simulate   # fake devices, no lab or token needed
 | `--min-score` | 0.5 | Ignore person detections below this score |
 | `--presence` | `camera` | What switches the virtual light: `camera`, `motion` (Aqara motion sensor) or `any` |
 | `--alarm-actions` | off | When the alarm starts, close the curtain and play `--alarm-sound` on the speaker |
-| `--alarm-sound` | `alarm.mp3` | Sound file in `bridge/` for `--alarm-actions` |
+| `--alarm-sound` | `alarm.mp3` | Sound file in `bridge/` for `--alarm-actions`. `alarm.mp3` does not exist: pass `--alarm-sound "Alarm Sound Effect.mp3"` or copy that file to `alarm.mp3` |
 
 ```
               +----------------------- server.py -----------------------+
 XR app <-WS-> | latest state, broadcast, rules                          |
-       <-HTTP-|  Home Assistant, every 1 s -> curtain1, dimmer1,        |
+speaker<-HTTP-|  Home Assistant, every 1 s -> curtain1, dimmer1,        |
               |                               speaker1, motion1         |
               |  Frigate, every 1 s        -> camera1                   |
               |  BACnet, every 5 s         -> room_sensor1              |
@@ -160,45 +160,66 @@ With `--simulate`:
 
 | Use case | Real data | Bridge | XR |
 |---|---|---|---|
-| UC1 Motion -> light | Frigate person detection works; motion sensor not tested | `camera1` or `motion1` -> `virtual_light.on` works in simulation | Concept |
-| UC2 XR control of light and curtains | Dimmer and curtain work | Commands and two-way state work | Concept |
-| UC3 Temperature alarm | BACnet room sensor works | `room_sensor1.alarm` works; `--alarm-actions` works in simulation | Concept |
+| UC1 Motion -> light | Frigate person detection works; motion sensor not tested | `camera1` or `motion1` -> `virtual_light.on` works in simulation | Implemented, checked in Editor play mode against `--simulate` |
+| UC2 XR control of light and curtains | Dimmer and curtain work | Commands and two-way state work | Implemented, checked in Editor play mode against `--simulate` |
+| UC3 Temperature alarm | BACnet room sensor works | `room_sensor1.alarm` works; `--alarm-actions` works in simulation | Implemented (alarm = camera floodlight, no warning panel yet), checked in Editor play mode against `--simulate` |
 | Extension: live camera panel | Frigate frames work | `/camera.jpg` works | Concept |
 | Extension: DALI lamps and lamp failure | Lunatone panel REST API works (read) | `dali1` works, read-only | Concept |
 
-## 5. Planned Unity Integration
+## 5. Unity Integration
 
-As in the concept, Unity never talks to the devices directly, only to `server.py`.
+As in the concept, Unity never talks to the devices directly, only to `server.py`. The scripts are in `unity/Assets/Scripts`; `OrangeRoom > Place IoT Devices` adds them to the scene.
 
 **Connection**
-- **WebSocket.** Unity opens one WebSocket to `ws://<bridge PC IP>:8765`. Check the IP with `ipconfig`, because Wi-Fi addresses can change.
-- **Library.** It needs a WebSocket library that works on Quest. NativeWebSocket is the candidate.
-- **Quest builds.** They need Internet Access set to Require in Player Settings.
+- **WebSocket.** `RoomBridge` opens one WebSocket to `ws://<bridge PC IP>:8765` with .NET `ClientWebSocket` (works on Quest, no extra library) and reconnects every 2 seconds. Messages are received off the main thread, then parsed and applied in `Update`.
+- **Address.** Default `ws://192.168.160.57:8765`, the team laptop. Check the IP with `ip -4 addr` or `ipconfig`, because Wi-Fi addresses can change. It can be changed with the env variable `ORANGE_BRIDGE_URL` when the scene is built, on the "Bridge" object in the Inspector, or in VR on the test panel (-/+ per octet, then **Apply & reconnect**). The VR value is saved on the headset and wins over the build value until changed again.
+- **Quest builds.** The APK step sets the Android Internet permission. The laptop firewall must allow TCP 8765 and 8000. Unity has no HTTP client: port 8000 serves `/camera.jpg` (not used by Unity yet) and `/media/<song>` for the real speaker.
+- **Lab check.** Run `ip -4 addr` on the laptop, set the address on the test panel, press **Apply & reconnect** and look for `online`. If it stays on `connecting`, suspect Wi-Fi client isolation and use a phone hotspot.
 
-**Components**, one per device. Each listens to its device's messages and sends its commands:
+**Components**
 
-| Component | Shows | Interaction -> command |
-|---|---|---|
-| Bridge client | Connection state, reconnects | Parses messages, sends commands |
-| Room lights (UC1) | Fades the virtual lights on `virtual_light.on` | - |
-| Curtain | Moves the curtain mesh to `position` | Grab and release -> `set_position`; buttons -> `open`, `close`, `stop` |
-| Dimmer | Lamp brightness from `on` and `level`, power on the information panel | Slider -> `set_level`; button -> `toggle` |
-| Speaker | State, title and volume | Play/pause -> `play`, `pause`, `resume`; knob -> `set_volume` |
-| Camera | Panel loading `http://<bridge PC>:8000/camera.jpg` 2-5 times a second, occupied badge | Point at the camera to show or hide the panel |
-| DALI lamps | One fixture per short address, on/off from `lamp<N>_on`, flashing red on `lamp<N>_failure` | - (control later) |
-| Room sensor (UC3) | Temperature label or thermometer, CO2, humidity, room tint, warning panel on `alarm` | - |
-| Information panel | Name, value, last update (`timestamp`), connection (`status`, `source`) | Point and select a device |
+| Component | Does | Bridge in | Bridge out |
+|---|---|---|---|
+| `RoomBridge` | WebSocket client, maps messages onto the IoT library devices (`Apply`), connection state for the test panel | all of the table below | `Send`, only from user input |
+| `XRDeviceInput` | XRI select/drag/release on a device's hit zone -> the device's own controls, then `RoomBridge.UserControl` | - | see table below |
+| `CeilingLights` | Lab ceiling lights: two shadowless realtime spot lights (URP Light Layers: lab and IoT devices only) + LED panel tint on top of the baked part. On/off and colour from the DALI panel model, brightness from the dimmer model (dimmer off = lights off) | via the DALI and dimmer models | - |
+| `BridgeTestPanel` | In-VR panel that fakes each real-world signal by calling `Apply` with the same device/property/value, shows `url: online/connecting/offline` and the last message | - | - |
+| `OrangeRoomBridgeCheck.Run` (Editor) | Automated check in Editor play mode against `server.py --simulate`: parsing, connect, devices follow messages, curtain Lower/stop round trip, dimmer/DALI -> ceiling. Exits 0/1 | all | `curtain1` |
+
+| Bridge message | Virtual device (IoT library) |
+|---|---|
+| `dimmer1.on`, `dimmer1.level` | `RotaryDimmer` power and knob -> ceiling brightness |
+| `dali1.all_on`, `all_level`, `all_kelvin` (broadcast zone, preferred once the bridge sends them); fallback `group0_on`, `group0_level`, `group0_kelvin` | `DALILightingPanel` power, brightness, colour temperature -> ceiling on/off and colour |
+| `virtual_light.on` (UC1) | `DALILightingPanel` power. Last writer wins with the DALI on/off |
+| `curtain1.position` | `RollerBlindDevice` (0 = closed on both sides) |
+| `room_sensor1.temperature`, `humidity` | `TemperatureLCD` value, text tinted by [temperature-tint-scale.md](../docs/temperature-tint-scale.md); `SiemensBACnetDevice` display |
+| `room_sensor1.status` | `SiemensBACnetDevice` status light (off when `offline`) |
+| `room_sensor1.alarm` (UC3) | `SecurityCameraDevice` floodlight (camera power = occupied or alarm). No warning panel or room tint yet; the temperature tint colours the `TemperatureLCD` text only |
+| `camera1.occupied` | `SecurityCameraDevice` red recording LED |
+| `speaker1.state`, `speaker1.volume` | `NestSpeakerDevice` active while `playing`, volume |
+
+| XR input | Command |
+|---|---|
+| Curtain controller (`AqaraChainController`) Raise / Lower pressed | `curtain1` `open` / `close` (the virtual curtain moves too) |
+| Raise / Lower released | `curtain1` `stop` |
+| Roller blind grab released | `curtain1` `set_position` |
+| Speaker volume released / mute | `speaker1` `set_volume` / `pause`, `resume` |
 
 **Guidelines**
-- **Visuals follow the bridge.** Update visuals from the bridge's messages, not from the user's input. Then the wall switches and the Aqara app also update XR, which gives two-way sync.
-- **Send sparingly.** Send continuous input rarely: a curtain grab once on release, sliders a few times per second at most.
-- **Offline devices.** Use `status` to grey out offline devices. Use simulation mode when away from the lab.
+- **No echo.** Commands are sent only from user input, never from the devices' `StateChanged`, so a bridge update cannot loop back to the bridge.
+- **Real lights.** Nothing in XR sends dimmer or DALI commands. The real lights stay under the DALI panel and the dimmer.
+- **Mirrored devices.** While the bridge is online, the dimmer, DALI panel, camera, temperature display and Siemens room unit are read-only in XR (the server sends changes only, so a local change would never be corrected). Use the real device or the test panel.
+- **Offline.** While the bridge is offline, commands are dropped and the virtual devices keep working locally.
+- **DALI colour gap.** The concept has RGB colour from the DALI panel, but the bridge only sends kelvin, so the virtual lights show colour temperature (2000-6500 K) only. RGB needs a new `dali1` property in `server.py` and one more case in `RoomBridge.Apply`.
+- **DALI broadcast zone.** `RoomBridge` prefers `dali1.all_*` (the broadcast zone the ceiling follows) and falls back to `group0_*`, but `server.py` only sends `group<N>_*` and `lab.py` `read_dali` drops the broadcast zone (open issue 7). The in-VR test panel fakes `dali1.all_*` directly.
+- **Not wired yet.** Speaker `play`, `lamp<N>_failure`, the camera frame panel (`/camera.jpg`) and the information panels.
 
 ## 6. Open Issues
 
 1. **DALI addressing.** The Lunatone DALI-2 Display at .120 reaches the lamps only with commands to all lamps. None of the stored short addresses 0-9 answer the panel's status queries, so the lamps probably need to be addressed again by the lab staff. Until then `lamp<N>_on` is `false` for every lamp, and `dali1` stays read-only. Also find out which lamps "Task light 1" and "Task light 2" are. See [dali.md](../docs/devices/dali.md).
-2. **UC3 reactions.** `--alarm-actions` is implemented but off by default. Agree with the lab staff whether the alarm may close the real curtain and play an alert on the real speaker before using it in the lab. It needs an alarm sound in `bridge/`. `*.mp3` is git-ignored, so copy the file there by hand.
+2. **UC3 reactions.** `--alarm-actions` is implemented but off by default. Agree with the lab staff whether the alarm may close the real curtain and play an alert on the real speaker before using it in the lab. The default `alarm.mp3` does not exist; pass `--alarm-sound "Alarm Sound Effect.mp3"` (in `bridge/`) or copy that file to `alarm.mp3`.
 3. **UC1 demo.** Someone is almost always in view of the camera, so the room rarely counts as empty. `--presence motion` uses the Aqara motion sensor instead, which can be pointed away from people. A Frigate zone (ask the lab staff) or a shorter `--hold` are other options.
 4. **Curtain stop.** Holding the current position has not been tested on the real curtain yet.
 5. **Writing to BACnet or KNX.** Not implemented on purpose. Only write to objects the lab staff approve.
 6. **Security.** The server has no authentication, so only run it on the lab network. Revoke the Home Assistant token after the project.
+7. **DALI broadcast zone.** `read_dali` in `lab.py` keeps only single-group zones, so the broadcast zone (all lamps) never reaches `server.py`: the bridge does not report the broadcast zone yet. Unity is ready for `dali1.all_on`, `all_level` and `all_kelvin`; the bridge needs to publish them.

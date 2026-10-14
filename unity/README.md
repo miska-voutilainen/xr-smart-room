@@ -5,7 +5,11 @@ Unity side of the Blender office/lab model. Blender export: `blender/unity_expor
 
 - `Assets/Editor/OrangeRoomImport.cs`: import rules (scale, axes, URP/Lit materials from texture names, glass, lightmap-UV fallback).
 - `Assets/Editor/OrangeRoomSceneBuilder.cs`: menu **OrangeRoom > Build Scene** (static flags, colliders, lights,
-  probes, lightmap settings, post volume, XR rig, teleport floor, grabbables, hinged door).
+  probes, lightmap settings, XR rig, teleport floor, grabbables, hinged door).
+- `Assets/Editor/OrangeRoomDevicePlacer.cs`: menu **OrangeRoom > Place IoT Devices** (9 IoT prefabs on the demo boards,
+  each with `XRSimpleInteractable` + `XRDeviceInput`, plus the "Bridge" object with `RoomBridge` and `BridgeTestPanel`).
+
+Runtime scripts in `Assets/Scripts` (see "Bridge" below): `RoomBridge.cs`, `XRDeviceInput.cs`, `CeilingLights.cs`, `BridgeTestPanel.cs`.
 
 ## Versions (checked 2026-10-12)
 
@@ -60,10 +64,12 @@ done
   Oculus Touch + Meta Quest Touch Plus, Single Pass Instanced, interaction layer 31 = `Teleport`, reimport of `Assets/Models`.
 - **Scene**: IoT prefabs (device by device), OrangeRoom > Build Scene, OrangeRoom > Place IoT Devices, save.
 - **Bake**: lightmaps + occlusion culling. The 4 GB RTX 3050 is below the GPU lightmapper's 4 GB minimum, so it bakes on
-  the CPU. `BAKE_TPU=20` overrides the 40 texels/m from the builder for one bake (indirect samples capped at 128).
-  The committed lightmaps are that 20 texels/m bake (15 min on 12 cores); 40 texels/m is roughly 1 h.
+  the CPU. `BAKE_TPU=20` overrides the 30 texels/m from the builder for one bake (indirect samples capped at 128).
+  The committed lightmaps are that 20 texels/m bake (15 min on 12 cores); 30 texels/m (the builder default) takes longer.
 - **Snapshots**: eye-height PNGs per room and per IoT device in `Build/Snapshots/` (texture/lighting check without a headset).
-- **Apk**: `Build/OrangeRoom-Quest3S.apk` (debug-signed, sideload with `adb install -r`).
+- **Apk**: `Build/OrangeRoom-Quest3S.apk`, signed with the release key from `ORANGE_KEYSTORE`; without it Unity signs with
+  the debug key (sideload only). Store builds: `tools/quest_release.sh` (release-signed, verified, ALPHA upload only with
+  `--upload`), see `docs/store-release.md`. Install on the headset from the ALPHA channel.
 
 The XRI Starter Assets sample is committed under `Assets/Samples/XR Interaction Toolkit/3.5.0/Starter Assets` (copied from
 the package's `Samples~`, GUIDs unchanged). The rig is its `XR Origin (XR Rig)` prefab (XRI 3.x name; 2.x called it
@@ -87,12 +93,12 @@ start Unity Hub once (it refreshes the token), then re-run.
 
 ## Steps
 
-1. Unity Hub > Add > Add project from disk > `unity`. Open with 2022.3.76f1 (or see above).
+1. Unity Hub > Add > Add project from disk > `unity`. Open with 2022.3.62f3 (see above).
    Packages resolve from `Packages/manifest.json`. When the Input System asks to enable the new backend: **Yes** (restart).
 2. Project Settings > Player > Other Settings: Color Space **Linear** (the menu command also sets it),
    Active Input Handling **Input System Package (New)** or **Both**.
 3. Create the URP asset: Project window > `Assets/Settings` > Create > Rendering > **URP Asset (with Universal Renderer)**.
-   On it: HDR on, MSAA 4x, Render Scale 1, Main Light: Disabled is fine (all lighting is baked), Mixed Lighting on,
+   On it: HDR on, MSAA 4x, Render Scale 1, Main Light: Disabled is fine (the sun is baked), Mixed Lighting on,
    Additional Lights: Per Pixel. Quest standalone: HDR off, MSAA 4x, Depth/Opaque texture off.
 4. Project Settings > XR Plug-in Management: install, tick **OpenXR** for PC (and Android if Quest).
    OpenXR > Interaction Profiles: add Oculus Touch / Meta Quest Touch Pro, Valve Index, HTC Vive as needed.
@@ -101,9 +107,9 @@ start Unity Hub once (it refreshes the token), then re-run.
    Accept the Preset Manager prompt.
 6. Copy the export into `Assets/Models` and `Assets/Textures` (textures first, or just reimport the models afterwards).
 7. Menu **OrangeRoom > Build Scene**. Read the Console: it reports missing URP asset, Starter Assets, lights or UV2.
-   It writes `Assets/Scenes/OrangeRoom.unity`, `Assets/Settings/OrangeRoom.lighting`, `OrangeRoom_Post.asset`, `OrangeRoom_Sky.mat`
+   It writes `Assets/Scenes/OrangeRoom.unity`, `Assets/Settings/OrangeRoom.lighting`, `OrangeRoom_Sky.mat`
    and puts the scene in Build Settings. Re-running rebuilds all of it from scratch.
-8. Window > Rendering > Lighting > **Generate Lighting** (Progressive GPU; with a 4 GB GPU Unity may fall back to CPU, that's fine).
+8. Window > Rendering > Lighting > **Generate Lighting** (Progressive CPU + OpenImageDenoise, set by the builder).
    Then Window > Rendering > Occlusion Culling > Bake.
 9. Play with a headset (or the XR Device Simulator from the XRI samples).
 
@@ -113,16 +119,22 @@ start Unity Hub once (it refreshes the token), then re-run.
   Glass is not an occluder and casts no shadows. Meshes under 25 cm get light probes instead of lightmap space.
   Exterior: batching/occludee only, lit by ambient + fog.
 - **Colliders**: non-convex MeshCollider on all static meshes except `Door_*` (frame would fight the leaf).
-- **Lights**: one baked rectangle light per `*LED*Panel*` (facing down) and per `*Window*Glass*` (facing into the room).
-  Area lights are baked only in URP; dynamic objects get them through light probes. Overcast procedural sky (no sun) as ambient,
-  exponential-squared fog for the rainy exterior.
-- **Lightmapping**: Progressive GPU, 40 texels/m, 2048 max, padding 4, directional, shadowmask, AO 0.5 m, 32/512/256 samples, 3 bounces.
+- **Lights**: one baked rectangle light per `*LED*Panel*` / hall `Room3_LED_*` (facing down, LED 8, hall x1.5) and per
+  `*Window*Glass*` (facing into the room, 4; lab windows x0.6). Area lights are baked only in URP; dynamic objects get them through light probes.
+  Lab (Room2) LED panels are baked at 70 %; `Lab_CeilingLights` adds the runtime part: two shadowless realtime spot lights
+  over the panels + emissive tint on the panels, driven by `CeilingLights` (DALI on/off + colour, dimmer brightness).
+  URP Light Layers limit the spots to rendering layer 2 (the lab Room2 and the IoT devices).
+  Baked directional sun (pitch 40, yaw 200, 1.2) through the windows, procedural sky with neutral tint and no sun disc as
+  ambient, exponential-squared fog for the rainy exterior.
+- **Lightmapping**: Progressive CPU (the 4 GB RTX 3050 is below the GPU lightmapper minimum), OpenImageDenoise on
+  direct/indirect/AO, 30 texels/m, 2048 max, padding 4, no compression (Android RGBM + ASTC broke the walls into
+  pink/green blocks), directional, shadowmask, AO 0.5 m, 32/192/128 samples, 3 bounces. Material AO maps are not used
+  (the baked AO already covers it).
 - **Probes**: light-probe grid every 0.6 m at 0.3/1.1/1.8/2.5 m per room; one baked box-projected reflection probe per room.
-- **Post**: global Volume, XR profile of `blender/unity_export/POSTFX.md` (fitted to the Blender AgX grade): Tonemapping **ACES**,
-  Color Adjustments post-exposure -0.6 EV + contrast -12, White Balance -34 / -13, Bloom threshold 0 / intensity 0.03 /
-  scatter 0.8. No vignette/grain/CA (bad in VR). Calibrate `PostExposure` as POSTFX.md "Exposure" describes.
-- **XR**: Starter Assets `XR Interaction Setup` prefab on the room-1 floor, post-processing enabled on its camera, near clip 5 cm.
-  `TeleportationArea` on the floors (interaction layer `Teleport`).
+- **Post**: none on Quest. No Volume, post-processing off on the rig camera, HDR off on the Quest URP asset
+  (tonemapping and bloom only cost GPU and clip whites).
+- **XR**: Starter Assets `XR Origin (XR Rig)` prefab on the room-1 floor, post-processing off on its camera, near clip 5 cm.
+  `TeleportationArea` on the floors (interaction layer `Teleport`). The rig's ray casters hit trigger colliders (IoT hit zones).
   Grabbables and chairs: Rigidbody + convex colliders + `XRGrabInteractable` (velocity tracking, dynamic attach).
   Door: Rigidbody + `HingeJoint` (axis up, anchor at the leaf origin, limits -110..0 deg) + `XRGrabInteractable` without rotation tracking.
 
@@ -130,5 +142,28 @@ start Unity Hub once (it refreshes the token), then re-run.
 
 Knobs are constants at the top of `OrangeRoomSceneBuilder.cs`:
 `LedIntensity`, `WindowIntensity` (Blender watts don't convert; match the Cycles render side by side),
-`PostExposure`, `DoorMinAngle/DoorMaxAngle` (door opens outward into the corridor: flip the sign if it swings into the room),
+`LabLedBaked` (baked share of the lab LEDs), `LabRealtime` (lab spot lights at full brightness), `LabWindow` (lab window
+light factor), `HallLedBoost`,
+`DoorMinAngle/DoorMaxAngle` (door opens outward into the corridor: flip the sign if it swings into the room),
 `TexelsPerUnit`, `ProbeSpacing`, `FogDensity`. Probes that land inside the cabinet or walls can be deleted by hand.
+Runtime: Build Scene writes `LabRealtime` into `CeilingLights.intensity` on `Lab_CeilingLights`, so Inspector edits there
+are overwritten on the next build.
+
+## Bridge (bridge/server.py)
+
+- **`RoomBridge`** (on "Bridge"): `ClientWebSocket` to `ws://<laptop IP>:8765`, reconnect every 2 s, messages applied on the
+  main thread. Sends commands only from user input (curtain, speaker). Mapping table: `bridge/README.md` section 5.
+- **`XRDeviceInput`**: XRI select on a device hit zone -> the device's `ControlDown/Drag/Up` + `RoomBridge.UserControl`.
+- **`BridgeTestPanel`**: world-space panel beside board 5. Toggles/sliders fake each real-world signal through
+  `RoomBridge.Apply`, a status line shows `url: online/connecting/offline` and the last message, the bridge IP is set with -/+ per octet and **Apply & reconnect**.
+- **Bridge address**: default `ws://192.168.160.57:8765` (team laptop; check with `ip -4 addr` / `ipconfig`). Override with
+  env `ORANGE_BRIDGE_URL` on the Scene step, the `url` field on "Bridge", or in VR on the test panel (saved
+  on the headset via `RoomBridge.SetUrl`, wins over the build value until changed again).
+  The laptop firewall must allow TCP 8765 and 8000. The Apk step sets the Android Internet permission.
+- **Check**: `Assets/Editor/OrangeRoomBridgeCheck.cs`, end to end in play mode against the simulator (no `-quit`, it exits
+  0/1 itself, 120 s timeout; `BRIDGE_CHECK_URL` overrides `ws://127.0.0.1:8765`):
+  ```bash
+  python3 bridge/server.py --simulate &
+  ~/Unity/Hub/Editor/2022.3.62f3/Editor/Unity -batchmode -projectPath unity -executeMethod OrangeRoomBridgeCheck.Run -logFile -
+  ```
+  Look for `[BridgeCheck] PASS:` / `FAIL:` lines and `[BridgeCheck] DONE`. Lab test plan: `docs/test-checklist.md`.
