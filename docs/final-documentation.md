@@ -28,7 +28,7 @@ The goal is to provide an interactive demonstration of smart-building automation
 
 The XR Smart-Room Twin system is designed around the following components:
 
-- **Unity 2022.3.76f1:** Provides the virtual smart-room environment and interactive device models.
+- **Unity 2022.3.62f3:** Provides the virtual smart-room environment and interactive device models.
 - **VRTK v4:** Supports XR interactions with virtual objects.
 - **SimulatedLink:** Handles virtual device behaviour without external hardware.
 - **MqttLink:** Connects the Unity application to the MQTT messaging system.

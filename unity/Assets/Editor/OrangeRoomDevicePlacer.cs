@@ -14,7 +14,8 @@ static class OrangeRoomDevicePlacer
 {
     // Blender (right-handed, Z up) -> Unity for Blender's default FBX export (-Z forward, Y up) + bakeAxisConversion.
     // Calibration knob: the menu logs how far Kitchen_Board lands from this mapping; fix it here if that is not ~0.
-    static Vector3 B2U(float x, float y, float z) => new Vector3(-x, z, -y);
+    // Measured in 2022.3.62f3: Kitchen_Board lands at (x, z, y) (the old (-x, z, -y) was 1.913 m off).
+    static Vector3 B2U(float x, float y, float z) => new Vector3(x, z, y);
 
     struct Board { public Vector3 c, n, right; public float w, h; }
 

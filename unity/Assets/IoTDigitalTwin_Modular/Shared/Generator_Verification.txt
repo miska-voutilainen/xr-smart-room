@@ -1,0 +1,6 @@
+Unity 2022.3.62f3
+PASS metre scale and axis landmarks: 09_DALI_Touchscreen_Panel
+PASS materials/textures assigned: 09_DALI_Touchscreen_Panel
+PASS references/colliders and 8 controls: 09_DALI_Touchscreen_Panel
+PASS prefab: Assets/IoTDigitalTwin_Modular/09_DALI_Touchscreen/Prefabs/09_DALI_Touchscreen_Panel.prefab
+Play Mode and manual mouse tests are not run by generation. Run the included Play Mode smoke test and manual checklist.

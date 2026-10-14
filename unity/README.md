@@ -1,4 +1,4 @@
-# OrangeRoom (Unity 2022.3 LTS, URP, OpenXR, XR Interaction Toolkit)
+# OrangeRoom (Unity 2022.3.62f3 LTS, URP, OpenXR, XR Interaction Toolkit, Meta Quest 3S)
 
 Unity side of the Blender office/lab model. Blender export: `blender/unity_export/export_unity.py` (g3_export) writes
 `Assets/Models/*.fbx` and `Assets/Textures/*.png`. Two editor scripts do the rest:
@@ -11,12 +11,13 @@ Unity side of the Blender office/lab model. Blender export: `blender/unity_expor
 
 | What | Version | Why |
 |---|---|---|
-| Editor | **2022.3.76f1** (changeset d938583f0741, released 2026-05-06, latest 2022.3; 77f1 does not exist) | Pinned in `ProjectSettings/ProjectVersion.txt`. It is a "3-year LTS" patch (Unity Enterprise/Industry tier). If your licence can't install it, any 2022.3.x >= 2022.3.50 works: Hub offers to open the project with it. |
+| Editor | **2022.3.62f3** (changeset 96770f904ca7, 2025-10-28) | Pinned in `ProjectSettings/ProjectVersion.txt`. Last public 2022.3 LTS patch: opens with a Personal licence. 2022.3.63+ (incl. the 76f1 we pinned before) are Extended LTS builds that need Unity Industry/Enterprise. |
 | URP | 14.0.11 | Core package, locked to the editor. Unity rewrites the pin to the editor's bundled 14.0.x on open, that's expected. |
 | OpenXR Plugin | 1.17.1 | Newest release that still declares `unity: 2022.3` (1.19 needs Unity 6). |
 | XR Plugin Management | 4.6.1 | Registry `latest` tag. |
 | XR Interaction Toolkit | **3.5.0** | Newest XRI for 2022.3 (3.6 needs Unity 6). Needs Input System >= 1.8.1, XR Core Utils >= 2.4.0 (pulled in automatically). |
 | Input System | 1.19.0 | Newest for 2022.3. |
+| TextMeshPro | 3.0.9 | Needed by the XRI Starter Assets sample (2022.3 has TMP as a separate package). |
 
 No scoped registry is needed: everything comes from the Unity registry.
 
@@ -40,6 +41,36 @@ If you still want Tilia: add to `manifest.json`
 plus `io.extendreality.tilia.camerarigs.xrpluginframework.unity: 2.1.14`, `...interactions.interactables.unity: 2.18.1`,
 `...locomotors.teleporter.unity: 2.2.4`, `...indicators.objectpointers.unity: 2.2.16`, `...input.unityinputsystem: 2.4.11`,
 and rewrite `OrangeRoomSceneBuilder.MakeGrab/MakeDoor/MakeTeleportFloor/XRRig` against Tilia prefabs.
+
+## Meta Quest 3S build (headless, one command per step)
+
+`Assets/Editor/OrangeRoomQuest.cs` does the whole Quest setup without clicking (also in the menu **OrangeRoom > Quest**).
+Each step is its own editor launch because the input backend switch and the sample import need a restart in between:
+
+```bash
+cd unity
+for step in Setup Scene Bake Snapshots Apk; do
+  unity run . --editor-version 2022.3.62f3 --log-file Logs/$step.log -- -buildTarget Android -executeMethod OrangeRoomQuest.$step || break
+done
+```
+
+- **Setup**: company/product/id `com.orangeteam.orangeroom`, Linear, IL2CPP, ARM64 only, min API 32, OpenGLES3, ASTC,
+  Input handling Both, URP asset `Assets/Settings/OrangeRoom_Quest_URP.asset` (HDR off, MSAA 4x, no depth/opaque texture)
+  on every quality level, XR Plug-in Management with the OpenXR loader on Android, OpenXR features Meta Quest Support +
+  Oculus Touch + Meta Quest Touch Plus, Single Pass Instanced, interaction layer 31 = `Teleport`, reimport of `Assets/Models`.
+- **Scene**: IoT prefabs (device by device), OrangeRoom > Build Scene, OrangeRoom > Place IoT Devices, save.
+- **Bake**: lightmaps + occlusion culling. The 4 GB RTX 3050 is below the GPU lightmapper's 4 GB minimum, so it bakes on
+  the CPU. `BAKE_TPU=20` overrides the 40 texels/m from the builder for one bake (indirect samples capped at 128).
+  The committed lightmaps are that 20 texels/m bake (15 min on 12 cores); 40 texels/m is roughly 1 h.
+- **Snapshots**: eye-height PNGs per room and per IoT device in `Build/Snapshots/` (texture/lighting check without a headset).
+- **Apk**: `Build/OrangeRoom-Quest3S.apk` (debug-signed, sideload with `adb install -r`).
+
+The XRI Starter Assets sample is committed under `Assets/Samples/XR Interaction Toolkit/3.5.0/Starter Assets` (copied from
+the package's `Samples~`, GUIDs unchanged). The rig is its `XR Origin (XR Rig)` prefab (XRI 3.x name; 2.x called it
+"XR Interaction Setup").
+
+If the Editor log shows `Cannot fetch authorization code. User access token is expired`, the Hub sign-in token is stale:
+start Unity Hub once (it refreshes the token), then re-run.
 
 ## Export contract (what the scripts expect from g3_export)
 

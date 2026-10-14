@@ -66,7 +66,7 @@ namespace IoTDigitalTwin.Editor {
                 Matrix4x4 actual=Basis(a,b,c);Require(Mathf.Abs(actual.determinant)>1e-12f,"Degenerate FBX calibration landmarks: "+asset.stem);
                 correction=Basis(asset.anchors[0].position,asset.anchors[1].position,asset.anchors[2].position)*actual.inverse;
             }else{
-                bool dimmer=asset.id==1;Vector3 forward=Find(model.transform,dimmer?"05_Rotary_Knob":"Wall_Mount_Plate").position-origin;float scale=(dimmer?.010f:.002f)/forward.magnitude;Vector3 label=Find(model.transform,dimmer?"06_Removable_Installation_Label":"Sliding_Drive_Cover").position-origin;
+                bool dimmer=asset.id==1;Vector3 forward=Find(model.transform,dimmer?"05_Rotary_Knob":"Wall_Mount_Plate").position-origin;float scale=(dimmer?.010f:.002f)/forward.magnitude;Transform labelT=Find(model.transform,dimmer?"06_Removable_Installation_Label":"Sliding_Drive_Cover");var labelR=labelT.GetComponent<Renderer>();Vector3 label=(dimmer&&labelR?labelR.bounds.center:labelT.position)-origin;/* dimmer label pivot sits on the origin in the FBX: use its mesh centre */
                 Vector3 up=(dimmer?-1:1)*(label-Vector3.Project(label,forward));Require(up.sqrMagnitude>1e-9f,"Dimmer orientation landmarks missing.");Quaternion rotation=Quaternion.Inverse(Quaternion.LookRotation(forward,up));correction=Matrix4x4.TRS(Vector3.zero,rotation,Vector3.one*scale);
             }
             Vector3 translation=-correction.MultiplyVector(origin);correction.SetColumn(3,new Vector4(translation.x,translation.y,translation.z,1));Matrix4x4 composed=correction*model.transform.localToWorldMatrix;

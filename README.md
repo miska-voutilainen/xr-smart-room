@@ -37,7 +37,7 @@ Unity connects to `bridge/server.py` over WebSocket (`ws://<bridge host>:8765`, 
 
 | Area | Choice |
 |---|---|
-| Engine | Unity 2022.3.76f1 LTS, URP 14 |
+| Engine | Unity 2022.3.62f3 LTS (last public 2022.3, runs on a Personal licence), URP 14. Target: Meta Quest 3S (Android, OpenXR) |
 | XR framework | XR Interaction Toolkit 3.5.0 + OpenXR 1.17.1 (XR Plug-in Management 4.6.1, Input System 1.19.0). VRTK v4 was dropped: unmaintained since 2024, no URP/OpenXR support (see unity/README.md) |
 | 3D model | Blender 5.2 room model, scripted, exported to FBX for Unity (`blender/`) |
 | Data layer | Python (`bridge/`) |
@@ -67,9 +67,9 @@ bridge/        Data-exchange layer: device scripts and bridge server (working, s
 
 ## Next Steps (Unity)
 
-1. **Editor version.** `unity/ProjectSettings/ProjectVersion.txt` pins 2022.3.76f1, an Extended LTS build that only opens with a Unity Industry/Enterprise licence (a Personal licence stops at start-up with "requires either a valid Unity Industry or Unity Enterprise license"). With Personal, open the project with the newest 2022.3 that Unity Hub offers you and let it rewrite the pin.
-2. **First open.** Accept the Input System prompt (Active Input Handling: Input System Package or Both; XRI 3.5 needs it, the IoT library's `IoTMouseInput` already switches on `ENABLE_INPUT_SYSTEM`). Create the URP asset, enable OpenXR, import the XRI Starter Assets (steps in `unity/README.md`), then commit the generated `ProjectSettings/*.asset` and `Packages/packages-lock.json`.
-3. **Devices.** Run **Tools > IoT Digital Twin > Generate Prefabs and Demo** once, then **OrangeRoom > Build Scene**, then **OrangeRoom > Place IoT Devices** (`unity/Assets/Editor/OrangeRoomDevicePlacer.cs`). It puts the prefabs on the demo boards: board positions come from the Blender model, device spots from the board photos, and each device gets an `XRSimpleInteractable`. It compiles against the Unity 2022.3 assemblies but has not run in an Editor yet; it logs a Blender-to-Unity axis check against `Kitchen_Board`. Mapping (from `docs/devices/` and the board photos):
+1. **Editor version.** `unity/ProjectSettings/ProjectVersion.txt` pins **2022.3.62f3**, the last public 2022.3 LTS patch, which opens with a Personal licence. 2022.3.63 and later (including 2022.3.76f1, which we pinned before) are Extended LTS builds that refuse a Personal licence at start-up ("requires either a valid Unity Industry or Unity Enterprise license").
+2. **Quest 3S build.** Done headless by `unity/Assets/Editor/OrangeRoomQuest.cs` (Setup, Scene, Bake, Snapshots, Apk; commands in `unity/README.md`). The APK is attached to the GitHub release, not committed. Still untested on a headset: install with `adb install -r OrangeRoom-Quest3S.apk` and check teleport, grab, door and that the IoT device screens show in both eyes.
+3. **Devices.** All nine IoT prefabs generate in Unity 2022.3.62f3 and `OrangeRoom > Place IoT Devices` puts them on the demo boards (Blender-to-Unity check against `Kitchen_Board`: 0.000 m after fixing the axis mapping to `(x, z, y)`). Each device gets an `XRSimpleInteractable`. Fixes needed for a real Unity import: the library's texture `.meta` files declared every PNG as a cubemap (`textureShape: 2`), the dimmer's label pivot sits on the origin (generator now uses its mesh centre), and the display shader had no single-pass-instanced stereo macros (screens would render in one eye on Quest). Mapping (from `docs/devices/` and the board photos):
 
 | IoT library prefab | Real device | Bridge name | Where in the room |
 |---|---|---|---|
@@ -84,8 +84,8 @@ bridge/        Data-exchange layer: device scripts and bridge server (working, s
 
 4. **XR interaction.** The library ships mouse input only. Route the `XRSimpleInteractable` select events (poke/press: dimmer, DALI panel, thermostat; grab for the blind chain and camera head) to the same controller setters the mouse input uses.
 5. **Bridge adapter.** A small MonoBehaviour with a WebSocket client (`ws://<bridge host>:8765`) that maps `{device, property, value}` messages onto the controllers' setters on the main thread and sends commands from their `StateChanged` events (see bridge/README.md, section 3).
-6. **Room export.** The FBX/textures in `unity/Assets/Models|Textures` are a low-quality trial export that predates the final hall, floor and pastry changes; tree leaves are missing in `Exterior.fbx`. The final export is one run of `blender/unity_export/export_unity.py --quality high` (about 40-60 min of baking). Delete `unity/Assets/Textures/*` before dropping in the final export.
-7. **C# status.** The Unity Editor on the build machine (2022.3.76f1) would not start with a Personal licence, so nothing has been compiled or run inside Unity yet. The IoT library scripts, `OrangeRoomImport.cs` and `OrangeRoomDevicePlacer.cs` compile together with the Unity 2022.3 C# compiler against the UnityEngine/UnityEditor assemblies; `OrangeRoomSceneBuilder.cs` (needs URP + XRI packages) is unchecked.
+6. **Room export.** `unity/Assets/Models|Textures` is the full-quality export of the final Blender v2 model: one run of `blender/unity_export/export_unity.py --quality high --res-max 1024` (Quest texture cap; 709 maps up to 1024 px, 8/64 bake samples). One run uses base material names (no `_Room2`/`_Room3` copies like the earlier two-run trial). `_validate_fbx.py` still reports three model issues, the same as the trial export: UV1 overlap on `Deskprops_CableUSB`, UV0 overlap on `Deskprops_CableWhite`, and `Room3_Play` listing `Room3_Plastic_Black` twice. Recipe note: copy `textures/` into the work dir too, otherwise `apply_materials.py` fails while Blender still exits 0.
+7. **C# status.** Everything compiles and runs in Unity 2022.3.62f3 (Linux, batch mode): IoT library, `OrangeRoomImport.cs`, `OrangeRoomSceneBuilder.cs`, `OrangeRoomDevicePlacer.cs`, `OrangeRoomQuest.cs`. Lighting knobs were raised for the Quest build (LED 8, window 4, post exposure +0.3 EV) to match the mean brightness of the Blender renders; the hall (Room3) is still darker than the rooms.
 8. **Known issues in the 3D model** (Blender v2, see `blender/previews/`):
    - Lab desk layout does not fully match photo 150435.
    - Terrazzo floor is glossier than in the photos.

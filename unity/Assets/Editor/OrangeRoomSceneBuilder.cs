@@ -23,7 +23,7 @@ public static class OrangeRoomSceneBuilder
     const string ExteriorTag = "Exterior";                                // model file / root name containing this
 
     // ---------- calibration knobs (Blender watts do not convert; tune against the Cycles render) ----------
-    const float LedIntensity = 3f, WindowIntensity = 2f;
+    const float LedIntensity = 8f, WindowIntensity = 4f;              // Quest build: matched to renders/v2 mean brightness (was 3 / 2)
     static readonly Color LedColor = new Color(1f, 0.94f, 0.88f);         // = Room_LED_* in Blender
     static readonly Color WindowColor = new Color(0.86f, 0.92f, 1f);      // = Room_Window_Daylight
     const float DoorMinAngle = -110f, DoorMaxAngle = 0f;                  // relative to the pose in the FBX; sign depends on hinge side
@@ -31,7 +31,7 @@ public static class OrangeRoomSceneBuilder
     const float SmallObject = 0.25f;                                      // static meshes smaller than this use probes, not lightmaps
     const float ProbeSpacing = 0.6f;
     static readonly float[] ProbeHeights = { 0.3f, 1.1f, 1.8f, 2.5f };
-    const float PostExposure = -0.6f;                                     // EV; -0.6 = AgX curve match (unity/POSTFX.md) + your scene calibration
+    const float PostExposure = 0.3f;                                      // EV; -0.6 = AgX curve match (unity/POSTFX.md) + your scene calibration
     const float FogDensity = 0.025f;                                      // ~2% at 6 m indoors, heavy on the trees outside
 
     const string Scenes = "Assets/Scenes", Settings = "Assets/Settings";
@@ -305,13 +305,15 @@ public static class OrangeRoomSceneBuilder
 
     static void XRRig(Transform floor)
     {
-        var path = AssetDatabase.FindAssets("XR Interaction Setup t:Prefab").Select(AssetDatabase.GUIDToAssetPath)
-            .FirstOrDefault(p => Path.GetFileName(p) == "XR Interaction Setup.prefab");
+        // XRI 3.x Starter Assets ship "XR Origin (XR Rig)" (with its Input Action Manager); "XR Interaction Setup" was the 2.x name
+        var path = AssetDatabase.FindAssets("XR Origin t:Prefab").Select(AssetDatabase.GUIDToAssetPath)
+            .FirstOrDefault(p => Path.GetFileName(p) == "XR Origin (XR Rig).prefab");
         if (path == null)
         {
             Debug.LogError("[OrangeRoom] XRI Starter Assets not imported (Package Manager > XR Interaction Toolkit > Samples > Starter Assets). Re-run after.");
             return;
         }
+        new GameObject("XR Interaction Manager").AddComponent<XRInteractionManager>();
         var rig = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(path));
         if (floor)
         {

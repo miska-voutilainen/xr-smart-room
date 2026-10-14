@@ -72,6 +72,7 @@ OUT = os.path.abspath(arg("--out", _DEFAULT_OUT))
 QNAME = arg("--quality", "low")
 ONLY = set(arg("--areas", "").split(",")) - {""}   # e.g. --areas Room1: export a subset (trial runs)
 Q = QUALITY[QNAME]
+RES_MAX = int(arg("--res-max", RES_MAX))   # Quest 3S: --res-max 1024
 MODELS, TEXTURES = os.path.join(OUT, "Models"), os.path.join(OUT, "Textures")
 scene = bpy.context.scene
 vl = bpy.context.view_layer
@@ -653,7 +654,7 @@ def main():
 
     # bake
     manifest = {"version": 2, "generated": time.strftime("%Y-%m-%dT%H:%M:%S"), "blender": bpy.app.version_string,
-                "quality": QNAME, "units": "metre", "contract": "unity/OrangeRoom/README.md",
+                "quality": QNAME, "res_max": RES_MAX, "units": "metre", "contract": "unity/OrangeRoom/README.md",
                 "fbx": {"axis_forward": "-Z", "axis_up": "Y", "apply_transform": False,
                         "apply_scalings": "FBX_SCALE_UNITS", "uv0": "per-material atlas", "uv1": "lightmap, per object"},
                 "materials": {}, "objects": [], "files": []}
