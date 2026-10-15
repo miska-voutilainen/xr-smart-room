@@ -103,6 +103,73 @@ Before laboratory testing, the team must confirm that:
 
 The XR Smart-Room Twin project includes three main use cases that demonstrate smart-building automation in a virtual environment.
 
+UC1: Motion → light
+
+Goal: Show that a real sensor event changes the XR scene and that logic reacts to it.
+
+Devices: Aqara camera (via Frigate), virtual ceiling lights, room “occupied” indicator.
+
+Preconditions: The bridge is running, either connected to Frigate or in --simulate. Camera and lights show their connection status (real, simulated or offline) on their info panels.
+
+Main flow:
+
+A person enters the camera’s view and Frigate reports a person detection.
+The bridge sends a camera1 motion/presence message over WebSocket.
+Unity marks the room as occupied, and the camera panel shows the detection.
+The virtual ceiling lights turn on.
+When the camera no longer sees anyone, the room returns to empty.
+
+Alternative flow: If Frigate is unreachable, the camera shows offline and simulation mode can generate motion events instead.
+
+Result: The virtual lights follow the camera’s presence state. The real lights are not touched, because the DALI panel and dimmer own them.
+
+UC2: XR control of light and curtains
+
+Goal: Show XR interaction (press, grab, slide) and two-way sync with real devices.
+
+Devices: DALI panel (Lunatone), dimmer (Aqara H2), curtain driver (Aqara E1), curtain controller model.
+
+Preconditions: Home Assistant and the DALI panel are reachable, or the bridge is simulating them.
+
+Main flow, lights (real → virtual):
+
+A person switches the lamps or changes the RGB color on the real DALI panel.
+The bridge reads the new state, and the virtual ceiling lights follow with the same on/off state and color tint.
+A person turns the real dimmer’s knob (0–100%).
+The bridge passes on the level, and the virtual lights brighten or dim. The dimmer model’s knob turns in XR to match.
+
+Main flow, curtains (XR → real):
+
+The user grabs the virtual curtain, or presses Lower/Raise on the controller model.
+The virtual curtain moves, and releasing the button stops it where it is.
+With the bridge connected, the same action sends close/open or a position (0–100%) to the real curtain.
+If someone uses the real wall switch, the virtual curtain animates to match.
+
+Alternative flow: In simulation mode the curtain still moves in XR, with no real command sent.
+
+Result: Both real wall devices drive the virtual lights, and the curtain stays in sync in both directions. Until the DALI lamps get individual addresses, all virtual lights show the same state.
+
+UC3: Temperature monitoring and alarm
+
+Goal: Show a measured value, a warning, and several devices reacting to one event.
+
+Devices: Room sensor (via the BACnet/IP gateway), speaker, curtains, warning panel.
+
+Preconditions: The alarm limit is configured (default 26 °C, to be confirmed) and the room sensor is readable, either real or simulated.
+
+Main flow:
+
+The bridge reads the room sensor and publishes the temperature, humidity and CO₂.
+XR shows the value above the sensor and tints the room along the 9-step blue/green/red scale.
+The temperature rises above the limit.
+A Temperature too high warning panel appears with the value and time.
+The speaker plays an alert sound and the curtains start closing, with their progress shown on the panel.
+The user can press Mute sound or Show sensor.
+
+Alternative flow: If the sensor goes offline, the display greys out and shows the connection status. In simulation mode the bridge generates a slowly changing temperature, so the alarm can be demonstrated without the lab.
+
+Result: One sensor reading triggers the warning, the sound and the curtain movement, and the tint shows how close the room is to the limit.
+
 ### 4.1 UC1 — Wall Switch → Lamp
 
 **Purpose:** Control the main lamp using a virtual wall switch.
