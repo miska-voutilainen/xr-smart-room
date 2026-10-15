@@ -1,0 +1,133 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>XR Smart Room Architecture</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<style>
+/* Layout: one reading column for text, figures run wider in their own scroll boxes; blueprint-paper neutrals, one signal hue for the XR boundary */
+:root {
+  --bg: #f5f7f8; --paper: #ffffff; --fg: #17222b; --muted: #5a6873; --rule: #cdd6dc;
+  --node: #ffffff; --node-top: #e4eaee; --node-side: #cfd8de; --env: #f3f6f8; --env-top: #e9eef1; --env-side: #dae2e7;
+  --accent: #0b6e8a;
+  --display: "Source Serif 4", Georgia, serif;
+  --sans: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11171c; --paper: #161e24; --fg: #dce5eb; --muted: #8d9ba5; --rule: #2c3841;
+  --node: #1b252c; --node-top: #26323b; --node-side: #2f3d47; --env: #212c34; --env-top: #2a3741; --env-side: #33424d;
+  --accent: #5cc3dd; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #11171c; --paper: #161e24; --fg: #dce5eb; --muted: #8d9ba5; --rule: #2c3841;
+  --node: #1b252c; --node-top: #26323b; --node-side: #2f3d47; --env: #212c34; --env-top: #2a3741; --env-side: #33424d;
+  --accent: #5cc3dd; color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 56px; }
+main { max-width: 1240px; margin: 0 auto; display: grid; gap: 40px; }
+header, .prose { max-width: 68ch; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 600 clamp(28px, 4vw, 40px)/1.15 var(--display); margin: 10px 0 12px; text-wrap: balance; }
+h2 { font: 600 22px/1.25 var(--display); margin: 0 0 6px; text-wrap: balance; }
+p { margin: 0 0 10px; }
+code { font: 13px var(--mono); }
+section { display: grid; gap: 14px; }
+figure { margin: 0; background: var(--paper); border: 1px solid var(--rule); }
+.scroll { overflow-x: auto; padding: 16px; }
+svg { display: block; width: 100%; min-width: 980px; height: auto; color: var(--fg); font-family: var(--sans); }
+figcaption { border-top: 1px solid var(--rule); padding: 12px 16px; color: var(--muted); font-size: 14px; max-width: 90ch; }
+.n-front { fill: var(--node); stroke: var(--fg); stroke-width: 1.2; }
+.n-top { fill: var(--node-top); stroke: var(--fg); stroke-width: 1.2; stroke-linejoin: round; }
+.n-side { fill: var(--node-side); stroke: var(--fg); stroke-width: 1.2; stroke-linejoin: round; }
+.e-front { fill: var(--env); stroke: var(--fg); stroke-width: 1; }
+.e-top { fill: var(--env-top); stroke: var(--fg); stroke-width: 1; }
+.e-side { fill: var(--env-side); stroke: var(--fg); stroke-width: 1; }
+.box { fill: var(--node); stroke: var(--fg); stroke-width: 1.2; }
+.port { fill: var(--node); stroke: var(--fg); stroke-width: 1.2; }
+.icon { fill: var(--node); stroke: var(--fg); stroke-width: 1; }
+.icon-fill { fill: var(--node); stroke: var(--fg); stroke-width: 1; }
+.sep { stroke: var(--fg); stroke-width: 1; }
+.comm, .conn { fill: none; stroke: var(--fg); stroke-width: 1.4; }
+.dep { fill: none; stroke: var(--fg); stroke-width: 1.2; stroke-dasharray: 6 4; }
+.sock { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+.ball { fill: var(--node); stroke: var(--fg); stroke-width: 1.4; }
+.accent { stroke: var(--accent); stroke-width: 2; }
+.accent-b { stroke: var(--accent); }
+.mk-open { fill: none; stroke: var(--fg); stroke-width: 1.4; }
+.mk-tri { fill: var(--paper); stroke: var(--fg); stroke-width: 1.4; stroke-linejoin: round; }
+text { fill: var(--fg); }
+.st { font: 12px var(--sans); fill: var(--muted); }
+.nm { font: 600 14px var(--sans); }
+.sb { font: 12px var(--mono); fill: var(--muted); }
+.op { font: 12px var(--mono); }
+.lb { font: 13px var(--sans); }
+.lbs { font: 12px var(--sans); fill: var(--muted); }
+.lbm { font: 12px var(--sans); fill: var(--muted); }
+.accent-t { fill: var(--accent); font-weight: 600; }
+dl.key { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px 28px; margin: 0; }
+dl.key div { min-width: 0; }
+dt { font-weight: 600; }
+dd { margin: 0; color: var(--muted); font-size: 14px; }
+pre { margin: 0; padding: 12px 14px; background: var(--paper); border: 1px solid var(--rule); overflow-x: auto; font: 13px/1.5 var(--mono); }
+.msgs { display: grid; gap: 10px; min-width: 0; }
+</style>
+<main>
+<header>
+  <div class="eyebrow">Orange Team · KNX lab digital twin · UML 2.5</div>
+  <h1>XR Smart Room architecture</h1>
+  <p>The headset talks only to the bridge on the lab PC. The bridge polls each lab system over its own protocol, keeps the latest state, and pushes every change to XR as one JSON message. The Unity app is still planned; the bridge and everything below it run today.</p>
+</header>
+
+<section>
+  <div class="prose">
+    <h2>Deployment</h2>
+    <p>Where each part runs and which protocol connects it. Real devices drive the virtual room: the DALI panel sets the colour and on/off of the virtual ceiling lights, and the dimmer switch sets their brightness.</p>
+  </div>
+  <figure>
+    <div class="scroll"><svg viewBox="0 0 1360 1130" role="img" aria-label="UML deployment diagram: Meta Quest 3S connects over WebSocket and HTTP to the bridge on the lab PC, which reaches Home Assistant, Frigate, the Sonos speaker, the Siemens KNX/BACnet gateway and the Lunatone DALI panel; those reach the Zigbee devices, camera, KNX room sensor and RGB ceiling lamps."><defs>
+<marker id="d1-open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path class="mk-open" d="M1,1 L11,6 L1,11"/></marker>
+<marker id="d1-tri" viewBox="0 0 16 16" refX="15" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path class="mk-tri" d="M1,1 L15,8 L1,15 z"/></marker>
+</defs><path class="comm accent" d="M680,230 L680,320"/><text class="lb accent-t" x="692" y="268" text-anchor="start">«WebSocket» JSON :8765</text><text class="lb accent-t" x="692" y="286" text-anchor="start">«HTTP» :8000 /camera.jpg</text><path class="comm" d="M520,500 L520,560 L240,560 L240,640"/><text class="lb" x="380" y="552" text-anchor="middle">«HTTP» REST :8123 · Frigate :5000</text><text class="lbm" x="380" y="578" text-anchor="middle">polled every 1 s, commands</text><path class="comm" d="M605,500 L605,640"/><text class="lb" x="613" y="596" text-anchor="start">«HTTP» :8000 /media</text><text class="lbm" x="613" y="612" text-anchor="start">speaker fetches the song</text><path class="comm" d="M790,500 L790,560 L885,560 L885,640"/><text class="lb" x="893" y="596" text-anchor="start">«BACnet/IP» UDP 47808</text><text class="lbm" x="893" y="612" text-anchor="start">read every 5 s</text><path class="comm" d="M860,500 L860,530 L1195,530 L1195,640"/><text class="lb" x="1030" y="522" text-anchor="middle">«HTTP» REST · read every 2 s</text><path class="comm" d="M460,740 L510,740"/><text class="lbm" x="485" y="732" text-anchor="middle">LAN</text><path class="comm" d="M135,790 L135,880"/><text class="lb" x="143" y="840" text-anchor="start">LAN</text><path class="comm" d="M345,790 L345,880"/><text class="lb" x="353" y="840" text-anchor="start">«RTSP»</text><path class="comm" d="M885,790 L885,880"/><text class="lb" x="893" y="840" text-anchor="start">«KNX TP»</text><path class="comm" d="M1195,790 L1195,880"/><text class="lb" x="1203" y="836" text-anchor="start">«DALI bus»</text><text class="lbm" x="1203" y="852" text-anchor="start">broadcast only</text><text class="lbm" x="1187" y="872" text-anchor="end">10</text><path class="comm" d="M135,970 L135,1000"/><path class="comm" d="M105,1030 L105,1000 L485,1000 L485,1030"/><path class="comm" d="M295,1000 L295,1030"/><text class="lb" x="150" y="993" text-anchor="start">«Zigbee»</text><polygon class="n-top" points="470,40 480,30 900,30 890,40"/><polygon class="n-side" points="890,40 900,30 900,220 890,230"/><rect class="n-front" x="470" y="40" width="420" height="190"/><text class="st" x="680.0" y="60" text-anchor="middle">«device»</text><text class="nm" x="680.0" y="76" text-anchor="middle">Meta Quest 3S</text><polygon class="e-top" points="490,92 496,86 876,86 870,92"/><polygon class="e-side" points="870,92 876,86 876,208 870,214"/><rect class="e-front" x="490" y="92" width="380" height="122"/><text class="st" x="680.0" y="109" text-anchor="middle">«executionEnvironment»</text><text class="nm" x="680.0" y="125" text-anchor="middle">Unity 2022.3.62f3 · OpenXR</text><rect class="box" x="590" y="136" width="180" height="64"/><path class="icon" d="M750,143 h8 l5,5 v12 h-13 z M758,143 v5 h5"/><text class="st" x="680.0" y="154" text-anchor="middle">«artifact»</text><text class="nm" x="680.0" y="170" text-anchor="middle">XRSmartRoom.apk</text><text class="sb" x="680.0" y="187" text-anchor="middle">{planned}</text><polygon class="n-top" points="470,320 480,310 900,310 890,320"/><polygon class="n-side" points="890,320 900,310 900,490 890,500"/><rect class="n-front" x="470" y="320" width="420" height="180"/><text class="st" x="680.0" y="340" text-anchor="middle">«device»</text><text class="nm" x="680.0" y="356" text-anchor="middle">Lab PC</text><text class="sb" x="680.0" y="373" text-anchor="middle">192.168.15.x · Windows</text><polygon class="e-top" points="490,388 496,382 876,382 870,388"/><polygon class="e-side" points="870,388 876,382 876,482 870,488"/><rect class="e-front" x="490" y="388" width="380" height="100"/><text class="st" x="680.0" y="405" text-anchor="middle">«executionEnvironment»</text><text class="nm" x="680.0" y="421" text-anchor="middle">Python 3</text><rect class="box" x="510" y="430" width="150" height="50"/><path class="icon" d="M640,437 h8 l5,5 v12 h-13 z M648,437 v5 h5"/><text class="st" x="585.0" y="448" text-anchor="middle">«artifact»</text><text class="nm" x="585.0" y="464" text-anchor="middle">server.py</text><rect class="box" x="720" y="430" width="130" height="50"/><path class="icon" d="M830,437 h8 l5,5 v12 h-13 z M838,437 v5 h5"/><text class="st" x="785.0" y="448" text-anchor="middle">«artifact»</text><text class="nm" x="785.0" y="464" text-anchor="middle">lab.py</text><path class="dep" d="M660,456 L718,456" marker-end="url(#d1-open)"/><text class="lbs" x="690" y="449" text-anchor="middle">«import»</text><polygon class="n-top" points="30,640 40,630 460,630 450,640"/><polygon class="n-side" points="450,640 460,630 460,780 450,790"/><rect class="n-front" x="30" y="640" width="420" height="150"/><text class="st" x="240.0" y="660" text-anchor="middle">«device»</text><text class="nm" x="240.0" y="676" text-anchor="middle">Home Assistant server</text><text class="sb" x="240.0" y="693" text-anchor="middle">192.168.15.249</text><polygon class="e-top" points="46,712 52,706 242,706 236,712"/><polygon class="e-side" points="236,712 242,706 242,772 236,778"/><rect class="e-front" x="46" y="712" width="190" height="66"/><text class="st" x="141.0" y="729" text-anchor="middle">«executionEnvironment»</text><text class="nm" x="141.0" y="745" text-anchor="middle">Home Assistant :8123</text><polygon class="e-top" points="250,712 256,706 446,706 440,712"/><polygon class="e-side" points="440,712 446,706 446,772 440,778"/><rect class="e-front" x="250" y="712" width="190" height="66"/><text class="st" x="345.0" y="729" text-anchor="middle">«executionEnvironment»</text><text class="nm" x="345.0" y="745" text-anchor="middle">Frigate NVR :5000</text><polygon class="n-top" points="510,640 520,630 710,630 700,640"/><polygon class="n-side" points="700,640 710,630 710,780 700,790"/><rect class="n-front" x="510" y="640" width="190" height="150"/><text class="st" x="605.0" y="660" text-anchor="middle">«device»</text><text class="nm" x="605.0" y="676" text-anchor="middle">Sonos speaker</text><text class="sb" x="605.0" y="693" text-anchor="middle">speaker1</text><polygon class="n-top" points="760,640 770,630 1020,630 1010,640"/><polygon class="n-side" points="1010,640 1020,630 1020,780 1010,790"/><rect class="n-front" x="760" y="640" width="250" height="150"/><text class="st" x="885.0" y="660" text-anchor="middle">«device»</text><text class="nm" x="885.0" y="676" text-anchor="middle">Siemens OCT200</text><text class="sb" x="885.0" y="693" text-anchor="middle">KNX ↔ BACnet · .132</text><polygon class="n-top" points="1070,640 1080,630 1330,630 1320,640"/><polygon class="n-side" points="1320,640 1330,630 1330,780 1320,790"/><rect class="n-front" x="1070" y="640" width="250" height="150"/><text class="st" x="1195.0" y="660" text-anchor="middle">«device»</text><text class="nm" x="1195.0" y="676" text-anchor="middle">Lunatone DALI-2 Display</text><text class="sb" x="1195.0" y="693" text-anchor="middle">DALI panel · .120</text><polygon class="n-top" points="40,880 50,870 240,870 230,880"/><polygon class="n-side" points="230,880 240,870 240,960 230,970"/><rect class="n-front" x="40" y="880" width="190" height="90"/><text class="st" x="135.0" y="900" text-anchor="middle">«device»</text><text class="nm" x="135.0" y="916" text-anchor="middle">Aqara Hub M3</text><polygon class="n-top" points="260,880 270,870 450,870 440,880"/><polygon class="n-side" points="440,880 450,870 450,960 440,970"/><rect class="n-front" x="260" y="880" width="180" height="90"/><text class="st" x="350.0" y="900" text-anchor="middle">«device»</text><text class="nm" x="350.0" y="916" text-anchor="middle">IP camera</text><text class="sb" x="350.0" y="933" text-anchor="middle">camera1 · .144</text><polygon class="n-top" points="770,880 780,870 1010,870 1000,880"/><polygon class="n-side" points="1000,880 1010,870 1010,960 1000,970"/><rect class="n-front" x="770" y="880" width="230" height="90"/><text class="st" x="885.0" y="900" text-anchor="middle">«device»</text><text class="nm" x="885.0" y="916" text-anchor="middle">KNX room sensor</text><text class="sb" x="885.0" y="933" text-anchor="middle">room_sensor1</text><polygon class="n-top" points="1080,880 1090,870 1320,870 1310,880"/><polygon class="n-side" points="1310,880 1320,870 1320,960 1310,970"/><rect class="n-front" x="1080" y="880" width="230" height="90"/><text class="st" x="1195.0" y="900" text-anchor="middle">«device»</text><text class="nm" x="1195.0" y="916" text-anchor="middle">RGB ceiling lamps</text><text class="sb" x="1195.0" y="933" text-anchor="middle">DALI addr. 0–9</text><polygon class="n-top" points="20,1030 30,1020 200,1020 190,1030"/><polygon class="n-side" points="190,1030 200,1020 200,1100 190,1110"/><rect class="n-front" x="20" y="1030" width="170" height="80"/><text class="st" x="105.0" y="1050" text-anchor="middle">«device»</text><text class="nm" x="105.0" y="1066" text-anchor="middle">Curtain Driver E1</text><text class="sb" x="105.0" y="1083" text-anchor="middle">curtain1</text><polygon class="n-top" points="210,1030 220,1020 390,1020 380,1030"/><polygon class="n-side" points="380,1030 390,1020 390,1100 380,1110"/><rect class="n-front" x="210" y="1030" width="170" height="80"/><text class="st" x="295.0" y="1050" text-anchor="middle">«device»</text><text class="nm" x="295.0" y="1066" text-anchor="middle">Dimmer Switch H2</text><text class="sb" x="295.0" y="1083" text-anchor="middle">dimmer1</text><polygon class="n-top" points="400,1030 410,1020 580,1020 570,1030"/><polygon class="n-side" points="570,1030 580,1020 580,1100 570,1110"/><rect class="n-front" x="400" y="1030" width="170" height="80"/><text class="st" x="485.0" y="1050" text-anchor="middle">«device»</text><text class="nm" x="485.0" y="1066" text-anchor="middle">Motion sensor</text><text class="sb" x="485.0" y="1083" text-anchor="middle">motion1</text></svg></div>
+    <figcaption>Figure 1. UML deployment diagram. Nodes are 3D boxes, execution environments are nested nodes, and lines are communication paths labelled with their protocol. The DALI lamps only react to broadcast commands until they are re-addressed.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="prose">
+    <h2>Bridge server</h2>
+    <p>Inside <code>server.py</code>. One <code>Devices</code> back end is chosen at start: the real lab, or the simulation used with <code>--simulate</code>. Both publish state to the hub, which broadcasts it to XR and runs the UC1 and UC3 rules.</p>
+  </div>
+  <figure>
+    <div class="scroll"><svg viewBox="0 0 1490 550" role="img" aria-label="UML component diagram: the XR app requires WebSocket :8765 and HTTP :8000, provided by ports on the bridge server. Inside, the WebSocket and HTTP parts and the hub use the Devices interface, realised by either RealDevices or SimulatedDevices, which publish to the hub. RealDevices uses lab.py, which requires Home Assistant, Frigate, BACnet/IP and DALI interfaces."><defs>
+<marker id="d2-open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path class="mk-open" d="M1,1 L11,6 L1,11"/></marker>
+<marker id="d2-tri" viewBox="0 0 16 16" refX="15" refY="8" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path class="mk-tri" d="M1,1 L15,8 L1,15 z"/></marker>
+</defs><rect class="box" x="20" y="190" width="190" height="260"/><rect class="icon" x="191" y="198" width="13" height="17"/><rect class="icon-fill" x="188" y="201" width="7" height="4"/><rect class="icon-fill" x="188" y="208" width="7" height="4"/><text class="st" x="115.0" y="210" text-anchor="middle">«component»</text><text class="nm" x="115.0" y="226" text-anchor="middle">XR Smart Room</text><text class="sb" x="115.0" y="243" text-anchor="middle">Unity app</text><text class="sb" x="115.0" y="259" text-anchor="middle">{planned}</text><rect class="box" x="330" y="40" width="720" height="490"/><rect class="icon" x="1031" y="48" width="13" height="17"/><rect class="icon-fill" x="1028" y="51" width="7" height="4"/><rect class="icon-fill" x="1028" y="58" width="7" height="4"/><text class="st" x="690.0" y="60" text-anchor="middle">«component»</text><text class="nm" x="690.0" y="76" text-anchor="middle">Bridge server</text><text class="sb" x="690.0" y="93" text-anchor="middle">server.py</text><path class="conn accent" d="M210,230 L259,230"/><path class="sock" d="M270,219 A11,11 0 0,0 270,241"/><circle class="ball accent-b" cx="270" cy="230" r="7"/><path class="conn accent" d="M277,230 L324,230"/><text class="lb accent-t" x="270" y="210" text-anchor="middle">WebSocket :8765</text><path class="conn accent" d="M210,420 L259,420"/><path class="sock" d="M270,409 A11,11 0 0,0 270,431"/><circle class="ball accent-b" cx="270" cy="420" r="7"/><path class="conn accent" d="M277,420 L324,420"/><text class="lb accent-t" x="270" y="448" text-anchor="middle">HTTP :8000</text><rect class="port" x="324" y="224" width="12" height="12"/><rect class="port" x="324" y="414" width="12" height="12"/><path class="conn" d="M336,230 L368,230" marker-end="url(#d2-open)"/><path class="conn" d="M336,420 L368,420" marker-end="url(#d2-open)"/><rect class="box" x="370" y="190" width="180" height="80"/><text class="nm" x="460.0" y="212" text-anchor="middle">ws : WebSocket</text><text class="sb" x="460.0" y="229" text-anchor="middle">state out, commands in</text><rect class="box" x="370" y="380" width="180" height="80"/><text class="nm" x="460.0" y="402" text-anchor="middle">http : HTTP server</text><text class="sb" x="460.0" y="419" text-anchor="middle">/camera.jpg, /media</text><rect class="box" x="590" y="110" width="210" height="140"/><text class="nm" x="695.0" y="132" text-anchor="middle">hub : Hub</text><text class="sb" x="695.0" y="149" text-anchor="middle">latest state</text><text class="sb" x="695.0" y="165" text-anchor="middle">broadcast to XR</text><text class="sb" x="695.0" y="181" text-anchor="middle">rules UC1, UC3</text><rect class="box" x="850" y="290" width="180" height="70"/><text class="nm" x="940.0" y="312" text-anchor="middle">: RealDevices</text><text class="sb" x="940.0" y="329" text-anchor="middle">lab devices</text><rect class="box" x="850" y="400" width="180" height="70"/><text class="nm" x="940.0" y="422" text-anchor="middle">: SimulatedDevices</text><text class="sb" x="940.0" y="439" text-anchor="middle">--simulate</text><rect class="box" x="590" y="310" width="210" height="160"/><text class="st" x="695" y="330" text-anchor="middle">«interface»</text><text class="nm" x="695" y="347" text-anchor="middle">Devices</text><line class="sep" x1="590" y1="358" x2="800" y2="358"/><text class="op" x="602" y="380" text-anchor="start">tasks()</text><text class="op" x="602" y="398" text-anchor="start">command(device, cmd, value)</text><text class="op" x="602" y="416" text-anchor="start">camera_jpeg()</text><text class="op" x="602" y="434" text-anchor="start">media</text><path class="dep" d="M850,325 L801,325" marker-end="url(#d2-tri)"/><path class="dep" d="M850,435 L801,435" marker-end="url(#d2-tri)"/><path class="dep" d="M825,325 L825,435"/><text class="lbs" x="831" y="384" text-anchor="start">{xor}</text><path class="dep" d="M550,215 L588,215" marker-end="url(#d2-open)"/><text class="lbs" x="569" y="207" text-anchor="middle">«use»</text><path class="dep" d="M460,270 L460,340 L588,340" marker-end="url(#d2-open)"/><text class="lbs" x="525" y="333" text-anchor="middle">«use» command()</text><path class="dep" d="M550,420 L588,420" marker-end="url(#d2-open)"/><text class="lbs" x="569" y="412" text-anchor="middle">«use»</text><path class="dep" d="M695,250 L695,308" marker-end="url(#d2-open)"/><text class="lbs" x="703" y="284" text-anchor="start">«use» rule commands</text><path class="dep" d="M940,290 L940,150"/><path class="dep" d="M1030,435 L1042,435 L1042,150 L802,150" marker-end="url(#d2-open)"/><text class="lbs" x="900" y="142" text-anchor="middle">«use» publish(device, prop, value)</text><path class="dep" d="M1030,325 L1108,325" marker-end="url(#d2-open)"/><text class="lbs" x="1070" y="317" text-anchor="middle">«use»</text><rect class="box" x="1110" y="260" width="180" height="230"/><rect class="icon" x="1271" y="268" width="13" height="17"/><rect class="icon-fill" x="1268" y="271" width="7" height="4"/><rect class="icon-fill" x="1268" y="278" width="7" height="4"/><text class="st" x="1200.0" y="280" text-anchor="middle">«component»</text><text class="nm" x="1200.0" y="296" text-anchor="middle">lab.py</text><text class="sb" x="1200.0" y="313" text-anchor="middle">device clients</text><path class="conn" d="M1290,345 L1312,345"/><path class="sock" d="M1323,334 A11,11 0 0,0 1323,356"/><text class="lb" x="1342" y="349" text-anchor="start">HA REST :8123</text><path class="conn" d="M1290,383 L1312,383"/><path class="sock" d="M1323,372 A11,11 0 0,0 1323,394"/><text class="lb" x="1342" y="387" text-anchor="start">Frigate :5000</text><path class="conn" d="M1290,421 L1312,421"/><path class="sock" d="M1323,410 A11,11 0 0,0 1323,432"/><text class="lb" x="1342" y="425" text-anchor="start">BACnet/IP :47808</text><path class="conn" d="M1290,459 L1312,459"/><path class="sock" d="M1323,448 A11,11 0 0,0 1323,470"/><text class="lb" x="1342" y="463" text-anchor="start">DALI REST</text></svg></div>
+    <figcaption>Figure 2. UML component diagram. Ball and socket show provided and required interfaces, small squares are ports, dashed arrows are «use» dependencies, and dashed arrows with a hollow triangle are realisations. {xor}: only one back end runs at a time.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <div class="prose"><h2>Messages on the WebSocket</h2></div>
+  <div class="msgs">
+<pre>// bridge → XR: one state change
+{ "device": "dimmer1", "property": "level", "value": 60, "source": "real", "timestamp": "2026-10-13T10:15:00Z" }</pre>
+<pre>// XR → bridge: a command
+{ "device": "curtain1", "command": "set_position", "value": 40 }</pre>
+  </div>
+</section>
+
+<section>
+  <div class="prose"><h2>Notation used</h2></div>
+  <dl class="key">
+    <div><dt>Node «device»</dt><dd>Physical hardware, drawn as a 3D box.</dd></div>
+    <div><dt>«executionEnvironment»</dt><dd>Software that hosts other software, nested in its node.</dd></div>
+    <div><dt>«artifact»</dt><dd>A deployed file, such as server.py.</dd></div>
+    <div><dt>Communication path</dt><dd>Solid line between nodes, labelled with its protocol.</dd></div>
+    <div><dt>«component» and parts</dt><dd>Replaceable units; parts are named <code>name : Type</code>.</dd></div>
+    <div><dt>Ball and socket</dt><dd>Provided and required interface, joined in an assembly.</dd></div>
+    <div><dt>Port</dt><dd>Small square on a component border; arrows inside are delegations.</dd></div>
+    <div><dt>Dependency, realisation</dt><dd>Dashed open arrow; dashed arrow with hollow triangle.</dd></div>
+  </dl>
+</section>
+</main>
+
+</body></html>
