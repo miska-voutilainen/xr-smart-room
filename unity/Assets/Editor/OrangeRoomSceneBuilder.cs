@@ -28,8 +28,13 @@ public static class OrangeRoomSceneBuilder
     const float LabRealtime = 8f;                                         // CeilingLights.intensity (spots); was 3 on the old point lights
     const float LabWindow = 0.6f;                                         // lab windows: blinds mostly down in the reference, daylight only fills in
     const float HallLedBoost = 1.5f;                                      // hall (Room3) read darker than the rooms
+    // Room1 vs renders/v2/best/02_Cam_122209 (Ref_02 snapshot): the vertical Lambertian window rect lit the ceiling as much
+    // as the walls (Blender: ceiling ~0.55 x wall, overcast sky comes in from above) and the floor least (Blender: most).
+    const float WindowTilt = 45f;                                         // Room1 window light aims down; 45 = CIE overcast shape (direct-light model)
+    const float Room1Window = 1.3f;                                       // the tilted rect loses ~25 % to the sill/reveal: same floor light as before
+    const float Room1Led = 1.3f;                                          // Blender panels (150 deg spread) put more on the floor than a Lambertian rect
     static readonly Color LedColor = new Color(1f, 0.94f, 0.88f);         // = Room_LED_* in Blender
-    static readonly Color WindowColor = new Color(0.86f, 0.92f, 1f);      // = Room_Window_Daylight
+    static readonly Color WindowColor = new Color(0.93f, 0.95f, 0.97f);   // was (0.86, 0.92, 1): Room1 ceiling read blue (B/Y 1.08 vs Blender 0.85)
     const float DoorMinAngle = -110f, DoorMaxAngle = 0f;                  // relative to the pose in the FBX; sign depends on hinge side
     const float TexelsPerUnit = 30f;                                      // lightmap density; hero props get x2 via scaleInLightmap
     const float SmallObject = 0.25f;                                      // static meshes smaller than this use probes, not lightmaps
@@ -221,15 +226,19 @@ public static class OrangeRoomSceneBuilder
                     }
                     AreaLight(parent, placed, r.name, b.center + Vector3.down * 0.02f, Vector3.down,
                          new Vector2(Mathf.Max(b.size.x, 0.3f), Mathf.Max(b.size.z, 0.3f)), LedColor,
-                         LedIntensity * (lab ? LabLedBaked : n.StartsWith("room3_") ? HallLedBoost : 1f));
+                         LedIntensity * (lab ? LabLedBaked : n.StartsWith("room3_") ? HallLedBoost : Room1Led));
                 }
                 else if ((n.Contains("window") || n.Contains("winglass")) && n.Contains("glass"))   // Room2_WinGlass_*
                 {
                     var d = center - b.center;   // windows are axis aligned: snap to the dominant horizontal axis
                     var dir = Mathf.Abs(d.x) > Mathf.Abs(d.z) ? new Vector3(Mathf.Sign(d.x), 0, 0) : new Vector3(0, 0, Mathf.Sign(d.z));
                     float w = dir.x != 0 ? b.size.z : b.size.x;
-                    AreaLight(parent, placed, r.name, b.center + dir * 0.05f, dir, new Vector2(w, b.size.y), WindowColor,
-                        WindowIntensity * (n.StartsWith("room2_") ? LabWindow : 1f));
+                    bool room1 = !n.StartsWith("room2_") && !n.StartsWith("room3_");   // Window_Glass
+                    var aim = room1 ? Vector3.Slerp(dir, Vector3.down, WindowTilt / 90f) : dir;
+                    // tilting leans the top edge into the room: slide out so it stays at the glass (no hot spot on the ceiling)
+                    var pos = b.center + dir * 0.05f - (room1 ? dir * (b.size.y * 0.5f * Mathf.Sin(WindowTilt * Mathf.Deg2Rad)) : Vector3.zero);
+                    AreaLight(parent, placed, r.name, pos, aim, new Vector2(w, b.size.y), WindowColor,
+                        WindowIntensity * (n.StartsWith("room2_") ? LabWindow : room1 ? Room1Window : 1f));
                 }
             }
         }
@@ -345,9 +354,11 @@ public static class OrangeRoomSceneBuilder
 
     static void XRRig(Transform floor)
     {
-        // XRI 3.x Starter Assets ship "XR Origin (XR Rig)" (with its Input Action Manager); "XR Interaction Setup" was the 2.x name
-        var path = AssetDatabase.FindAssets("XR Origin t:Prefab").Select(AssetDatabase.GUIDToAssetPath)
-            .FirstOrDefault(p => Path.GetFileName(p) == "XR Origin (XR Rig).prefab");
+        // XRI 3.x Starter Assets ship "XR Origin (XR Rig)" (with its Input Action Manager); "XR Interaction Setup" was the 2.x name.
+        // The Hands Interaction Demo's "XR Origin Hands (XR Rig)" is a variant of it that adds tracked hands (pinch/poke), so prefer it
+        var rigs = AssetDatabase.FindAssets("XR Origin t:Prefab").Select(AssetDatabase.GUIDToAssetPath).ToList();
+        var path = rigs.FirstOrDefault(p => Path.GetFileName(p) == "XR Origin Hands (XR Rig).prefab")
+                ?? rigs.FirstOrDefault(p => Path.GetFileName(p) == "XR Origin (XR Rig).prefab");
         if (path == null)
         {
             Debug.LogError("[OrangeRoom] XRI Starter Assets not imported (Package Manager > XR Interaction Toolkit > Samples > Starter Assets). Re-run after.");
@@ -360,6 +371,11 @@ public static class OrangeRoomSceneBuilder
             var b = floor.GetComponent<Renderer>().bounds;
             rig.transform.position = new Vector3(b.center.x, b.max.y, b.center.z);
         }
+        ConfigureRig(rig);
+    }
+
+    public static void ConfigureRig(GameObject rig)
+    {
         foreach (var cam in rig.GetComponentsInChildren<Camera>(true))
         {
             cam.nearClipPlane = 0.05f;

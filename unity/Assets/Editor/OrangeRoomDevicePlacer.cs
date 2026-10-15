@@ -1,11 +1,13 @@
 // Menu OrangeRoom > Place IoT Devices: puts the IoT library prefabs (Assets/IoTDigitalTwin_Modular, generated with
-// Tools > IoT Digital Twin > Generate Prefabs and Demo) on the lab demo boards of the open scene. Run it after
+// Tools > IoT Digital Twin > Generate Prefabs and Demo) on one wall of the open scene. Run it after
 // OrangeRoom > Build Scene; re-running replaces the "IoT_Devices" root.
-// Positions: board face centre/normal/size measured in main.blend (Room2_Demo_Boards faces, Blender world metres),
-// device spot = fraction of the board photo (textures/s1_lab/board_<n>.jpg, x from the left, y from the top), the
-// same photos the board textures are made from. XR: each device root gets an XRSimpleInteractable (hover/select on
-// the generator's trigger colliders) and an XRDeviceInput (select -> the device's controls). Also adds the "Bridge"
-// object: RoomBridge (WebSocket to bridge/server.py, URL from env ORANGE_BRIDGE_URL at build time) + the in-VR test panel.
+// Where: Room1 (two chairs, window), the partition wall to the lab, between the passage to the lab (Blender x 1.00-2.50)
+// and the TV niche (x 4.07-5.50); interior face y = 2.50, facing -y into Room1 (main.blend, Blender world metres).
+// The lab demo boards stay blank. Seven real lab devices (docs/README.md): dimmer, DALI panel, curtain (blind + its
+// Aqara chain controller), camera, room sensor (Siemens unit), speaker, temperature display. 03 Z-Wave has no lab device.
+// XR: each device root gets an XRGrabInteractable that only rotates (grab it with the grip and turn it in place) and an
+// XRDeviceInput (far ray on a control = press/drag that control instead of rotating). Also adds the "Bridge" object:
+// RoomBridge (WebSocket to bridge/server.py, URL from env ORANGE_BRIDGE_URL at build time) + its panel on the TV.
 using System;
 using IoTDigitalTwin;
 using UnityEditor;
@@ -20,36 +22,26 @@ static class OrangeRoomDevicePlacer
     // Measured in 2022.3.62f3: Kitchen_Board lands at (x, z, y) (the old (-x, z, -y) was 1.913 m off).
     static Vector3 B2U(float x, float y, float z) => new Vector3(x, z, y);
 
-    struct Board { public Vector3 c, n, right; public float w, h; }
+    const float WallY = 2.50f;                                  // Room1 face of Wall_Top (Blender y)
+    static readonly Vector3 WallNormal = B2U(0, -1, 0);         // into Room1
+    // TV (manifest bbox x 4.247-5.297, y 2.475 front, z 1.138-1.738): the bridge panel's centre, 1 cm in front of the screen
+    static readonly Vector3 TvCentre = B2U(4.772f, 2.465f, 1.438f);
 
-    static Board MakeBoard(Vector3 cB, Vector3 nB, float w, float h)
+    // prefab stem, Blender x (left = passage 2.50, right = TV niche 4.07, seen from Room1) and z of the device root, note.
+    // Blind root = its roller; its bead chain hangs 0.8 m on the passage side, its cloth 0.45 m below the roller.
+    static readonly (string stem, float x, float z, string note)[] Devices =
     {
-        var n = B2U(nB.x, nB.y, nB.z);
-        var c = B2U(cB.x, cB.y, cB.z);
-        // seen from the front (looking along -n), "right" in the photo
-        return new Board { c = c, n = n, right = Vector3.Cross(Vector3.up, -n).normalized, w = w, h = h };
-    }
-
-    // Room2_Demo_Boards front faces (Blender world): centre, normal, width, height
-    static readonly Board Board1 = MakeBoard(new Vector3(5.65f, 5.20f, 1.40f), new Vector3(-1, 0, 0), 1.50f, 1.02f);
-    static readonly Board Board3 = MakeBoard(new Vector3(0.60f, 8.30f, 1.40f), new Vector3(1, 0, 0), 1.30f, 1.02f);
-    static readonly Board Board5 = MakeBoard(new Vector3(0.65f, 5.075f, 1.405f), new Vector3(1, 0, 0), 1.25f, 0.97f);
-
-    // prefab stem, board, photo fraction x/y (0..1 from top-left), what / where it is
-    static readonly (string stem, Board b, float fx, float fy, string note)[] Devices =
-    {
-        ("01_Zigbee_Rotary_Dimmer",        Board5, 0.34f, 0.88f, "dimmer1: Aqara Dimmer Switch H2, board 5 bottom row (Photos/3 151018)"),
-        ("02_Zigbee_Temperature_LCD",      Board5, 0.41f, 0.88f, "Aqara T/H display next to it, board 5 bottom row (151018)"),
-        ("03_ZWave_Temperature_Controller",Board5, 0.49f, 0.86f, "no bridge device; round unit on board 5 bottom row, unverified (151018)"),
-        ("04_Security_Camera",             Board3, 0.26f, 0.14f, "camera1: camera on board 3 top left, label 'Kaamera' (151124)"),
-        ("05_Aqara_Bead_Chain_Controller", Board5, 0.63f, 0.10f, "curtain1 actuator: Aqara driver on the rail on top of board 5 (151018)"),
-        ("06_Roller_Blind_Mechanism",      Board1, 0.52f, 0.08f, "roller blind 'Mootor' on top of board 1 (151022)"),
-        ("07_Siemens_BACnet_Device",       Board3, 0.79f, 0.14f, "room_sensor1: KNX room unit read through the Siemens BACnet gateway, board 3 top right (151124)"),
-        ("08_Nest_Smart_Speaker",          Board1, 0.90f, 0.92f, "speaker1 alt.: Google Nest 'Dali stand WhiteNest', board 1 bottom right (151022)"),
-        ("09_DALI_Touchscreen_Panel",      Board1, 0.33f, 0.72f, "dali1: Lunatone DALI-2 Display 'DALI puutepaneel', board 1 (151022)"),
+        ("06_Roller_Blind_Mechanism",      3.25f, 2.30f, "curtain1: roller blind, top of the wall (cloth + chain down to ~1.5 m)"),
+        ("05_Aqara_Bead_Chain_Controller", 3.95f, 1.75f, "curtain1: Aqara chain controller (Raise/Lower), right of the blind"),
+        ("09_DALI_Touchscreen_Panel",      2.90f, 1.35f, "dali1: Lunatone DALI-2 Display"),
+        ("07_Siemens_BACnet_Device",       3.30f, 1.35f, "room_sensor1: KNX room unit via the Siemens BACnet gateway"),
+        ("02_Zigbee_Temperature_LCD",      3.65f, 1.35f, "room_sensor1 temperature/humidity: Aqara T/H display"),
+        ("01_Zigbee_Rotary_Dimmer",        2.90f, 1.05f, "dimmer1: Aqara Dimmer Switch H2"),
+        ("04_Security_Camera",             3.30f, 1.05f, "camera1: Aqara camera G5"),
+        ("08_Nest_Smart_Speaker",          3.65f, 1.05f, "speaker1: Google Nest / Sonos"),
     };
 
-    const float FrontOffset = 0.02f;   // m in front of the board face
+    const float FrontOffset = 0.01f;   // m in front of the wall face
 
     [MenuItem("OrangeRoom/Place IoT Devices")]
     static void Place()
@@ -74,26 +66,44 @@ static class OrangeRoomDevicePlacer
             }
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guids[0]));
             var go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, root.transform);
-            var b = d.b;
-            go.transform.position = b.c + b.right * ((d.fx - 0.5f) * b.w) + Vector3.up * ((0.5f - d.fy) * b.h) + b.n * FrontOffset;
-            go.transform.rotation = Quaternion.LookRotation(b.n, Vector3.up);   // library prefabs: Z = front
+            go.transform.position = B2U(d.x, WallY, d.z) + WallNormal * FrontOffset;
+            go.transform.rotation = Quaternion.LookRotation(WallNormal, Vector3.up);   // library prefabs: Z = front
+            // body box for the hand/ray grab: the hit zones are 2 mm trigger plates, too thin to grab by hand.
+            // Computed before the Rigidbody exists; the device is axis-aligned here, so the world AABB is the local box.
+            var bounds = new Bounds(go.transform.position, Vector3.zero);
+            foreach (var rr in go.GetComponentsInChildren<Renderer>(true)) bounds.Encapsulate(rr.bounds);
+            var box = go.AddComponent<BoxCollider>();
+            box.center = go.transform.InverseTransformPoint(bounds.center);
+            var size = go.transform.InverseTransformVector(bounds.size);
+            box.size = new Vector3(Mathf.Abs(size.x), Mathf.Abs(size.y), Mathf.Abs(size.z));
+            // grab = rotate in place: kinematic, no position tracking, no throw. Dynamic attach keeps the grab offset,
+            // so the device turns with the hand instead of snapping to the controller's orientation.
+            var grab = go.AddComponent<XRGrabInteractable>();
+            var body = go.GetComponent<Rigidbody>();
+            body.isKinematic = true;
+            body.useGravity = false;
+            grab.movementType = XRBaseInteractable.MovementType.Kinematic;
+            grab.trackPosition = false;
+            grab.trackRotation = true;
+            grab.trackScale = false;
+            grab.throwOnDetach = false;
+            grab.useDynamicAttach = true;
+            grab.matchAttachPosition = true;
+            grab.matchAttachRotation = true;
             // the hit zones are triggers, which XRBaseInteractable.Awake drops from an empty list: serialize them by hand
-            var xi = go.GetComponent<XRSimpleInteractable>();
-            if (!xi) xi = go.AddComponent<XRSimpleInteractable>();
+            grab.colliders.Add(box);
             foreach (var t in go.GetComponentsInChildren<DevicePointerTarget>(true))
-                if (t.TryGetComponent<Collider>(out var col) && !xi.colliders.Contains(col)) xi.colliders.Add(col);
+                if (t.TryGetComponent<Collider>(out var col) && !grab.colliders.Contains(col)) grab.colliders.Add(col);
             go.AddComponent<XRDeviceInput>();
-            // the blind on board 1 hangs in front of the DALI panel: start it raised (the bridge's curtain1.position takes over)
+            // start the blind raised so it does not cover the wall (the bridge's curtain1.position takes over)
             var blind = go.GetComponentInChildren<IoTDigitalTwin.RollerBlindDevice>();
             if (blind)
             {
                 blind.currentOpenPercent = blind.targetOpenPercent = 100;   // runtime: Awake applies the pose
                 blind.cloth.SetBlendShapeWeight(blind.blendShapeIndex, blind.fullyRaisedWeight);   // edit mode (bake, snapshots)
             }
-            // the lab ceiling's realtime lights only reach rendering layer 2 (OrangeRoomSceneBuilder.LabCeiling)
-            foreach (var rr in go.GetComponentsInChildren<Renderer>(true)) rr.renderingLayerMask |= 2;
             placed++;
-            Debug.Log($"[OrangeRoom] {d.stem} -> {go.transform.position}  ({d.note})");
+            Debug.Log($"[OrangeRoom] {d.stem} -> {go.transform.position}, grab box {box.size}  ({d.note})");
         }
         // plain Transform: a RectTransform under a non-UI parent lost its x/y when the scene was saved (panel on the floor).
         // BridgeTestPanel builds its canvas on a child.
@@ -103,10 +113,10 @@ static class OrangeRoomDevicePlacer
         var url = Environment.GetEnvironmentVariable("ORANGE_BRIDGE_URL");
         if (!string.IsNullOrEmpty(url)) rb.url = url;
         bridge.AddComponent<BridgeTestPanel>();
-        // test panel: beside board 5 (dimmer, temperature display), same facing; this point = the panel's left edge, 1.4 m high
-        bridge.transform.position = Board5.c + Board5.right * (Board5.w / 2 + 0.4f) + Board5.n * 0.15f;
-        bridge.transform.rotation = Quaternion.LookRotation(-Board5.n, Vector3.up);   // uGUI faces -Z
-        Debug.Log($"[OrangeRoom] Bridge {rb.url}, test panel at {bridge.transform.position}");
+        // panel on the TV: this point = the TV screen centre (1.05 x 0.60 m), 1 cm in front of it
+        bridge.transform.position = TvCentre;
+        bridge.transform.rotation = Quaternion.LookRotation(-WallNormal, Vector3.up);   // uGUI faces -Z
+        Debug.Log($"[OrangeRoom] Bridge {rb.url}, panel at {bridge.transform.position}");
 
         EditorSceneManager.MarkSceneDirty(root.scene);
         Debug.Log($"[OrangeRoom] Placed {placed}/{Devices.Length} IoT devices. Save the scene.");

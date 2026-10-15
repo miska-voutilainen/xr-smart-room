@@ -1,5 +1,7 @@
 // XR select on an IoT device -> the same ControlDown/Drag/Up calls IoTMouseInput makes with the mouse (README Next Step 4).
-// Sits next to the XRSimpleInteractable that OrangeRoomDevicePlacer adds; the hit zone nearest the ray picks the action.
+// Sits next to the rotate-only XRGrabInteractable that OrangeRoomDevicePlacer adds. A far ray select whose ray passes
+// close to a hit zone presses that control and freezes the rotation for that grab; any other select (hand/near grab,
+// ray on the body, or a device mirrored from the real one) just rotates the device.
 // The rig's ray casters must hit trigger colliders (the hit zones are triggers): OrangeRoomSceneBuilder sets that.
 using IoTDigitalTwin;
 using UnityEngine;
@@ -7,10 +9,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-[RequireComponent(typeof(XRSimpleInteractable))]
+[RequireComponent(typeof(XRGrabInteractable))]
 public sealed class XRDeviceInput : MonoBehaviour
 {
-    XRSimpleInteractable interactable;
+    XRGrabInteractable interactable;
     RoomBridge bridge;
     DevicePointerTarget[] targets;
     Transform origin, frame;
@@ -22,12 +24,14 @@ public sealed class XRDeviceInput : MonoBehaviour
     const float PixelsPerMetre = 4000f;   // ray end-point motion -> the library's mouse-pixel drag units
     // ponytail: tuning knob. Click = the ray turned less than this between press and release (Grip squeeze jolts it)
     const float ClickDegrees = 1.5f;
+    // ponytail: tuning knobs. Ray closer than this to a zone = press it; interactor closer than NearGrab = hand grab, rotate
+    const float ZoneReach = 0.03f, NearGrab = 0.3f;
 
     Ray Aim => new Ray(origin.position, origin.forward);
 
     void Awake()
     {
-        interactable = GetComponent<XRSimpleInteractable>();
+        interactable = GetComponent<XRGrabInteractable>();
         bridge = FindObjectOfType<RoomBridge>();
         targets = GetComponentsInChildren<DevicePointerTarget>(true);
         interactable.selectEntered.AddListener(OnSelect);
@@ -63,7 +67,11 @@ public sealed class XRDeviceInput : MonoBehaviour
                : i is IXRRayProvider ray ? ray.GetOrCreateRayOrigin() : i.transform;
         target = Nearest(Aim, out var point);
         if (!target) return;
-        if (bridge && bridge.Mirrored(target.device)) { target = null; return; }   // read-only while the real device drives it
+        bool near = Vector3.Distance(i.transform.position, point) < NearGrab;
+        float miss = Vector3.Cross(Aim.direction, point - Aim.origin).magnitude;   // zone's distance from the ray
+        // read-only while the real device drives it; hand grabs and body hits rotate instead
+        if (near || miss > ZoneReach || (bridge && bridge.Mirrored(target.device))) { target = null; return; }
+        interactable.trackRotation = false;   // this grab presses the control, the device stays put
         frame = target.device.transform;
         plane = new Plane(frame.forward, point);
         uv = target.Coordinates(Aim);
@@ -87,6 +95,7 @@ public sealed class XRDeviceInput : MonoBehaviour
 
     void OnRelease(SelectExitEventArgs args)
     {
+        interactable.trackRotation = true;
         if (!target) return;
         bool click = Mathf.Max(turned, Vector3.Angle(startForward, origin.forward)) < ClickDegrees;
         target.device.ControlUp(target.action, click, uv);

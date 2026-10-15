@@ -42,15 +42,17 @@ import urllib.request
 BRIDGE_DIR = os.path.dirname(os.path.abspath(__file__))
 ENV_FILE = os.path.join(BRIDGE_DIR, ".env")
 
-HA_URL = "http://192.168.15.249:8123"
+# Home Assistant + Frigate Pi; DHCP moved it from .249 to .248 on 15.10.2026, override with LAB_HA_HOST
+HA_HOST = os.environ.get("LAB_HA_HOST", "192.168.15.248")
+HA_URL = f"http://{HA_HOST}:8123"
 CURTAIN = "cover.curtain_2"  # the physical curtain; cover.aqara_curtain_driver_e1 does not move it
-DIMMER = "light.aqara_dimmer_switch_h2"
-DIMMER_POWER = "sensor.aqara_dimmer_switch_h2_power"
+DIMMER = "light.aqara_dimmer_switch_h2_2"  # re-paired in HA by 15.10.2026 (was ..._h2)
+DIMMER_POWER = "sensor.aqara_dimmer_switch_h2_power_2"
 SPEAKER = "media_player.roam_2_2"  # Sonos "Office"; Nest: media_player.googlehome6580 / famnest2
-MOTION = "binary_sensor.aqara_motion_sensor"
+MOTION = "binary_sensor.aqara_motion_sensor_p1_occupancy"  # old aqara_motion_sensor is unavailable since 15.10.2026
 MOTION_LUX = "sensor.aqara_motion_sensor_illuminance"
 
-FRIGATE_URL = "http://192.168.15.249:5000"
+FRIGATE_URL = f"http://{HA_HOST}:5000"
 FRIGATE_CAMERA = "cam_192_168_15_144"
 
 GATEWAY_IP = "192.168.15.132"  # Siemens OCT200.KNBA KNX/BACnet gateway
@@ -67,7 +69,7 @@ def stamp():
     return time.strftime("%H:%M:%S")
 
 
-def local_ip(towards="192.168.15.249"):
+def local_ip(towards=HA_HOST):
     """The address of this PC on the network that can reach `towards`."""
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
         s.connect((towards, 80))
@@ -766,7 +768,9 @@ def read_dali(ip=DALI_IP):
     for z in sorted(dali_request("zones", ip)["zones"], key=lambda z: z["id"]):
         targets = z.get("targets", [])
         if len(targets) == 1 and targets[0]["type"] == "group" and targets[0]["id"] not in groups:
-            f = z["features"]
+            f = z.get("features", {})
+            if "switchable" not in f or "dimmable" not in f:
+                continue   # zone edited on the panel without on/level features (seen 15.10.2026); skip, don't crash the bridge
             groups[targets[0]["id"]] = {"on": f["switchable"]["status"], "level": round(f["dimmable"]["status"]),
                                         "kelvin": f.get("colorKelvin", {}).get("status")}
     return lamps, groups

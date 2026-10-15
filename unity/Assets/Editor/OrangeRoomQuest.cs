@@ -27,7 +27,9 @@ public static class OrangeRoomQuest
     const string ScenePath = "Assets/Scenes/OrangeRoom.unity";
     const string ApkPath = "Build/OrangeRoom-Quest3S.apk";
     const string SnapDir = "Build/Snapshots";
-    static readonly string[] QuestFeatures = { "MetaQuestFeature", "OculusTouchControllerProfile", "MetaQuestTouchPlusControllerProfile" };
+    // hands: XR Hands' HandTracking subsystem + MetaHandTrackingAim (pinch/aim), OpenXR Hand Interaction Profile
+    static readonly string[] QuestFeatures = { "MetaQuestFeature", "OculusTouchControllerProfile", "MetaQuestTouchPlusControllerProfile",
+        "HandTracking", "MetaHandTrackingAim", "HandInteractionProfile" };
 
     [MenuItem("OrangeRoom/Quest/1 Setup")]
     public static void Setup()
@@ -86,7 +88,7 @@ public static class OrangeRoomQuest
         bool loader = XRPackageMetadataStore.AssignLoader(general.AssignedSettings, typeof(OpenXRLoader).FullName, Android);
         Debug.Log($"[Quest] OpenXR loader on Android: {loader}");
 
-        // OpenXR: Meta Quest support + Touch / Touch Plus controllers, single pass instanced
+        // OpenXR: Meta Quest support + Touch / Touch Plus controllers + hand tracking, single pass instanced
         FeatureHelpers.RefreshFeatures(Android);
         var ox = OpenXRSettings.GetSettingsForBuildTargetGroup(Android);
         ox.renderMode = OpenXRSettings.RenderMode.SinglePassInstanced;
@@ -130,8 +132,8 @@ public static class OrangeRoomQuest
         if (UnityEngine.Object.FindObjectOfType<Unity.XR.CoreUtils.XROrigin>() == null || UnityEngine.Object.FindObjectOfType<XRInteractionManager>() == null)
             throw new Exception("[Quest] scene has no XR Origin / XRInteractionManager (XRI Starter Assets sample missing?)");
         int placed = iot ? iot.GetComponentsInChildren<IoTDigitalTwin.IoTDevice>().Length : 0;
-        if (failed > 0 || placed != 9 || UnityEngine.Object.FindObjectOfType<RoomBridge>() == null)
-            throw new Exception($"[Quest] IoT devices: {failed} failed to generate, {placed}/9 placed, bridge {(UnityEngine.Object.FindObjectOfType<RoomBridge>() ? "ok" : "missing")}");
+        if (failed > 0 || placed != 8 || UnityEngine.Object.FindObjectOfType<RoomBridge>() == null)
+            throw new Exception($"[Quest] IoT devices: {failed} failed to generate, {placed}/8 placed, bridge {(UnityEngine.Object.FindObjectOfType<RoomBridge>() ? "ok" : "missing")}");
         Debug.Log("[Quest] Scene done.");
     }
 
@@ -176,6 +178,25 @@ public static class OrangeRoomQuest
         }
     }
 
+    // ponytail: one-off migration of an already baked scene to the hands rig without Build Scene (which drops the lightmaps).
+    // A fresh Build Scene picks the hands rig by itself (OrangeRoomSceneBuilder.XRRig); delete this once the scene is rebuilt.
+    [MenuItem("OrangeRoom/Quest/Swap To Hands Rig")]
+    public static void HandsRig()
+    {
+        var scene = EditorSceneManager.OpenScene(ScenePath);
+        var path = AssetDatabase.FindAssets("XR Origin t:Prefab").Select(AssetDatabase.GUIDToAssetPath)
+            .FirstOrDefault(p => Path.GetFileName(p) == "XR Origin Hands (XR Rig).prefab")
+            ?? throw new Exception("[Quest] XR Origin Hands (XR Rig).prefab missing (XRI Hands Interaction Demo sample)");
+        var old = UnityEngine.Object.FindObjectOfType<Unity.XR.CoreUtils.XROrigin>() ?? throw new Exception("[Quest] scene has no XR Origin");
+        var rig = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(path), scene);
+        rig.transform.SetPositionAndRotation(old.transform.position, old.transform.rotation);
+        rig.transform.SetSiblingIndex(old.transform.GetSiblingIndex());
+        UnityEngine.Object.DestroyImmediate(old.gameObject);
+        OrangeRoomSceneBuilder.ConfigureRig(rig);
+        EditorSceneManager.SaveScene(scene);
+        Debug.Log($"[Quest] Hands rig in scene: {path}");
+    }
+
     // Eye-height views for a texture/lighting check without a headset: Build/Snapshots/*.png
     [MenuItem("OrangeRoom/Quest/4 Snapshots")]
     public static void Snapshots()
@@ -206,11 +227,15 @@ public static class OrangeRoomQuest
         cam.fieldOfView = 55f;
         Shot(cam, rt, "Ref_10_Cam_hall_02", new Vector3(-0.997f, 1.333f, 0.6f), Quaternion.LookRotation(new Vector3(-0.974f, -0.084f, 0.21f)));
         Shot(cam, rt, "Ref_07_Cam_150435", new Vector3(0.407f, 1.57f, 1.312f), Quaternion.LookRotation(new Vector3(0.603f, -0.072f, 0.795f)));
+        Shot(cam, rt, "Ref_02_Cam_122209", new Vector3(0.166f, 1.498f, 1.817f), Quaternion.LookRotation(new Vector3(0.993f, -0.067f, -0.094f)));   // Room1 lighting reference
         cam.fieldOfView = 90f;
         var iot = GameObject.Find("IoT_Devices");
         if (iot)
             foreach (Transform d in iot.transform)
                 if (d.name != "Bridge") Shot(cam, rt, "IoT_" + d.name, d.position + d.forward * 0.8f, Quaternion.LookRotation(-d.forward));
+        // Room1 device wall (Blender y = 2.50, devices x 2.5-4.0, TV x 4.25-5.3): whole wall, then the device grid up close
+        Shot(cam, rt, "Wall_devices", new Vector3(3.9f, 1.5f, 0.6f), Quaternion.LookRotation(Vector3.forward));
+        Shot(cam, rt, "Wall_devices_close", new Vector3(3.3f, 1.3f, 1.7f), Quaternion.LookRotation(Vector3.forward));
         UnityEngine.Object.DestroyImmediate(cam.gameObject);
         Debug.Log($"[Quest] Snapshots in {Path.GetFullPath(SnapDir)}");
     }

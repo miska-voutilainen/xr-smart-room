@@ -17,7 +17,7 @@ using UnityEngine;
 public sealed class RoomBridge : MonoBehaviour
 {
     [Tooltip("ws://<bridge PC IP>:8765. Check the laptop IP with `ip addr` / `ipconfig`; it changes on Wi-Fi.")]
-    public string url = "ws://192.168.160.57:8765";   // this laptop on the lab Wi-Fi; the test panel can change it in VR
+    public string url = "ws://192.168.15.178:8765";   // this laptop on the lab Wi-Fi RUT361_F473 (wlan1, DHCP, 15.10.2026); the test panel can change it in VR
     public bool connectOnStart = true;
 
     public string State { get; private set; } = "offline";   // offline / connecting / online

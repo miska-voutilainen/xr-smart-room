@@ -152,9 +152,9 @@ public static class OrangeRoomBridgeCheck
 
         // 7. every device: XR-clickable, and driven by its bridge messages (still offline: the test-panel path)
         var cam = Object.FindObjectOfType<SecurityCameraDevice>(); var unit = Object.FindObjectOfType<SiemensBACnetDevice>();
-        var speaker = Object.FindObjectOfType<NestSpeakerDevice>(); var zwave = Object.FindObjectOfType<TemperatureController>();
-        IoTDevice[] all = { dimmer, thermo, zwave, cam, chain, blind, unit, speaker, dali };
-        if (!Check(all.All(d => d), "scene has all 9 IoT devices")) yield break;
+        var speaker = Object.FindObjectOfType<NestSpeakerDevice>();
+        IoTDevice[] all = { dimmer, thermo, cam, chain, blind, unit, speaker, dali };
+        if (!Check(all.All(d => d), "scene has all 8 IoT devices")) yield break;
         foreach (var d in all)
         {
             var zones = d.GetComponentsInChildren<DevicePointerTarget>(true).Where(t => t.device == d && t.GetComponent<Collider>() is Collider c && c.isTrigger).ToArray();
@@ -184,7 +184,6 @@ public static class OrangeRoomBridgeCheck
         bridge.Apply("room_sensor1", "temperature", "27");
         Equal("room_sensor1.temperature -> TemperatureLCD", thermo.Temperature, "27");
         Equal("room_sensor1.temperature -> Siemens display", unit.DisplayValue, "27");
-        Equal("room_sensor1.temperature -> Z-Wave thermostat", zwave.Temperature, "27");
         bridge.Apply("room_sensor1", "status", "offline");
         Check(!unit.Status, "room_sensor1.status offline -> Siemens status off");
         bridge.Apply("speaker1", "volume", "40");

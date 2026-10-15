@@ -280,7 +280,8 @@ class RealDevices:
                 for group, g in groups.items():
                     self.hub.publish_all("dali1", {f"group{group}_on": g["on"], f"group{group}_level": g["level"],
                                                    f"group{group}_kelvin": g["kelvin"]})
-            except DALIError:
+            except (DALIError, KeyError, TypeError, ValueError) as e:   # unexpected panel JSON must not stop the bridge
+                log(f"DALI read failed: {e!r}")
                 self.hub.publish("dali1", "status", "offline")
             await asyncio.sleep(2)
 
