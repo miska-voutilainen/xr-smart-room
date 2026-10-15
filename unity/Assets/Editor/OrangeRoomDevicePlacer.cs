@@ -95,13 +95,15 @@ static class OrangeRoomDevicePlacer
             placed++;
             Debug.Log($"[OrangeRoom] {d.stem} -> {go.transform.position}  ({d.note})");
         }
-        var bridge = new GameObject("Bridge", typeof(RectTransform));
+        // plain Transform: a RectTransform under a non-UI parent lost its x/y when the scene was saved (panel on the floor).
+        // BridgeTestPanel builds its canvas on a child.
+        var bridge = new GameObject("Bridge");
         bridge.transform.SetParent(root.transform);
         var rb = bridge.AddComponent<RoomBridge>();
         var url = Environment.GetEnvironmentVariable("ORANGE_BRIDGE_URL");
         if (!string.IsNullOrEmpty(url)) rb.url = url;
         bridge.AddComponent<BridgeTestPanel>();
-        // test panel: beside board 5 (dimmer, temperature display), same facing, panel centre 1.4 m high
+        // test panel: beside board 5 (dimmer, temperature display), same facing; this point = the panel's left edge, 1.4 m high
         bridge.transform.position = Board5.c + Board5.right * (Board5.w / 2 + 0.4f) + Board5.n * 0.15f;
         bridge.transform.rotation = Quaternion.LookRotation(-Board5.n, Vector3.up);   // uGUI faces -Z
         Debug.Log($"[OrangeRoom] Bridge {rb.url}, test panel at {bridge.transform.position}");
