@@ -151,6 +151,9 @@ public static class OrangeRoomClickClip
         dot.GetComponent<Renderer>().material = ray.material;
         ShowRay(false, Vector3.zero);
 
+        if (Environment.GetEnvironmentVariable("CLIP") == "curtain") { yield return CurtainShowcase(); yield break; }
+        if (Environment.GetEnvironmentVariable("CLIP") == "probe") { Probe(); yield break; }
+        if (Environment.GetEnvironmentVariable("CLIP") == "switch") { yield return SwitchShowcase(); yield break; }
         yield return Screenshots();
 
         var dimmer = Object.FindObjectOfType<RotaryDimmer>(); var thermo = Object.FindObjectOfType<TemperatureLCD>();
@@ -229,6 +232,186 @@ public static class OrangeRoomClickClip
             (0, "dali1", "all_on", "false"), (2, "dali1", "all_on", "true"), (1.5, "dali1", "all_kelvin", "6500")),
             () => dali.Power && Mathf.Abs(dali.ColorTemperature - 6500) < 1);
     }
+
+    // VR recreation of the lab video (30 s): look at the sensor and to the right, press Lower at 0:06, turn to the
+    // curtain over ~2.5 s, the curtain closes from the top to 75 % closed at 0:30. CLIP=curtain, against a bridge whose
+    // curtain moves at the real motor's speed (75 % in 24 s).
+    static IEnumerator CurtainShowcase()
+    {
+        var chain = Object.FindObjectOfType<AqaraChainController>(); var blind = Object.FindObjectOfType<RollerBlindDevice>();
+        var thermo = Object.FindObjectOfType<TemperatureLCD>();
+        blind.percentPerSecond = 75f / 24f;   // ponytail: the real motor's speed, so local motion matches the bridge reports
+        string position = "";
+        bridge.Applied += (d, p, v) => { if (d == "curtain1" && p == "position") position = v; };
+        bridge.url = Environment.GetEnvironmentVariable("BRIDGE_CHECK_URL") ?? "ws://127.0.0.1:8765";
+        bridge.Connect();
+        yield return Until(() => bridge.State == "online" && F(position) >= 100, 10, "bridge online, curtain open");
+        blind.currentOpenPercent = 100;
+        yield return Wait(1);
+
+        var lower = Zone(chain, "Lower");
+        var button = At(lower);
+        var sensor = Bounds(thermo).center;
+        var roller = blind.transform.position;
+        var eye = new Vector3(button.x - 0.35f, 1.68f, button.z - 1.25f);
+        var right = button + Vector3.right * 0.7f;
+        var curtain = new Vector3(roller.x + 0.1f, roller.y - 0.35f, roller.z);
+        (double t, Vector3 at)[] look = { (0, sensor), (1.8, sensor + Vector3.right * 0.15f), (3.4, right), (4.4, right), (5.4, button), (6.5, button), (9, curtain), (30, curtain) };
+        cam.fieldOfView = 72f;
+
+        StartVideo(Path.Combine(Out, "curtain_recreation", "vr_curtain_close.mp4"));
+        bool pressed = false;
+        while (Now - t0 < 30)
+        {
+            double t = Now - t0;
+            int i = 0;
+            while (i < look.Length - 2 && t > look[i + 1].t) i++;
+            float k = Mathf.SmoothStep(0, 1, (float)((t - look[i].t) / (look[i + 1].t - look[i].t)));
+            var at = Vector3.Lerp(look[i].at, look[i + 1].at, k);
+            var sway = new Vector3(Mathf.PerlinNoise((float)t * 0.4f, 0) - 0.5f, Mathf.PerlinNoise(0, (float)t * 0.4f) - 0.5f, 0) * 0.03f;
+            cam.transform.SetPositionAndRotation(eye + sway * 0.3f, Quaternion.LookRotation(at + sway - eye));
+            if (t >= 4.6) ShowRay(pressed, button);
+            if (!pressed && t >= 6)
+            {   // trigger down on Lower: the XRDeviceInput calls -> {"device": "curtain1", "command": "close"}
+                pressed = true;
+                chain.ControlDown("Lower", new Vector2(.5f, .5f));
+                bridge.UserControl(chain, "Lower", true);
+                Debug.Log($"[ClickClip] curtain: Lower pressed at {t:0.00} s");
+            }
+            yield return null;
+        }
+        StopVideo();
+        Debug.Log($"[ClickClip] curtain: {frames} frames, curtain1.position {position}, blind {blind.OpenPercent:0.0} %");
+        if (!(F(position) < 35 && F(position) > 15)) Fail($"curtain should be ~25 % open at 0:30, bridge says {position}");
+        chain.ControlUp("Lower", false, new Vector2(.5f, .5f));
+        bridge.UserControl(chain, "Lower", false);   // -> stop
+        yield return Wait(1);
+    }
+
+    // VR twin of the lab video (30 s), in the lab where it was filmed: the rocker switch on demo board 1 sits where the
+    // real one is (the board's photo, x 0.567 / y 0.89), the right hand presses it once at 0:06, the rocker springs back,
+    // the head turns to window N1 (2-3 s) and its roller blind closes from the top, following curtain1.position from
+    // the bridge, to 75 % closed at 0:30. Blender (x, y, z) -> Unity (x, z, y), see OrangeRoomDevicePlacer.B2U.
+    static IEnumerator SwitchShowcase()
+    {
+        // board 1: east(6.05) -> front face x = 5.5 + 0.15, u along -y from 6.05; photo u0..u1 = 0.10..1.60, z 0.89..1.91
+        var face = new Vector3(5.65f, 1.91f - 0.89f * 1.02f, 6.05f - (0.10f + 0.567f * 1.50f));
+        var white = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        white.SetColor("_BaseColor", new Color(0.93f, 0.93f, 0.91f)); white.SetFloat("_Smoothness", 0.35f);
+        var sw = new GameObject("Board1_RockerSwitch").transform;
+        sw.position = face; sw.rotation = Quaternion.LookRotation(Vector3.left);   // forward = out of the board, into the room
+        var plate = GameObject.CreatePrimitive(PrimitiveType.Cube); plate.transform.SetParent(sw, false);
+        plate.transform.localScale = new Vector3(0.082f, 0.082f, 0.008f); plate.transform.localPosition = new Vector3(0, 0, 0.004f);
+        var pivot = new GameObject("Rocker").transform; pivot.SetParent(sw, false); pivot.localPosition = new Vector3(0, 0, 0.011f);
+        var rocker = GameObject.CreatePrimitive(PrimitiveType.Cube); rocker.transform.SetParent(pivot, false);
+        rocker.transform.localScale = new Vector3(0.056f, 0.056f, 0.008f); rocker.transform.localPosition = new Vector3(0, 0, 0.002f);
+        foreach (var r in sw.GetComponentsInChildren<Renderer>()) r.sharedMaterial = white;
+        foreach (var c in sw.GetComponentsInChildren<Collider>()) Object.Destroy(c);
+        const float Rest = 7f, Pushed = -4f;   // rest: top in, bottom out; a push on the bottom tips it the other way
+        pivot.localRotation = Quaternion.Euler(-Rest, 0, 0);
+
+        // lab window N1 blind (Blender room2.py: x 0.70..2.30 on y = 9.0, fabric from z 2.76 down), rebuilt to animate
+        var old = GameObject.Find("Room2_Blind_N1");
+        // ponytail: unlit greys, because the rebuilt boxes get no lightmap while the baked blinds around them do
+        Material Flat(Color c) { var m = new Material(Shader.Find("Universal Render Pipeline/Unlit")); m.SetColor("_BaseColor", c); return m; }
+        var mats = new[] { Flat(new Color(0.60f, 0.60f, 0.58f)), Flat(new Color(0.78f, 0.78f, 0.77f)) };
+        if (old) old.SetActive(false);
+        Transform Box(string n, Vector3 lo, Vector3 hi, Material m)
+        {
+            var g = GameObject.CreatePrimitive(PrimitiveType.Cube); g.name = n; Object.Destroy(g.GetComponent<Collider>());
+            g.transform.position = (lo + hi) / 2; g.transform.localScale = hi - lo; g.GetComponent<Renderer>().sharedMaterial = m;
+            return g.transform;
+        }
+        Box("BlindN1_Cassette", new Vector3(0.64f, 2.76f, 8.90f), new Vector3(2.36f, 2.85f, 9.0f), mats[mats.Length > 1 ? 1 : 0]);
+        var fabric = Box("BlindN1_Fabric", new Vector3(0.67f, 2.0f, 8.94f), new Vector3(2.33f, 2.76f, 8.945f), mats[0]);
+        var bar = Box("BlindN1_Bar", new Vector3(0.67f, 2.0f, 8.935f), new Vector3(2.33f, 2.02f, 8.95f), mats[mats.Length > 1 ? 1 : 0]);
+        const float Top = 2.76f, Drop = 2.76f - 0.85f;   // fabric top, top to sill = 100 % closed
+        float shown = 0;   // closed fraction on screen, eased toward the bridge position
+        void SetBlind(float closed)
+        {
+            float bottom = Top - Mathf.Max(0.015f, closed * Drop);
+            fabric.position = new Vector3(1.5f, (Top + bottom) / 2, 8.9425f); fabric.localScale = new Vector3(1.66f, Top - bottom, 0.005f);
+            bar.position = new Vector3(1.5f, bottom - 0.01f, 8.9425f);
+        }
+        SetBlind(0);
+
+        // right hand: the XRI sample's Quest hand mesh, posed by hand (no tracking data in the Editor)
+        var handPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Models/Hands/RightHand.fbx");
+        var hand = Object.Instantiate(handPrefab).transform;
+        foreach (var b in hand.GetComponentsInChildren<Behaviour>(true)) if (!(b is Renderer)) b.enabled = false;
+        var skin = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        skin.SetColor("_BaseColor", new Color(0.87f, 0.69f, 0.58f)); skin.SetFloat("_Smoothness", 0.25f);
+        foreach (var r in hand.GetComponentsInChildren<Renderer>(true)) { r.enabled = true; r.gameObject.SetActive(true); r.sharedMaterial = skin; }
+        hand.gameObject.SetActive(true);
+        Transform Bone(string n) => hand.GetComponentsInChildren<Transform>(true).First(x => x.name.EndsWith(n));
+        Transform wristB = Bone("Wrist"), tipB = Bone("IndexTip"), indexB = Bone("IndexProximal"), littleB = Bone("LittleProximal");
+        // the FBX's own axes: finger direction and index-side direction in the hand root's space
+        var fingerL = hand.InverseTransformDirection(tipB.position - wristB.position);
+        var sideL = hand.InverseTransformDirection(indexB.position - littleB.position);
+        var handBasis = Quaternion.Inverse(Quaternion.LookRotation(fingerL, sideL));
+        // pose so the index tip sits at `tip`, fingers along `dir`, index side to the hand's left (+z when facing +x)
+        void PoseHand(Vector3 tip, Vector3 dir)
+        {
+            hand.rotation = Quaternion.LookRotation(dir, Vector3.forward) * handBasis;
+            hand.position += tip - tipB.position;
+        }
+
+        string position = "";
+        bridge.Applied += (d, p, v) => { if (d == "curtain1" && p == "position") position = v; };
+        bridge.url = Environment.GetEnvironmentVariable("BRIDGE_CHECK_URL") ?? "ws://127.0.0.1:8765";
+        bridge.Connect();
+        yield return Until(() => bridge.State == "online" && F(position) >= 100, 10, "bridge online, curtain open");
+        yield return Wait(1);
+
+        var eye = new Vector3(5.12f, 1.68f, 5.2f);
+        var sensor = new Vector3(5.65f, 1.91f - 0.30f * 1.02f, 6.05f - (0.10f + 0.86f * 1.50f));   // PIR, photo (0.86, 0.30)
+        var right = new Vector3(5.5f, 1.35f, 4.2f);
+        var window = new Vector3(1.15f, 1.95f, 9.0f);
+        (double t, Vector3 at)[] look = { (0, sensor), (1.5, sensor), (3.2, right), (4.2, right), (5.3, face), (6.6, face), (9.2, window), (30, window) };
+        cam.fieldOfView = 70f;
+        var fwd = new Vector3(1f, -0.35f, 0.15f).normalized;   // fingers toward the board, slightly up, palm down
+        var rest = eye + new Vector3(0.28f, -0.62f, -0.22f);
+        var touch = face + Vector3.up * 0.008f + Vector3.left * 0.02f;   // index tip on the rocker's lower half
+        (double t, Vector3 p)[] reach = { (0, rest), (4.4, rest), (5.8, touch), (6.0, touch + fwd * 0.012f), (6.25, touch), (7.4, rest), (30, rest) };
+
+        StartVideo(Path.Combine(Out, "switch_recreation", "vr_switch_curtain.mp4"));
+        bool sent = false;
+        while (Now - t0 < 30)
+        {
+            double t = Now - t0;
+            cam.transform.SetPositionAndRotation(eye, Quaternion.LookRotation(Track(look, t) + Sway(t) - eye));
+            PoseHand(Track(reach, t), fwd);
+            // rocker: pushed while the fingers are in (6.0-6.2 s), springs back with a small overshoot
+            float a = t < 5.95 ? Rest : t < 6.2 ? Pushed : Rest + (Pushed - Rest) * Mathf.Exp(-(float)(t - 6.2) * 18f) * Mathf.Cos((float)(t - 6.2) * 40f);
+            pivot.localRotation = Quaternion.Euler(-a, 0, 0);
+            if (!sent && t >= 6.0) { sent = true; bridge.Send("curtain1", "close"); Debug.Log($"[ClickClip] switch: pressed at {t:0.00} s -> curtain1 close"); }
+            shown = Mathf.MoveTowards(shown, 1 - F(position) / 100f, Time.unscaledDeltaTime * 75f / 24f / 100f * 1.5f);
+            SetBlind(shown);
+            yield return null;
+        }
+        StopVideo();
+        Debug.Log($"[ClickClip] switch: {frames} frames, curtain1.position {position}, blind closed {shown * 100:0} %");
+        if (!(F(position) < 35 && F(position) > 15)) Fail($"curtain should be ~25 % open at 0:30, bridge says {position}");
+        bridge.Send("curtain1", "stop");
+        yield return Wait(1);
+    }
+
+    // logs the world bounds of each submesh whose material name contains "Board_" or of objects named Blind_*
+    static void Probe()
+    {
+        foreach (var r in Object.FindObjectsOfType<Renderer>())
+            if (r.name == "Room2_Demo_Boards" || r.name == "Kitchen_Board" || r.name.Contains("Blind"))
+                Debug.Log($"[Probe] {r.name} min {r.bounds.min.ToString("F3")} max {r.bounds.max.ToString("F3")} pos {r.transform.position.ToString("F3")} rot {r.transform.eulerAngles.ToString("F1")} scale {r.transform.lossyScale.ToString("F3")}");
+    }
+
+    static Vector3 Track((double t, Vector3 p)[] keys, double t)
+    {
+        int i = 0;
+        while (i < keys.Length - 2 && t > keys[i + 1].t) i++;
+        return Vector3.Lerp(keys[i].p, keys[i + 1].p, Mathf.SmoothStep(0, 1, (float)((t - keys[i].t) / (keys[i + 1].t - keys[i].t))));
+    }
+
+    static Vector3 Sway(double t) => new Vector3(Mathf.PerlinNoise((float)t * 0.4f, 0) - 0.5f, Mathf.PerlinNoise(0, (float)t * 0.4f) - 0.5f, Mathf.PerlinNoise((float)t * 0.3f, 7) - 0.5f) * 0.03f;
 
     static (Vector3, Vector3) Close(Component d)
     {
